@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dj8rb7x3bi1jw"]
+
+[ext_resource type="Texture2D" uid="uid://b2t8hravno3l3" path="res://assets/backgrounds/blackboard_0.bmp" id="1_3047d"]
+
+[node name="Battle_screen" type="Node2D" unique_id=637376723]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=546463324]
+offset_right = 1152.0
+offset_bottom = 505.0
+texture = ExtResource("1_3047d")
+expand_mode = 1

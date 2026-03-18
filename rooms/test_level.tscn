@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cxpa3e1v40vr8" path="res://assets/backgrounds/something-i-love-about-pixel-art-is-how-much-you-can-do-v0-h7jxd8q0yd591.png" id="1_iqxty"]
 [ext_resource type="PackedScene" uid="uid://ctverhenfqadk" path="res://Player/player.tscn" id="2_phwph"]
+[ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="3_hjy83"]
 
 [node name="test_level" type="Node2D" unique_id=760935740]
 
@@ -14,3 +15,6 @@ stretch_mode = 1
 
 [node name="Player" parent="." unique_id=44114981 instance=ExtResource("2_phwph")]
 position = Vector2(70, 67)
+
+[node name="Enemy" parent="." unique_id=1936347032 instance=ExtResource("3_hjy83")]
+position = Vector2(755, 224)

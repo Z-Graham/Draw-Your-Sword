@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dj8rb7x3bi1jw"]
 
 [ext_resource type="Texture2D" uid="uid://b2t8hravno3l3" path="res://assets/backgrounds/blackboard_0.bmp" id="1_3047d"]
+[ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="2_duuuk"]
 
 [node name="Battle_screen" type="Node2D" unique_id=637376723]
 
@@ -9,3 +10,18 @@ offset_right = 1152.0
 offset_bottom = 505.0
 texture = ExtResource("1_3047d")
 expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=862173335]
+offset_left = 2.0
+offset_top = 502.0
+offset_right = 1161.0
+offset_bottom = 668.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="TextureButton" parent="." unique_id=1094534353]
+offset_left = 982.0
+offset_top = 522.0
+offset_right = 1095.0
+offset_bottom = 613.0
+texture_normal = ExtResource("2_duuuk")
+stretch_mode = 0

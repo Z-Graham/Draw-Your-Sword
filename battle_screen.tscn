@@ -1,9 +1,22 @@
 [gd_scene format=3 uid="uid://dj8rb7x3bi1jw"]
 
 [ext_resource type="Texture2D" uid="uid://b2t8hravno3l3" path="res://assets/backgrounds/blackboard_0.bmp" id="1_3047d"]
+[ext_resource type="Script" uid="uid://tfj68kuq4r32" path="res://battle_screen.gd" id="1_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="2_duuuk"]
+[ext_resource type="Texture2D" uid="uid://cc6hg7eathhu4" path="res://assets/sprites/red poly.png" id="3_638wx"]
+[ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
+[ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
+[ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
+[ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
+[ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
+[ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0hhe"]
+font_size = 105
+font_color = Color(0, 0, 0, 1)
 
 [node name="Battle_screen" type="Node2D" unique_id=637376723]
+script = ExtResource("1_v0hhe")
 
 [node name="background" type="TextureRect" parent="." unique_id=546463324]
 offset_right = 1152.0
@@ -19,9 +32,49 @@ offset_bottom = 668.0
 color = Color(0, 0, 0, 1)
 
 [node name="Button" type="TextureButton" parent="." unique_id=1094534353]
-offset_left = 982.0
-offset_top = 522.0
-offset_right = 1095.0
-offset_bottom = 613.0
+texture_filter = 1
+offset_left = 1009.0
+offset_top = 502.0
+offset_right = 1122.0
+offset_bottom = 593.0
 texture_normal = ExtResource("2_duuuk")
 stretch_mode = 0
+
+[node name="Fight_button" type="TextureButton" parent="." unique_id=1525770424]
+offset_left = 6.0000005
+offset_top = 537.00006
+offset_right = 549.0
+offset_bottom = 755.00006
+scale = Vector2(0.46, 0.46)
+texture_normal = ExtResource("3_638wx")
+texture_pressed = ExtResource("4_0c6le")
+texture_hover = ExtResource("6_f7sqe")
+texture_click_mask = ExtResource("5_wk8rl")
+
+[node name="Label" type="Label" parent="Fight_button" unique_id=1229218718]
+layout_mode = 0
+offset_left = 71.73913
+offset_top = 34.782528
+offset_right = 323.73914
+offset_bottom = 178.78253
+text = "Fight"
+label_settings = SubResource("LabelSettings_v0hhe")
+
+[node name="Item_button" type="TextureButton" parent="." unique_id=679184431]
+offset_left = 182.0
+offset_top = 538.0
+offset_right = 725.0
+offset_bottom = 756.0
+scale = Vector2(0.46, 0.46)
+texture_normal = ExtResource("6_wk8rl")
+texture_pressed = ExtResource("7_v0hhe")
+texture_hover = ExtResource("10_v7h6t")
+
+[node name="Label2" type="Label" parent="Item_button" unique_id=62121591]
+layout_mode = 0
+offset_left = 197.82607
+offset_top = 41.304306
+offset_right = 431.82605
+offset_bottom = 185.3043
+text = "Item"
+label_settings = SubResource("LabelSettings_v0hhe")

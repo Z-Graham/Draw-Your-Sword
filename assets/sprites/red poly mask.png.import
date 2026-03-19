@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://ckjyqxb5a20cg"
+path="res://.godot/imported/red poly mask.png-4e5cf8338fa31cb1fc63ec3abd37386c.res"
+
+[deps]
+
+source_file="res://assets/sprites/red poly mask.png"
+dest_files=["res://.godot/imported/red poly mask.png-4e5cf8338fa31cb1fc63ec3abd37386c.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

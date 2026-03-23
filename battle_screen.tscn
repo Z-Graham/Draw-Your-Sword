@@ -10,10 +10,39 @@
 [ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
+[ext_resource type="BitMap" uid="uid://b4m371gvlhm0e" path="res://assets/sprites/blue poly mask.png" id="11_v7h6t"]
+[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="12_25fss"]
+[ext_resource type="Texture2D" uid="uid://ch1pc7xap1meq" path="res://assets/sprites/pencil.png" id="13_adytv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f7sqe"]
+font_size = 26
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v0hhe"]
 font_size = 105
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_25fss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5n2kt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_25fss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Battle_screen" type="Node2D" unique_id=637376723]
 script = ExtResource("1_v0hhe")
@@ -31,14 +60,23 @@ offset_right = 1161.0
 offset_bottom = 668.0
 color = Color(0, 0, 0, 1)
 
-[node name="Button" type="TextureButton" parent="." unique_id=1094534353]
+[node name="Draw_button" type="TextureButton" parent="." unique_id=1094534353]
 texture_filter = 1
-offset_left = 1009.0
-offset_top = 502.0
-offset_right = 1122.0
-offset_bottom = 593.0
+offset_left = 1035.0
+offset_top = 533.0
+offset_right = 1148.0
+offset_bottom = 643.0
 texture_normal = ExtResource("2_duuuk")
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="Draw_button" unique_id=1930692090]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 122.0
+offset_bottom = 89.0
+text = "Draw"
+label_settings = SubResource("LabelSettings_f7sqe")
 
 [node name="Fight_button" type="TextureButton" parent="." unique_id=1525770424]
 offset_left = 6.0000005
@@ -69,6 +107,7 @@ scale = Vector2(0.46, 0.46)
 texture_normal = ExtResource("6_wk8rl")
 texture_pressed = ExtResource("7_v0hhe")
 texture_hover = ExtResource("10_v7h6t")
+texture_click_mask = ExtResource("11_v7h6t")
 
 [node name="Label2" type="Label" parent="Item_button" unique_id=62121591]
 layout_mode = 0
@@ -78,3 +117,44 @@ offset_right = 431.82605
 offset_bottom = 185.3043
 text = "Item"
 label_settings = SubResource("LabelSettings_v0hhe")
+
+[node name="player_battle" type="AnimatedSprite2D" parent="." unique_id=71261061]
+position = Vector2(116, 360)
+sprite_frames = SubResource("SpriteFrames_hn33v")
+
+[node name="enemy_battle" type="AnimatedSprite2D" parent="." unique_id=1390993098]
+position = Vector2(1035, 368)
+sprite_frames = SubResource("SpriteFrames_5n2kt")
+
+[node name="health bar" type="ColorRect" parent="." unique_id=816130475]
+offset_left = 442.0
+offset_top = 542.0
+offset_right = 891.0
+offset_bottom = 569.0
+color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="health bar" unique_id=1551296537]
+layout_mode = 0
+offset_left = 455.0
+offset_right = 577.0
+offset_bottom = 23.0
+text = "Health: 100/100"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1561802799]
+texture_filter = 1
+offset_left = 389.0
+offset_top = 487.0
+offset_right = 962.0
+offset_bottom = 748.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_top = 1
+texture_progress = ExtResource("13_adytv")
+
+[node name="Label" type="Label" parent="TextureProgressBar" unique_id=713107175]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 101.0
+offset_right = 640.0
+offset_bottom = 124.0
+text = "Draw Charge: 5/5"

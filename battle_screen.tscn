@@ -13,6 +13,8 @@
 [ext_resource type="BitMap" uid="uid://b4m371gvlhm0e" path="res://assets/sprites/blue poly mask.png" id="11_v7h6t"]
 [ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="12_25fss"]
 [ext_resource type="Texture2D" uid="uid://ch1pc7xap1meq" path="res://assets/sprites/pencil.png" id="13_adytv"]
+[ext_resource type="Texture2D" uid="uid://ca62114eku3hb" path="res://assets/sprites/health bar.png" id="13_fibhm"]
+[ext_resource type="Texture2D" uid="uid://cj7hg4l4fbmib" path="res://assets/sprites/health bar back.png" id="14_riuqw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7sqe"]
 font_size = 26
@@ -126,35 +128,39 @@ sprite_frames = SubResource("SpriteFrames_hn33v")
 position = Vector2(1035, 368)
 sprite_frames = SubResource("SpriteFrames_5n2kt")
 
-[node name="health bar" type="ColorRect" parent="." unique_id=816130475]
-offset_left = 442.0
-offset_top = 542.0
-offset_right = 891.0
-offset_bottom = 569.0
-color = Color(1, 0, 0, 1)
+[node name="health bar" type="TextureProgressBar" parent="." unique_id=1280788923]
+offset_left = 440.0
+offset_top = 538.0
+offset_right = 853.0
+offset_bottom = 572.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("13_fibhm")
+texture_progress = ExtResource("14_riuqw")
 
 [node name="Label" type="Label" parent="health bar" unique_id=1551296537]
 layout_mode = 0
-offset_left = 455.0
-offset_right = 577.0
-offset_bottom = 23.0
+offset_left = 427.0
+offset_top = 5.0
+offset_right = 549.0
+offset_bottom = 28.0
 text = "Health: 100/100"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1561802799]
+[node name="pencil bar" type="TextureProgressBar" parent="." unique_id=1561802799]
 texture_filter = 1
-offset_left = 389.0
+offset_left = 396.0
 offset_top = 487.0
-offset_right = 962.0
+offset_right = 913.0
 offset_bottom = 748.0
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_top = 1
 texture_progress = ExtResource("13_adytv")
 
-[node name="Label" type="Label" parent="TextureProgressBar" unique_id=713107175]
+[node name="Label" type="Label" parent="pencil bar" unique_id=713107175]
 layout_mode = 0
-offset_left = 507.0
+offset_left = 473.0
 offset_top = 101.0
-offset_right = 640.0
+offset_right = 606.0
 offset_bottom = 124.0
 text = "Draw Charge: 5/5"

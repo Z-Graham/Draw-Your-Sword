@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ch3vi0ygmfivb"]
 
+[ext_resource type="Script" uid="uid://dgx6q5hpt88iy" path="res://inventory.gd" id="1_pohso"]
+
 [node name="Inventory" type="Control" unique_id=1404590903]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pohso")
+metadata/_edit_use_anchors_ = true
 
 [node name="inventory background" type="ColorRect" parent="." unique_id=207692365]
 layout_mode = 1
@@ -28,22 +32,22 @@ offset_right = 1156.0
 offset_bottom = 72.0
 theme_override_constants/separation = 359
 
-[node name="Button" type="Button" parent="HBoxContainer" unique_id=1067871547]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "  Battle  "
-
-[node name="Button4" type="Button" parent="HBoxContainer" unique_id=1960245631]
+[node name="heal tab" type="Button" parent="HBoxContainer" unique_id=1067871547]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Healing"
 
-[node name="Button5" type="Button" parent="HBoxContainer" unique_id=1023961856]
+[node name="battle tab" type="Button" parent="HBoxContainer" unique_id=1960245631]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "  Battle  "
+
+[node name="key tab" type="Button" parent="HBoxContainer" unique_id=1023961856]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "  Key  "
 
-[node name="BattleItemList" type="ItemList" parent="." unique_id=2117326723]
+[node name="HealingItemList" type="ItemList" parent="." unique_id=302132747]
 layout_mode = 0
 offset_top = 82.0
 offset_right = 1155.0
@@ -53,16 +57,15 @@ item_count = 2
 item_0/text = "potion"
 item_1/text = "potion"
 
-[node name="HealingItemList" type="ItemList" parent="." unique_id=302132747]
+[node name="BattleItemList" type="ItemList" parent="." unique_id=2117326723]
 visible = false
 layout_mode = 0
 offset_top = 82.0
 offset_right = 1155.0
 offset_bottom = 648.0
 theme_override_font_sizes/font_size = 56
-item_count = 2
-item_0/text = "potion"
-item_1/text = "potion"
+item_count = 1
+item_0/text = "torch"
 
 [node name="KeyItemList" type="ItemList" parent="." unique_id=1526817286]
 visible = false
@@ -71,6 +74,19 @@ offset_top = 82.0
 offset_right = 1155.0
 offset_bottom = 648.0
 theme_override_font_sizes/font_size = 56
-item_count = 2
-item_0/text = "potion"
-item_1/text = "potion"
+item_count = 1
+item_0/text = "notebook"
+
+[node name="X Button" type="Button" parent="." unique_id=1769676174]
+layout_mode = 1
+offset_left = 1131.0
+offset_top = 612.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 20
+text = "X"
+
+[connection signal="pressed" from="HBoxContainer/heal tab" to="." method="_on_heal_tab_pressed"]
+[connection signal="pressed" from="HBoxContainer/battle tab" to="." method="_on_battle_tab_pressed"]
+[connection signal="pressed" from="HBoxContainer/key tab" to="." method="_on_key_tab_pressed"]
+[connection signal="pressed" from="X Button" to="." method="_on_x_button_pressed"]

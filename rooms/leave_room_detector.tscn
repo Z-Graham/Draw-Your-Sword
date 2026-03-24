@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b2rdwsm5rhsli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lc3sa"]
+size = Vector2(40.31781, 53.928738)
+
+[node name="LeaveRoomDetector" type="Area2D" unique_id=1142250141]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=318945640]
+position = Vector2(20.158875, 26.96437)
+shape = SubResource("RectangleShape2D_lc3sa")

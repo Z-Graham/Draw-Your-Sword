@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cktqibet2dkpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lc3sa"]
+size = Vector2(40.31781, 53.928738)
+
+[node name="ColorRect" type="ColorRect" unique_id=1906145441]
+offset_left = 1115.0
+offset_top = 224.0
+offset_right = 1155.0
+offset_bottom = 277.92874
+scale = Vector2(1.8354169, 2.9854214)
+color = Color(0, 0.49019608, 0.05882353, 1)
+
+[node name="LeaveRoomDetector" type="Area2D" parent="." unique_id=1361639477]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeaveRoomDetector" unique_id=1334213088]
+position = Vector2(20.158875, 26.96437)
+shape = SubResource("RectangleShape2D_lc3sa")

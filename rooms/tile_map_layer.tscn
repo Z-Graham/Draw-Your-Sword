@@ -897,4 +897,5 @@ physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_1lsoy")
 
 [node name="ObjectsTileMapLayer" type="TileMapLayer" unique_id=1335056636]
+texture_filter = 1
 tile_set = SubResource("TileSet_j67my")

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ch1pc7xap1meq" path="res://assets/sprites/pencil.png" id="13_adytv"]
 [ext_resource type="Texture2D" uid="uid://ca62114eku3hb" path="res://assets/sprites/health bar.png" id="13_fibhm"]
 [ext_resource type="Texture2D" uid="uid://cj7hg4l4fbmib" path="res://assets/sprites/health bar back.png" id="14_riuqw"]
+[ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://battle_inventory.tscn" id="16_riuqw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7sqe"]
 font_size = 26
@@ -164,3 +165,8 @@ offset_top = 101.0
 offset_right = 606.0
 offset_bottom = 124.0
 text = "Draw Charge: 5/5"
+
+[node name="Battle Inventory" parent="." unique_id=1404590903 instance=ExtResource("16_riuqw")]
+
+[connection signal="pressed" from="Fight_button" to="." method="_on_fight_button_pressed"]
+[connection signal="pressed" from="Item_button" to="." method="_on_item_button_pressed"]

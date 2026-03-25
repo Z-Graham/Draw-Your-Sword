@@ -17,14 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://cj7hg4l4fbmib" path="res://assets/sprites/health bar back.png" id="14_riuqw"]
 [ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://inventory.tscn" id="16_riuqw"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_f7sqe"]
-font_size = 26
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_v0hhe"]
-font_size = 105
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
 animations = [{
 "frames": [{
@@ -47,6 +39,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_f7sqe"]
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0hhe"]
+font_size = 105
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_riuqw"]
+font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_l1dc6"]
+font_size = 25
+
 [node name="Battle_screen" type="Node2D" unique_id=637376723]
 script = ExtResource("1_v0hhe")
 
@@ -63,63 +69,9 @@ offset_right = 1161.0
 offset_bottom = 668.0
 color = Color(0, 0, 0, 1)
 
-[node name="Draw_button" type="TextureButton" parent="." unique_id=1094534353]
-texture_filter = 1
-offset_left = 1035.0
-offset_top = 533.0
-offset_right = 1148.0
-offset_bottom = 643.0
-texture_normal = ExtResource("2_duuuk")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Draw_button" unique_id=1930692090]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 34.0
-offset_right = 122.0
-offset_bottom = 89.0
-text = "Draw"
-label_settings = SubResource("LabelSettings_f7sqe")
-
-[node name="Fight_button" type="TextureButton" parent="." unique_id=1525770424]
-offset_left = 6.0000005
-offset_top = 537.00006
-offset_right = 549.0
-offset_bottom = 755.00006
-scale = Vector2(0.46, 0.46)
-texture_normal = ExtResource("3_638wx")
-texture_pressed = ExtResource("4_0c6le")
-texture_hover = ExtResource("6_f7sqe")
-texture_click_mask = ExtResource("5_wk8rl")
-
-[node name="Label" type="Label" parent="Fight_button" unique_id=1229218718]
-layout_mode = 0
-offset_left = 71.73913
-offset_top = 34.782528
-offset_right = 323.73914
-offset_bottom = 178.78253
-text = "Fight"
-label_settings = SubResource("LabelSettings_v0hhe")
-
-[node name="Item_button" type="TextureButton" parent="." unique_id=679184431]
-offset_left = 182.0
-offset_top = 538.0
-offset_right = 725.0
-offset_bottom = 756.0
-scale = Vector2(0.46, 0.46)
-texture_normal = ExtResource("6_wk8rl")
-texture_pressed = ExtResource("7_v0hhe")
-texture_hover = ExtResource("10_v7h6t")
-texture_click_mask = ExtResource("11_v7h6t")
-
-[node name="Label2" type="Label" parent="Item_button" unique_id=62121591]
-layout_mode = 0
-offset_left = 197.82607
-offset_top = 41.304306
-offset_right = 431.82605
-offset_bottom = 185.3043
-text = "Item"
-label_settings = SubResource("LabelSettings_v0hhe")
+[node name="Inventory" parent="." unique_id=1404590903 instance=ExtResource("16_riuqw")]
+visible = false
+z_index = 3
 
 [node name="player_battle" type="AnimatedSprite2D" parent="." unique_id=71261061]
 position = Vector2(116, 360)
@@ -129,10 +81,183 @@ sprite_frames = SubResource("SpriteFrames_hn33v")
 position = Vector2(1035, 368)
 sprite_frames = SubResource("SpriteFrames_5n2kt")
 
-[node name="health bar" type="TextureProgressBar" parent="." unique_id=1280788923]
-offset_left = 440.0
+[node name="Main_battle_menu" type="Control" parent="." unique_id=1311188708]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Draw_button" type="TextureButton" parent="Main_battle_menu" unique_id=1094534353]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 533.0
+offset_right = 1125.0
+offset_bottom = 643.0
+texture_normal = ExtResource("2_duuuk")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Main_battle_menu/Draw_button" unique_id=1930692090]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 122.0
+offset_bottom = 89.0
+text = "Draw"
+label_settings = SubResource("LabelSettings_f7sqe")
+
+[node name="Fight_button" type="TextureButton" parent="Main_battle_menu" unique_id=1525770424]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 537.00006
+offset_right = 822.0
+offset_bottom = 755.00006
+scale = Vector2(0.46, 0.46)
+texture_normal = ExtResource("3_638wx")
+texture_pressed = ExtResource("4_0c6le")
+texture_hover = ExtResource("6_f7sqe")
+texture_click_mask = ExtResource("5_wk8rl")
+
+[node name="Label" type="Label" parent="Main_battle_menu/Fight_button" unique_id=1229218718]
+layout_mode = 0
+offset_left = 71.73913
+offset_top = 34.782528
+offset_right = 323.73914
+offset_bottom = 178.78253
+text = "Fight"
+label_settings = SubResource("LabelSettings_v0hhe")
+
+[node name="Item_button" type="TextureButton" parent="Main_battle_menu" unique_id=679184431]
+layout_mode = 0
+offset_left = 450.0
 offset_top = 538.0
-offset_right = 853.0
+offset_right = 993.0
+offset_bottom = 756.0
+scale = Vector2(0.46, 0.46)
+texture_normal = ExtResource("6_wk8rl")
+texture_pressed = ExtResource("7_v0hhe")
+texture_hover = ExtResource("10_v7h6t")
+texture_click_mask = ExtResource("11_v7h6t")
+
+[node name="Label2" type="Label" parent="Main_battle_menu/Item_button" unique_id=62121591]
+layout_mode = 0
+offset_left = 197.82607
+offset_top = 41.304306
+offset_right = 431.82605
+offset_bottom = 185.3043
+text = "Item"
+label_settings = SubResource("LabelSettings_v0hhe")
+
+[node name="pencil bar" type="TextureProgressBar" parent="Main_battle_menu" unique_id=1561802799]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1029.0
+offset_top = 497.0
+offset_right = 1108.0
+offset_bottom = 567.0
+mouse_filter = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_top = 1
+texture_progress = ExtResource("13_adytv")
+
+[node name="Label" type="Label" parent="Main_battle_menu/pencil bar" unique_id=713107175]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 2.0
+offset_right = 123.0
+offset_bottom = 25.0
+text = "Draw Charge:"
+label_settings = SubResource("LabelSettings_riuqw")
+
+[node name="layout Label" type="Label" parent="Main_battle_menu" unique_id=1645918591]
+layout_mode = 0
+offset_left = 787.0
+offset_top = 527.0
+offset_right = 982.0
+offset_bottom = 562.0
+text = "Weapon Layout:"
+label_settings = SubResource("LabelSettings_l1dc6")
+
+[node name="Blade Label" type="Label" parent="Main_battle_menu" unique_id=1261144830]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 563.0
+offset_right = 956.0
+offset_bottom = 586.0
+text = "Blade: Basic"
+
+[node name="Handle Label" type="Label" parent="Main_battle_menu" unique_id=202586553]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 590.0
+offset_right = 956.0
+offset_bottom = 613.0
+text = "Handle: Basic"
+
+[node name="Imbue label" type="Label" parent="Main_battle_menu" unique_id=1385888799]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 616.0
+offset_right = 956.0
+offset_bottom = 639.0
+text = "Imbue: None"
+
+[node name="fight_battle_menu" type="Control" parent="." unique_id=1463964744]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Basic button" type="Button" parent="fight_battle_menu" unique_id=2074834039]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 505.0
+offset_right = 489.0
+offset_bottom = 558.0
+theme_override_font_sizes/font_size = 32
+text = "Attack"
+
+[node name="Blade Skill button" type="Button" parent="fight_battle_menu" unique_id=1486224154]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 579.0
+offset_right = 492.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 32
+text = "Blade Skill"
+
+[node name="Handle Skill button" type="Button" parent="fight_battle_menu" unique_id=1984829929]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 506.0
+offset_right = 700.0
+offset_bottom = 559.0
+theme_override_font_sizes/font_size = 32
+text = "Handle Skill"
+
+[node name="Back button" type="Button" parent="fight_battle_menu" unique_id=1889177292]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 579.0
+offset_right = 702.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="Panel" type="Panel" parent="fight_battle_menu" unique_id=836048391]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 521.0
+offset_right = 1135.0
+offset_bottom = 632.0
+
+[node name="Description" type="Label" parent="fight_battle_menu/Panel" unique_id=598848665]
+layout_mode = 0
+offset_right = 401.0
+offset_bottom = 114.0
+
+[node name="health bar" type="TextureProgressBar" parent="." unique_id=1280788923]
+offset_left = 2.0
+offset_top = 538.0
+offset_right = 268.0
 offset_bottom = 572.0
 fill_mode = 1
 nine_patch_stretch = true
@@ -141,34 +266,40 @@ texture_progress = ExtResource("14_riuqw")
 
 [node name="Label" type="Label" parent="health bar" unique_id=1551296537]
 layout_mode = 0
-offset_left = 427.0
-offset_top = 5.0
-offset_right = 549.0
-offset_bottom = 28.0
+offset_left = 2.0
+offset_top = -25.0
+offset_right = 124.0
+offset_bottom = -2.0
 text = "Health: 100/100"
 
-[node name="pencil bar" type="TextureProgressBar" parent="." unique_id=1561802799]
-texture_filter = 1
-offset_left = 396.0
-offset_top = 487.0
-offset_right = 913.0
-offset_bottom = 748.0
-mouse_filter = 2
-value = 100.0
+[node name="MP bar" type="TextureProgressBar" parent="." unique_id=652398956]
+self_modulate = Color(0, 2.429381, 18.892157, 1)
+offset_left = 2.0
+offset_top = 594.0
+offset_right = 265.0
+offset_bottom = 628.0
+fill_mode = 1
 nine_patch_stretch = true
-stretch_margin_top = 1
-texture_progress = ExtResource("13_adytv")
+texture_under = ExtResource("13_fibhm")
+texture_progress = ExtResource("14_riuqw")
 
-[node name="Label" type="Label" parent="pencil bar" unique_id=713107175]
+[node name="Label" type="Label" parent="MP bar" unique_id=1485687531]
 layout_mode = 0
-offset_left = 473.0
-offset_top = 101.0
-offset_right = 606.0
-offset_bottom = 124.0
-text = "Draw Charge: 5/5"
+offset_left = 4.0
+offset_top = -20.0
+offset_right = 126.0
+offset_bottom = 3.0
+text = "MP: 50/50"
 
-[node name="Inventory" parent="." unique_id=1404590903 instance=ExtResource("16_riuqw")]
-visible = false
-
-[connection signal="pressed" from="Fight_button" to="." method="_on_fight_button_pressed"]
-[connection signal="pressed" from="Item_button" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]
+[connection signal="pressed" from="Main_battle_menu/Item_button" to="." method="_on_item_button_pressed"]
+[connection signal="mouse_entered" from="fight_battle_menu/Basic button" to="." method="_on_basic_button_mouse_entered"]
+[connection signal="mouse_exited" from="fight_battle_menu/Basic button" to="." method="_on_basic_button_mouse_exited"]
+[connection signal="pressed" from="fight_battle_menu/Basic button" to="." method="_on_basic_button_pressed"]
+[connection signal="mouse_entered" from="fight_battle_menu/Blade Skill button" to="." method="_on_blade_skill_button_mouse_entered"]
+[connection signal="mouse_exited" from="fight_battle_menu/Blade Skill button" to="." method="_on_blade_skill_button_mouse_exited"]
+[connection signal="pressed" from="fight_battle_menu/Blade Skill button" to="." method="_on_blade_skill_button_pressed"]
+[connection signal="mouse_entered" from="fight_battle_menu/Handle Skill button" to="." method="_on_handle_skill_button_mouse_entered"]
+[connection signal="mouse_exited" from="fight_battle_menu/Handle Skill button" to="." method="_on_handle_skill_button_mouse_exited"]
+[connection signal="pressed" from="fight_battle_menu/Handle Skill button" to="." method="_on_handle_skill_button_pressed"]
+[connection signal="pressed" from="fight_battle_menu/Back button" to="." method="_on_back_button_pressed"]

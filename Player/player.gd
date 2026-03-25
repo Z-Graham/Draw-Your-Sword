@@ -4,17 +4,17 @@ extends CharacterBody2D
 @export var speed := 300
 @onready var ui: CanvasLayer = $UI
 var health_label
-var max_health := 50
+var max_health := 100
 var magic_label
 var max_magic := 50
 
 
-var health := 5000:
+var health := 100:
 	set(new_health):
 		health = new_health
 		health_label.text = "HP: " + str(health) +"/"+ str(max_health)
 		
-var magic := 50000:
+var magic := 50:
 	set(new_magic):
 		magic = new_magic
 		magic_label.text = "MP: " + str(magic) +"/"+ str(max_magic)
@@ -51,9 +51,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func take_damage(): # mostly for testing
-	if health > 1:
+	if health >= 1:
 		health -= 1
 
 func do_magic(): # for test
-	if magic > 1:
+	if magic >= 1:
 		magic -= 1

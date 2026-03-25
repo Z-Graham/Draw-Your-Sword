@@ -2,6 +2,29 @@ extends CharacterBody2D
 
 
 @export var speed := 300
+@onready var ui: CanvasLayer = $UI
+var health_label
+var max_health := 50
+var magic_label
+var max_magic := 50
+
+
+var health := 5000:
+	set(new_health):
+		health = new_health
+		health_label.text = "HP: " + str(health) +"/"+ str(max_health)
+		
+var magic := 50000:
+	set(new_magic):
+		magic = new_magic
+		magic_label.text = "MP: " + str(magic) +"/"+ str(max_magic)
+
+func _ready() -> void:
+	health_label = get_tree().get_first_node_in_group("healthlabel")
+	health = max_health
+	
+	magic_label = get_tree().get_first_node_in_group("magiclabel")
+	magic = max_magic
 
 
 func get_input():
@@ -9,7 +32,28 @@ func get_input():
 	velocity = input_dir * speed
 
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		if !ui.visible:
+			ui.visible = true
 	
+	if Input.is_action_just_pressed("hurt"): # just for testing
+		take_damage()
+	if Input.is_action_just_pressed("do_magic"):
+		do_magic()
+
+func _physics_process(_delta: float) -> void:
 	get_input()
-	move_and_slide()
+	
+	if !ui.visible:
+		move_and_slide()
+		
+
+
+func take_damage(): # mostly for testing
+	if health > 1:
+		health -= 1
+
+func do_magic(): # for test
+	if magic > 1:
+		magic -= 1

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dj8rb7x3bi1jw"]
 
 [ext_resource type="Texture2D" uid="uid://b2t8hravno3l3" path="res://assets/backgrounds/blackboard_0.bmp" id="1_3047d"]
-[ext_resource type="Script" uid="uid://tfj68kuq4r32" path="res://battle_screen.gd" id="1_v0hhe"]
+[ext_resource type="Script" uid="uid://tfj68kuq4r32" path="res://Other Menus/battle_screen.gd" id="1_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="2_duuuk"]
 [ext_resource type="Texture2D" uid="uid://cc6hg7eathhu4" path="res://assets/sprites/red poly.png" id="3_638wx"]
 [ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ch1pc7xap1meq" path="res://assets/sprites/pencil.png" id="13_adytv"]
 [ext_resource type="Texture2D" uid="uid://ca62114eku3hb" path="res://assets/sprites/health bar.png" id="13_fibhm"]
 [ext_resource type="Texture2D" uid="uid://cj7hg4l4fbmib" path="res://assets/sprites/health bar back.png" id="14_riuqw"]
-[ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://inventory.tscn" id="16_riuqw"]
+[ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://Other Menus/inventory.tscn" id="16_riuqw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
 animations = [{

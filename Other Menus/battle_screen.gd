@@ -61,8 +61,7 @@ func _on_handle_skill_button_pressed() -> void:
 
 func _on_handle_skill_button_mouse_entered() -> void:
 	if handle=="normal":
-		description.text="Bash: A strike with the pommel of your blade with 
-		a chance to confuse the enemy.
+		description.text="Bash: A strike with the pommel of your blade with a chance to confuse the enemy.
 		Costs 30MP"
 
 func _on_handle_skill_button_mouse_exited() -> void:

@@ -1,6 +1,39 @@
 [gd_scene format=3 uid="uid://ch3vi0ygmfivb"]
 
 [ext_resource type="Script" uid="uid://dgx6q5hpt88iy" path="res://Other Menus/inventory.gd" id="1_pohso"]
+[ext_resource type="Texture2D" uid="uid://pjfhgfhy8kk6" path="res://assets/backgrounds/textbox.png" id="2_dneta"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgxkr"]
+atlas = ExtResource("2_dneta")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acyh5"]
+atlas = ExtResource("2_dneta")
+region = Rect2(0, 128, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bxjs"]
+atlas = ExtResource("2_dneta")
+region = Rect2(0, 256, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fo6pu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgxkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acyh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bxjs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dmmoa"]
+font_size = 13
 
 [node name="Inventory" type="Control" unique_id=1404590903]
 layout_mode = 3
@@ -54,7 +87,7 @@ offset_right = 1155.0
 offset_bottom = 648.0
 theme_override_font_sizes/font_size = 56
 item_count = 2
-item_0/text = "potion"
+item_0/text = "HP Potion"
 item_1/text = "potion"
 
 [node name="BattleItemList" type="ItemList" parent="." unique_id=2117326723]
@@ -79,14 +112,38 @@ item_0/text = "notebook"
 
 [node name="X Button" type="Button" parent="." unique_id=1769676174]
 layout_mode = 1
-offset_left = 1131.0
-offset_top = 612.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 1130.0
+offset_top = 611.0
+offset_right = 1151.0
+offset_bottom = 647.0
 theme_override_font_sizes/font_size = 20
 text = "X"
+
+[node name="Panel" type="AnimatedSprite2D" parent="." unique_id=103695371]
+position = Vector2(404.5, 562)
+scale = Vector2(3.1679688, 1.28125)
+sprite_frames = SubResource("SpriteFrames_fo6pu")
+autoplay = "default"
+
+[node name="description" type="Label" parent="Panel" unique_id=562115700]
+offset_left = -116.636246
+offset_top = -53.853645
+offset_right = 118.845856
+offset_bottom = 56.19512
+label_settings = SubResource("LabelSettings_dmmoa")
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="." unique_id=150059131]
+layout_mode = 0
+offset_left = 811.0
+offset_top = 572.0
+offset_right = 935.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 46
+text = "Use"
 
 [connection signal="pressed" from="HBoxContainer/heal tab" to="." method="_on_heal_tab_pressed"]
 [connection signal="pressed" from="HBoxContainer/battle tab" to="." method="_on_battle_tab_pressed"]
 [connection signal="pressed" from="HBoxContainer/key tab" to="." method="_on_key_tab_pressed"]
+[connection signal="item_selected" from="HealingItemList" to="." method="_on_healing_item_list_item_selected"]
 [connection signal="pressed" from="X Button" to="." method="_on_x_button_pressed"]

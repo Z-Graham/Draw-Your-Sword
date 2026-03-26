@@ -339,3 +339,4 @@ text = "MP: 50/50"
 [connection signal="mouse_exited" from="fight_battle_menu/Handle Skill button" to="." method="_on_handle_skill_button_mouse_exited"]
 [connection signal="pressed" from="fight_battle_menu/Handle Skill button" to="." method="_on_handle_skill_button_pressed"]
 [connection signal="pressed" from="fight_battle_menu/Back button" to="." method="_on_back_button_pressed"]
+[connection signal="item_used" from="Inventory" to="." method="_on_inventory_item_used"]

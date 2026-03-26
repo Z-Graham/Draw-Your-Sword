@@ -33,7 +33,8 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dmmoa"]
-font_size = 13
+font_size = 25
+outline_size = 1
 
 [node name="Inventory" type="Control" unique_id=1404590903]
 layout_mode = 3
@@ -88,7 +89,7 @@ offset_bottom = 648.0
 theme_override_font_sizes/font_size = 56
 item_count = 2
 item_0/text = "HP Potion"
-item_1/text = "potion"
+item_1/text = "MP Potion"
 
 [node name="BattleItemList" type="ItemList" parent="." unique_id=2117326723]
 visible = false
@@ -119,21 +120,28 @@ offset_bottom = 647.0
 theme_override_font_sizes/font_size = 20
 text = "X"
 
-[node name="Panel" type="AnimatedSprite2D" parent="." unique_id=103695371]
-position = Vector2(404.5, 562)
+[node name="description box" type="Control" parent="." unique_id=855594923]
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 498.0
+offset_right = 73.0
+offset_bottom = 538.0
+
+[node name="Panel" type="AnimatedSprite2D" parent="description box" unique_id=103695371]
+texture_filter = 1
+position = Vector2(371.5, 64)
 scale = Vector2(3.1679688, 1.28125)
 sprite_frames = SubResource("SpriteFrames_fo6pu")
 autoplay = "default"
 
-[node name="description" type="Label" parent="Panel" unique_id=562115700]
-offset_left = -116.636246
-offset_top = -53.853645
-offset_right = 118.845856
-offset_bottom = 56.19512
+[node name="description" type="Label" parent="description box" unique_id=562115700]
+layout_mode = 0
+offset_right = 745.0
+offset_bottom = 121.0
 label_settings = SubResource("LabelSettings_dmmoa")
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="." unique_id=150059131]
+[node name="use button" type="Button" parent="." unique_id=150059131]
 layout_mode = 0
 offset_left = 811.0
 offset_top = 572.0
@@ -147,3 +155,4 @@ text = "Use"
 [connection signal="pressed" from="HBoxContainer/key tab" to="." method="_on_key_tab_pressed"]
 [connection signal="item_selected" from="HealingItemList" to="." method="_on_healing_item_list_item_selected"]
 [connection signal="pressed" from="X Button" to="." method="_on_x_button_pressed"]
+[connection signal="pressed" from="use button" to="." method="_on_use_button_pressed"]

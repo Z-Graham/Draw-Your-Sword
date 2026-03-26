@@ -33,6 +33,10 @@ func _on_fight_button_pressed() -> void:
 
 func _on_item_button_pressed() -> void:
 	inventory.visible=true
+	inventory.healing_item_list.visible=true
+	inventory.battle_item_list.visible=false
+	inventory.key_item_list.visible=false
+	inventory.current_screen=inventory.healing_item_list
 
 
 func _on_basic_button_pressed() -> void:
@@ -70,3 +74,8 @@ func _on_handle_skill_button_mouse_exited() -> void:
 func _on_back_button_pressed() -> void:
 	main_battle_menu.visible=true
 	fight_battle_menu.visible=false
+
+
+func _on_inventory_item_used(item: Variant) -> void:
+	if item=="HP Potion":
+		print("heal")

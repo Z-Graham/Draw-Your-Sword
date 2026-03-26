@@ -69,6 +69,9 @@ func _on_use_button_pressed() -> void:
 		current_screen.remove_item(sel_item_index)
 	if sel_item=="HP Potion":
 		item_used.emit("HP Potion")
+	elif sel_item=="MP Potion":
+		item_used.emit("MP Potion")
 	description.text=""
 	sel_item="em"
 	sel_item_index=-1
+	visible=false

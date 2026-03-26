@@ -25,6 +25,9 @@ var in_inventory=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	draw_charge=5
+
+
+func _process(delta:float)-> void:
 	health_bar.max_value=Globals.player_max_health
 	health_bar.value=Globals.player_max_health-Globals.player_current_health
 	health_label.text="Health: "+str(Globals.player_current_health)+"/"+str(Globals.player_max_health)
@@ -84,4 +87,7 @@ func _on_back_button_pressed() -> void:
 
 func _on_inventory_item_used(item: Variant) -> void:
 	if item=="HP Potion":
-		print("heal")
+		if Globals.player_current_health<Globals.player_max_health-30:
+			Globals.player_current_health+=30
+		else:
+			Globals.player_current_health=Globals.player_max_health

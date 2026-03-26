@@ -7,6 +7,9 @@ extends Node2D
 @onready var player_battle: AnimatedSprite2D = $player_battle
 @onready var enemy_battle: AnimatedSprite2D = $enemy_battle
 @onready var description: Label = $fight_battle_menu/Panel/Description
+@onready var health_label: Label = $"health bar/Health Label"
+@onready var mp_label: Label = $"MP bar/MP Label"
+
 
 var player_health=100
 var enemy_health=100
@@ -22,6 +25,9 @@ var in_inventory=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	draw_charge=5
+	health_bar.max_value=Globals.player_max_health
+	health_bar.value=Globals.player_max_health-Globals.player_current_health
+	health_label.text="Health: "+str(Globals.player_current_health)+"/"+str(Globals.player_max_health)
 
 func player_fight(blade:String,handle:String,imbue:String):
 	pass

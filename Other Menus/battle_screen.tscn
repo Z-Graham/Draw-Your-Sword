@@ -300,7 +300,7 @@ nine_patch_stretch = true
 texture_under = ExtResource("13_fibhm")
 texture_progress = ExtResource("14_riuqw")
 
-[node name="Label" type="Label" parent="health bar" unique_id=1551296537]
+[node name="Health Label" type="Label" parent="health bar" unique_id=1551296537]
 layout_mode = 0
 offset_left = 2.0
 offset_top = -25.0
@@ -319,7 +319,7 @@ nine_patch_stretch = true
 texture_under = ExtResource("13_fibhm")
 texture_progress = ExtResource("14_riuqw")
 
-[node name="Label" type="Label" parent="MP bar" unique_id=1485687531]
+[node name="MP Label" type="Label" parent="MP bar" unique_id=1485687531]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -20.0

@@ -33,8 +33,16 @@ func _process(delta:float)-> void:
 	mp_bar.max_value=Globals.player_stats["max_MP"]
 	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
+	if enemy_health<=0:
+		battle_end()
+
+
+func battle_end():
+	get_tree().change_scene_to_file("res://rooms/over_world.tscn")
+
 func player_fight(blade:String,handle:String,imbue:String):
-	pass
+	enemy_health-=50
+	Globals.player_stats["current_health"]-=10
 
 
 func _on_fight_button_pressed() -> void:
@@ -88,12 +96,12 @@ func _on_back_button_pressed() -> void:
 
 func _on_inventory_item_used(item: Variant) -> void:
 	if item=="HP Potion":
-		if Globals.player_stats["max_health"]>Globals.player_stats["current_health"]-30:
+		if Globals.player_stats["current_health"]<Globals.player_stats["max_health"]-30:
 			Globals.player_stats["current_health"]+=30
 		else:
 			Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
 	elif item=="MP Potion":
-		if Globals.player_stats["max_MP"]<Globals.player_stats["current_MP"]-20:
+		if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]-20:
 			Globals.player_current_MP+=20
 		else:
 			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]

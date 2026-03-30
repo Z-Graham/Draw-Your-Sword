@@ -11,14 +11,14 @@ var max_magic : int = Globals.player_stats["max_MP"]
 
 var health := max_health:
 	set(new_health):
-		health = new_health
-		health_label.text = "HP: " + str(health) +"/"+ str(max_health)
+		#health = new_health
+		health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
 		health = Globals.player_stats["current_health"]
 		
 var magic := max_magic:
 	set(new_magic):
-		magic = new_magic
-		magic_label.text = "MP: " + str(magic) +"/"+ str(max_magic)
+		#magic = new_magic
+		magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)
 		magic = Globals.player_stats["current_MP"] 
 
 func _ready() -> void:
@@ -56,8 +56,10 @@ func _physics_process(_delta: float) -> void:
 
 func take_damage(): # mostly for testing
 	if health >= 1:
+		Globals.player_stats["current_health"] -= 1
 		health -= 1
 
 func do_magic(): # for test
 	if magic >= 1:
+		Globals.player_stats["current_MP"] -= 1
 		magic -= 1

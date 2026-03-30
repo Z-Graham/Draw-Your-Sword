@@ -13,13 +13,13 @@ var health := max_health:
 	set(new_health):
 		health = new_health
 		health_label.text = "HP: " + str(health) +"/"+ str(max_health)
-		Globals.player_stats["current_health"] = health
+		health = Globals.player_stats["current_health"]
 		
 var magic := max_magic:
 	set(new_magic):
 		magic = new_magic
 		magic_label.text = "MP: " + str(magic) +"/"+ str(max_magic)
-		Globals.player_stats["current_MP"] = magic
+		magic = Globals.player_stats["current_MP"] 
 
 func _ready() -> void:
 	health_label = get_tree().get_first_node_in_group("healthlabel")
@@ -38,6 +38,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if !ui.visible:
 			ui.visible = true
+		else:
+			ui.visible = false
 	
 	if Input.is_action_just_pressed("hurt"): # just for testing
 		take_damage()

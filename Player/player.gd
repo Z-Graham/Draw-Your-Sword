@@ -4,20 +4,22 @@ extends CharacterBody2D
 @export var speed := 300
 @onready var ui: CanvasLayer = $UI
 var health_label
-var max_health := 100
+var max_health : int  = Globals.player_stats["max_health"]
 var magic_label
-var max_magic := 50
+var max_magic : int = Globals.player_stats["max_MP"]
 
 
-var health := 100:
+var health := max_health:
 	set(new_health):
 		health = new_health
 		health_label.text = "HP: " + str(health) +"/"+ str(max_health)
+		Globals.player_stats["current_health"] = health
 		
-var magic := 50:
+var magic := max_magic:
 	set(new_magic):
 		magic = new_magic
 		magic_label.text = "MP: " + str(magic) +"/"+ str(max_magic)
+		Globals.player_stats["current_MP"] = magic
 
 func _ready() -> void:
 	health_label = get_tree().get_first_node_in_group("healthlabel")

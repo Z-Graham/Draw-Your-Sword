@@ -11,7 +11,6 @@ extends Node2D
 @onready var mp_label: Label = $"MP bar/MP Label"
 
 
-var player_health=100
 var enemy_health=100
 var blade="normal"
 var handle="normal"
@@ -28,10 +27,12 @@ func _ready() -> void:
 
 
 func _process(delta:float)-> void:
-	health_bar.max_value=Globals.player_max_health
-	health_bar.value=Globals.player_max_health-Globals.player_current_health
-	health_label.text="Health: "+str(Globals.player_current_health)+"/"+str(Globals.player_max_health)
-
+	health_bar.max_value=Globals.player_stats["max_health"]
+	health_bar.value=Globals.player_stats["max_health"]-Globals.player_stats["current_health"]
+	health_label.text="Health: "+str(Globals.player_stats["current_health"])+"/"+str(Globals.player_stats["max_health"])
+	mp_bar.max_value=Globals.player_stats["max_MP"]
+	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
+	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
 func player_fight(blade:String,handle:String,imbue:String):
 	pass
 
@@ -90,9 +91,9 @@ func _on_inventory_item_used(item: Variant) -> void:
 		if Globals.player_stats["max_health"]>Globals.player_stats["current_health"]-30:
 			Globals.player_stats["current_health"]+=30
 		else:
-			Globals.player_current_health=Globals.player_max_health
+			Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
 	elif item=="MP Potion":
-		if Globals.player_current_MP<Globals.player_current_MP-20:
+		if Globals.player_stats["max_MP"]<Globals.player_stats["current_MP"]-20:
 			Globals.player_current_MP+=20
 		else:
-			Globals.player_current_MP=Globals.player_max_MP
+			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]

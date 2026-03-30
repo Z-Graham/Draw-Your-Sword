@@ -61,7 +61,7 @@ func _on_healing_item_list_item_selected(index: int) -> void:
 		Heals 30 HP"
 	if sel_item=="MP Potion":
 		description.text="A simple mana potion.
-		Restores 30 MP"
+		Restores 20 MP"
 
 
 func _on_use_button_pressed() -> void:

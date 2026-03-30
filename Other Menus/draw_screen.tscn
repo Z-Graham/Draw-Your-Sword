@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bkcej3lp8jho1"]
+
+[ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="1_o6brk"]
+
+[node name="TextureRect" type="TextureRect" unique_id=2035027788]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -48.0
+offset_right = -142.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_o6brk")
+
+[node name="Button" type="Button" parent="." unique_id=714139092]
+top_level = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "CLOSE"

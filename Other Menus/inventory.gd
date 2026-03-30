@@ -17,7 +17,8 @@ func _ready() -> void:
 	current_screen=healing_item_list
 	sel_item="em"
 	sel_item_index=-1
-	
+	for item in (Globals.healing_items):
+		healing_item_list.add_item(item)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,6 +68,7 @@ func _on_healing_item_list_item_selected(index: int) -> void:
 func _on_use_button_pressed() -> void:
 	if not sel_item=="em":
 		current_screen.remove_item(sel_item_index)
+		Globals.healing_items.remove_at(sel_item_index)
 	if sel_item=="HP Potion":
 		item_used.emit("HP Potion")
 	elif sel_item=="MP Potion":

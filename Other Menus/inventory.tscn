@@ -87,9 +87,6 @@ offset_top = 82.0
 offset_right = 1155.0
 offset_bottom = 648.0
 theme_override_font_sizes/font_size = 56
-item_count = 2
-item_0/text = "HP Potion"
-item_1/text = "MP Potion"
 
 [node name="BattleItemList" type="ItemList" parent="." unique_id=2117326723]
 visible = false

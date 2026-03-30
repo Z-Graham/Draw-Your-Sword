@@ -87,7 +87,12 @@ func _on_back_button_pressed() -> void:
 
 func _on_inventory_item_used(item: Variant) -> void:
 	if item=="HP Potion":
-		if Globals.player_current_health<Globals.player_max_health-30:
-			Globals.player_current_health+=30
+		if Globals.player_stats["max_health"]>Globals.player_stats["current_health"]-30:
+			Globals.player_stats["current_health"]+=30
 		else:
 			Globals.player_current_health=Globals.player_max_health
+	elif item=="MP Potion":
+		if Globals.player_current_MP<Globals.player_current_MP-20:
+			Globals.player_current_MP+=20
+		else:
+			Globals.player_current_MP=Globals.player_max_MP

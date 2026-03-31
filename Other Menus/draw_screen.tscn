@@ -1,23 +1,25 @@
 [gd_scene format=3 uid="uid://bkcej3lp8jho1"]
 
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="1_o6brk"]
+[ext_resource type="Script" uid="uid://qyu0ypnyowwq" path="res://Other Menus/draw_screen.gd" id="2_u735a"]
 
-[node name="TextureRect" type="TextureRect" unique_id=2035027788]
+[node name="DrawScreen" type="TextureRect" unique_id=2035027788]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
+offset_left = -278.0
 offset_top = -48.0
-offset_right = -142.0
+offset_right = -56.0
 offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("1_o6brk")
+script = ExtResource("2_u735a")
 
-[node name="Button" type="Button" parent="." unique_id=714139092]
+[node name="CloseButton" type="Button" parent="." unique_id=714139092]
 top_level = true
 layout_mode = 1
 anchors_preset = 3
@@ -29,5 +31,58 @@ offset_left = -8.0
 offset_top = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+tooltip_text = "QUITS GAME FOR NOW, WILL CHANGE TO PREVIOUS SCENE LATER"
 theme_override_font_sizes/font_size = 32
 text = "CLOSE"
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1533359408]
+top_level = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -317.99994
+offset_top = 7.000001
+offset_right = -100.0
+offset_bottom = 38.0
+grow_horizontal = 0
+scale = Vector2(1.4246383, 1.2851454)
+mouse_filter = 2
+current_tab = 0
+clip_tabs = false
+all_tabs_in_front = true
+tab_0/disabled = true
+tab_1/disabled = true
+tab_2/disabled = true
+
+[node name="Blade" type="TabBar" parent="TabContainer" unique_id=1216112446]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Handle" type="TabBar" parent="TabContainer" unique_id=1006288431]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Imbue" type="TabBar" parent="TabContainer" unique_id=1629736924]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="ChangeTabButton" type="Button" parent="." unique_id=1695310734]
+top_level = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "NEXT"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]

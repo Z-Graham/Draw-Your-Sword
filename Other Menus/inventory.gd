@@ -70,30 +70,30 @@ func _on_healing_item_list_item_selected(index: int) -> void:
 
 
 func _on_use_button_pressed() -> void:
-	var a_item:String
-	var check_for_num=sel_item.findn("   x")
-	if not check_for_num==-1:
-		a_item=sel_item.left(check_for_num)
-	else:
-		a_item=sel_item
-	if not sel_item=="em":
-		if Globals.healing_items[a_item]==1:
-			current_screen.remove_item(sel_item_index)
-			Globals.healing_items.erase(a_item)
+	if current_screen==healing_item_list:
+		var a_item:String
+		var check_for_num=sel_item.findn("   x")
+		if not check_for_num==-1:
+			a_item=sel_item.left(check_for_num)
 		else:
-			Globals.healing_items[a_item]-=1
+			a_item=sel_item
+		if not sel_item=="em":
 			if Globals.healing_items[a_item]==1:
-				healing_item_list.set_item_text(sel_item_index, a_item)
+				current_screen.remove_item(sel_item_index)
+				Globals.healing_items.erase(a_item)
 			else:
-				healing_item_list.set_item_text(sel_item_index, a_item+
-				"   x"+str(Globals.healing_items[a_item]))
-	if a_item=="HP Potion":
-		item_used.emit("HP Potion")
-	elif a_item=="MP Potion":
-		item_used.emit("MP Potion")
-	description.text=""
-	healing_item_list.deselect_all()
-	sel_item="em"
-	sel_item_index=-1
-	visible=false
-	print(a_item)
+				Globals.healing_items[a_item]-=1
+				if Globals.healing_items[a_item]==1:
+					healing_item_list.set_item_text(sel_item_index, a_item)
+				else:
+					healing_item_list.set_item_text(sel_item_index, a_item+
+					"   x"+str(Globals.healing_items[a_item]))
+		if a_item=="HP Potion":
+			item_used.emit("HP Potion")
+		elif a_item=="MP Potion":
+			item_used.emit("MP Potion")
+		description.text=""
+		healing_item_list.deselect_all()
+		sel_item="em"
+		sel_item_index=-1
+		visible=false

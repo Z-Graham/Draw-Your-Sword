@@ -9,6 +9,7 @@ extends Node2D
 @onready var description: Label = $fight_battle_menu/Panel/Description
 @onready var health_label: Label = $"health bar/Health Label"
 @onready var mp_label: Label = $"MP bar/MP Label"
+@onready var draw_screen: TextureRect = $DrawScreen
 
 
 var enemy_health=100
@@ -35,6 +36,11 @@ func _process(delta:float)-> void:
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
 	if enemy_health<=0:
 		battle_end()
+		
+	if Input.is_action_just_pressed("do_magic"):
+		Globals.player_stats["current_MP"] -= 1
+	if Input.is_action_just_pressed("hurt"):
+		Globals.player_stats["current_health"] -= 1
 
 
 func battle_end():
@@ -105,3 +111,7 @@ func _on_inventory_item_used(item: Variant) -> void:
 			Globals.player_stats["current_MP"]+=20
 		else:
 			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
+
+
+func _on_draw_button_pressed() -> void:
+	draw_screen.visible = true

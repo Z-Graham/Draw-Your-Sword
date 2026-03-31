@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://pjfhgfhy8kk6" path="res://assets/backgrounds/textbox.png" id="14_cq17g"]
 [ext_resource type="Texture2D" uid="uid://cj7hg4l4fbmib" path="res://assets/sprites/health bar back.png" id="14_riuqw"]
 [ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://Other Menus/inventory.tscn" id="16_riuqw"]
+[ext_resource type="PackedScene" uid="uid://bkcej3lp8jho1" path="res://Other Menus/draw_screen.tscn" id="18_2b1bo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
 animations = [{
@@ -327,6 +328,11 @@ offset_right = 126.0
 offset_bottom = 3.0
 text = "MP: 50/50"
 
+[node name="DrawScreen" parent="." unique_id=2035027788 instance=ExtResource("18_2b1bo")]
+visible = false
+top_level = true
+
+[connection signal="pressed" from="Main_battle_menu/Draw_button" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Item_button" to="." method="_on_item_button_pressed"]
 [connection signal="mouse_entered" from="fight_battle_menu/Basic button" to="." method="_on_basic_button_mouse_entered"]

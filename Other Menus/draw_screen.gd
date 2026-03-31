@@ -15,5 +15,5 @@ func _on_change_tab_button_pressed() -> void:
 		#change to menu for current tab
 
 func _on_close_button_pressed() -> void:
-	get_tree().quit()
+	visible = false
 	# will return to previous scene later

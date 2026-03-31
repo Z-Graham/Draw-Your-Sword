@@ -18,7 +18,10 @@ func _ready() -> void:
 	sel_item="em"
 	sel_item_index=-1
 	for item in (Globals.healing_items):
-		healing_item_list.add_item(item)
+		if Globals.healing_items[item]>1:
+			healing_item_list.add_item(item+"   x"+str(Globals.healing_items[item]))
+		else:
+			healing_item_list.add_item(item)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,23 +60,40 @@ func _on_key_tab_pressed() -> void:
 func _on_healing_item_list_item_selected(index: int) -> void:
 	sel_item=healing_item_list.get_item_text(index)
 	sel_item_index=index
-	if sel_item=="HP Potion":
+	if sel_item.contains("HP Potion"):
 		description.text="A simple healing potion.
 		Heals 30 HP"
-	if sel_item=="MP Potion":
+	if sel_item.contains("MP Potion"):
 		description.text="A simple mana potion.
 		Restores 20 MP"
+	print(sel_item)
 
 
 func _on_use_button_pressed() -> void:
+	var a_item:String
+	var check_for_num=sel_item.findn("   x")
+	if not check_for_num==-1:
+		a_item=sel_item.left(check_for_num)
+	else:
+		a_item=sel_item
 	if not sel_item=="em":
-		current_screen.remove_item(sel_item_index)
-		Globals.healing_items.remove_at(sel_item_index)
-	if sel_item=="HP Potion":
+		if Globals.healing_items[a_item]==1:
+			current_screen.remove_item(sel_item_index)
+			Globals.healing_items.erase(a_item)
+		else:
+			Globals.healing_items[a_item]-=1
+			if Globals.healing_items[a_item]==1:
+				healing_item_list.set_item_text(sel_item_index, a_item)
+			else:
+				healing_item_list.set_item_text(sel_item_index, a_item+
+				"   x"+str(Globals.healing_items[a_item]))
+	if a_item=="HP Potion":
 		item_used.emit("HP Potion")
-	elif sel_item=="MP Potion":
+	elif a_item=="MP Potion":
 		item_used.emit("MP Potion")
 	description.text=""
+	healing_item_list.deselect_all()
 	sel_item="em"
 	sel_item_index=-1
 	visible=false
+	print(a_item)

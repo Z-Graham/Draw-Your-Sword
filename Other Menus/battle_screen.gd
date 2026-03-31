@@ -101,6 +101,7 @@ func _on_inventory_item_used(item: Variant) -> void:
 		else:
 			Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
 	elif item=="MP Potion":
+		print("MP")
 		if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]-20:
 			Globals.player_current_MP+=20
 		else:

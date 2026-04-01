@@ -19,14 +19,16 @@ func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
 func _on_item_picked_up(_item : Area2D) -> void:
 	var type = _item.type
 	if type == "healing":
+		Globals.healing_items["HP Potion"] += 1
 		healing_label.visible = true
 		await get_tree().create_timer(1.5).timeout
 		healing_label.visible = false
-		Globals.healing_items["HP Potion"] += 1
+		
 		
 	elif type == "magic":
+		Globals.healing_items["MP Potion"] += 1
 		magic_label.visible = true
 		await get_tree().create_timer(1.5).timeout
 		magic_label.visible = false
-		Globals.healing_items["MP Potion"] += 1
+		
 	

@@ -39,10 +39,10 @@ position = Vector2(55, 66)
 [node name="Enemy" parent="." unique_id=1936347032 instance=ExtResource("3_b330e")]
 position = Vector2(624, 483)
 
-[node name="Item" parent="." unique_id=2030387864 groups=["Items"] instance=ExtResource("7_4sdyu")]
+[node name="Item" parent="." unique_id=2030387864 instance=ExtResource("7_4sdyu")]
 position = Vector2(610, 175)
 
-[node name="Item2" parent="." unique_id=87942900 groups=["Items"] instance=ExtResource("7_4sdyu")]
+[node name="Item2" parent="." unique_id=87942900 instance=ExtResource("7_4sdyu")]
 position = Vector2(521, 318)
 type = "magic"
 

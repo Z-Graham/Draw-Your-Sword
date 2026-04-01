@@ -20,8 +20,9 @@ func _ready() -> void:
 	for item in (Globals.healing_items):
 		if Globals.healing_items[item]>1:
 			healing_item_list.add_item(item+"   x"+str(Globals.healing_items[item]))
-		else:
+		elif Globals.healing_items[item]==1:
 			healing_item_list.add_item(item)
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

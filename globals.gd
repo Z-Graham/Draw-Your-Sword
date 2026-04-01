@@ -7,4 +7,4 @@ var player_current_MP=player_max_MP
 var player_stats={"max_health":100, "current_health":100, 
 "max_MP":50, "current_MP":50, "attack":10, "defense":10}
 
-var healing_items={"HP Potion":5, "MP Potion":12}
+var healing_items={"HP Potion":0, "MP Potion":0}

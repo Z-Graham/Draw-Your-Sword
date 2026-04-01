@@ -346,11 +346,20 @@ offset_bottom = 221.0
 text = "50"
 label_settings = SubResource("LabelSettings_2b1bo")
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1408404370]
+visible = false
+offset_right = 1156.0
+offset_bottom = 656.0
+color = Color(0, 0, 0, 0.76862746)
+
 [node name="Win Screen" parent="." unique_id=137600995 instance=ExtResource("19_udy6t")]
+visible = false
 offset_left = 576.0
 offset_top = 59.0
 offset_right = 576.0
 offset_bottom = 59.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.7137255)
 
 [connection signal="pressed" from="Main_battle_menu/Draw_button" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]

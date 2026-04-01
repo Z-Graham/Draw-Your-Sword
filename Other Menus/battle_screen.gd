@@ -10,6 +10,7 @@ extends Node2D
 @onready var health_label: Label = $"health bar/Health Label"
 @onready var mp_label: Label = $"MP bar/MP Label"
 @onready var draw_screen: TextureRect = $DrawScreen
+@onready var win_screen: ColorRect = $"Win Screen"
 
 
 var enemy_health=100
@@ -34,8 +35,7 @@ func _process(delta:float)-> void:
 	mp_bar.max_value=Globals.player_stats["max_MP"]
 	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
-	if enemy_health<=0:
-		battle_end()
+
 		
 	if Input.is_action_just_pressed("do_magic"):
 		Globals.player_stats["current_MP"] -= 1
@@ -44,10 +44,14 @@ func _process(delta:float)-> void:
 
 
 func battle_end():
-	get_tree().change_scene_to_file("res://rooms/over_world.tscn")
+	win_screen.c_room="res://rooms/over_world.tscn"
+	$ColorRect2.visible=true
+	win_screen.visible=true
 
 func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
+	health_bar.visible=false
+	mp_bar.visible=false
 	var damage=50
 	var player_move=create_tween()
 	player_move.tween_property(player_battle,"global_position",
@@ -65,8 +69,14 @@ func player_fight(blade:String,handle:String,imbue:String):
 	player_battle.global_position.y),
 	1.5)
 	await player_move_back.finished
-	fight_battle_menu.visible=true
+	if enemy_health<=0:
+		battle_end()
+	else:
+		fight_battle_menu.visible=true
+		health_bar.visible=true
+		mp_bar.visible=true
 	$damage_label.visible=false
+	
 
 
 func _on_fight_button_pressed() -> void:

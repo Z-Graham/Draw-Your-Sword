@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b2rdwsm5rhsli" path="res://rooms/leave_room_detector.tscn" id="3_1kamh"]
 [ext_resource type="PackedScene" uid="uid://ctverhenfqadk" path="res://Player/player.tscn" id="3_qgqlj"]
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="4_13qvk"]
+[ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://item.tscn" id="7_xxshv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1kamh"]
+font_size = 24
 
 [node name="Room2" type="Node2D" unique_id=873215277]
 script = ExtResource("1_1kamh")
@@ -38,6 +42,31 @@ position = Vector2(38, 292)
 position = Vector2(743, 591)
 
 [node name="Enemy2" parent="." unique_id=1380412826 instance=ExtResource("4_13qvk")]
-position = Vector2(1087, 56)
+position = Vector2(563, 254)
+
+[node name="HealingLabel" type="Label" parent="." unique_id=1875319667]
+visible = false
+offset_left = 882.0
+offset_right = 1148.0
+offset_bottom = 34.0
+text = "Picked up Healing Item"
+label_settings = SubResource("LabelSettings_1kamh")
+
+[node name="MagicLabel" type="Label" parent="." unique_id=1919537207]
+visible = false
+offset_left = 901.0
+offset_right = 1167.0
+offset_bottom = 34.0
+text = "Picked up Magic Item"
+label_settings = SubResource("LabelSettings_1kamh")
+
+[node name="Item" parent="." unique_id=2030387864 groups=["Items"] instance=ExtResource("7_xxshv")]
+position = Vector2(351, 186)
+
+[node name="Item2" parent="." unique_id=1931148628 groups=["Items"] instance=ExtResource("7_xxshv")]
+position = Vector2(674, 464)
+type = "magic"
 
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
+[connection signal="picked_up" from="Item" to="." method="_on_item_picked_up"]
+[connection signal="picked_up" from="Item2" to="." method="_on_item_picked_up"]

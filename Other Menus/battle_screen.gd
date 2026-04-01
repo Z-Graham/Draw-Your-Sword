@@ -47,8 +47,26 @@ func battle_end():
 	get_tree().change_scene_to_file("res://rooms/over_world.tscn")
 
 func player_fight(blade:String,handle:String,imbue:String):
-	enemy_health-=50
-	Globals.player_stats["current_health"]-=10
+	fight_battle_menu.visible=false
+	var damage=50
+	var player_move=create_tween()
+	player_move.tween_property(player_battle,"global_position",
+	Vector2(player_battle.global_position.x+800,
+	player_battle.global_position.y),
+	1.5)
+	
+	await player_move.finished
+	$damage_label.text=str(damage)
+	$damage_label.visible=true
+	enemy_health-=damage
+	var player_move_back=create_tween()
+	player_move_back.tween_property(player_battle,"global_position",
+	Vector2(player_battle.global_position.x-800,
+	player_battle.global_position.y),
+	1.5)
+	await player_move_back.finished
+	fight_battle_menu.visible=true
+	$damage_label.visible=false
 
 
 func _on_fight_button_pressed() -> void:

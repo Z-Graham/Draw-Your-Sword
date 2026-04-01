@@ -28,6 +28,8 @@ window/stretch/mode="canvas_items"
 
 healthlabel=""
 magiclabel=""
+Items=""
+collectedItems=""
 
 [input]
 
@@ -73,6 +75,7 @@ do_magic={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="world"
+2d_physics/layer_4="items"
 
 [physics]
 

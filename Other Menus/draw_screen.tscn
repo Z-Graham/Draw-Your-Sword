@@ -19,6 +19,54 @@ size_flags_vertical = 4
 texture = ExtResource("1_o6brk")
 script = ExtResource("2_u735a")
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=358825446]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.031000001
+offset_left = 65.0
+offset_top = 69.0
+offset_right = 67.68
+offset_bottom = 71.912
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=466635038]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.031000001
+offset_left = 65.0
+offset_top = 303.0
+offset_right = 67.68
+offset_bottom = 305.912
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1072053685]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.031000001
+offset_left = 65.0
+offset_top = 537.0
+offset_right = 67.68
+offset_bottom = 539.912
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=364363119]
+top_level = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -321.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+
 [node name="CloseButton" type="Button" parent="." unique_id=714139092]
 top_level = true
 layout_mode = 1
@@ -31,7 +79,6 @@ offset_left = -8.0
 offset_top = -8.0
 grow_horizontal = 0
 grow_vertical = 0
-tooltip_text = "QUITS GAME FOR NOW, WILL CHANGE TO PREVIOUS SCENE LATER"
 theme_override_font_sizes/font_size = 32
 text = "CLOSE"
 

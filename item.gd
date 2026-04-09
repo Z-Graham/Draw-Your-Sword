@@ -18,6 +18,4 @@ func _on_body_entered(_body: Node2D) -> void:
 	print("picked up " + type + " item")
 	picked_up.emit(self)
 	collected = true
-	remove_from_group("Items")
-	add_to_group("collectedItems")
 	queue_free()

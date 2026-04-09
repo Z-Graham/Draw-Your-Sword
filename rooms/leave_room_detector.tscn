@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://b2rdwsm5rhsli"]
 
+[ext_resource type="Script" uid="uid://fli5e6jqm7oq" path="res://rooms/leave_room_detector.gd" id="1_85xnq"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lc3sa"]
 size = Vector2(40.31781, 53.928738)
 
 [node name="LeaveRoomDetector" type="Area2D" unique_id=1142250141]
 collision_layer = 4
+script = ExtResource("1_85xnq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=318945640]
 position = Vector2(20.158875, 26.96437)

@@ -9,6 +9,9 @@ class_name Room
 
 @onready var healing_label: Label = $HealingLabel
 @onready var magic_label: Label = $MagicLabel
+@onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
+@onready var enter_spawn_point: Marker2D = $EnterSpawnPoint
+@onready var return_spawn_point: Marker2D = $ReturnSpawnPoint
 
 
 signal left
@@ -20,7 +23,7 @@ func _ready() -> void:
 
 func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
 	print("move to next room")
-	left.emit(self)
+	left.emit(self, leave_room_detector.next)
 	#get_tree().call_deferred("change_scene_to_file",next_room)
 
 

@@ -8,3 +8,4 @@ func _on_body_entered(_body: Node2D) -> void:
 
 	var battle_screen := get_tree().get_first_node_in_group("BattleScreenLayer")
 	battle_screen.visible = true
+	queue_free()

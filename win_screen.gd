@@ -5,4 +5,6 @@ extends Control
 
 
 func _on_continue_pressed() -> void:
-	get_tree().call_deferred("change_scene_to_file",c_room)
+	var bs=get_tree().get_first_node_in_group("BattleScreenLayer")
+	bs.visible=false
+	visible=false

@@ -10,6 +10,7 @@ class_name Room
 @onready var healing_label: Label = $HealingLabel
 @onready var magic_label: Label = $MagicLabel
 
+
 signal left
 
 func _ready() -> void:
@@ -40,6 +41,4 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		num_magic_items -= 1
 		await get_tree().create_timer(1.5).timeout
 		magic_label.visible = false
-		
-		
 	

@@ -148,7 +148,7 @@ func reset():
 	main_battle_menu.visible=true
 	fight_battle_menu.visible=false
 	inventory.visible=false
-	color_rect_2.vislbe=false
+	color_rect_2.visible=false
 	player_battle.visible=true
 	enemy_battle.visible=true
 	health_bar.visible=true

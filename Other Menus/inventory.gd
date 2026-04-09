@@ -24,6 +24,7 @@ func _ready() -> void:
 			healing_item_list.add_item(item)
 		
 func update():
+	healing_item_list.clear()
 	sel_item="em"
 	sel_item_index=-1
 	for item in (Globals.healing_items):

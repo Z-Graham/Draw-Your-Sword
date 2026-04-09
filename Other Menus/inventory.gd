@@ -89,6 +89,7 @@ func _on_use_button_pressed() -> void:
 				else:
 					healing_item_list.set_item_text(sel_item_index, a_item+
 					"   x"+str(Globals.healing_items[a_item]))
+			visible=false
 		if a_item=="HP Potion":
 			item_used.emit("HP Potion")
 		elif a_item=="MP Potion":
@@ -97,4 +98,4 @@ func _on_use_button_pressed() -> void:
 		healing_item_list.deselect_all()
 		sel_item="em"
 		sel_item_index=-1
-		visible=false
+		

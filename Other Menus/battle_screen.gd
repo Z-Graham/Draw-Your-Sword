@@ -11,6 +11,7 @@ extends Node2D
 @onready var mp_label: Label = $"MP bar/MP Label"
 @onready var draw_screen: TextureRect = $DrawScreen
 @onready var win_screen: ColorRect = $"Win Screen"
+@onready var color_rect_2: ColorRect = $ColorRect2
 
 
 var enemy_health=100
@@ -35,8 +36,6 @@ func _process(delta:float)-> void:
 	mp_bar.max_value=Globals.player_stats["max_MP"]
 	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
-
-		
 	if Input.is_action_just_pressed("do_magic"):
 		Globals.player_stats["current_MP"] -= 1
 	if Input.is_action_just_pressed("hurt"):
@@ -143,3 +142,18 @@ func _on_inventory_item_used(item: Variant) -> void:
 
 func _on_draw_button_pressed() -> void:
 	draw_screen.visible = true
+
+func reset():
+	draw_charge=5
+	main_battle_menu.visible=true
+	fight_battle_menu.visible=false
+	inventory.visible=false
+	color_rect_2.vislbe=false
+	player_battle.visible=true
+	enemy_battle.visible=true
+	health_bar.visible=true
+	mp_bar.visible=true
+	enemy_health=100
+	in_main=true
+	in_battle=false
+	in_inventory=false

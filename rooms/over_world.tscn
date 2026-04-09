@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c4s6nthsaqkhs" path="res://rooms/room_1.tscn" id="1_6t36p"]
 [ext_resource type="Script" uid="uid://dvefn68xjxj46" path="res://rooms/over_world.gd" id="1_b330e"]
 [ext_resource type="PackedScene" uid="uid://doir6ij00hcj8" path="res://rooms/room_2.tscn" id="2_b330e"]
+[ext_resource type="PackedScene" uid="uid://ctverhenfqadk" path="res://Player/player.tscn" id="4_lc3sa"]
+[ext_resource type="PackedScene" uid="uid://dj8rb7x3bi1jw" path="res://Other Menus/battle_screen.tscn" id="5_3ixio"]
 
 [node name="OverWorld" type="Node2D" unique_id=1666359860]
 script = ExtResource("1_b330e")
@@ -14,8 +16,16 @@ next_room = NodePath("../Room2")
 position = Vector2(1700, 0)
 next_room = NodePath("../Room1")
 
+[node name="Player" parent="." unique_id=44114981 instance=ExtResource("4_lc3sa")]
+position = Vector2(68, 55)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=116450048]
 anchor_mode = 0
+
+[node name="BattleScreenLayer" type="CanvasLayer" parent="." unique_id=1227837366 groups=["BattleScreenLayer"]]
+visible = false
+
+[node name="Battle_screen" parent="BattleScreenLayer" unique_id=637376723 instance=ExtResource("5_3ixio")]
 
 [connection signal="left" from="Room1" to="." method="_on_room_left"]
 [connection signal="left" from="Room2" to="." method="_on_room_left"]

@@ -30,6 +30,7 @@ healthlabel=""
 magiclabel=""
 Items=""
 collectedItems=""
+BattleScreenLayer=""
 
 [input]
 

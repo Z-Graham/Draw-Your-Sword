@@ -10,6 +10,28 @@ colors = PackedColorArray(0, 0.31666684, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nqbbo"]
 gradient = SubResource("Gradient_4eyso")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ovwn"]
+atlas = ExtResource("3_7ovwn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eyso"]
+atlas = ExtResource("3_7ovwn")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqbbo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ovwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eyso")
+}],
+"loop": true,
+"name": &"basic_flash",
+"speed": 5.0
+}]
+
 [node name="DrawScreen" type="TextureRect" unique_id=2035027788]
 texture_filter = 1
 anchors_preset = 15
@@ -149,13 +171,12 @@ item_count = 1
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
 
-[node name="blade" type="TextureRect" parent="." unique_id=924815967]
-layout_mode = 0
-offset_left = 368.0
-offset_top = -9.0
-offset_right = 1126.0
-offset_bottom = 1158.0
-texture = ExtResource("3_7ovwn")
+[node name="blade" type="AnimatedSprite2D" parent="." unique_id=1765120727]
+position = Vector2(814, 288)
+scale = Vector2(9.953125, 7.640625)
+sprite_frames = SubResource("SpriteFrames_nqbbo")
+animation = &"basic_flash"
+frame_progress = 0.4933695
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]

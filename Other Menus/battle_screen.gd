@@ -40,6 +40,7 @@ func _process(delta:float)-> void:
 		Globals.player_stats["current_MP"] -= 1
 	if Input.is_action_just_pressed("hurt"):
 		Globals.player_stats["current_health"] -= 1
+	
 
 
 func battle_end():
@@ -157,3 +158,4 @@ func reset():
 	in_main=true
 	in_battle=false
 	in_inventory=false
+	inventory.update()

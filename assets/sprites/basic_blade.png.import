@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs66di2eut82v"
-path="res://.godot/imported/basic sword outline.png-d63eef5eb83721f7c5ac53a6b7317ab6.ctex"
+uid="uid://crkjolbw65b61"
+path="res://.godot/imported/basic_blade.png-4e89d68bcb943ba2159e2c499fea3f86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/basic sword outline.png"
-dest_files=["res://.godot/imported/basic sword outline.png-d63eef5eb83721f7c5ac53a6b7317ab6.ctex"]
+source_file="res://assets/sprites/basic_blade.png"
+dest_files=["res://.godot/imported/basic_blade.png-4e89d68bcb943ba2159e2c499fea3f86.ctex"]
 
 [params]
 

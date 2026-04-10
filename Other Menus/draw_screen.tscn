@@ -2,33 +2,110 @@
 
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="1_o6brk"]
 [ext_resource type="Script" uid="uid://qyu0ypnyowwq" path="res://Other Menus/draw_screen.gd" id="2_u735a"]
-[ext_resource type="Texture2D" uid="uid://bs66di2eut82v" path="res://assets/sprites/basic sword outline.png" id="3_7ovwn"]
+[ext_resource type="Texture2D" uid="uid://crkjolbw65b61" path="res://assets/sprites/basic_blade.png" id="3_4eyso"]
+[ext_resource type="Texture2D" uid="uid://d3aj3q0l243gk" path="res://assets/sprites/basic_handle.png" id="4_4eyso"]
+
+[sub_resource type="Gradient" id="Gradient_nqbbo"]
+colors = PackedColorArray(0, 0.0333333, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_14rhe"]
+gradient = SubResource("Gradient_nqbbo")
 
 [sub_resource type="Gradient" id="Gradient_4eyso"]
-colors = PackedColorArray(0, 0.31666684, 1, 1, 1, 1, 1, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nqbbo"]
 gradient = SubResource("Gradient_4eyso")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ovwn"]
-atlas = ExtResource("3_7ovwn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqbbo"]
+atlas = ExtResource("3_4eyso")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4eyso"]
-atlas = ExtResource("3_7ovwn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_14rhe"]
+atlas = ExtResource("3_4eyso")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3we0"]
+atlas = ExtResource("3_4eyso")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjovv"]
+atlas = ExtResource("3_4eyso")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nqbbo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ovwn")
+"texture": SubResource("AtlasTexture_nqbbo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4eyso")
+"texture": SubResource("AtlasTexture_14rhe")
 }],
 "loop": true,
 "name": &"basic_flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3we0")
+}],
+"loop": true,
+"name": &"basic_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjovv")
+}],
+"loop": true,
+"name": &"nothing_selected",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr64v"]
+atlas = ExtResource("4_4eyso")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ceo7"]
+atlas = ExtResource("4_4eyso")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab1fa"]
+atlas = ExtResource("4_4eyso")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4o7a"]
+atlas = ExtResource("4_4eyso")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ab1fa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr64v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ceo7")
+}],
+"loop": true,
+"name": &"basic_flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab1fa")
+}],
+"loop": true,
+"name": &"basic_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4o7a")
+}],
+"loop": true,
+"name": &"nothing_selected",
 "speed": 5.0
 }]
 
@@ -94,6 +171,7 @@ anchor_bottom = 1.0
 offset_left = -321.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 
 [node name="CloseButton" type="Button" parent="." unique_id=714139092]
@@ -160,23 +238,61 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "NEXT"
 
-[node name="ItemList" type="ItemList" parent="." unique_id=232399953]
+[node name="blade_list" type="ItemList" parent="." unique_id=232399953]
 z_index = 1
 layout_mode = 0
-offset_left = 1127.0
-offset_top = 116.0
-offset_right = 1318.0
-offset_bottom = 676.0
+offset_left = 1146.0
+offset_top = 106.0
+offset_right = 1337.0
+offset_bottom = 666.0
+item_count = 1
+item_0/text = "basic"
+item_0/icon = SubResource("GradientTexture2D_14rhe")
+
+[node name="handle_list" type="ItemList" parent="." unique_id=535163553]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 1146.0
+offset_top = 106.0
+offset_right = 1337.0
+offset_bottom = 666.0
 item_count = 1
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
 
-[node name="blade" type="AnimatedSprite2D" parent="." unique_id=1765120727]
-position = Vector2(814, 288)
+[node name="imbue_list" type="ItemList" parent="." unique_id=1111623115]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 1146.0
+offset_top = 106.0
+offset_right = 1337.0
+offset_bottom = 666.0
+item_count = 1
+item_0/text = "none"
+item_0/icon = SubResource("GradientTexture2D_nqbbo")
+
+[node name="sword" type="Control" parent="." unique_id=402495953]
+anchors_preset = 0
+offset_left = 573.0
+offset_top = 195.0
+offset_right = 917.0
+offset_bottom = 456.0
+
+[node name="blade" type="AnimatedSprite2D" parent="sword" unique_id=1765120727]
+position = Vector2(261, 79)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_nqbbo")
+animation = &"basic_set"
+
+[node name="handle" type="AnimatedSprite2D" parent="sword" unique_id=894404993]
+position = Vector2(102.00006, 184.99997)
+scale = Vector2(9.953125, 7.640625)
+sprite_frames = SubResource("SpriteFrames_ab1fa")
 animation = &"basic_flash"
-frame_progress = 0.4933695
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]
+[connection signal="item_selected" from="blade_list" to="." method="_on_blade_list_item_selected"]
+[connection signal="item_selected" from="handle_list" to="." method="_on_handle_list_item_selected"]

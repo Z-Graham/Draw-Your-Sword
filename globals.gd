@@ -8,3 +8,5 @@ var player_stats={"max_health":100, "current_health":100,
 "max_MP":50, "current_MP":50, "attack":10, "defense":10}
 
 var healing_items={"HP Potion":0, "MP Potion":0}
+
+signal change_stats

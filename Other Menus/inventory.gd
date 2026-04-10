@@ -22,6 +22,7 @@ func _ready() -> void:
 			healing_item_list.add_item(item+"   x"+str(Globals.healing_items[item]))
 		elif Globals.healing_items[item]==1:
 			healing_item_list.add_item(item)
+	
 		
 func update():
 	healing_item_list.clear()

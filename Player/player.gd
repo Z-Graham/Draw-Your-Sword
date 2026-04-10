@@ -9,24 +9,28 @@ var magic_label
 var max_magic : int = Globals.player_stats["max_MP"]
 
 
-var health := max_health:
-	set(new_health):
+#var health := max_health:
+	#set(new_health):
+		##health = new_health
+		#health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
+		#Globals.player_stats["current_health"] = new_health
 		#health = new_health
-		health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
-		health = Globals.player_stats["current_health"]
 		
-var magic := max_magic:
-	set(new_magic):
+#var magic := max_magic:
+	#set(new_magic):
+		##magic = new_magic
+		#magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)
+		#Globals.player_stats["current_MP"] = new_magic
 		#magic = new_magic
-		magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)
-		magic = Globals.player_stats["current_MP"] 
 
 func _ready() -> void:
 	health_label = get_tree().get_first_node_in_group("healthlabel")
-	health = max_health
+	Globals.player_stats["current_health"] = max_health
+	health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
 	
 	magic_label = get_tree().get_first_node_in_group("magiclabel")
-	magic = max_magic
+	Globals.player_stats["current_MP"] = max_magic
+	magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)
 
 
 func get_input():
@@ -36,6 +40,9 @@ func get_input():
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
+		health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
+		magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)
+		
 		if !ui.visible:
 			ui.visible = true
 		else:
@@ -55,11 +62,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func take_damage(): # mostly for testing
-	if health >= 1:
-		Globals.player_stats["current_health"] -= 1
-		health -= 1
+	Globals.player_stats["current_health"] -= 1
+	health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
 
 func do_magic(): # for test
-	if magic >= 1:
-		Globals.player_stats["current_MP"] -= 1
-		magic -= 1
+	Globals.player_stats["current_MP"] -= 1
+	magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)

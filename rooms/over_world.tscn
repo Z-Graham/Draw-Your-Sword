@@ -13,9 +13,8 @@ script = ExtResource("1_b330e")
 [node name="Room1" parent="." unique_id=2070870883 node_paths=PackedStringArray("next_room") instance=ExtResource("1_6t36p")]
 next_room = NodePath("../Room2")
 
-[node name="Room2" parent="." unique_id=873215277 node_paths=PackedStringArray("next_room", "previous_room") instance=ExtResource("2_b330e")]
+[node name="Room2" parent="." unique_id=873215277 node_paths=PackedStringArray("previous_room") instance=ExtResource("2_b330e")]
 position = Vector2(1700, 0)
-next_room = NodePath("../Room1")
 previous_room = NodePath("../Room1")
 
 [node name="Player" parent="." unique_id=44114981 instance=ExtResource("4_lc3sa")]

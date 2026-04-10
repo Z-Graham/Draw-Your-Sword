@@ -20,6 +20,7 @@ var handle="normal"
 var imbue="none"
 var draw_charge:int
 
+
 var in_main=true
 var in_battle=false
 var in_inventory=false
@@ -36,10 +37,10 @@ func _process(delta:float)-> void:
 	mp_bar.max_value=Globals.player_stats["max_MP"]
 	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
-	if Input.is_action_just_pressed("do_magic"):
-		Globals.player_stats["current_MP"] -= 1
-	if Input.is_action_just_pressed("hurt"):
-		Globals.player_stats["current_health"] -= 1
+	#if Input.is_action_just_pressed("do_magic"):
+		#Globals.player_stats["current_MP"] -= 1
+	#if Input.is_action_just_pressed("hurt"):
+		#Globals.player_stats["current_health"] -= 1
 	
 
 

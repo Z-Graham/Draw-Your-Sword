@@ -15,6 +15,7 @@ extends Node2D
 @onready var blade_label: Label = $"Main_battle_menu/Blade Label"
 @onready var handle_label: Label = $"Main_battle_menu/Handle Label"
 @onready var imbue_label: Label = $"Main_battle_menu/Imbue label"
+@onready var pencil_bar: TextureProgressBar = $"Main_battle_menu/pencil bar"
 
 
 var enemy_health=100
@@ -80,6 +81,8 @@ func player_fight(blade:String,handle:String,imbue:String):
 		health_bar.visible=true
 		mp_bar.visible=true
 	$damage_label.visible=false
+	if pencil_bar.value<100:
+		pencil_bar.value+=20
 	
 
 
@@ -146,8 +149,10 @@ func _on_inventory_item_used(item: Variant) -> void:
 
 
 func _on_draw_button_pressed() -> void:
-	draw_screen.visible = true
-	draw_screen.reset()
+	if pencil_bar.value==100:
+		draw_screen.visible = true
+		draw_screen.reset()
+		pencil_bar.value=0
 
 func reset():
 	draw_charge=5
@@ -173,4 +178,5 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	blade_label.text="blade: "+blade
 	handle_label.text="handle: "+handle
 	imbue_label.text="imbue: "+imbue
+	pencil_bar.value=0
 	#update player sprite eventually

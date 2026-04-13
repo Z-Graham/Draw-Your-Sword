@@ -90,7 +90,8 @@ func _on_use_button_pressed() -> void:
 		if not sel_item=="em":
 			if Globals.healing_items[a_item]==1:
 				current_screen.remove_item(sel_item_index)
-				Globals.healing_items.erase(a_item)
+				Globals.healing_items[a_item] -= 1
+				#Globals.healing_items.erase(a_item)
 			else:
 				Globals.healing_items[a_item]-=1
 				if Globals.healing_items[a_item]==1:

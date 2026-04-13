@@ -24,6 +24,9 @@ var sw_handle="basic"
 var sw_imbue="none"
 var draw_charge:int
 
+var blade_mult=1.0
+var handle_mult=1.0
+
 
 var in_main=true
 var in_battle=false
@@ -57,7 +60,7 @@ func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
 	mp_bar.visible=false
-	var damage=50
+	var damage=30*blade_mult*handle_mult
 	var player_move=create_tween()
 	player_move.tween_property(player_battle,"global_position",
 	Vector2(player_battle.global_position.x+800,
@@ -179,4 +182,5 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	handle_label.text="handle: "+handle
 	imbue_label.text="imbue: "+imbue
 	pencil_bar.value=0
+	
 	#update player sprite eventually

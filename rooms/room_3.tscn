@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bsgv"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4sdyu"]
+font_size = 24
+
 [node name="Room3" type="Node2D" unique_id=1535874592]
 
 [node name="FloorTileMapLayer" parent="." unique_id=434716038 instance=ExtResource("1_5ql8f")]
@@ -24,6 +27,7 @@ offset_right = 20.0
 offset_bottom = 175.0
 scale = Vector2(1.0363064, 1.9034355)
 color = Color(0, 0.49, 0.05716673, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="LeaveRoomDetectorBackwards" parent="ColorRect" unique_id=1142250141 instance=ExtResource("3_mi4eo")]
 
@@ -34,6 +38,7 @@ offset_right = 1174.0
 offset_bottom = 376.0
 scale = Vector2(1.0363064, 1.9034355)
 color = Color(0, 0.49, 0.05716673, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="LeaveRoomDetector" parent="ColorRect2" unique_id=2038570415 instance=ExtResource("3_mi4eo")]
 next = true
@@ -59,3 +64,19 @@ shape = SubResource("RectangleShape2D_1bsgv")
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.15390076, 0.7038997)
 texture = ExtResource("5_6mom2")
+
+[node name="HealingLabel" type="Label" parent="." unique_id=1091654755]
+visible = false
+offset_left = 887.0
+offset_right = 1153.0
+offset_bottom = 34.0
+text = "Picked up Healing Item"
+label_settings = SubResource("LabelSettings_4sdyu")
+
+[node name="MagicLabel" type="Label" parent="." unique_id=177916371]
+visible = false
+offset_left = 904.0
+offset_right = 1170.0
+offset_bottom = 34.0
+text = "Picked up Magic Item"
+label_settings = SubResource("LabelSettings_4sdyu")

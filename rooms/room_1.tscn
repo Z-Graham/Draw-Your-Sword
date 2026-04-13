@@ -37,16 +37,6 @@ color = Color(0, 0.49019608, 0.05882353, 1)
 [node name="LeaveRoomDetector" parent="ColorRect" unique_id=1142250141 instance=ExtResource("4_6sn55")]
 next = true
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1703822186]
-offset_left = -45.0
-offset_top = 21.0
-offset_right = -5.0
-offset_bottom = 74.92874
-scale = Vector2(1.8354169, 2.9854214)
-color = Color(0, 0.49019608, 0.05882353, 1)
-
-[node name="LeaveRoomDetectorBackwards" parent="ColorRect2" unique_id=823380623 instance=ExtResource("4_6sn55")]
-
 [node name="Enemy" parent="." unique_id=1936347032 instance=ExtResource("3_b330e")]
 position = Vector2(624, 483)
 
@@ -80,6 +70,5 @@ position = Vector2(1038, 276)
 position = Vector2(87, 95)
 
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
-[connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="picked_up" from="Item" to="." method="_on_item_picked_up"]
 [connection signal="picked_up" from="Item2" to="." method="_on_item_picked_up"]

@@ -241,10 +241,10 @@ text = "NEXT"
 [node name="blade_list" type="ItemList" parent="." unique_id=232399953]
 z_index = 1
 layout_mode = 0
-offset_left = 1146.0
+offset_left = 1123.0
 offset_top = 106.0
-offset_right = 1337.0
-offset_bottom = 666.0
+offset_right = 1360.0
+offset_bottom = 641.0
 item_count = 1
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_14rhe")
@@ -253,10 +253,10 @@ item_0/icon = SubResource("GradientTexture2D_14rhe")
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 1146.0
+offset_left = 1122.0
 offset_top = 106.0
-offset_right = 1337.0
-offset_bottom = 666.0
+offset_right = 1359.0
+offset_bottom = 641.0
 item_count = 1
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
@@ -265,26 +265,26 @@ item_0/icon = SubResource("GradientTexture2D_nqbbo")
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 1146.0
+offset_left = 1123.0
 offset_top = 106.0
-offset_right = 1337.0
-offset_bottom = 666.0
+offset_right = 1354.0
+offset_bottom = 640.0
 item_count = 1
 item_0/text = "none"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
 
 [node name="sword" type="Control" parent="." unique_id=402495953]
 anchors_preset = 0
-offset_left = 573.0
-offset_top = 195.0
-offset_right = 917.0
-offset_bottom = 456.0
+offset_left = 543.0
+offset_top = 261.0
+offset_right = 887.0
+offset_bottom = 522.0
 
 [node name="blade" type="AnimatedSprite2D" parent="sword" unique_id=1765120727]
 position = Vector2(261, 79)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_nqbbo")
-animation = &"basic_set"
+animation = &"basic_flash"
 
 [node name="handle" type="AnimatedSprite2D" parent="sword" unique_id=894404993]
 position = Vector2(102.00006, 184.99997)
@@ -296,3 +296,4 @@ animation = &"basic_flash"
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]
 [connection signal="item_selected" from="blade_list" to="." method="_on_blade_list_item_selected"]
 [connection signal="item_selected" from="handle_list" to="." method="_on_handle_list_item_selected"]
+[connection signal="item_selected" from="imbue_list" to="." method="_on_imbue_list_item_selected"]

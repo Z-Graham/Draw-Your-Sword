@@ -375,3 +375,4 @@ color = Color(0, 0, 0, 0.7137255)
 [connection signal="pressed" from="fight_battle_menu/Handle Skill button" to="." method="_on_handle_skill_button_pressed"]
 [connection signal="pressed" from="fight_battle_menu/Back button" to="." method="_on_back_button_pressed"]
 [connection signal="item_used" from="Inventory" to="." method="_on_inventory_item_used"]
+[connection signal="draw_screen_closed" from="DrawScreen" to="." method="_on_draw_screen_draw_screen_closed"]

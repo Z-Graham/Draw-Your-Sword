@@ -12,12 +12,15 @@ extends Node2D
 @onready var draw_screen: TextureRect = $DrawScreen
 @onready var win_screen: ColorRect = $"Win Screen"
 @onready var color_rect_2: ColorRect = $ColorRect2
+@onready var blade_label: Label = $"Main_battle_menu/Blade Label"
+@onready var handle_label: Label = $"Main_battle_menu/Handle Label"
+@onready var imbue_label: Label = $"Main_battle_menu/Imbue label"
 
 
 var enemy_health=100
-var blade="normal"
-var handle="normal"
-var imbue="none"
+var sw_blade="basic"
+var sw_handle="basic"
+var sw_imbue="none"
 var draw_charge:int
 
 
@@ -93,7 +96,7 @@ func _on_item_button_pressed() -> void:
 
 
 func _on_basic_button_pressed() -> void:
-	player_fight(blade,handle,imbue)
+	player_fight(sw_blade,sw_handle,sw_imbue)
 
 func _on_basic_button_mouse_entered() -> void:
 	description.text="A basic attack with your weapon.
@@ -106,7 +109,7 @@ func _on_blade_skill_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_blade_skill_button_mouse_entered() -> void:
-	if blade=="normal":
+	if sw_blade=="basic":
 		description.text="Double Slice: Two rapid attacks with your weapon.
 		Costs 20MP"
 
@@ -117,7 +120,7 @@ func _on_handle_skill_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_handle_skill_button_mouse_entered() -> void:
-	if handle=="normal":
+	if sw_handle=="basic":
 		description.text="Bash: A strike with the pommel of your blade with a chance to confuse the enemy.
 		Costs 30MP"
 
@@ -144,6 +147,7 @@ func _on_inventory_item_used(item: Variant) -> void:
 
 func _on_draw_button_pressed() -> void:
 	draw_screen.visible = true
+	draw_screen.reset()
 
 func reset():
 	draw_charge=5
@@ -160,3 +164,13 @@ func reset():
 	in_battle=false
 	in_inventory=false
 	inventory.update()
+
+
+func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: Variant) -> void:
+	sw_blade=blade
+	sw_handle=handle
+	sw_imbue=imbue
+	blade_label.text="blade: "+blade
+	handle_label.text="handle: "+handle
+	imbue_label.text="imbue: "+imbue
+	#update player sprite eventually

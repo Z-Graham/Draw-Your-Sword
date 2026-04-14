@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="2_duuuk"]
 [ext_resource type="Texture2D" uid="uid://cc6hg7eathhu4" path="res://assets/sprites/red poly.png" id="3_638wx"]
 [ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
+[ext_resource type="PackedScene" uid="uid://dcrggycifxn06" path="res://Enemy/enemy_in_battle.tscn" id="4_pi828"]
 [ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
 [ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
@@ -21,17 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://7i05lclt6qar" path="res://Other Menus/win_screen.tscn" id="19_udy6t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_25fss")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5n2kt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -112,9 +102,8 @@ color = Color(0, 0, 0, 1)
 position = Vector2(116, 360)
 sprite_frames = SubResource("SpriteFrames_hn33v")
 
-[node name="enemy_battle" type="AnimatedSprite2D" parent="." unique_id=1390993098]
-position = Vector2(1035, 368)
-sprite_frames = SubResource("SpriteFrames_5n2kt")
+[node name="enemy_in_battle" parent="." unique_id=1840550579 instance=ExtResource("4_pi828")]
+position = Vector2(1066, 370)
 
 [node name="Main_battle_menu" type="Control" parent="." unique_id=1311188708]
 layout_mode = 3

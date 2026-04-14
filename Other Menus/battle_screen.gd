@@ -5,7 +5,7 @@ extends Node2D
 @onready var mp_bar: TextureProgressBar = $"MP bar"
 @onready var health_bar: TextureProgressBar = $"health bar"
 @onready var player_battle: AnimatedSprite2D = $player_battle
-@onready var enemy_battle: AnimatedSprite2D = $enemy_battle
+@onready var enemy_in_battle: AnimatedSprite2D = $enemy_in_battle
 @onready var description: Label = $fight_battle_menu/Panel/Description
 @onready var health_label: Label = $"health bar/Health Label"
 @onready var mp_label: Label = $"MP bar/MP Label"
@@ -37,6 +37,7 @@ func _ready() -> void:
 	draw_charge=5
 
 
+
 func _process(delta:float)-> void:
 	health_bar.max_value=Globals.player_stats["max_health"]
 	health_bar.value=Globals.player_stats["max_health"]-Globals.player_stats["current_health"]
@@ -48,7 +49,7 @@ func _process(delta:float)-> void:
 		#Globals.player_stats["current_MP"] -= 1
 	#if Input.is_action_just_pressed("hurt"):
 		#Globals.player_stats["current_health"] -= 1
-	
+
 
 
 func battle_end():
@@ -61,29 +62,37 @@ func player_fight(blade:String,handle:String,imbue:String):
 	health_bar.visible=false
 	mp_bar.visible=false
 	var damage=30*blade_mult*handle_mult
-	var player_move=create_tween()
-	player_move.tween_property(player_battle,"global_position",
-	Vector2(player_battle.global_position.x+800,
-	player_battle.global_position.y),
-	1.5)
-	
-	await player_move.finished
+	if enemy_in_battle.enemy_stats["weakness"].size()>0:
+		for i in enemy_in_battle.enemy_stats["weakness"]:
+			if sw_imbue==i:
+				damage*=2
+	if enemy_in_battle.enemy_stats["resist"].size()>0:
+		for i in enemy_in_battle.enemy_stats["resist"]:
+			if sw_imbue==i:
+				damage*=0.5
+	#var player_move=create_tween()
+	#player_move.tween_property(player_battle,"global_position",
+	#Vector2(player_battle.global_position.x+800,
+	#player_battle.global_position.y),
+	#1.5)
+	#
+	#await player_move.finished
 	$damage_label.text=str(damage)
 	$damage_label.visible=true
-	enemy_health-=damage
-	var player_move_back=create_tween()
-	player_move_back.tween_property(player_battle,"global_position",
-	Vector2(player_battle.global_position.x-800,
-	player_battle.global_position.y),
-	1.5)
-	await player_move_back.finished
-	if enemy_health<=0:
+	enemy_in_battle.enemy_stats["health"]-=damage
+	#var player_move_back=create_tween()
+	#player_move_back.tween_property(player_battle,"global_position",
+	#Vector2(player_battle.global_position.x-800,
+	#player_battle.global_position.y),
+	#1.5)
+	#await player_move_back.finished
+	if enemy_in_battle.enemy_stats["health"]<=0:
 		battle_end()
 	else:
 		fight_battle_menu.visible=true
 		health_bar.visible=true
 		mp_bar.visible=true
-	$damage_label.visible=false
+	#$damage_label.visible=false
 	if pencil_bar.value<100:
 		pencil_bar.value+=20
 	
@@ -164,14 +173,16 @@ func reset():
 	inventory.visible=false
 	color_rect_2.visible=false
 	player_battle.visible=true
-	enemy_battle.visible=true
+	enemy_in_battle.visible=true
 	health_bar.visible=true
 	mp_bar.visible=true
-	enemy_health=100
 	in_main=true
 	in_battle=false
 	in_inventory=false
 	inventory.update()
+	if enemy_in_battle.name_of_en=="goblin":
+		for i in Globals.goblin_stats:
+			enemy_in_battle.enemy_stats[i]=Globals.goblin_stats[i]
 
 
 func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: Variant) -> void:

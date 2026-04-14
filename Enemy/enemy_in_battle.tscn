@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dcrggycifxn06"]
+
+[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="1_1ptx6"]
+[ext_resource type="Script" uid="uid://dcl5h87f462o4" path="res://Enemy/enemy_in_battle.gd" id="2_nlk3i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlk3i"]
+atlas = ExtResource("1_1ptx6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uxla"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlk3i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy_in_battle" type="AnimatedSprite2D" unique_id=1840550579]
+sprite_frames = SubResource("SpriteFrames_1uxla")
+script = ExtResource("2_nlk3i")

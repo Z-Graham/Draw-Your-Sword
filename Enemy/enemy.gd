@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_enum("regular", "other") var type := "regular"
+@export_enum("goblin", "other") var type := "goblin"
 
 
 func _on_body_entered(_body: Node2D) -> void:

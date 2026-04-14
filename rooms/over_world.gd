@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var player: CharacterBody2D = $Player
+@onready var battle_screen: Node2D = $BattleScreenLayer/Battle_screen
 
 
 func _on_room_left(_room : Room, next : bool) -> void:

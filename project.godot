@@ -31,6 +31,9 @@ magiclabel=""
 Items=""
 collectedItems=""
 BattleScreenLayer=""
+handleLabel=""
+BladeLabel=""
+ImbueLabel=""
 
 [input]
 

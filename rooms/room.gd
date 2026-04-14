@@ -8,6 +8,7 @@ class_name Room
 @export var num_magic_items := 0
 @export var enter_spawn_point : Marker2D
 @export var return_spawn_point: Marker2D
+@export var trench : Node
 
 @onready var healing_label: Label = $HealingLabel
 @onready var magic_label: Label = $MagicLabel
@@ -26,12 +27,13 @@ func _ready() -> void:
 		i.queue_free()
 
 func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
+	await get_tree().create_timer(0.25).timeout
 	print("move to next room")
 	left.emit(self, leave_room_detector.next)
-	#get_tree().call_deferred("change_scene_to_file",next_room)
 
 
 func _on_leave_room_detector_backwards_body_entered(_body: Node2D) -> void:
+	await get_tree().create_timer(0.25).timeout
 	print("move to last room")
 	left.emit(self, leave_room_detector_backwards.next)
 
@@ -53,3 +55,8 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		await get_tree().create_timer(1.5).timeout
 		magic_label.visible = false
 	
+
+
+func _on_drawing_spot_solution_found() -> void:
+	if trench != null:
+		trench.process_mode = PROCESS_MODE_DISABLED

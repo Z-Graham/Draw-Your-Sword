@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bd2i6bcwurag2"]
+
+[ext_resource type="Script" uid="uid://bhke5ikjdsww0" path="res://rooms/drawing_spot.gd" id="1_8hb0i"]
+[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="1_v8mve"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mom2"]
+
+[node name="DrawingSpot" type="Area2D" unique_id=172422759]
+collision_layer = 4
+script = ExtResource("1_8hb0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=192180019]
+modulate = Color(1, 1, 1, 0.42352942)
+scale = Vector2(0.21553911, 0.3648148)
+texture = ExtResource("1_v8mve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1088442344]
+scale = Vector2(1.4737809, 2.4548683)
+shape = SubResource("CircleShape2D_6mom2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

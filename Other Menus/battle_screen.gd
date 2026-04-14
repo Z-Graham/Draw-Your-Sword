@@ -23,6 +23,8 @@ var sw_blade="basic"
 var sw_handle="basic"
 var sw_imbue="none"
 var draw_charge:int
+var blade_skill_req=20
+var handle_skill_req:int
 
 var blade_mult=1.0
 var handle_mult=1.0
@@ -61,6 +63,8 @@ func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
 	mp_bar.visible=false
+	if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]:
+		Globals.player_stats["current_MP"]+=5
 	var damage=30*blade_mult*handle_mult
 	if enemy_in_battle.enemy_stats["weakness"].size()>0:
 		for i in enemy_in_battle.enemy_stats["weakness"]:
@@ -121,7 +125,33 @@ func _on_basic_button_mouse_exited() -> void:
 	description.text=""
 
 func _on_blade_skill_button_pressed() -> void:
-	pass # Replace with function body.
+	if Globals.player_stats["current_MP"]>blade_skill_req:
+		var damage:float
+		fight_battle_menu.visible=false
+		health_bar.visible=false
+		mp_bar.visible=false
+		if sw_blade=="basic":
+			Globals.player_stats["current_MP"]-=20
+			damage=30*blade_mult*handle_mult*1.75
+			if enemy_in_battle.enemy_stats["weakness"].size()>0:
+				for i in enemy_in_battle.enemy_stats["weakness"]:
+					if sw_imbue==i:
+						damage*=2
+			if enemy_in_battle.enemy_stats["resist"].size()>0:
+				for i in enemy_in_battle.enemy_stats["resist"]:
+					if sw_imbue==i:
+						damage*=0.5
+		$damage_label.text=str(damage)
+		$damage_label.visible=true
+		enemy_in_battle.enemy_stats["health"]-=damage
+		if enemy_in_battle.enemy_stats["health"]<=0:
+			battle_end()
+		else:
+			fight_battle_menu.visible=true
+			health_bar.visible=true
+			mp_bar.visible=true
+		if pencil_bar.value<100:
+			pencil_bar.value+=20
 
 func _on_blade_skill_button_mouse_entered() -> void:
 	if sw_blade=="basic":
@@ -193,5 +223,11 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	handle_label.text="handle: "+handle
 	imbue_label.text="imbue: "+imbue
 	pencil_bar.value=0
+	if blade=="basic":
+		blade_mult=1.0
+	if handle=="basic":
+		handle_mult=1.0
+	if blade=="basic":
+		blade_skill_req=20
 	
 	#update player sprite eventually

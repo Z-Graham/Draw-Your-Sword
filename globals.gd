@@ -9,6 +9,8 @@ var player_stats={"max_health":100, "current_health":100,
 
 var healing_items={"HP Potion":0, "MP Potion":0}
 
+var sword = {"blade":"basic","handle":"basic","imbue":"none"}
+
 var goblin_stats={"health":100,"defense":5,"attack":10,
 "resist":[],"weakness":["fire"]}
 #signal change_stats

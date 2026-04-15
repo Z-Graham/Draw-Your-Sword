@@ -63,8 +63,10 @@ func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
 	mp_bar.visible=false
-	if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]:
+	if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]-5:
 		Globals.player_stats["current_MP"]+=5
+	else:
+		Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
 	var damage=30*blade_mult*handle_mult
 	if enemy_in_battle.enemy_stats["weakness"].size()>0:
 		for i in enemy_in_battle.enemy_stats["weakness"]:
@@ -229,5 +231,8 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		handle_mult=1.0
 	if blade=="basic":
 		blade_skill_req=20
+	Globals.sword["blade"] = blade
+	Globals.sword["handle"] = handle
+	Globals.sword["imbue"] = imbue
 	
 	#update player sprite eventually

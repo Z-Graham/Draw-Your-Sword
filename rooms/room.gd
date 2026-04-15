@@ -60,3 +60,5 @@ func _on_item_picked_up(_item : Area2D) -> void:
 func _on_drawing_spot_solution_found() -> void:
 	if trench != null:
 		trench.process_mode = PROCESS_MODE_DISABLED
+		trench.visible = false
+		#covering_sprite.visible = true (whatever it's called)

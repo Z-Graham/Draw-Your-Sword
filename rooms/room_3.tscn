@@ -4,12 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://du4720e7weav0" path="res://rooms/floor_tile_map_layer.tscn" id="1_5ql8f"]
 [ext_resource type="PackedScene" uid="uid://c0f6chdgkvc22" path="res://rooms/tile_map_layer.tscn" id="2_mi4eo"]
 [ext_resource type="PackedScene" uid="uid://b2rdwsm5rhsli" path="res://rooms/leave_room_detector.tscn" id="3_mi4eo"]
-[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="5_6mom2"]
+[ext_resource type="PackedScene" uid="uid://c81ae25grpme1" path="res://rooms/trench.tscn" id="5_7j5ef"]
 [ext_resource type="PackedScene" uid="uid://bd2i6bcwurag2" path="res://rooms/drawing_spot.tscn" id="6_1bsgv"]
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="7_2r27u"]
 [ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://item.tscn" id="8_7j5ef"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bsgv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sdyu"]
 font_size = 24
@@ -28,7 +26,7 @@ tile_map_data = PackedByteArray("AAAAAAEAAAAYAAIAAAAAAAIAAAAYAAIAAAAAAAMAAAAYAAI
 
 [node name="ObjectsTileMapLayer" parent="." unique_id=1335056636 instance=ExtResource("2_mi4eo")]
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAADAAYAAAAAAAkAAAAEAAYAAAABAAkAAAAFAAYAAAACAAkAAAAGAAYAAAADAAIAAAACAAYAAAACAAIAAAADAAUAAAAAAAIAAAAEAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAADAAcAAAABAAIAAAAEAAcAAAABAAIAAAAFAAcAAAABAAIAAAA=")
+tile_map_data = PackedByteArray("AAADAAYAAAAAAAkAAAAEAAYAAAABAAkAAAAFAAYAAAACAAkAAAAGAAYAAAADAAIAAAACAAYAAAACAAIAAAADAAUAAAAAAAIAAAAEAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAADAAcAAAABAAIAAAAEAAcAAAABAAIAAAAFAAcAAAABAAIAAAAKAAAAAAAFAAAAAAAKAAEAAAAFAAEAAAAKAAIAAAAFAAIAAAALAAAAAAAFAAAAAAALAAEAAAAFAAEAAAALAAIAAAAFAAIAAAAKAAMAAAABAAIAAAALAAMAAAABAAIAAAAMAAIAAAADAAIAAAAMAAEAAAADAAIAAAAMAAAAAAADAAIAAAAJAAIAAAACAAIAAAAJAAEAAAACAAIAAAAJAAAAAAACAAIAAAAKAAoAAAAFAAAAAAAKAAsAAAAFAAEAAAAKAAwAAAAFAAIAAAALAAoAAAAFAAAAAAALAAsAAAAFAAEAAAALAAwAAAAFAAIAAAAMAAoAAAAFAAAAAAAMAAsAAAAFAAEAAAAMAAwAAAAFAAIAAAAKAAkAAAAAAAIAAAALAAkAAAAAAAIAAAAMAAkAAAAAAAIAAAANAAwAAAADAAIAAAANAAsAAAADAAIAAAANAAoAAAADAAIAAAAJAAwAAAACAAIAAAAJAAsAAAACAAIAAAAJAAoAAAACAAIAAAA=")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=326193571]
 offset_left = -20.0
@@ -59,18 +57,8 @@ position = Vector2(82, 166)
 [node name="ReturnSpawnPoint" type="Marker2D" parent="." unique_id=975688104]
 position = Vector2(1069, 368)
 
-[node name="Trench" type="StaticBody2D" parent="." unique_id=340015698]
+[node name="Trench" parent="." unique_id=1586272844 instance=ExtResource("5_7j5ef")]
 position = Vector2(570, 301)
-scale = Vector2(5.2730536, 42.478104)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trench" unique_id=2108826032]
-shape = SubResource("RectangleShape2D_1bsgv")
-
-[node name="Sprite2D" type="Sprite2D" parent="Trench" unique_id=2007869545]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.15390076, 0.7038997)
-texture = ExtResource("5_6mom2")
 
 [node name="HealingLabel" type="Label" parent="." unique_id=1091654755]
 visible = false

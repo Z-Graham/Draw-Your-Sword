@@ -8,10 +8,12 @@ extends Node2D
 func _on_room_left(_room : Room, next : bool) -> void:
 	print("do something")
 	if next:
-		camera_2d.global_position = _room.next_room.global_position
-		player.global_position = _room.next_room.enter_spawn_point.global_position
+		if _room.next_room != null:
+			camera_2d.global_position = _room.next_room.global_position
+			player.global_position = _room.next_room.enter_spawn_point.global_position
 	else:
-		camera_2d.global_position = _room.previous_room.global_position
-		player.global_position = _room.previous_room.return_spawn_point.global_position
+		if _room.previous_room != null:
+			camera_2d.global_position = _room.previous_room.global_position
+			player.global_position = _room.previous_room.return_spawn_point.global_position
 	#move camera and player
 	

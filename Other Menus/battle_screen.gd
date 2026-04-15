@@ -19,12 +19,13 @@ extends Node2D
 
 
 var enemy_health=100
+var enemy_status="none"
 var sw_blade="basic"
 var sw_handle="basic"
 var sw_imbue="none"
 var draw_charge:int
 var blade_skill_req=20
-var handle_skill_req:int
+var handle_skill_req=30
 
 var blade_mult=1.0
 var handle_mult=1.0
@@ -67,41 +68,22 @@ func player_fight(blade:String,handle:String,imbue:String):
 		Globals.player_stats["current_MP"]+=5
 	else:
 		Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
-	var damage=30*blade_mult*handle_mult
-	if enemy_in_battle.enemy_stats["weakness"].size()>0:
-		for i in enemy_in_battle.enemy_stats["weakness"]:
-			if sw_imbue==i:
-				damage*=2
-	if enemy_in_battle.enemy_stats["resist"].size()>0:
-		for i in enemy_in_battle.enemy_stats["resist"]:
-			if sw_imbue==i:
-				damage*=0.5
-	#var player_move=create_tween()
-	#player_move.tween_property(player_battle,"global_position",
-	#Vector2(player_battle.global_position.x+800,
-	#player_battle.global_position.y),
-	#1.5)
-	#
-	#await player_move.finished
+	var damage=damage_calc()
 	$damage_label.text=str(damage)
 	$damage_label.visible=true
 	enemy_in_battle.enemy_stats["health"]-=damage
-	#var player_move_back=create_tween()
-	#player_move_back.tween_property(player_battle,"global_position",
-	#Vector2(player_battle.global_position.x-800,
-	#player_battle.global_position.y),
-	#1.5)
-	#await player_move_back.finished
 	if enemy_in_battle.enemy_stats["health"]<=0:
 		battle_end()
 	else:
 		fight_battle_menu.visible=true
 		health_bar.visible=true
 		mp_bar.visible=true
-	#$damage_label.visible=false
+		enemy_fight()
 	if pencil_bar.value<100:
 		pencil_bar.value+=20
 	
+	await get_tree().create_timer(2).timeout
+	$damage_label.visible=false
 
 
 func _on_fight_button_pressed() -> void:
@@ -127,22 +109,16 @@ func _on_basic_button_mouse_exited() -> void:
 	description.text=""
 
 func _on_blade_skill_button_pressed() -> void:
-	if Globals.player_stats["current_MP"]>blade_skill_req:
+	if Globals.player_stats["current_MP"]>=blade_skill_req:
 		var damage:float
 		fight_battle_menu.visible=false
 		health_bar.visible=false
 		mp_bar.visible=false
 		if sw_blade=="basic":
 			Globals.player_stats["current_MP"]-=20
-			damage=30*blade_mult*handle_mult*1.75
-			if enemy_in_battle.enemy_stats["weakness"].size()>0:
-				for i in enemy_in_battle.enemy_stats["weakness"]:
-					if sw_imbue==i:
-						damage*=2
-			if enemy_in_battle.enemy_stats["resist"].size()>0:
-				for i in enemy_in_battle.enemy_stats["resist"]:
-					if sw_imbue==i:
-						damage*=0.5
+			damage=damage_calc()*.75
+			damage+=damage_calc()*.75
+			roundf(damage)
 		$damage_label.text=str(damage)
 		$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
@@ -152,8 +128,10 @@ func _on_blade_skill_button_pressed() -> void:
 			fight_battle_menu.visible=true
 			health_bar.visible=true
 			mp_bar.visible=true
+			enemy_fight()
 		if pencil_bar.value<100:
 			pencil_bar.value+=20
+
 
 func _on_blade_skill_button_mouse_entered() -> void:
 	if sw_blade=="basic":
@@ -164,7 +142,31 @@ func _on_blade_skill_button_mouse_exited() -> void:
 	description.text=""
 
 func _on_handle_skill_button_pressed() -> void:
-	pass # Replace with function body.
+	if Globals.player_stats["current_MP"]>=handle_skill_req:
+		var damage:float
+		fight_battle_menu.visible=false
+		health_bar.visible=false
+		mp_bar.visible=false
+		if sw_handle=="basic":
+			Globals.player_stats["current_MP"]-=30
+			damage=damage_calc_without_imbue()
+			damage*=1.25
+			roundf(damage)
+			var confuse_chance=randi_range(1,10)
+			if confuse_chance==2:
+				enemy_status="confused"
+		$damage_label.text=str(damage)
+		$damage_label.visible=true
+		enemy_in_battle.enemy_stats["health"]-=damage
+		if enemy_in_battle.enemy_stats["health"]<=0:
+			battle_end()
+		else:
+			fight_battle_menu.visible=true
+			health_bar.visible=true
+			mp_bar.visible=true
+			enemy_fight()
+		if pencil_bar.value<100:
+			pencil_bar.value+=20
 
 func _on_handle_skill_button_mouse_entered() -> void:
 	if sw_handle=="basic":
@@ -178,7 +180,6 @@ func _on_back_button_pressed() -> void:
 	main_battle_menu.visible=true
 	fight_battle_menu.visible=false
 
-
 func _on_inventory_item_used(item: Variant) -> void:
 	if item=="HP Potion":
 		if Globals.player_stats["current_health"]<Globals.player_stats["max_health"]-30:
@@ -190,7 +191,6 @@ func _on_inventory_item_used(item: Variant) -> void:
 			Globals.player_stats["current_MP"]+=20
 		else:
 			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
-
 
 func _on_draw_button_pressed() -> void:
 	if pencil_bar.value==100:
@@ -216,6 +216,14 @@ func reset():
 		for i in Globals.goblin_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.goblin_stats[i]
 
+func enemy_fight():
+	if enemy_status=="confused":
+		enemy_status="none"
+	else:
+		var damage=roundf((enemy_in_battle.enemy_stats["attack"]/2)+randf_range(-2,2))
+		damage-=roundf(Globals.player_stats["defense"]/10.0)
+		Globals.player_stats["current_health"]-=damage
+
 
 func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: Variant) -> void:
 	sw_blade=blade
@@ -231,8 +239,30 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		handle_mult=1.0
 	if blade=="basic":
 		blade_skill_req=20
+	if handle=="basic":
+		handle_skill_req=30
 	Globals.sword["blade"] = blade
 	Globals.sword["handle"] = handle
 	Globals.sword["imbue"] = imbue
 	
 	#update player sprite eventually
+
+func damage_calc() -> int:
+	var damage=Globals.player_stats["attack"]*blade_mult*handle_mult
+	if enemy_in_battle.enemy_stats["weakness"].size()>0:
+		for i in enemy_in_battle.enemy_stats["weakness"]:
+			if sw_imbue==i:
+				damage*=2
+	if enemy_in_battle.enemy_stats["resist"].size()>0:
+		for i in enemy_in_battle.enemy_stats["resist"]:
+			if sw_imbue==i:
+				damage*=0.5
+	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/10.0)
+	damage=roundi(damage)
+	return damage
+	
+func damage_calc_without_imbue() -> int:
+	var damage=Globals.player_stats["attack"]*blade_mult*handle_mult
+	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/10.0)
+	damage=roundi(damage)
+	return damage

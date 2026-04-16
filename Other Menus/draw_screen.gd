@@ -64,6 +64,7 @@ func _on_blade_list_item_selected(index: int) -> void:
 	sel_blade=blade_list.get_item_text(index)
 	if sel_blade=="basic":
 		blade_sprite.play("basic_flash")
+		blade_sprite.global_position=Vector2(261,79)
 	print(sel_blade)
 
 

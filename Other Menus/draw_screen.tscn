@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://qyu0ypnyowwq" path="res://Other Menus/draw_screen.gd" id="2_u735a"]
 [ext_resource type="Texture2D" uid="uid://crkjolbw65b61" path="res://assets/sprites/basic_blade.png" id="3_4eyso"]
 [ext_resource type="Texture2D" uid="uid://d3aj3q0l243gk" path="res://assets/sprites/basic_handle.png" id="4_4eyso"]
+[ext_resource type="Texture2D" uid="uid://cvpbwashxw5ey" path="res://assets/sprites/katana_blade.png" id="4_14rhe"]
+[ext_resource type="Texture2D" uid="uid://bmduybjkkxx8y" path="res://assets/sprites/katana_handle.png" id="6_rr64v"]
 
 [sub_resource type="Gradient" id="Gradient_nqbbo"]
 colors = PackedColorArray(0, 0.0333333, 1, 1, 1, 1, 1, 1)
@@ -28,6 +30,14 @@ region = Rect2(0, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3we0"]
 atlas = ExtResource("3_4eyso")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xl7w"]
+atlas = ExtResource("4_14rhe")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obfjt"]
+atlas = ExtResource("4_14rhe")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjovv"]
 atlas = ExtResource("3_4eyso")
@@ -56,6 +66,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1xl7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obfjt")
+}],
+"loop": true,
+"name": &"katana_flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bjovv")
 }],
 "loop": true,
@@ -74,6 +95,14 @@ region = Rect2(0, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ab1fa"]
 atlas = ExtResource("4_4eyso")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e46yf"]
+atlas = ExtResource("6_rr64v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rceyh"]
+atlas = ExtResource("6_rr64v")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4o7a"]
 atlas = ExtResource("4_4eyso")
@@ -98,6 +127,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"basic_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e46yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rceyh")
+}],
+"loop": true,
+"name": &"katana_flash",
 "speed": 5.0
 }, {
 "frames": [{
@@ -281,16 +321,16 @@ offset_right = 887.0
 offset_bottom = 522.0
 
 [node name="blade" type="AnimatedSprite2D" parent="sword" unique_id=1765120727]
-position = Vector2(261, 79)
+position = Vector2(321, 1)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_nqbbo")
-animation = &"basic_flash"
+animation = &"katana_flash"
 
 [node name="handle" type="AnimatedSprite2D" parent="sword" unique_id=894404993]
 position = Vector2(102.00006, 184.99997)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_ab1fa")
-animation = &"basic_flash"
+animation = &"katana_flash"
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]

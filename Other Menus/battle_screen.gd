@@ -118,10 +118,15 @@ func _on_blade_skill_button_pressed() -> void:
 		if sw_blade=="basic":
 			Globals.player_stats["current_MP"]-=20
 			damage=damage_calc()*.9
-			damage+=damage_calc()*.9
 			damage=roundi(damage)
-		$damage_label.text=str(damage)
-		$damage_label.visible=true
+			$damage_label.text=str(damage)
+			$damage_label.visible=true
+			await get_tree().create_timer(0.5).timeout
+			var damage2=damage_calc()*.9
+			damage2=roundi(damage2)
+			$damage_label.text=str(damage2)
+			$damage_label.visible=true
+			damage=damage+damage2
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
@@ -156,6 +161,7 @@ func _on_handle_skill_button_pressed() -> void:
 			var confuse_chance=randi_range(1,10)
 			if confuse_chance==2:
 				enemy_status="confused"
+				enemy_in_battle.modulate=Color(0.95, 1.0, 0.0, 1.0)
 		$damage_label.text=str(damage)
 		$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
@@ -165,6 +171,7 @@ func _on_handle_skill_button_pressed() -> void:
 			fight_battle_menu.visible=true
 			health_bar.visible=true
 			mp_bar.visible=true
+			await get_tree().create_timer(2).timeout
 			enemy_fight()
 		if pencil_bar.value<100:
 			pencil_bar.value+=20
@@ -220,6 +227,7 @@ func reset():
 func enemy_fight():
 	if enemy_status=="confused":
 		enemy_status="none"
+		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	else:
 		var damage=roundf((enemy_in_battle.enemy_stats["attack"]/2)+randf_range(-2,2))
 		damage-=roundf(Globals.player_stats["defense"]/10.0)
@@ -259,11 +267,13 @@ func damage_calc() -> int:
 			if sw_imbue==i:
 				damage*=0.5
 	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/10.0)
+	damage*=randf_range(0.8,1.2)
 	damage=roundi(damage)
 	return damage
 	
 func damage_calc_without_imbue() -> int:
 	var damage=Globals.player_stats["attack"]*blade_mult*handle_mult
 	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/10.0)
+	damage*=randf_range(0.8,1.2)
 	damage=roundi(damage)
 	return damage

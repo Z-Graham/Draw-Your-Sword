@@ -56,3 +56,12 @@ offset_right = 87.68
 offset_bottom = 540.912
 scale = Vector2(1.0762981, 1)
 color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1943656946]
+layout_mode = 0
+offset_left = 1115.5768
+offset_top = 49.68486
+offset_right = 1155.5768
+offset_bottom = 89.68486
+scale = Vector2(5.575256, 16.211899)
+color = Color(0.08, 0.08, 0.08, 1)

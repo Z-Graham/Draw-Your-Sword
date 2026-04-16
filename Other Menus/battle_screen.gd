@@ -44,7 +44,7 @@ func _ready() -> void:
 func _process(delta:float)-> void:
 	health_bar.max_value=Globals.player_stats["max_health"]
 	health_bar.value=Globals.player_stats["max_health"]-Globals.player_stats["current_health"]
-	health_label.text="Health: "+str(Globals.player_stats["current_health"])+"/"+str(Globals.player_stats["max_health"])
+	health_label.text="Health: "+str(int(Globals.player_stats["current_health"]))+"/"+str(Globals.player_stats["max_health"])
 	mp_bar.max_value=Globals.player_stats["max_MP"]
 	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
@@ -69,6 +69,7 @@ func player_fight(blade:String,handle:String,imbue:String):
 	else:
 		Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
 	var damage=damage_calc()
+	damage=roundi(damage)
 	$damage_label.text=str(damage)
 	$damage_label.visible=true
 	enemy_in_battle.enemy_stats["health"]-=damage
@@ -110,15 +111,15 @@ func _on_basic_button_mouse_exited() -> void:
 
 func _on_blade_skill_button_pressed() -> void:
 	if Globals.player_stats["current_MP"]>=blade_skill_req:
-		var damage:float
+		var damage=0
 		fight_battle_menu.visible=false
 		health_bar.visible=false
 		mp_bar.visible=false
 		if sw_blade=="basic":
 			Globals.player_stats["current_MP"]-=20
-			damage=damage_calc()*.75
-			damage+=damage_calc()*.75
-			roundf(damage)
+			damage=damage_calc()*.9
+			damage+=damage_calc()*.9
+			damage=roundi(damage)
 		$damage_label.text=str(damage)
 		$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
@@ -143,15 +144,15 @@ func _on_blade_skill_button_mouse_exited() -> void:
 
 func _on_handle_skill_button_pressed() -> void:
 	if Globals.player_stats["current_MP"]>=handle_skill_req:
-		var damage:float
+		var damage=0
 		fight_battle_menu.visible=false
 		health_bar.visible=false
 		mp_bar.visible=false
 		if sw_handle=="basic":
 			Globals.player_stats["current_MP"]-=30
 			damage=damage_calc_without_imbue()
-			damage*=1.25
-			roundf(damage)
+			damage*=1.1
+			damage=roundi(damage)
 			var confuse_chance=randi_range(1,10)
 			if confuse_chance==2:
 				enemy_status="confused"

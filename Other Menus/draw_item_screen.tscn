@@ -1,22 +1,19 @@
 [gd_scene format=3 uid="uid://cjugq0o8gwov7"]
 
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="1_dtr1y"]
+[ext_resource type="Script" uid="uid://cvb10k67t2why" path="res://Other Menus/draw_item_screen.gd" id="2_qutab"]
 
 [node name="DrawItemScreen" type="TextureRect" unique_id=1341454615]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -283.0
-offset_top = -51.0
-offset_right = -61.0
-offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.0720911, 1.0063428)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("1_dtr1y")
+script = ExtResource("2_qutab")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1801893690]
 top_level = true
@@ -24,11 +21,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.035
 anchor_bottom = 0.031000001
-offset_left = 86.0
-offset_top = 67.00001
-offset_right = 88.68
-offset_bottom = 69.912
-scale = Vector2(1.0782468, 1.029644)
+offset_left = 288.0
+offset_top = 506.0
+offset_right = 283.68
+offset_bottom = 506.412
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=723736845]
@@ -37,11 +33,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.035
 anchor_bottom = 0.031000001
-offset_left = 85.0
+offset_left = 288.0
 offset_top = 303.0
-offset_right = 87.68
-offset_bottom = 305.912
-scale = Vector2(1.0779221, 1.0343968)
+offset_right = 283.68
+offset_bottom = 303.912
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=492902920]
@@ -50,18 +45,26 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.035
 anchor_bottom = 0.031000001
-offset_left = 85.0
-offset_top = 538.0
-offset_right = 87.68
-offset_bottom = 540.912
-scale = Vector2(1.0762981, 1)
+offset_left = 288.0
+offset_top = 101.0
+offset_right = 283.68
+offset_bottom = 101.412
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1943656946]
 layout_mode = 0
-offset_left = 1115.5768
-offset_top = 49.68486
-offset_right = 1155.5768
-offset_bottom = 89.68486
 scale = Vector2(5.575256, 16.211899)
 color = Color(0.08, 0.08, 0.08, 1)
+
+[node name="ObjectList" type="ItemList" parent="." unique_id=1373379656]
+layout_mode = 0
+offset_left = 938.0
+offset_top = 222.0
+offset_right = 1088.0
+offset_bottom = 372.0
+theme_override_font_sizes/font_size = 28
+item_count = 2
+item_0/text = "Bridge"
+item_1/text = "Box"
+
+[connection signal="item_selected" from="ObjectList" to="." method="_on_object_list_item_selected"]

@@ -11,6 +11,7 @@ var blade_label
 var handle_label
 var imbue_label
 
+#var screen_size
 
 #var health := max_health:
 	#set(new_health):
@@ -38,6 +39,8 @@ func _ready() -> void:
 	blade_label = get_tree().get_first_node_in_group("BladeLabel")
 	handle_label = get_tree().get_first_node_in_group("handleLabel")
 	imbue_label = get_tree().get_first_node_in_group("ImbueLabel")
+	
+	#screen_size = get_viewport_rect().size
 
 func get_input():
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -68,7 +71,7 @@ func _physics_process(_delta: float) -> void:
 	if !ui.visible:
 		move_and_slide()
 		
-
+	#position = position.clamp(Vector2.ZERO, screen_size)
 
 func take_damage(): # mostly for testing
 	Globals.player_stats["current_health"] -= 1

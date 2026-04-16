@@ -20,6 +20,7 @@ class_name Room
 
 
 signal left
+signal item_drawing_started
 
 func _ready() -> void:
 	var items = get_tree().get_nodes_in_group("collectedItems")
@@ -62,3 +63,7 @@ func _on_drawing_spot_solution_found() -> void:
 		trench.process_mode = PROCESS_MODE_DISABLED
 		trench.visible = false
 		#covering_sprite.visible = true (whatever it's called)
+
+
+func _on_drawing_spot_opened() -> void:
+	item_drawing_started.emit()

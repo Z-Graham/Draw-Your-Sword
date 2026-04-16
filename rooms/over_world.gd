@@ -17,3 +17,7 @@ func _on_room_left(_room : Room, next : bool) -> void:
 			player.global_position = _room.previous_room.return_spawn_point.global_position
 	#move camera and player
 	
+
+
+func _on_room_item_drawing_started() -> void:
+	player.speed = 0

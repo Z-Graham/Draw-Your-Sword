@@ -24,7 +24,7 @@ next_room = NodePath("../Room2")
 z_index = -5
 position = Vector2(1700, 0)
 next_room = NodePath("../Room3")
-previous_room = NodePath("")
+previous_room = NodePath("../Room1")
 
 [node name="Room3" parent="." unique_id=1535874592 node_paths=PackedStringArray("previous_room") instance=ExtResource("7_4sdyu")]
 z_index = -5

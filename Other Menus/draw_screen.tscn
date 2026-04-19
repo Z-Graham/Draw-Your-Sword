@@ -5,7 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://crkjolbw65b61" path="res://assets/sprites/basic_blade.png" id="3_4eyso"]
 [ext_resource type="Texture2D" uid="uid://d3aj3q0l243gk" path="res://assets/sprites/basic_handle.png" id="4_4eyso"]
 [ext_resource type="Texture2D" uid="uid://cvpbwashxw5ey" path="res://assets/sprites/katana_blade.png" id="4_14rhe"]
+[ext_resource type="Texture2D" uid="uid://4bjggsin5t6m" path="res://assets/sprites/kris_blade.png" id="5_g4o7a"]
+[ext_resource type="Texture2D" uid="uid://dmtcj5dvmtq61" path="res://assets/sprites/spear_blade.png" id="6_b3we0"]
 [ext_resource type="Texture2D" uid="uid://bmduybjkkxx8y" path="res://assets/sprites/katana_handle.png" id="6_rr64v"]
+[ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="9_bjovv"]
+[ext_resource type="Texture2D" uid="uid://dwval6y234p2y" path="res://assets/sprites/spear_handle.png" id="10_1xl7w"]
 
 [sub_resource type="Gradient" id="Gradient_nqbbo"]
 colors = PackedColorArray(0, 0.0333333, 1, 1, 1, 1, 1, 1)
@@ -13,11 +17,21 @@ colors = PackedColorArray(0, 0.0333333, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_14rhe"]
 gradient = SubResource("Gradient_nqbbo")
 
+[sub_resource type="Gradient" id="Gradient_14rhe"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rr64v"]
+gradient = SubResource("Gradient_14rhe")
+
 [sub_resource type="Gradient" id="Gradient_4eyso"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nqbbo"]
 gradient = SubResource("Gradient_4eyso")
+
+[sub_resource type="Gradient" id="Gradient_7ceo7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ab1fa"]
+gradient = SubResource("Gradient_7ceo7")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqbbo"]
 atlas = ExtResource("3_4eyso")
@@ -39,9 +53,37 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("4_14rhe")
 region = Rect2(0, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1plg"]
+atlas = ExtResource("4_14rhe")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bge2"]
+atlas = ExtResource("5_g4o7a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mc4e"]
+atlas = ExtResource("5_g4o7a")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmlia"]
+atlas = ExtResource("5_g4o7a")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjovv"]
 atlas = ExtResource("3_4eyso")
 region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah1dq"]
+atlas = ExtResource("6_b3we0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1dlh"]
+atlas = ExtResource("6_b3we0")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aklfp"]
+atlas = ExtResource("6_b3we0")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nqbbo"]
 animations = [{
@@ -77,10 +119,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f1plg")
+}],
+"loop": true,
+"name": &"katana_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bge2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mc4e")
+}],
+"loop": true,
+"name": &"kris_flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmlia")
+}],
+"loop": true,
+"name": &"kris_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bjovv")
 }],
 "loop": true,
 "name": &"nothing_selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah1dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1dlh")
+}],
+"loop": true,
+"name": &"spear_flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aklfp")
+}],
+"loop": true,
+"name": &"spear_set",
 "speed": 5.0
 }]
 
@@ -104,9 +192,37 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("6_rr64v")
 region = Rect2(0, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj1te"]
+atlas = ExtResource("6_rr64v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fo07"]
+atlas = ExtResource("9_bjovv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueau4"]
+atlas = ExtResource("9_bjovv")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u2xu"]
+atlas = ExtResource("9_bjovv")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4o7a"]
 atlas = ExtResource("4_4eyso")
 region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk0j4"]
+atlas = ExtResource("10_1xl7w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx3on"]
+atlas = ExtResource("10_1xl7w")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydxn2"]
+atlas = ExtResource("10_1xl7w")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ab1fa"]
 animations = [{
@@ -142,10 +258,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bj1te")
+}],
+"loop": true,
+"name": &"katana_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fo07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueau4")
+}],
+"loop": true,
+"name": &"kris_flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u2xu")
+}],
+"loop": true,
+"name": &"kris_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g4o7a")
 }],
 "loop": true,
 "name": &"nothing_selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk0j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx3on")
+}],
+"loop": true,
+"name": &"spear_flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydxn2")
+}],
+"loop": true,
+"name": &"spear_set",
 "speed": 5.0
 }]
 
@@ -215,6 +377,7 @@ mouse_filter = 2
 color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 
 [node name="CloseButton" type="Button" parent="." unique_id=714139092]
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 3
@@ -285,9 +448,11 @@ offset_left = 1123.0
 offset_top = 106.0
 offset_right = 1360.0
 offset_bottom = 641.0
-item_count = 1
+item_count = 2
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_14rhe")
+item_1/text = "katana"
+item_1/icon = SubResource("GradientTexture2D_rr64v")
 
 [node name="handle_list" type="ItemList" parent="." unique_id=535163553]
 visible = false
@@ -297,9 +462,11 @@ offset_left = 1122.0
 offset_top = 106.0
 offset_right = 1359.0
 offset_bottom = 641.0
-item_count = 1
+item_count = 2
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
+item_1/text = "katana"
+item_1/icon = SubResource("GradientTexture2D_ab1fa")
 
 [node name="imbue_list" type="ItemList" parent="." unique_id=1111623115]
 visible = false
@@ -313,24 +480,17 @@ item_count = 1
 item_0/text = "none"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
 
-[node name="sword" type="Control" parent="." unique_id=402495953]
-anchors_preset = 0
-offset_left = 543.0
-offset_top = 261.0
-offset_right = 887.0
-offset_bottom = 522.0
-
-[node name="blade" type="AnimatedSprite2D" parent="sword" unique_id=1765120727]
-position = Vector2(321, 1)
+[node name="blade" type="AnimatedSprite2D" parent="." unique_id=1765120727]
+position = Vector2(712.00006, 361)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_nqbbo")
-animation = &"katana_flash"
+animation = &"kris_flash"
 
-[node name="handle" type="AnimatedSprite2D" parent="sword" unique_id=894404993]
-position = Vector2(102.00006, 184.99997)
+[node name="handle" type="AnimatedSprite2D" parent="." unique_id=894404993]
+position = Vector2(613, 452)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_ab1fa")
-animation = &"katana_flash"
+animation = &"kris_set"
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]

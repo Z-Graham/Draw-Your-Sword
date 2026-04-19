@@ -7,9 +7,9 @@ extends TextureRect
 @onready var handle: TabBar = $TabContainer/Handle
 @onready var imbue: TabBar = $TabContainer/Imbue
 @onready var blade_list: ItemList = $blade_list
-@onready var blade_sprite: AnimatedSprite2D = $sword/blade
+@onready var blade_sprite: AnimatedSprite2D = $blade
 @onready var handle_list: ItemList = $handle_list
-@onready var handle_sprite: AnimatedSprite2D = $sword/handle
+@onready var handle_sprite: AnimatedSprite2D = $handle
 @onready var imbue_list: ItemList = $imbue_list
 @onready var change_tab_button: Button = $ChangeTabButton
 
@@ -35,6 +35,8 @@ func _on_change_tab_button_pressed() -> void:
 				handle_list.visible=true
 		if sel_blade=="basic":
 			blade_sprite.play("basic_set")
+		if sel_blade=="katana":
+			blade_sprite.play("katana_set")
 	elif current_tab==handle:
 		if not sel_handle=="":
 			if tab_container.current_tab < tab_container.get_tab_count() - 1:
@@ -44,14 +46,19 @@ func _on_change_tab_button_pressed() -> void:
 				imbue_list.visible=true
 		if sel_handle=="basic":
 			handle_sprite.play("basic_set")
+		if sel_handle=="katana":
+			handle_sprite.play("katana_set")
 	elif current_tab==imbue:
 		if not sel_imbue=="":
+			$CloseButton.visible=true
 			if tab_container.current_tab < tab_container.get_tab_count() - 1:
 				tab_container.current_tab += 1
 			imbue_list.visible=false
 			change_tab_button.visible=false
 		if sel_blade=="basic":
 			blade_sprite.play("basic_set")
+		if sel_blade=="katana":
+			blade_sprite.play("katana_set")
 
 func _on_close_button_pressed() -> void:
 	visible = false
@@ -61,17 +68,23 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_blade_list_item_selected(index: int) -> void:
+	blade_sprite.stop()
 	sel_blade=blade_list.get_item_text(index)
 	if sel_blade=="basic":
 		blade_sprite.play("basic_flash")
-		blade_sprite.global_position=Vector2(261,79)
-	print(sel_blade)
+	elif sel_blade=="katana":
+		blade_sprite.play("katana_flash")
 
 
 func _on_handle_list_item_selected(index: int) -> void:
 	sel_handle=handle_list.get_item_text(index)
+	update_position()
+	handle_sprite.stop()
 	if sel_handle=="basic":
 		handle_sprite.play("basic_flash")
+	elif sel_handle=="katana":
+		handle_sprite.play("katana_flash")
+	
 
 
 func _on_imbue_list_item_selected(index: int) -> void:
@@ -80,6 +93,8 @@ func _on_imbue_list_item_selected(index: int) -> void:
 		blade_sprite.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	if sel_blade=="basic":
 		blade_sprite.play("basic_flash")
+	elif sel_blade=="katana":
+		blade_sprite.play("katana_flash")
 
 func reset():
 	sel_blade=""
@@ -97,3 +112,25 @@ func reset():
 	handle_sprite.play("nothing_selected")
 	blade_sprite.modulate=Color(1,1,1,1)
 	change_tab_button.visible=true
+
+
+func update_position():
+	if sel_blade=="basic":
+		if sel_handle=="basic":
+			blade_sprite.global_position=Vector2(504,267)
+			handle_sprite.global_position=Vector2(345,374)
+		elif sel_handle=="katana":
+			blade_sprite.global_position=Vector2(554,285)
+			handle_sprite.global_position=Vector2(356,418)
+	if sel_blade=="katana":
+		if sel_handle=="basic":
+			blade_sprite.global_position=Vector2(520,274)
+			handle_sprite.global_position=Vector2(304,442)
+		elif sel_handle=="katana":
+			blade_sprite.global_position=Vector2(562,244)
+			handle_sprite.global_position=Vector2(304,442)
+	if sel_blade=="kris":
+		if sel_handle=="kris":
+			blade_sprite.global_position=Vector2(712,361)
+			handle_sprite.global_position=Vector2(613,452)
+	

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bcchcj045bfvs"]
 
-[ext_resource type="PackedScene" uid="uid://bcchcj045bfvs" path="res://rooms/over_world.tscn" id="1_6t36p"]
+[ext_resource type="PackedScene" uid="uid://c4s6nthsaqkhs" path="res://rooms/over_world.tscn" id="1_6t36p"]
 [ext_resource type="Script" path="res://rooms/over_world.gd" id="1_b330e"]
 [ext_resource type="PackedScene" uid="uid://doir6ij00hcj8" path="res://rooms/room_2.tscn" id="2_b330e"]
 [ext_resource type="PackedScene" uid="uid://ctverhenfqadk" path="res://Player/player.tscn" id="4_lc3sa"]

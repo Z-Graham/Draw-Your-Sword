@@ -100,7 +100,7 @@ type = "magic"
 
 [node name="DrawItemScreen" parent="." unique_id=1341454615 instance=ExtResource("9_sti2h")]
 visible = false
-z_index = 1
+z_index = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

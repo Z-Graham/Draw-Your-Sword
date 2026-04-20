@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcchcj045bfvs"]
 
 [ext_resource type="Script" uid="uid://dvefn68xjxj46" path="res://rooms/over_world.gd" id="1_b330e"]
-[ext_resource type="PackedScene" uid="uid://dga1di5dcetvw" path="res://rooms/room_1.tscn" id="2_4sdyu"]
+[ext_resource type="PackedScene" uid="uid://c4s6nthsaqkhs" path="res://rooms/room_1.tscn" id="2_4sdyu"]
 [ext_resource type="PackedScene" uid="uid://doir6ij00hcj8" path="res://rooms/room_2.tscn" id="2_b330e"]
 [ext_resource type="PackedScene" uid="uid://ctverhenfqadk" path="res://Player/player.tscn" id="4_lc3sa"]
 [ext_resource type="PackedScene" uid="uid://dj8rb7x3bi1jw" path="res://Other Menus/battle_screen.tscn" id="5_3ixio"]
@@ -21,13 +21,11 @@ position = Vector2(65, 53)
 next_room = NodePath("../Room2")
 
 [node name="Room2" parent="." unique_id=873215277 node_paths=PackedStringArray("next_room", "previous_room") instance=ExtResource("2_b330e")]
-z_index = -5
 position = Vector2(1700, 0)
 next_room = NodePath("../Room3")
 previous_room = NodePath("../Room1")
 
 [node name="Room3" parent="." unique_id=1535874592 node_paths=PackedStringArray("previous_room") instance=ExtResource("7_4sdyu")]
-z_index = -5
 position = Vector2(3446, 0)
 previous_room = NodePath("../Room2")
 

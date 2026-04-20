@@ -489,7 +489,7 @@ item_1/text = "fire"
 position = Vector2(874.00006, 238)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_nqbbo")
-animation = &"katana_set"
+animation = &"basic_flash"
 
 [node name="handle" type="AnimatedSprite2D" parent="." unique_id=894404993]
 position = Vector2(637, 421)

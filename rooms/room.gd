@@ -21,6 +21,7 @@ class_name Room
 
 signal left
 signal item_drawing_started
+signal draw_spot_solution_found
 
 func _ready() -> void:
 	var items = get_tree().get_nodes_in_group("collectedItems")
@@ -51,19 +52,21 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		
 	elif type == "magic":
 		Globals.healing_items["MP Potion"] += 1
+		#healing_label.text = "Picked up Magic Item"
 		magic_label.visible = true
 		num_magic_items -= 1
 		await get_tree().create_timer(1.5).timeout
 		magic_label.visible = false
+		#healing_label.text = "Picked up Healing Item"
 	
-
-
-func _on_drawing_spot_solution_found() -> void:
-	if trench != null:
-		trench.process_mode = PROCESS_MODE_DISABLED
-		trench.visible = false
-		#covering_sprite.visible = true (whatever it's called)
 
 
 func _on_drawing_spot_opened() -> void:
 	item_drawing_started.emit()
+
+
+func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
+	if _solution == "Bridge":
+		trench.visible = false
+		trench.collision_layer = 1
+		draw_spot_solution_found.emit()

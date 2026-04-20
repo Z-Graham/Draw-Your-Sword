@@ -155,7 +155,7 @@ func _on_blade_skill_button_mouse_entered() -> void:
 		Costs 20MP"
 	if sw_blade=="katana":
 		description.text="Precise Slash: A clean cut with the katana blade. 
-		Attacks against enemy weaknesses are twice as effective
+		Attacks against enemy weaknesses are more effective
 		Costs 25MP
 		"
 
@@ -177,6 +177,11 @@ func _on_handle_skill_button_pressed() -> void:
 			if confuse_chance==2:
 				enemy_status="confused"
 				enemy_in_battle.modulate=Color(0.95, 1.0, 0.0, 1.0)
+		elif sw_handle=="katana":
+			Globals.player_stats["current_MP"]-=5
+			damage=damage_calc()
+			damage*=.25
+			damage=roundi(damage)
 		$damage_label.text=str(damage)
 		$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
@@ -187,7 +192,8 @@ func _on_handle_skill_button_pressed() -> void:
 			health_bar.visible=true
 			mp_bar.visible=true
 			await get_tree().create_timer(2).timeout
-			enemy_fight()
+			if not sw_handle=="katana":
+				enemy_fight()
 		if pencil_bar.value<100:
 			pencil_bar.value+=20
 
@@ -195,6 +201,9 @@ func _on_handle_skill_button_mouse_entered() -> void:
 	if sw_handle=="basic":
 		description.text="Bash: A strike with the pommel of your blade with a chance to confuse the enemy.
 		Costs 30MP"
+	if sw_handle=="katana":
+		description.text="Quick Draw: A swift strike that sacrifices power for speed. Enemy will not counterattack.
+		Costs 5MP"
 
 func _on_handle_skill_button_mouse_exited() -> void:
 	description.text=""
@@ -263,6 +272,8 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		handle_mult=1.0
 	if blade=="basic":
 		blade_skill_req=20
+	elif blade=="katana":
+		blade_skill_req=25
 	if handle=="basic":
 		handle_skill_req=30
 	Globals.sword["blade"] = blade

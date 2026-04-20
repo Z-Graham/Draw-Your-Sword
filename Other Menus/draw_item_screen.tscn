@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="1_dtr1y"]
 [ext_resource type="Script" uid="uid://cvb10k67t2why" path="res://Other Menus/draw_item_screen.gd" id="2_qutab"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_qutab"]
+font_size = 23
+
 [node name="DrawItemScreen" type="TextureRect" unique_id=1341454615]
 texture_filter = 1
 anchors_preset = 15
@@ -67,4 +70,24 @@ item_count = 2
 item_0/text = "Bridge"
 item_1/text = "Box"
 
+[node name="ConfirmButton" type="Button" parent="." unique_id=1257345793]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 413.0
+offset_right = 1017.0
+offset_bottom = 444.0
+text = "DRAW"
+
+[node name="WrongAnswerLabel" type="Label" parent="." unique_id=1129137209]
+visible = false
+layout_mode = 0
+offset_left = 938.0
+offset_top = 78.0
+offset_right = 978.0
+offset_bottom = 101.0
+text = "That doesn't seem 
+right"
+label_settings = SubResource("LabelSettings_qutab")
+
 [connection signal="item_selected" from="ObjectList" to="." method="_on_object_list_item_selected"]
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

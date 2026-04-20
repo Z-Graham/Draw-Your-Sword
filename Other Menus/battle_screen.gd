@@ -127,6 +127,16 @@ func _on_blade_skill_button_pressed() -> void:
 			$damage_label.text=str(damage2)
 			$damage_label.visible=true
 			damage=damage+damage2
+		if sw_blade=="katana":
+			Globals.player_stats["current_MP"]-=25
+			damage=damage_calc()*1.25
+			if enemy_in_battle.enemy_stats["weakness"].size()>0:
+				for i in enemy_in_battle.enemy_stats["weakness"]:
+					if sw_imbue==i:
+						damage*=1.5
+			damage=roundi(damage)
+			$damage_label.text=str(damage)
+			$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
@@ -143,6 +153,11 @@ func _on_blade_skill_button_mouse_entered() -> void:
 	if sw_blade=="basic":
 		description.text="Double Slice: Two rapid attacks with your weapon.
 		Costs 20MP"
+	if sw_blade=="katana":
+		description.text="Precise Slash: A clean cut with the katana blade. 
+		Attacks against enemy weaknesses are twice as effective
+		Costs 25MP
+		"
 
 func _on_blade_skill_button_mouse_exited() -> void:
 	description.text=""
@@ -158,7 +173,7 @@ func _on_handle_skill_button_pressed() -> void:
 			damage=damage_calc_without_imbue()
 			damage*=1.1
 			damage=roundi(damage)
-			var confuse_chance=randi_range(1,10)
+			var confuse_chance=randi_range(1,3)
 			if confuse_chance==2:
 				enemy_status="confused"
 				enemy_in_battle.modulate=Color(0.95, 1.0, 0.0, 1.0)

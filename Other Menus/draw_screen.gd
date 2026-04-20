@@ -35,8 +35,12 @@ func _on_change_tab_button_pressed() -> void:
 				handle_list.visible=true
 		if sel_blade=="basic":
 			blade_sprite.play("basic_set")
-		if sel_blade=="katana":
+		elif sel_blade=="katana":
 			blade_sprite.play("katana_set")
+		elif sel_blade=="kris":
+			blade_sprite.play("kris_set")
+		elif sel_blade=="spear":
+			blade_sprite.play("spear_set")
 	elif current_tab==handle:
 		if not sel_handle=="":
 			if tab_container.current_tab < tab_container.get_tab_count() - 1:
@@ -48,6 +52,10 @@ func _on_change_tab_button_pressed() -> void:
 			handle_sprite.play("basic_set")
 		if sel_handle=="katana":
 			handle_sprite.play("katana_set")
+		elif sel_handle=="kris":
+			handle_sprite.play("kris_set")
+		elif sel_handle=="spear":
+			handle_sprite.play("spear_set")
 	elif current_tab==imbue:
 		if not sel_imbue=="":
 			$CloseButton.visible=true
@@ -57,8 +65,12 @@ func _on_change_tab_button_pressed() -> void:
 			change_tab_button.visible=false
 		if sel_blade=="basic":
 			blade_sprite.play("basic_set")
-		if sel_blade=="katana":
+		elif sel_blade=="katana":
 			blade_sprite.play("katana_set")
+		elif sel_blade=="kris":
+			blade_sprite.play("kris_set")
+		elif sel_blade=="spear":
+			blade_sprite.play("spear_set")
 
 func _on_close_button_pressed() -> void:
 	visible = false
@@ -74,6 +86,10 @@ func _on_blade_list_item_selected(index: int) -> void:
 		blade_sprite.play("basic_flash")
 	elif sel_blade=="katana":
 		blade_sprite.play("katana_flash")
+	elif sel_blade=="kris":
+		blade_sprite.play("kris_flash")
+	elif sel_blade=="spear":
+		blade_sprite.play("spear_flash")
 
 
 func _on_handle_list_item_selected(index: int) -> void:
@@ -84,6 +100,10 @@ func _on_handle_list_item_selected(index: int) -> void:
 		handle_sprite.play("basic_flash")
 	elif sel_handle=="katana":
 		handle_sprite.play("katana_flash")
+	elif sel_handle=="kris":
+		handle_sprite.play("kris_flash")
+	elif sel_handle=="spear":
+		handle_sprite.play("spear_flash")
 	
 
 
@@ -91,10 +111,16 @@ func _on_imbue_list_item_selected(index: int) -> void:
 	sel_imbue=imbue_list.get_item_text(index)
 	if sel_imbue=="none":
 		blade_sprite.modulate=Color(1.0, 1.0, 1.0, 1.0)
+	elif sel_imbue=="fire":
+		blade_sprite.modulate=Color(1.0, 0.0, 0.0, 1.0)
 	if sel_blade=="basic":
 		blade_sprite.play("basic_flash")
 	elif sel_blade=="katana":
 		blade_sprite.play("katana_flash")
+	elif sel_blade=="kris":
+		blade_sprite.play("kris_flash")
+	elif sel_blade=="spear":
+		blade_sprite.play("spear_flash")
 
 func reset():
 	sel_blade=""
@@ -122,6 +148,12 @@ func update_position():
 		elif sel_handle=="katana":
 			blade_sprite.global_position=Vector2(554,285)
 			handle_sprite.global_position=Vector2(356,418)
+		elif sel_handle=="kris":
+			blade_sprite.global_position=Vector2(554,330)
+			handle_sprite.global_position=Vector2(437,421)
+		elif sel_handle=="spear":
+			blade_sprite.global_position=Vector2(556,268)
+			handle_sprite.global_position=Vector2(337,421)
 	if sel_blade=="katana":
 		if sel_handle=="basic":
 			blade_sprite.global_position=Vector2(520,274)
@@ -129,8 +161,21 @@ func update_position():
 		elif sel_handle=="katana":
 			blade_sprite.global_position=Vector2(562,244)
 			handle_sprite.global_position=Vector2(304,442)
+		elif sel_handle=="kris":
+			blade_sprite.global_position=Vector2(613,268)
+			handle_sprite.global_position=Vector2(437,421)
+		elif sel_handle=="spear":
+			blade_sprite.global_position=Vector2(574,238)
+			handle_sprite.global_position=Vector2(337,421)
 	if sel_blade=="kris":
+		if sel_handle=="basic":
+			blade_sprite.global_position=Vector2(526,299)
+			handle_sprite.global_position=Vector2(387,421)
 		if sel_handle=="kris":
 			blade_sprite.global_position=Vector2(712,361)
 			handle_sprite.global_position=Vector2(613,452)
+	if sel_blade=="spear":
+		if sel_handle=="spear":
+			blade_sprite.global_position=Vector2(576,238)
+			handle_sprite.global_position=Vector2(337,421)
 	

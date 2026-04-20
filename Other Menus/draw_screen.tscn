@@ -448,11 +448,13 @@ offset_left = 1123.0
 offset_top = 106.0
 offset_right = 1360.0
 offset_bottom = 641.0
-item_count = 2
+item_count = 4
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_14rhe")
 item_1/text = "katana"
 item_1/icon = SubResource("GradientTexture2D_rr64v")
+item_2/text = "kris"
+item_3/text = "spear"
 
 [node name="handle_list" type="ItemList" parent="." unique_id=535163553]
 visible = false
@@ -462,11 +464,13 @@ offset_left = 1122.0
 offset_top = 106.0
 offset_right = 1359.0
 offset_bottom = 641.0
-item_count = 2
+item_count = 4
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
 item_1/text = "katana"
 item_1/icon = SubResource("GradientTexture2D_ab1fa")
+item_2/text = "kris"
+item_3/text = "spear"
 
 [node name="imbue_list" type="ItemList" parent="." unique_id=1111623115]
 visible = false
@@ -476,21 +480,22 @@ offset_left = 1123.0
 offset_top = 106.0
 offset_right = 1354.0
 offset_bottom = 640.0
-item_count = 1
+item_count = 2
 item_0/text = "none"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
+item_1/text = "fire"
 
 [node name="blade" type="AnimatedSprite2D" parent="." unique_id=1765120727]
-position = Vector2(712.00006, 361)
+position = Vector2(874.00006, 238)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_nqbbo")
-animation = &"kris_flash"
+animation = &"katana_set"
 
 [node name="handle" type="AnimatedSprite2D" parent="." unique_id=894404993]
-position = Vector2(613, 452)
+position = Vector2(637, 421)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_ab1fa")
-animation = &"kris_set"
+animation = &"spear_set"
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]

@@ -26,6 +26,7 @@ var sw_imbue="none"
 var draw_charge:int
 var blade_skill_req=20
 var handle_skill_req=30
+var poison_count=0
 
 var blade_mult=1.0
 var handle_mult=1.0
@@ -127,7 +128,7 @@ func _on_blade_skill_button_pressed() -> void:
 			$damage_label.text=str(damage2)
 			$damage_label.visible=true
 			damage=damage+damage2
-		if sw_blade=="katana":
+		elif sw_blade=="katana":
 			Globals.player_stats["current_MP"]-=25
 			damage=damage_calc()*1.25
 			if enemy_in_battle.enemy_stats["weakness"].size()>0:
@@ -135,6 +136,20 @@ func _on_blade_skill_button_pressed() -> void:
 					if sw_imbue==i:
 						damage*=1.5
 			damage=roundi(damage)
+			$damage_label.text=str(damage)
+			$damage_label.visible=true
+		elif sw_blade=="kris":
+			Globals.player_stats["current_MP"]-=15
+			damage=damage_calc()
+			if enemy_in_battle.enemy_stats["weakness"].size()>0:
+				for i in enemy_in_battle.enemy_stats["weakness"]:
+					if i=="poison":
+						damage*=1.5
+			damage=roundi(damage)
+			var poi_chance=randi_range(1,4)
+			if poi_chance==3:
+				poison_count+=5
+				enemy_in_battle.modulate=Color(0.317, 0.68, 0.0, 1.0)
 			$damage_label.text=str(damage)
 			$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
@@ -153,11 +168,14 @@ func _on_blade_skill_button_mouse_entered() -> void:
 	if sw_blade=="basic":
 		description.text="Double Slice: Two rapid attacks with your weapon.
 		Costs 20MP"
-	if sw_blade=="katana":
+	elif sw_blade=="katana":
 		description.text="Precise Slash: A clean cut with the katana blade. 
-		Attacks against enemy weaknesses are more effective
-		Costs 25MP
-		"
+		Attacks against enemy weaknesses are more effective.
+		Costs 25MP"
+	elif sw_blade=="kris":
+		description.text="Serpent Strike: A venom imbued attack similar to a snake's strike.
+		25% chance to inflict poison on the target.
+		Costs 15MP"
 
 func _on_blade_skill_button_mouse_exited() -> void:
 	description.text=""
@@ -177,13 +195,21 @@ func _on_handle_skill_button_pressed() -> void:
 			if confuse_chance==2:
 				enemy_status="confused"
 				enemy_in_battle.modulate=Color(0.95, 1.0, 0.0, 1.0)
+			$damage_label.text=str(damage)
+			$damage_label.visible=true
 		elif sw_handle=="katana":
 			Globals.player_stats["current_MP"]-=5
 			damage=damage_calc()
 			damage*=.25
 			damage=roundi(damage)
-		$damage_label.text=str(damage)
-		$damage_label.visible=true
+			$damage_label.text=str(damage)
+			$damage_label.visible=true
+		elif sw_handle=="kris":
+			Globals.player_stats["current_MP"]-=10
+			if Globals.player_stats["current_health"]<Globals.player_stats["max_health"]-20:
+				Globals.player_stats["current_health"]+=20
+			else:
+				Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
@@ -201,9 +227,13 @@ func _on_handle_skill_button_mouse_entered() -> void:
 	if sw_handle=="basic":
 		description.text="Bash: A strike with the pommel of your blade with a chance to confuse the enemy.
 		Costs 30MP"
-	if sw_handle=="katana":
+	elif sw_handle=="katana":
 		description.text="Quick Draw: A swift strike that sacrifices power for speed. Enemy will not counterattack.
 		Costs 5MP"
+	elif sw_handle=="kris":
+		description.text="Ruby Heal: Using the rubies embedded in the hilt, perform a simple healing spell.
+		costs 10MP"
+		
 
 func _on_handle_skill_button_mouse_exited() -> void:
 	description.text=""
@@ -244,6 +274,7 @@ func reset():
 	in_battle=false
 	in_inventory=false
 	inventory.update()
+	poison_count=0
 	if enemy_in_battle.name_of_en=="goblin":
 		for i in Globals.goblin_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.goblin_stats[i]
@@ -256,6 +287,12 @@ func enemy_fight():
 		var damage=roundf((enemy_in_battle.enemy_stats["attack"]/2)+randf_range(-2,2))
 		damage-=roundf(Globals.player_stats["defense"]/10.0)
 		Globals.player_stats["current_health"]-=damage
+		
+	if poison_count>0:
+		enemy_in_battle.enemy_stats["health"]-=(enemy_in_battle.enemy_stats["health"]/16)
+		poison_count-=1
+	else:
+		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 
 
 func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: Variant) -> void:
@@ -274,8 +311,12 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		blade_skill_req=20
 	elif blade=="katana":
 		blade_skill_req=25
+	elif blade=="kris":
+		blade_skill_req=15
 	if handle=="basic":
 		handle_skill_req=30
+	elif handle=="katana":
+		handle_skill_req=5
 	Globals.sword["blade"] = blade
 	Globals.sword["handle"] = handle
 	Globals.sword["imbue"] = imbue

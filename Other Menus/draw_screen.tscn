@@ -486,16 +486,16 @@ item_0/icon = SubResource("GradientTexture2D_nqbbo")
 item_1/text = "fire"
 
 [node name="blade" type="AnimatedSprite2D" parent="." unique_id=1765120727]
-position = Vector2(874.00006, 238)
+position = Vector2(771.50006, 312.5)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_nqbbo")
-animation = &"basic_flash"
+animation = &"spear_set"
 
 [node name="handle" type="AnimatedSprite2D" parent="." unique_id=894404993]
-position = Vector2(637, 421)
+position = Vector2(712.00006, 388)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_ab1fa")
-animation = &"spear_set"
+animation = &"kris_set"
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]

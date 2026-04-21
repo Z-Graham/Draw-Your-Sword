@@ -171,11 +171,26 @@ func update_position():
 		if sel_handle=="basic":
 			blade_sprite.global_position=Vector2(526,299)
 			handle_sprite.global_position=Vector2(387,421)
-		if sel_handle=="kris":
-			blade_sprite.global_position=Vector2(712,361)
-			handle_sprite.global_position=Vector2(613,452)
+		elif sel_handle=="katana":
+			blade_sprite.global_position=Vector2(497,335)
+			handle_sprite.global_position=Vector2(339,457)
+		elif sel_handle=="kris":
+			blade_sprite.global_position=Vector2(512,361)
+			handle_sprite.global_position=Vector2(413,452)
+		elif sel_handle=="spear":
+			blade_sprite.global_position=Vector2(598,259)
+			handle_sprite.global_position=Vector2(340,460)
 	if sel_blade=="spear":
-		if sel_handle=="spear":
+		if sel_handle=="basic":
+			blade_sprite.global_position=Vector2(521,312)
+			handle_sprite.global_position=Vector2(402,403)
+		elif sel_handle=="katana":
+			blade_sprite.global_position=Vector2(520,312)
+			handle_sprite.global_position=Vector2(400.5,403.5)
+		elif sel_handle=="spear":
 			blade_sprite.global_position=Vector2(576,238)
 			handle_sprite.global_position=Vector2(337,421)
+		elif sel_handle == "kris":
+			blade_sprite.global_position=Vector2(521,262)
+			handle_sprite.global_position=Vector2(462,338)
 	

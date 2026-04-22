@@ -1,8 +1,12 @@
 extends Node2D
 class_name Room
 
+
+# EXPORTED ROOMS
 @export var next_room : Room 
 @export var previous_room : Room
+@export var down_room : Room
+
 @export var num_enemies := 0
 @export var num_healing_items := 0
 @export var num_magic_items := 0
@@ -14,6 +18,7 @@ class_name Room
 @onready var magic_label: Label = $MagicLabel
 @onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
 @onready var leave_room_detector_backwards: LeaveRoomDetector = $ColorRect2/LeaveRoomDetectorBackwards
+@onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
 
 #@onready var enter_spawn_point: Marker2D = $EnterSpawnPoint
 #@onready var return_spawn_point: Marker2D = $ReturnSpawnPoint
@@ -31,13 +36,13 @@ func _ready() -> void:
 func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(0.25).timeout
 	print("move to next room")
-	left.emit(self, leave_room_detector.next)
+	left.emit(self, leave_room_detector.next,leave_room_detector.down)
 
 
 func _on_leave_room_detector_backwards_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(0.25).timeout
 	print("move to last room")
-	left.emit(self, leave_room_detector_backwards.next)
+	left.emit(self, leave_room_detector_backwards.next, leave_room_detector_backwards.down)
 
 func _on_item_picked_up(_item : Area2D) -> void:
 	var type = _item.type
@@ -74,3 +79,9 @@ func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
 		trench.visible = false
 		trench.collision_layer = 1
 		draw_spot_solution_found.emit()
+
+
+func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
+	await get_tree().create_timer(0.25).timeout
+	print("move to down room")
+	left.emit(self, leave_room_detector_down.next,leave_room_detector_down.down)

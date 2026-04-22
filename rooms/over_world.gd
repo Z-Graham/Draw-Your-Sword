@@ -5,16 +5,22 @@ extends Node2D
 @onready var battle_screen: Node2D = $BattleScreenLayer/Battle_screen
 
 
-func _on_room_left(_room : Room, next : bool) -> void:
-	print("do something")
+func _on_room_left(_room : Room, next : bool, down : bool) -> void:
+	print("room left emitted")
 	if next:
 		if _room.next_room != null:
 			camera_2d.global_position = _room.next_room.global_position
 			player.global_position = _room.next_room.enter_spawn_point.global_position
 	else:
-		if _room.previous_room != null:
+		if down:
+			camera_2d.global_position = _room.down_room.global_position
+			player.global_position = _room.down_room.enter_spawn_point.global_position
+		
+		elif _room.previous_room != null:
 			camera_2d.global_position = _room.previous_room.global_position
 			player.global_position = _room.previous_room.return_spawn_point.global_position
+		
+			
 	#move camera and player
 	
 

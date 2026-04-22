@@ -16,6 +16,7 @@ extends Node2D
 @onready var handle_label: Label = $"Main_battle_menu/Handle Label"
 @onready var imbue_label: Label = $"Main_battle_menu/Imbue label"
 @onready var pencil_bar: TextureProgressBar = $"Main_battle_menu/pencil bar"
+@onready var battle_history: VBoxContainer = $battle_history
 
 
 var enemy_health=100
@@ -30,7 +31,8 @@ var poison_count=0
 
 var blade_mult=1.0
 var handle_mult=1.0
-
+var c_blade_skill="Double Slash"
+var c_handle_skill="Bash"
 
 var in_main=true
 var in_battle=false
@@ -71,6 +73,7 @@ func player_fight(blade:String,handle:String,imbue:String):
 		Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
 	var damage=damage_calc()
 	damage=roundi(damage)
+	battle_history_update("The enemy takes "+str(damage)+" damage")
 	$damage_label.text=str(damage)
 	$damage_label.visible=true
 	enemy_in_battle.enemy_stats["health"]-=damage
@@ -152,6 +155,13 @@ func _on_blade_skill_button_pressed() -> void:
 				enemy_in_battle.modulate=Color(0.317, 0.68, 0.0, 1.0)
 			$damage_label.text=str(damage)
 			$damage_label.visible=true
+		elif sw_blade=="spear":
+			Globals.player_stats["current_MP"]-=20
+			damage=damage_calc_without_imbue()
+			damage*=1.8
+			damage=roundi(damage)
+			$damage_label.text=str(damage)
+			$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
@@ -176,19 +186,23 @@ func _on_blade_skill_button_mouse_entered() -> void:
 		description.text="Serpent Strike: A venom imbued attack similar to a snake's strike.
 		25% chance to inflict poison on the target.
 		Costs 15MP"
+	elif sw_blade=="spear":
+		description.text="Impaling Thrust: A savage stab with the spearhead that ignores both 
+		enemy weaknesses and resistances.
+		Costs 20 MP"
 
 func _on_blade_skill_button_mouse_exited() -> void:
 	description.text=""
 
 func _on_handle_skill_button_pressed() -> void:
-	if Globals.player_stats["current_MP"]>=handle_skill_req:
+	if Globals.player_stats["current_MP"]>=handle_skill_req or sw_handle=="spear":
 		var damage=0
 		fight_battle_menu.visible=false
 		health_bar.visible=false
 		mp_bar.visible=false
 		if sw_handle=="basic":
 			Globals.player_stats["current_MP"]-=30
-			damage=damage_calc_without_imbue()
+			damage=damage_calc()
 			damage*=1.1
 			damage=roundi(damage)
 			var confuse_chance=randi_range(1,3)
@@ -210,6 +224,13 @@ func _on_handle_skill_button_pressed() -> void:
 				Globals.player_stats["current_health"]+=20
 			else:
 				Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
+		elif sw_handle=="spear":
+			Globals.player_stats["current_health"]-=20
+			damage=damage_calc()
+			damage*=1.5
+			damage=roundi(damage)
+			$damage_label.text=str(damage)
+			$damage_label.visible=true
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
@@ -217,7 +238,6 @@ func _on_handle_skill_button_pressed() -> void:
 			fight_battle_menu.visible=true
 			health_bar.visible=true
 			mp_bar.visible=true
-			await get_tree().create_timer(2).timeout
 			if not sw_handle=="katana":
 				enemy_fight()
 		if pencil_bar.value<100:
@@ -233,7 +253,9 @@ func _on_handle_skill_button_mouse_entered() -> void:
 	elif sw_handle=="kris":
 		description.text="Ruby Heal: Using the rubies embedded in the hilt, perform a simple healing spell.
 		costs 10MP"
-		
+	elif sw_handle=="spear":
+		description.text="Reckless Charge: A full charge towards the enemy that consumes HP instead of MP.
+		costs 20HP"
 
 func _on_handle_skill_button_mouse_exited() -> void:
 	description.text=""
@@ -248,12 +270,13 @@ func _on_inventory_item_used(item: Variant) -> void:
 			Globals.player_stats["current_health"]+=30
 		else:
 			Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
+		battle_history_update("You used a HP Potion")
 	elif item=="MP Potion":
 		if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]-20:
 			Globals.player_stats["current_MP"]+=20
 		else:
 			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
-
+		battle_history_update("You used a MP Potion")
 func _on_draw_button_pressed() -> void:
 	if pencil_bar.value==100:
 		draw_screen.visible = true
@@ -270,27 +293,35 @@ func reset():
 	enemy_in_battle.visible=true
 	health_bar.visible=true
 	mp_bar.visible=true
+	$damage_label.visible=false
 	in_main=true
 	in_battle=false
 	in_inventory=false
 	inventory.update()
 	poison_count=0
+	enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	if enemy_in_battle.name_of_en=="goblin":
 		for i in Globals.goblin_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.goblin_stats[i]
 
 func enemy_fight():
 	if enemy_status=="confused":
+		battle_history_update("The enemy can't attack due to confusion")
 		enemy_status="none"
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	else:
 		var damage=roundf((enemy_in_battle.enemy_stats["attack"]/2)+randf_range(-2,2))
 		damage-=roundf(Globals.player_stats["defense"]/10.0)
+		damage=roundi(damage)
 		Globals.player_stats["current_health"]-=damage
+		battle_history_update("You took "+str(damage)+" damage")
 		
 	if poison_count>0:
 		enemy_in_battle.enemy_stats["health"]-=(enemy_in_battle.enemy_stats["health"]/16)
+		battle_history_update("The enemy took "+str(enemy_in_battle.enemy_stats["health"]/16)+" poison damage")
 		poison_count-=1
+		if enemy_in_battle.enemy_stats["health"]<=0:
+			battle_end()
 	else:
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 
@@ -317,6 +348,8 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		handle_skill_req=30
 	elif handle=="katana":
 		handle_skill_req=5
+	elif handle=="kris":
+		handle_skill_req=10
 	Globals.sword["blade"] = blade
 	Globals.sword["handle"] = handle
 	Globals.sword["imbue"] = imbue
@@ -344,3 +377,8 @@ func damage_calc_without_imbue() -> int:
 	damage*=randf_range(0.8,1.2)
 	damage=roundi(damage)
 	return damage
+
+func battle_history_update(label:String):
+	var lab=Label.new()
+	lab.text=label
+	battle_history.add_child(lab)

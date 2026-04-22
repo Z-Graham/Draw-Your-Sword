@@ -42,6 +42,8 @@ func _on_leave_room_detector_backwards_body_entered(_body: Node2D) -> void:
 func _on_item_picked_up(_item : Area2D) -> void:
 	var type = _item.type
 	if type == "healing":
+		if magic_label.visible:
+			magic_label.visible = false
 		Globals.healing_items["HP Potion"] += 1
 		healing_label.visible = true
 		num_healing_items -= 1
@@ -51,6 +53,8 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		
 		
 	elif type == "magic":
+		if healing_label.visible:
+			healing_label.visible = false
 		Globals.healing_items["MP Potion"] += 1
 		#healing_label.text = "Picked up Magic Item"
 		magic_label.visible = true

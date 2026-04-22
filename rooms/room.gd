@@ -67,7 +67,6 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		await get_tree().create_timer(1.5).timeout
 		magic_label.visible = false
 		#healing_label.text = "Picked up Healing Item"
-	
 
 
 func _on_drawing_spot_opened() -> void:

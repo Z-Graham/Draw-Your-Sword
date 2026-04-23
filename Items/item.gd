@@ -10,7 +10,7 @@ signal picked_up
 func _ready() -> void:
 	if type == "healing":
 		modulate = "green"
-	else:
+	elif type == "magic":
 		modulate = "purple"
 
 

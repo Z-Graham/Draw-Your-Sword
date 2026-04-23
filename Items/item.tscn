@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://w5l6l0wcxqdn"]
 
-[ext_resource type="Script" uid="uid://c4lpk6km5d2gg" path="res://item.gd" id="1_tnite"]
+[ext_resource type="Script" uid="uid://c4lpk6km5d2gg" path="res://Items/item.gd" id="1_tnite"]
 [ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="2_ttk8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg5e7"]

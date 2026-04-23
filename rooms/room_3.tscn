@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c81ae25grpme1" path="res://rooms/trench.tscn" id="5_7j5ef"]
 [ext_resource type="PackedScene" uid="uid://bd2i6bcwurag2" path="res://rooms/drawing_spot.tscn" id="6_1bsgv"]
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="7_2r27u"]
-[ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://item.tscn" id="8_7j5ef"]
+[ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://Items/item.tscn" id="8_7j5ef"]
 [ext_resource type="PackedScene" uid="uid://cjugq0o8gwov7" path="res://Other Menus/draw_item_screen.tscn" id="9_sti2h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sdyu"]

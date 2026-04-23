@@ -123,6 +123,17 @@ func _on_imbue_list_item_selected(index: int) -> void:
 		blade_sprite.play("spear_flash")
 
 func reset():
+	# make lists only show known blades
+	blade_list.clear()
+	handle_list.clear()
+	imbue_list.clear()
+	for b in Globals.known_blades:
+		blade_list.add_item(b)
+	for h in Globals.known_handles:
+		handle_list.add_item(h)
+	for i in Globals.known_imbues:
+		imbue_list.add_item(i)
+	
 	sel_blade=""
 	sel_handle=""
 	sel_imbue=""

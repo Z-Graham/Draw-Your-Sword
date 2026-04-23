@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://du4720e7weav0" path="res://rooms/floor_tile_map_layer.tscn" id="1_lc3sa"]
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="3_b330e"]
 [ext_resource type="PackedScene" uid="uid://b2rdwsm5rhsli" path="res://rooms/leave_room_detector.tscn" id="4_6sn55"]
-[ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://item.tscn" id="7_4sdyu"]
+[ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://Items/item.tscn" id="7_4sdyu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sdyu"]
 font_size = 24

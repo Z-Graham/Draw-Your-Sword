@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bjayyf6rqq7ef"]
+
+[ext_resource type="Script" uid="uid://cagwxpmfigsxv" path="res://Items/sword_item.gd" id="1_61oi6"]
+[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="2_qo0xe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75lc8"]
+
+[node name="SwordItem" type="Area2D" unique_id=1568579394]
+collision_layer = 8
+script = ExtResource("1_61oi6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1759374295]
+modulate = Color(0.26666668, 0, 1, 1)
+scale = Vector2(0.38946912, 0.26326478)
+texture = ExtResource("2_qo0xe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991602389]
+scale = Vector2(2.121837, 1.4827176)
+shape = SubResource("RectangleShape2D_75lc8")

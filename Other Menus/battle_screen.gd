@@ -73,16 +73,13 @@ func player_fight(blade:String,handle:String,imbue:String):
 		Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
 	var damage=damage_calc()
 	damage=roundi(damage)
-	battle_history_update("The enemy takes "+str(damage)+" damage")
+	battle_history_update("The enemy took "+str(damage)+" damage.")
 	$damage_label.text=str(damage)
 	$damage_label.visible=true
 	enemy_in_battle.enemy_stats["health"]-=damage
 	if enemy_in_battle.enemy_stats["health"]<=0:
 		battle_end()
 	else:
-		fight_battle_menu.visible=true
-		health_bar.visible=true
-		mp_bar.visible=true
 		enemy_fight()
 	if pencil_bar.value<100:
 		pencil_bar.value+=20
@@ -131,6 +128,7 @@ func _on_blade_skill_button_pressed() -> void:
 			$damage_label.text=str(damage2)
 			$damage_label.visible=true
 			damage=damage+damage2
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_blade=="katana":
 			Globals.player_stats["current_MP"]-=25
 			damage=damage_calc()*1.25
@@ -139,8 +137,7 @@ func _on_blade_skill_button_pressed() -> void:
 					if sw_imbue==i:
 						damage*=1.5
 			damage=roundi(damage)
-			$damage_label.text=str(damage)
-			$damage_label.visible=true
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_blade=="kris":
 			Globals.player_stats["current_MP"]-=15
 			damage=damage_calc()
@@ -149,26 +146,22 @@ func _on_blade_skill_button_pressed() -> void:
 					if i=="poison":
 						damage*=1.5
 			damage=roundi(damage)
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 			var poi_chance=randi_range(1,4)
 			if poi_chance==3:
 				poison_count+=5
 				enemy_in_battle.modulate=Color(0.317, 0.68, 0.0, 1.0)
-			$damage_label.text=str(damage)
-			$damage_label.visible=true
+				battle_history_update("The enemy is poisoned!")
 		elif sw_blade=="spear":
 			Globals.player_stats["current_MP"]-=20
 			damage=damage_calc_without_imbue()
 			damage*=1.8
 			damage=roundi(damage)
-			$damage_label.text=str(damage)
-			$damage_label.visible=true
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
 		else:
-			fight_battle_menu.visible=true
-			health_bar.visible=true
-			mp_bar.visible=true
 			enemy_fight()
 		if pencil_bar.value<100:
 			pencil_bar.value+=20
@@ -209,28 +202,27 @@ func _on_handle_skill_button_pressed() -> void:
 			if confuse_chance==2:
 				enemy_status="confused"
 				enemy_in_battle.modulate=Color(0.95, 1.0, 0.0, 1.0)
-			$damage_label.text=str(damage)
-			$damage_label.visible=true
+				battle_history_update("The enemy is confused!")
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_handle=="katana":
 			Globals.player_stats["current_MP"]-=5
 			damage=damage_calc()
 			damage*=.25
 			damage=roundi(damage)
-			$damage_label.text=str(damage)
-			$damage_label.visible=true
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_handle=="kris":
 			Globals.player_stats["current_MP"]-=10
 			if Globals.player_stats["current_health"]<Globals.player_stats["max_health"]-20:
 				Globals.player_stats["current_health"]+=20
 			else:
 				Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
+			battle_history_update("You used Ruby Heal.")
 		elif sw_handle=="spear":
 			Globals.player_stats["current_health"]-=20
 			damage=damage_calc()
 			damage*=1.5
 			damage=roundi(damage)
-			$damage_label.text=str(damage)
-			$damage_label.visible=true
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
@@ -270,13 +262,13 @@ func _on_inventory_item_used(item: Variant) -> void:
 			Globals.player_stats["current_health"]+=30
 		else:
 			Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
-		battle_history_update("You used a HP Potion")
+		battle_history_update("You used a HP Potion.")
 	elif item=="MP Potion":
 		if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]-20:
 			Globals.player_stats["current_MP"]+=20
 		else:
 			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
-		battle_history_update("You used a MP Potion")
+		battle_history_update("You used a MP Potion.")
 func _on_draw_button_pressed() -> void:
 	if pencil_bar.value==100:
 		draw_screen.visible = true
@@ -305,8 +297,9 @@ func reset():
 			enemy_in_battle.enemy_stats[i]=Globals.goblin_stats[i]
 
 func enemy_fight():
+	await get_tree().create_timer(1).timeout
 	if enemy_status=="confused":
-		battle_history_update("The enemy can't attack due to confusion")
+		battle_history_update("The enemy can't attack due to confusion.")
 		enemy_status="none"
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	else:
@@ -314,16 +307,19 @@ func enemy_fight():
 		damage-=roundf(Globals.player_stats["defense"]/10.0)
 		damage=roundi(damage)
 		Globals.player_stats["current_health"]-=damage
-		battle_history_update("You took "+str(damage)+" damage")
+		battle_history_update("You took "+str(damage)+" damage.")
 		
 	if poison_count>0:
 		enemy_in_battle.enemy_stats["health"]-=(enemy_in_battle.enemy_stats["health"]/16)
-		battle_history_update("The enemy took "+str(enemy_in_battle.enemy_stats["health"]/16)+" poison damage")
+		battle_history_update("The enemy took "+str(enemy_in_battle.enemy_stats["health"]/16)+" poison damage.")
 		poison_count-=1
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
 	else:
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
+	fight_battle_menu.visible=true
+	health_bar.visible=true
+	mp_bar.visible=true
 
 
 func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: Variant) -> void:
@@ -353,6 +349,7 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	Globals.sword["blade"] = blade
 	Globals.sword["handle"] = handle
 	Globals.sword["imbue"] = imbue
+	battle_history_update("You drew a new sword!")
 	
 	#update player sprite eventually
 
@@ -362,10 +359,13 @@ func damage_calc() -> int:
 		for i in enemy_in_battle.enemy_stats["weakness"]:
 			if sw_imbue==i:
 				damage*=2
+				print("fire")
+				battle_history_update("It's super effective.")
 	if enemy_in_battle.enemy_stats["resist"].size()>0:
 		for i in enemy_in_battle.enemy_stats["resist"]:
 			if sw_imbue==i:
 				damage*=0.5
+				battle_history_update("It's not very effective.")
 	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/10.0)
 	damage*=randf_range(0.8,1.2)
 	damage=roundi(damage)
@@ -382,3 +382,7 @@ func battle_history_update(label:String):
 	var lab=Label.new()
 	lab.text=label
 	battle_history.add_child(lab)
+	
+	#print(bat_children)
+	if battle_history.get_children().size()>7:
+		battle_history.get_child(0).queue_free()

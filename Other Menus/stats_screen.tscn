@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://d0tu3pdpqi7to"]
+
+[ext_resource type="Script" uid="uid://dbwnmrtb33p83" path="res://Other Menus/stats_screen.gd" id="1_1sctc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_do800"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_1sctc"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_7pr8v"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_55yx5"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_qlit4"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_askj0"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_r6e8i"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_yrise"]
+font_size = 35
+
+[node name="StatsScreen" type="ColorRect" unique_id=163162001]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5058824)
+script = ExtResource("1_1sctc")
+
+[node name="GridContainer" type="HBoxContainer" parent="." unique_id=1066165797]
+custom_minimum_size = Vector2(0.455, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.5
+offset_top = -74.0
+offset_right = 225.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer" unique_id=842470360]
+layout_mode = 2
+
+[node name="MaxHealthLabel" type="Label" parent="GridContainer/VBoxContainer" unique_id=100490566]
+layout_mode = 2
+text = "MAX HEALTH"
+label_settings = SubResource("LabelSettings_do800")
+
+[node name="MaxHealthValueLabel" type="Label" parent="GridContainer/VBoxContainer" unique_id=1490085619]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_1sctc")
+horizontal_alignment = 1
+
+[node name="HealthIncreaseButton" type="Button" parent="GridContainer/VBoxContainer" unique_id=1011139024]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer" unique_id=1174835187]
+layout_mode = 2
+
+[node name="MaxMPLabel" type="Label" parent="GridContainer/VBoxContainer2" unique_id=775149590]
+layout_mode = 2
+text = "MAX MP"
+label_settings = SubResource("LabelSettings_7pr8v")
+
+[node name="MaxMPValueLabel" type="Label" parent="GridContainer/VBoxContainer2" unique_id=1079532982]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_55yx5")
+horizontal_alignment = 1
+
+[node name="MPIncreaseButton" type="Button" parent="GridContainer/VBoxContainer2" unique_id=115031226]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="GridContainer" unique_id=21913586]
+layout_mode = 2
+
+[node name="AttackLabel" type="Label" parent="GridContainer/VBoxContainer3" unique_id=1867952464]
+layout_mode = 2
+text = "ATTACK"
+label_settings = SubResource("LabelSettings_qlit4")
+
+[node name="AttackValueLabel" type="Label" parent="GridContainer/VBoxContainer3" unique_id=639684328]
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_askj0")
+horizontal_alignment = 1
+
+[node name="AttackIncreaseButton" type="Button" parent="GridContainer/VBoxContainer3" unique_id=427549033]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="GridContainer" unique_id=550860731]
+layout_mode = 2
+
+[node name="DefenseLabel" type="Label" parent="GridContainer/VBoxContainer4" unique_id=810315810]
+layout_mode = 2
+text = "DEFENSE"
+label_settings = SubResource("LabelSettings_r6e8i")
+
+[node name="DefenseValueLabel" type="Label" parent="GridContainer/VBoxContainer4" unique_id=2121956487]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_yrise")
+horizontal_alignment = 1
+
+[node name="DefenseIncreaseButton" type="Button" parent="GridContainer/VBoxContainer4" unique_id=1971610472]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[connection signal="pressed" from="GridContainer/VBoxContainer/HealthIncreaseButton" to="." method="_on_health_increase_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer2/MPIncreaseButton" to="." method="_on_mp_increase_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer3/AttackIncreaseButton" to="." method="_on_attack_increase_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer4/DefenseIncreaseButton" to="." method="_on_defense_increase_button_pressed"]

@@ -58,6 +58,7 @@ func battle_end():
 	print("before level up",Globals.player_stats["exp"])
 	if Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)]:
 		level_up()
+
 func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
@@ -383,6 +384,6 @@ func battle_history_update(label:String):
 		battle_history.get_child(0).queue_free()
 
 func level_up():
-	Globals.player_stats["exp"]=Globals.player_stats["exp"]
-	-Globals.exp_requirements[str(Globals.level)]
+	Globals.player_stats["exp"]=(Globals.player_stats["exp"]
+		-Globals.exp_requirements[str(Globals.level)])
 	Globals.level+=1

@@ -74,8 +74,6 @@ func player_fight(blade:String,handle:String,imbue:String):
 	var damage=damage_calc()
 	damage=roundi(damage)
 	battle_history_update("The enemy took "+str(damage)+" damage.")
-	$damage_label.text=str(damage)
-	$damage_label.visible=true
 	enemy_in_battle.enemy_stats["health"]-=damage
 	if enemy_in_battle.enemy_stats["health"]<=0:
 		battle_end()
@@ -85,7 +83,6 @@ func player_fight(blade:String,handle:String,imbue:String):
 		pencil_bar.value+=20
 	
 	await get_tree().create_timer(2).timeout
-	$damage_label.visible=false
 
 
 func _on_fight_button_pressed() -> void:
@@ -120,13 +117,9 @@ func _on_blade_skill_button_pressed() -> void:
 			Globals.player_stats["current_MP"]-=20
 			damage=damage_calc()*.9
 			damage=roundi(damage)
-			$damage_label.text=str(damage)
-			$damage_label.visible=true
 			await get_tree().create_timer(0.5).timeout
 			var damage2=damage_calc()*.9
 			damage2=roundi(damage2)
-			$damage_label.text=str(damage2)
-			$damage_label.visible=true
 			damage=damage+damage2
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_blade=="katana":
@@ -291,6 +284,8 @@ func reset():
 	in_inventory=false
 	inventory.update()
 	poison_count=0
+	for child in battle_history.get_children():
+		child.queue_free()
 	enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	if enemy_in_battle.name_of_en=="goblin":
 		for i in Globals.goblin_stats:

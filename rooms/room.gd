@@ -85,3 +85,14 @@ func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(0.25).timeout
 	print("move to down room")
 	left.emit(self, leave_room_detector_down.next,leave_room_detector_down.down)
+
+
+
+
+func _on_sword_item_collected(_item:Area2D) -> void:
+	print(_item.item_name)
+	print(_item.type)
+	var type=_item.type
+	if type=="blade":
+		Globals.known_blades.append(_item.item_name)
+		

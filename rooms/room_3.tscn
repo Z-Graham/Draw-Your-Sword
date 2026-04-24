@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="7_2r27u"]
 [ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://Items/item.tscn" id="8_7j5ef"]
 [ext_resource type="PackedScene" uid="uid://cjugq0o8gwov7" path="res://Other Menus/draw_item_screen.tscn" id="9_sti2h"]
+[ext_resource type="PackedScene" uid="uid://bjayyf6rqq7ef" path="res://Items/sword_item.tscn" id="10_0v5my"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sdyu"]
 font_size = 24
@@ -110,6 +111,11 @@ grow_horizontal = 1
 grow_vertical = 1
 solution = "Bridge"
 
+[node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("10_0v5my")]
+position = Vector2(963, 324)
+type = "blade"
+item_name = "katana"
+
 [connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="opened" from="DrawingSpot" to="." method="_on_drawing_spot_opened"]
@@ -117,3 +123,4 @@ solution = "Bridge"
 [connection signal="picked_up" from="Item2" to="." method="_on_item_picked_up"]
 [connection signal="picked_up" from="Item3" to="." method="_on_item_picked_up"]
 [connection signal="solution_gotten" from="DrawItemScreen" to="." method="_on_draw_item_screen_solution_gotten"]
+[connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]

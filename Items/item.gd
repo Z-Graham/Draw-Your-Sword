@@ -15,7 +15,6 @@ func _ready() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	print("picked up " + type + " item")
 	picked_up.emit(self)
 	collected = true
 	queue_free()

@@ -5,10 +5,11 @@ extends AnimatedSprite2D
 @export var attack=10
 @export var resistances=[]
 @export var weakness=[]
+@export var exp=10
 @export var name_of_en="goblin"
 
 var enemy_stats={"health":health,"defense":defense,"attack":attack,
-"resist":resistances,"weakness":weakness}
+"resist":resistances,"weakness":weakness,"exp":exp}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

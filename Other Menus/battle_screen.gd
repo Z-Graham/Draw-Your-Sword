@@ -42,8 +42,6 @@ var in_inventory=false
 func _ready() -> void:
 	draw_charge=5
 
-
-
 func _process(delta:float)-> void:
 	health_bar.max_value=Globals.player_stats["max_health"]
 	health_bar.value=Globals.player_stats["max_health"]-Globals.player_stats["current_health"]
@@ -51,17 +49,13 @@ func _process(delta:float)-> void:
 	mp_bar.max_value=Globals.player_stats["max_MP"]
 	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
-	#if Input.is_action_just_pressed("do_magic"):
-		#Globals.player_stats["current_MP"] -= 1
-	#if Input.is_action_just_pressed("hurt"):
-		#Globals.player_stats["current_health"] -= 1
-
-
 
 func battle_end():
 	win_screen.c_room="res://rooms/over_world.tscn"
 	$ColorRect2.visible=true
 	win_screen.visible=true
+	Globals.player_stats["exp"]+=enemy_in_battle.enemy_stats["exp"]
+	print(Globals.player_stats["exp"])
 
 func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
@@ -84,7 +78,6 @@ func player_fight(blade:String,handle:String,imbue:String):
 	
 	await get_tree().create_timer(2).timeout
 
-
 func _on_fight_button_pressed() -> void:
 	main_battle_menu.visible=false
 	fight_battle_menu.visible=true
@@ -95,7 +88,6 @@ func _on_item_button_pressed() -> void:
 	inventory.battle_item_list.visible=false
 	inventory.key_item_list.visible=false
 	inventory.current_screen=inventory.healing_item_list
-
 
 func _on_basic_button_pressed() -> void:
 	player_fight(sw_blade,sw_handle,sw_imbue)
@@ -162,7 +154,6 @@ func _on_blade_skill_button_pressed() -> void:
 			enemy_fight()
 		if pencil_bar.value<100:
 			pencil_bar.value+=20
-
 
 func _on_blade_skill_button_mouse_entered() -> void:
 	if sw_blade=="basic":
@@ -269,6 +260,7 @@ func _on_inventory_item_used(item: Variant) -> void:
 		else:
 			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
 		battle_history_update("You used a MP Potion.")
+
 func _on_draw_button_pressed() -> void:
 	if pencil_bar.value==100:
 		draw_screen.visible = true
@@ -323,7 +315,6 @@ func enemy_fight():
 	health_bar.visible=true
 	mp_bar.visible=true
 
-
 func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: Variant) -> void:
 	sw_blade=blade
 	sw_handle=handle
@@ -336,7 +327,8 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		blade_mult=1.0
 	if handle=="basic":
 		handle_mult=1.0
-	if blade=="basic":
+		
+	if blade=="basic" or blade=="spear":
 		blade_skill_req=20
 	elif blade=="katana":
 		blade_skill_req=25
@@ -348,6 +340,8 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		handle_skill_req=5
 	elif handle=="kris":
 		handle_skill_req=10
+	elif handle=="spear":
+		handle_skill_req=0
 	Globals.sword["blade"] = blade
 	Globals.sword["handle"] = handle
 	Globals.sword["imbue"] = imbue

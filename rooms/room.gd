@@ -6,12 +6,14 @@ class_name Room
 @export var next_room : Room 
 @export var previous_room : Room
 @export var down_room : Room
+@export var up_room : Room
 
 @export var num_enemies := 0
 @export var num_healing_items := 0
 @export var num_magic_items := 0
 @export var enter_spawn_point : Marker2D
 @export var return_spawn_point: Marker2D
+@export var up_return_spawn_point: Marker2D
 @export var trench : Node
 
 @onready var healing_label: Label = $HealingLabel
@@ -19,6 +21,8 @@ class_name Room
 @onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
 @onready var leave_room_detector_backwards: LeaveRoomDetector = $ColorRect2/LeaveRoomDetectorBackwards
 @onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
+@onready var leave_room_detector_up: LeaveRoomDetector = $ColorRect4/LeaveRoomDetectorUp
+
 
 #@onready var enter_spawn_point: Marker2D = $EnterSpawnPoint
 #@onready var return_spawn_point: Marker2D = $ReturnSpawnPoint
@@ -96,3 +100,9 @@ func _on_sword_item_collected(_item:Area2D) -> void:
 	if type=="blade":
 		Globals.known_blades.append(_item.item_name)
 		
+
+
+func _on_leave_room_detector_up_body_entered(_body: Node2D) -> void:
+	await get_tree().create_timer(0.25).timeout
+	print("move to up room")
+	left.emit(self, leave_room_detector_up.next,leave_room_detector_up.down)

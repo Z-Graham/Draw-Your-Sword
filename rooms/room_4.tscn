@@ -25,7 +25,7 @@ color = Color(0, 0.49, 0.05716673, 1)
 
 [node name="LeaveRoomDetector" parent="ColorRect" unique_id=1142250141 instance=ExtResource("3_ocw8c")]
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1415479167]
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1415479167]
 offset_left = 415.00006
 offset_top = -13.0
 offset_right = 455.00006
@@ -34,7 +34,7 @@ rotation = 1.5707964
 scale = Vector2(1.0840148, 1.6583992)
 color = Color(0, 0.49, 0.05716673, 1)
 
-[node name="LeaveRoomDetectorBackwards" parent="ColorRect2" unique_id=551847105 instance=ExtResource("3_ocw8c")]
+[node name="LeaveRoomDetectorUp" parent="ColorRect4" unique_id=551847105 instance=ExtResource("3_ocw8c")]
 
 [node name="EnterSpawnPoint" type="Marker2D" parent="." unique_id=2121347651]
 position = Vector2(366, 73)
@@ -59,4 +59,4 @@ text = "Picked up Magic Item"
 label_settings = SubResource("LabelSettings_roktq")
 
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
-[connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]
+[connection signal="body_entered" from="ColorRect4/LeaveRoomDetectorUp" to="." method="_on_leave_room_detector_up_body_entered"]

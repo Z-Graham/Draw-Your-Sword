@@ -31,9 +31,9 @@ down_room = NodePath("../Room4")
 position = Vector2(3446, 0)
 previous_room = NodePath("../Room2")
 
-[node name="Room4" parent="." unique_id=1641247524 node_paths=PackedStringArray("previous_room") instance=ExtResource("6_ffupc")]
+[node name="Room4" parent="." unique_id=1641247524 node_paths=PackedStringArray("up_room") instance=ExtResource("6_ffupc")]
 position = Vector2(1713, 1140)
-previous_room = NodePath("../Room2")
+up_room = NodePath("../Room2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=116450048]
 anchor_mode = 0

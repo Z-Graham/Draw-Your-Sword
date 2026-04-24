@@ -114,6 +114,7 @@ func _on_blade_skill_button_pressed() -> void:
 		health_bar.visible=false
 		mp_bar.visible=false
 		if sw_blade=="basic":
+			battle_history_update("You used Double Slice!")
 			Globals.player_stats["current_MP"]-=20
 			damage=damage_calc()*.9
 			damage=roundi(damage)
@@ -123,6 +124,7 @@ func _on_blade_skill_button_pressed() -> void:
 			damage=damage+damage2
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_blade=="katana":
+			battle_history_update("You used Precise Slash!")
 			Globals.player_stats["current_MP"]-=25
 			damage=damage_calc()*1.25
 			if enemy_in_battle.enemy_stats["weakness"].size()>0:
@@ -132,6 +134,7 @@ func _on_blade_skill_button_pressed() -> void:
 			damage=roundi(damage)
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_blade=="kris":
+			battle_history_update("You used Serpent Strike!")
 			Globals.player_stats["current_MP"]-=15
 			damage=damage_calc()
 			if enemy_in_battle.enemy_stats["weakness"].size()>0:
@@ -146,6 +149,7 @@ func _on_blade_skill_button_pressed() -> void:
 				enemy_in_battle.modulate=Color(0.317, 0.68, 0.0, 1.0)
 				battle_history_update("The enemy is poisoned!")
 		elif sw_blade=="spear":
+			battle_history_update("You used Impaling Thrust!")
 			Globals.player_stats["current_MP"]-=20
 			damage=damage_calc_without_imbue()
 			damage*=1.8
@@ -187,6 +191,7 @@ func _on_handle_skill_button_pressed() -> void:
 		health_bar.visible=false
 		mp_bar.visible=false
 		if sw_handle=="basic":
+			battle_history_update("You used Bash!")
 			Globals.player_stats["current_MP"]-=30
 			damage=damage_calc()
 			damage*=1.1
@@ -198,6 +203,7 @@ func _on_handle_skill_button_pressed() -> void:
 				battle_history_update("The enemy is confused!")
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_handle=="katana":
+			battle_history_update("You used Quick Draw!")
 			Globals.player_stats["current_MP"]-=5
 			damage=damage_calc()
 			damage*=.25
@@ -211,6 +217,7 @@ func _on_handle_skill_button_pressed() -> void:
 				Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
 			battle_history_update("You used Ruby Heal.")
 		elif sw_handle=="spear":
+			battle_history_update("You used Reckless Charge!")
 			Globals.player_stats["current_health"]-=20
 			damage=damage_calc()
 			damage*=1.5
@@ -377,7 +384,5 @@ func battle_history_update(label:String):
 	var lab=Label.new()
 	lab.text=label
 	battle_history.add_child(lab)
-	
-	#print(bat_children)
 	if battle_history.get_children().size()>7:
 		battle_history.get_child(0).queue_free()

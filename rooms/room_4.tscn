@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bpwqjubrb4kdh" path="res://rooms/room.gd" id="1_kjedn"]
 [ext_resource type="PackedScene" uid="uid://du4720e7weav0" path="res://rooms/floor_tile_map_layer.tscn" id="2_roktq"]
 [ext_resource type="PackedScene" uid="uid://b2rdwsm5rhsli" path="res://rooms/leave_room_detector.tscn" id="3_ocw8c"]
+[ext_resource type="PackedScene" uid="uid://bjayyf6rqq7ef" path="res://Items/sword_item.tscn" id="4_ocw8c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_roktq"]
 font_size = 24
@@ -50,6 +51,14 @@ offset_bottom = 34.0
 text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_roktq")
 
+[node name="SwordLabel" type="Label" parent="." unique_id=2140699211]
+visible = false
+offset_left = 887.0
+offset_right = 1153.0
+offset_bottom = 34.0
+text = "Picked up Sword Part"
+label_settings = SubResource("LabelSettings_roktq")
+
 [node name="MagicLabel" type="Label" parent="." unique_id=1544672695]
 visible = false
 offset_left = 904.0
@@ -58,5 +67,23 @@ offset_bottom = 34.0
 text = "Picked up Magic Item"
 label_settings = SubResource("LabelSettings_roktq")
 
+[node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("4_ocw8c")]
+position = Vector2(182, 313)
+type = "handle"
+item_name = "kris"
+
+[node name="SwordItem2" parent="." unique_id=1624457341 instance=ExtResource("4_ocw8c")]
+position = Vector2(871, 308)
+type = "imbue"
+item_name = "fire"
+
+[node name="SwordItem3" parent="." unique_id=678800329 instance=ExtResource("4_ocw8c")]
+position = Vector2(574, 513)
+type = "blade"
+item_name = "spear"
+
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="body_entered" from="ColorRect4/LeaveRoomDetectorUp" to="." method="_on_leave_room_detector_up_body_entered"]
+[connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]
+[connection signal="collected" from="SwordItem2" to="." method="_on_sword_item_collected"]
+[connection signal="collected" from="SwordItem3" to="." method="_on_sword_item_collected"]

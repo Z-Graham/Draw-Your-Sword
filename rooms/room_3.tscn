@@ -70,6 +70,13 @@ offset_bottom = 34.0
 text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_4sdyu")
 
+[node name="SwordLabel" type="Label" parent="." unique_id=1918859362]
+offset_left = 887.0
+offset_right = 1153.0
+offset_bottom = 34.0
+text = "Picked up Sword Part"
+label_settings = SubResource("LabelSettings_4sdyu")
+
 [node name="MagicLabel" type="Label" parent="." unique_id=177916371]
 visible = false
 offset_left = 904.0
@@ -116,6 +123,11 @@ position = Vector2(963, 324)
 type = "blade"
 item_name = "katana"
 
+[node name="SwordItem2" parent="." unique_id=387052680 instance=ExtResource("10_0v5my")]
+position = Vector2(977, 548)
+type = "handle"
+item_name = "spear"
+
 [connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="opened" from="DrawingSpot" to="." method="_on_drawing_spot_opened"]
@@ -124,3 +136,4 @@ item_name = "katana"
 [connection signal="picked_up" from="Item3" to="." method="_on_item_picked_up"]
 [connection signal="solution_gotten" from="DrawItemScreen" to="." method="_on_draw_item_screen_solution_gotten"]
 [connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]
+[connection signal="collected" from="SwordItem2" to="." method="_on_sword_item_collected"]

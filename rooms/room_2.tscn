@@ -79,6 +79,14 @@ offset_bottom = 34.0
 text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_1kamh")
 
+[node name="SwordLabel" type="Label" parent="." unique_id=373089838]
+visible = false
+offset_left = 882.0
+offset_right = 1148.0
+offset_bottom = 34.0
+text = "Picked up Sword Part"
+label_settings = SubResource("LabelSettings_1kamh")
+
 [node name="MagicLabel" type="Label" parent="." unique_id=1919537207]
 visible = false
 offset_left = 901.0

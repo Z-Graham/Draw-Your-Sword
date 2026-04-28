@@ -18,6 +18,7 @@ class_name Room
 
 @onready var healing_label: Label = $HealingLabel
 @onready var magic_label: Label = $MagicLabel
+@onready var sword_label: Label = $SwordLabel
 @onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
 @onready var leave_room_detector_backwards: LeaveRoomDetector = $ColorRect2/LeaveRoomDetectorBackwards
 @onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
@@ -50,6 +51,9 @@ func _on_leave_room_detector_backwards_body_entered(_body: Node2D) -> void:
 
 func _on_item_picked_up(_item : Area2D) -> void:
 	var type = _item.type
+	if sword_label.visible:
+		sword_label.visible = false
+	
 	if type == "healing":
 		if magic_label.visible:
 			magic_label.visible = false
@@ -96,10 +100,21 @@ func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
 func _on_sword_item_collected(_item:Area2D) -> void:
 	print(_item.item_name)
 	print(_item.type)
+	if healing_label.visible:
+		healing_label.visible = false
+	if magic_label.visible:
+		magic_label.visible = false
 	var type=_item.type
 	if type=="blade":
 		Globals.known_blades.append(_item.item_name)
-		
+	elif type == "handle":
+		Globals.known_handles.append(_item.item_name)
+	else:
+		Globals.known_imbues.append(_item.item_name)
+	sword_label.visible = true
+	await get_tree().create_timer(1.5).timeout
+	sword_label.visible = false
+	
 
 
 func _on_leave_room_detector_up_body_entered(_body: Node2D) -> void:

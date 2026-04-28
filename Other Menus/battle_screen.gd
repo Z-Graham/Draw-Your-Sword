@@ -56,6 +56,8 @@ func battle_end():
 	win_screen.visible=true
 	Globals.player_stats["exp"]+=enemy_in_battle.enemy_stats["exp"]
 	print("before level up",Globals.player_stats["exp"])
+	print(Globals.level)
+	print(Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)])
 	if Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)]:
 		level_up()
 

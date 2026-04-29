@@ -20,6 +20,6 @@ var known_blades = ["basic",]
 var known_handles = ["basic",]
 var known_imbues = ["none",]
 
-var goblin_stats={"health":100,"defense":5,"attack":10,
+var goblin_stats={"health":100,"defense":7,"attack":10,
 "resist":[],"weakness":["fire"],"exp":10}
 #signal change_stats

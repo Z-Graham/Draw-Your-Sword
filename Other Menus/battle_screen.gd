@@ -222,9 +222,6 @@ func _on_handle_skill_button_pressed() -> void:
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
 		else:
-			fight_battle_menu.visible=true
-			health_bar.visible=true
-			mp_bar.visible=true
 			if not sw_handle=="katana":
 				enemy_fight()
 		if pencil_bar.value<100:
@@ -301,7 +298,7 @@ func enemy_fight():
 		enemy_status="none"
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	else:
-		var damage=roundf((enemy_in_battle.enemy_stats["attack"]/2)+randf_range(-2,2))
+		var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 		damage-=roundf(Globals.player_stats["defense"]/10.0)
 		damage=roundi(damage)
 		Globals.player_stats["current_health"]-=damage

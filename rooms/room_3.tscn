@@ -71,6 +71,7 @@ text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_4sdyu")
 
 [node name="SwordLabel" type="Label" parent="." unique_id=1918859362]
+visible = false
 offset_left = 887.0
 offset_right = 1153.0
 offset_bottom = 34.0
@@ -119,12 +120,12 @@ grow_vertical = 1
 solution = "Bridge"
 
 [node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("10_0v5my")]
-position = Vector2(963, 324)
+position = Vector2(940, 209)
 type = "blade"
 item_name = "katana"
 
 [node name="SwordItem2" parent="." unique_id=387052680 instance=ExtResource("10_0v5my")]
-position = Vector2(977, 548)
+position = Vector2(943, 427)
 type = "handle"
 item_name = "spear"
 

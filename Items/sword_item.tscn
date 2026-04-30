@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75lc8"]
-size = Vector2(14.138693, 12.13987)
+size = Vector2(24.507067, 22.25643)
 
 [node name="SwordItem" type="Area2D" unique_id=1568579394]
 collision_layer = 8
@@ -27,11 +27,11 @@ script = ExtResource("1_61oi6")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1411033220]
 texture_filter = 1
-scale = Vector2(0.68750006, 0.46875)
+scale = Vector2(1.28125, 0.90625)
 sprite_frames = SubResource("SpriteFrames_1dstn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991602389]
-position = Vector2(4.7683716e-07, 0)
+position = Vector2(4.7683716e-07, -0.5)
 scale = Vector2(2.121837, 1.4827176)
 shape = SubResource("RectangleShape2D_75lc8")
 

@@ -1,21 +1,45 @@
 [gd_scene format=3 uid="uid://bd2i6bcwurag2"]
 
 [ext_resource type="Script" uid="uid://bhke5ikjdsww0" path="res://rooms/drawing_spot.gd" id="1_8hb0i"]
-[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="1_v8mve"]
+[ext_resource type="Texture2D" uid="uid://ewdmfnisfgbc" path="res://assets/sprites/draw_spot.png" id="2_8hb0i"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6mom2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dlnx"]
+atlas = ExtResource("2_8hb0i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onwea"]
+atlas = ExtResource("2_8hb0i")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00u6a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dlnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onwea")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_631gg"]
+size = Vector2(23.748444, 12.627969)
 
 [node name="DrawingSpot" type="Area2D" unique_id=172422759]
 collision_layer = 4
 script = ExtResource("1_8hb0i")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=192180019]
-modulate = Color(1, 1, 1, 0.42352942)
-scale = Vector2(0.21553911, 0.3648148)
-texture = ExtResource("1_v8mve")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=73719549]
+texture_filter = 1
+scale = Vector2(1.0625, 0.90625)
+sprite_frames = SubResource("SpriteFrames_00u6a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1088442344]
+position = Vector2(-1.5000005, -0.5)
 scale = Vector2(1.4737809, 2.4548683)
-shape = SubResource("CircleShape2D_6mom2")
+shape = SubResource("RectangleShape2D_631gg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,13 @@
 extends Node2D
+
+const BASIC_BLADE = preload("uid://crkjolbw65b61")
+const KATANA_BLADE = preload("uid://cvpbwashxw5ey")
+const KRIS_BLADE = preload("uid://4bjggsin5t6m")
+const SPEAR_BLADE = preload("uid://dmtcj5dvmtq61")
+
+const BASIC_HANDLE = preload("uid://d3aj3q0l243gk")
+
+
 @onready var inventory: Control = $Inventory
 @onready var main_battle_menu: Control = $Main_battle_menu
 @onready var fight_battle_menu: Control = $fight_battle_menu
@@ -17,6 +26,11 @@ extends Node2D
 @onready var imbue_label: Label = $"Main_battle_menu/Imbue label"
 @onready var pencil_bar: TextureProgressBar = $"Main_battle_menu/pencil bar"
 @onready var battle_history: VBoxContainer = $battle_history
+@onready var anim: AnimationPlayer = $sword/anim
+@onready var sword: Node2D = $sword
+@onready var damage_label: Label = $Damage_label
+@onready var blade_sprite: Sprite2D = $sword/blade
+@onready var handle_sprite: Sprite2D = $sword/handle
 
 
 var enemy_health=100
@@ -41,6 +55,10 @@ var in_inventory=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	draw_charge=5
+	sword.visible=false
+	blade_sprite.texture=BASIC_BLADE
+	handle_sprite.texture=BASIC_HANDLE
+	adjust_sprites()
 
 func _process(delta:float)-> void:
 	health_bar.max_value=Globals.player_stats["max_health"]
@@ -53,6 +71,7 @@ func _process(delta:float)-> void:
 func battle_end():
 	win_screen.c_room="res://rooms/over_world.tscn"
 	$ColorRect2.visible=true
+	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	win_screen.visible=true
 	Globals.player_stats["exp"]+=enemy_in_battle.enemy_stats["exp"]
 	print("before level up",Globals.player_stats["exp"])
@@ -65,12 +84,16 @@ func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
 	mp_bar.visible=false
+	
 	if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]-5:
 		Globals.player_stats["current_MP"]+=5
 	else:
 		Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
 	var damage=damage_calc()
 	damage=roundi(damage)
+	damage_label.text=str(damage)
+	anim.play("swing")
+	await anim.animation_finished
 	battle_history_update("The enemy took "+str(damage)+" damage.")
 	enemy_in_battle.enemy_stats["health"]-=damage
 	if enemy_in_battle.enemy_stats["health"]<=0:
@@ -114,10 +137,15 @@ func _on_blade_skill_button_pressed() -> void:
 			Globals.player_stats["current_MP"]-=20
 			damage=damage_calc()*.9
 			damage=roundi(damage)
-			await get_tree().create_timer(0.5).timeout
+			damage_label.text=str(damage)
+			anim.play("double_slash")
+			await get_tree().create_timer(.5).timeout
 			var damage2=damage_calc()*.9
 			damage2=roundi(damage2)
+			damage_label.text=str(damage2)
+			print(damage,damage2)
 			damage=damage+damage2
+			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_blade=="katana":
 			battle_history_update("You used Precise Slash!")
@@ -128,6 +156,9 @@ func _on_blade_skill_button_pressed() -> void:
 					if sw_imbue==i:
 						damage*=1.5
 			damage=roundi(damage)
+			damage_label.text=str(damage)
+			anim.play("precise_slash")
+			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_blade=="kris":
 			battle_history_update("You used Serpent Strike!")
@@ -191,11 +222,14 @@ func _on_handle_skill_button_pressed() -> void:
 			damage=damage_calc()
 			damage*=1.1
 			damage=roundi(damage)
+			damage_label.text=str(damage)
 			var confuse_chance=randi_range(1,3)
 			if confuse_chance==2:
 				enemy_status="confused"
 				enemy_in_battle.modulate=Color(0.95, 1.0, 0.0, 1.0)
 				battle_history_update("The enemy is confused!")
+			anim.play("bash")
+			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_handle=="katana":
 			battle_history_update("You used Quick Draw!")
@@ -278,7 +312,6 @@ func reset():
 	enemy_in_battle.visible=true
 	health_bar.visible=true
 	mp_bar.visible=true
-	$damage_label.visible=false
 	in_main=true
 	in_battle=false
 	in_inventory=false
@@ -326,6 +359,11 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	pencil_bar.value=0
 	if blade=="basic":
 		blade_mult=1.0
+		blade_sprite.texture=BASIC_BLADE
+	elif blade=="katana":
+		blade_mult=1.0
+		blade_sprite.texture=KATANA_BLADE
+		
 	if handle=="basic":
 		handle_mult=1.0
 		
@@ -347,6 +385,7 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	Globals.sword["handle"] = handle
 	Globals.sword["imbue"] = imbue
 	battle_history_update("You drew a new sword!")
+	adjust_sprites()
 	
 	#update player sprite eventually
 
@@ -386,3 +425,11 @@ func level_up():
 	Globals.player_stats["exp"]=(Globals.player_stats["exp"]
 		-Globals.exp_requirements[str(Globals.level)])
 	Globals.level+=1
+
+func adjust_sprites():
+	if sw_blade=="basic":
+		if sw_handle=="basic":
+			handle_sprite.position=Vector2(-48,40)
+	elif sw_blade=="katana":
+		if sw_handle=="basic":
+			handle_sprite.position=Vector2(-66,63)

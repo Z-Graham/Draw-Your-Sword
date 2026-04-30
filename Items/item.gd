@@ -15,4 +15,5 @@ func _ready() -> void:
 func _on_body_entered(_body: Node2D) -> void:
 	picked_up.emit(self)
 	collected = true
+
 	queue_free()

@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://Other Menus/inventory.tscn" id="16_riuqw"]
 [ext_resource type="PackedScene" uid="uid://bkcej3lp8jho1" path="res://Other Menus/draw_screen.tscn" id="18_2b1bo"]
 [ext_resource type="PackedScene" uid="uid://7i05lclt6qar" path="res://Other Menus/win_screen.tscn" id="19_udy6t"]
+[ext_resource type="PackedScene" uid="uid://d0tu3pdpqi7to" path="res://Other Menus/stats_screen.tscn" id="23_te6vl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
 animations = [{
@@ -393,6 +394,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_i67w2"]
 resource_name = "poke"
+length = 0.6666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -400,7 +402,7 @@ tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
+"times": PackedFloat32Array(0, 0.26666668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(800, 366), Vector2(890, 366)]
@@ -424,7 +426,7 @@ tracks/2/path = NodePath("..:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.42141),
+"times": PackedFloat32Array(0, 0.36666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -765,10 +767,10 @@ libraries/ = SubResource("AnimationLibrary_mp0hd")
 [node name="Damage_label" type="Label" parent="." unique_id=647691557]
 visible = false
 modulate = Color(0.05919994, 0.64, 0.006399994, 1)
-offset_left = 905.0
-offset_top = 279.0
-offset_right = 945.0
-offset_bottom = 366.99725
+offset_left = 908.0
+offset_top = 168.0
+offset_right = 948.0
+offset_bottom = 255.99626
 text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1
@@ -1016,6 +1018,13 @@ offset_right = 576.0
 offset_bottom = 59.0
 mouse_filter = 1
 color = Color(0, 0, 0, 0.7137255)
+
+[node name="StatsScreen" parent="." unique_id=163162001 instance=ExtResource("23_te6vl")]
+visible = false
+offset_left = 563.0
+offset_top = 288.0
+offset_right = 563.0
+offset_bottom = 288.0
 
 [connection signal="pressed" from="Main_battle_menu/Draw_button" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]

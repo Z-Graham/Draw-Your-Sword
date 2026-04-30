@@ -36,6 +36,7 @@ const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
 @onready var damage_label: Label = $Damage_label
 @onready var blade_sprite: Sprite2D = $sword/blade
 @onready var handle_sprite: Sprite2D = $sword/handle
+@onready var stats_screen: ColorRect = $StatsScreen
 
 
 var enemy_health=100
@@ -460,9 +461,12 @@ func battle_history_update(label:String):
 		battle_history.get_child(0).queue_free()
 
 func level_up():
+	win_screen.visible=false
+	stats_screen.visible=true
 	Globals.player_stats["exp"]=(Globals.player_stats["exp"]
 		-Globals.exp_requirements[str(Globals.level)])
 	Globals.level+=1
+	
 
 func adjust_sprites():
 	if sw_blade=="basic":

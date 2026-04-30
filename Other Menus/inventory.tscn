@@ -110,8 +110,8 @@ item_0/text = "notebook"
 
 [node name="X Button" type="Button" parent="." unique_id=1769676174]
 layout_mode = 1
-offset_left = 1130.0
-offset_top = 611.0
+offset_left = 1100.0
+offset_top = 583.0
 offset_right = 1151.0
 offset_bottom = 647.0
 theme_override_font_sizes/font_size = 20

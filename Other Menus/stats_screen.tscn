@@ -26,6 +26,9 @@ font_size = 35
 [sub_resource type="LabelSettings" id="LabelSettings_yrise"]
 font_size = 35
 
+[sub_resource type="LabelSettings" id="LabelSettings_m72oe"]
+font_size = 37
+
 [node name="StatsScreen" type="ColorRect" unique_id=163162001]
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,6 +73,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "+"
 
+[node name="HealthDecreaseButton" type="Button" parent="GridContainer/VBoxContainer" unique_id=1155204128]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer" unique_id=1174835187]
 layout_mode = 2
 
@@ -88,6 +97,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "+"
+
+[node name="MPDecreaseButton" type="Button" parent="GridContainer/VBoxContainer2" unique_id=2124319514]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="GridContainer" unique_id=21913586]
 layout_mode = 2
@@ -108,6 +123,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "+"
 
+[node name="AttackDecreaseButton" type="Button" parent="GridContainer/VBoxContainer3" unique_id=1445184973]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-"
+
 [node name="VBoxContainer4" type="VBoxContainer" parent="GridContainer" unique_id=550860731]
 layout_mode = 2
 
@@ -127,7 +148,39 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "+"
 
+[node name="DefenseDecreaseButton" type="Button" parent="GridContainer/VBoxContainer4" unique_id=1026486436]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-"
+
+[node name="stat_points" type="Label" parent="." unique_id=1502716721]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 137.0
+offset_right = 792.0
+offset_bottom = 188.0
+text = "Stat points available: 5"
+label_settings = SubResource("LabelSettings_m72oe")
+
+[node name="Button" type="Button" parent="." unique_id=688613425]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="pressed" from="GridContainer/VBoxContainer/HealthIncreaseButton" to="." method="_on_health_increase_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer/HealthIncreaseButton" to="." method="any_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer/HealthDecreaseButton" to="." method="_on_health_decrease_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer/HealthDecreaseButton" to="." method="any_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer2/MPIncreaseButton" to="." method="any_button_pressed"]
 [connection signal="pressed" from="GridContainer/VBoxContainer2/MPIncreaseButton" to="." method="_on_mp_increase_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer2/MPDecreaseButton" to="." method="_on_mp_decrease_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer2/MPDecreaseButton" to="." method="any_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer3/AttackIncreaseButton" to="." method="any_button_pressed"]
 [connection signal="pressed" from="GridContainer/VBoxContainer3/AttackIncreaseButton" to="." method="_on_attack_increase_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer3/AttackDecreaseButton" to="." method="_on_attack_decrease_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer3/AttackDecreaseButton" to="." method="any_button_pressed"]
 [connection signal="pressed" from="GridContainer/VBoxContainer4/DefenseIncreaseButton" to="." method="_on_defense_increase_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer4/DefenseIncreaseButton" to="." method="any_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer4/DefenseDecreaseButton" to="." method="_on_defense_decrease_button_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer4/DefenseDecreaseButton" to="." method="any_button_pressed"]

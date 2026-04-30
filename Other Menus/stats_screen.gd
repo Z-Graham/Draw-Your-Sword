@@ -11,6 +11,7 @@ extends ColorRect
 @onready var defense_decrease_button: Button = $GridContainer/VBoxContainer4/DefenseDecreaseButton
 
 @onready var stat_points: Label = $stat_points
+@onready var confirm_button: Button = $confirm_button
 
 var added_health=0
 var added_MP=0
@@ -38,6 +39,7 @@ func _on_attack_increase_button_pressed() -> void:
 		stat_points_left-=1
 		attack_decrease_button.visible=true
 		attack_value_label.text=str(Globals.player_stats["attack"])+" + "+str(added_attack)
+		any_button_pressed()
 
 func _on_defense_increase_button_pressed() -> void:
 	if stat_points_left>0:
@@ -45,6 +47,7 @@ func _on_defense_increase_button_pressed() -> void:
 		stat_points_left-=1
 		defense_decrease_button.visible=true
 		defense_value_label.text=str(Globals.player_stats["defense"])+" + "+str(added_defense)
+		any_button_pressed()
 
 func _on_health_decrease_button_pressed() -> void:
 	added_health-=5
@@ -68,12 +71,34 @@ func _on_mp_decrease_button_pressed() -> void:
 
 
 func _on_attack_decrease_button_pressed() -> void:
-	pass # Replace with function body.
+	added_attack-=1
+	stat_points_left+=1
+	if added_attack==0:
+		attack_value_label.text=str(Globals.player_stats["attack"])
+		attack_decrease_button.visible=false
+	else:
+		attack_value_label.text=str(Globals.player_stats["attack"])+" + "+str(added_attack)
+
 
 
 func _on_defense_decrease_button_pressed() -> void:
-	pass # Replace with function body.
+	added_defense-=1
+	stat_points_left+=1
+	if added_defense==0:
+		defense_value_label.text=str(Globals.player_stats["defense"])
+		defense_decrease_button.visible=false
+	else:
+		defense_value_label.text=str(Globals.player_stats["defense"])+" + "+str(added_defense)
+
 
 
 func any_button_pressed() -> void:
 	stat_points.text="Stat points available: "+str(stat_points_left)
+	if stat_points_left==0:
+		confirm_button.visible=true
+	else:
+		confirm_button.visible=false
+
+
+func _on_confirm_button_pressed() -> void:
+	visible=false

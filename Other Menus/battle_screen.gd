@@ -87,6 +87,7 @@ func battle_end():
 	if Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)]:
 		level_up()
 
+
 func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
@@ -467,7 +468,6 @@ func level_up():
 		-Globals.exp_requirements[str(Globals.level)])
 	Globals.level+=1
 	
-
 func adjust_sprites():
 	if sw_blade=="basic":
 		if sw_handle=="basic":

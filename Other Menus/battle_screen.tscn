@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cc6hg7eathhu4" path="res://assets/sprites/red poly.png" id="3_638wx"]
 [ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
 [ext_resource type="PackedScene" uid="uid://dcrggycifxn06" path="res://Enemy/enemy_in_battle.tscn" id="4_pi828"]
-[ext_resource type="Texture2D" uid="uid://cvpbwashxw5ey" path="res://assets/sprites/katana_blade.png" id="5_4ijij"]
+[ext_resource type="Texture2D" uid="uid://crkjolbw65b61" path="res://assets/sprites/basic_blade.png" id="5_4ijij"]
 [ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
+[ext_resource type="Texture2D" uid="uid://bmduybjkkxx8y" path="res://assets/sprites/katana_handle.png" id="6_4ijij"]
 [ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
-[ext_resource type="Texture2D" uid="uid://d3aj3q0l243gk" path="res://assets/sprites/basic_handle.png" id="6_te6vl"]
 [ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
@@ -363,6 +363,70 @@ tracks/6/keys = {
 "values": [Vector2(905, 279), Vector2(908, 168)]
 }
 
+[sub_resource type="Animation" id="Animation_j537p"]
+resource_name = "quick_draw"
+length = 0.23333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06483231),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(892.00006, 266), Vector2(892.00006, 460.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7853982]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Damage_label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Damage_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(905, 279), Vector2(908, 168)]
+}
+
 [sub_resource type="Animation" id="Animation_6gotq"]
 resource_name = "swing"
 length = 1.3333334
@@ -445,6 +509,7 @@ _data = {
 &"bash": SubResource("Animation_te6vl"),
 &"double_slash": SubResource("Animation_4ijij"),
 &"precise_slash": SubResource("Animation_mp0hd"),
+&"quick_draw": SubResource("Animation_j537p"),
 &"swing": SubResource("Animation_6gotq")
 }
 
@@ -529,9 +594,9 @@ region_rect = Rect2(0, 0, 64, 64)
 
 [node name="handle" type="Sprite2D" parent="sword" unique_id=903616220]
 texture_filter = 1
-position = Vector2(-66, 63)
+position = Vector2(-60, 51)
 scale = Vector2(3, 3)
-texture = ExtResource("6_te6vl")
+texture = ExtResource("6_4ijij")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
@@ -544,7 +609,7 @@ visible = false
 offset_left = 905.0
 offset_top = 279.0
 offset_right = 945.0
-offset_bottom = 366.99896
+offset_bottom = 366.9988
 text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1

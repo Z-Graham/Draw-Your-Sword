@@ -6,6 +6,9 @@ const KRIS_BLADE = preload("uid://4bjggsin5t6m")
 const SPEAR_BLADE = preload("uid://dmtcj5dvmtq61")
 
 const BASIC_HANDLE = preload("uid://d3aj3q0l243gk")
+const KATANA_HANDLE = preload("uid://bmduybjkkxx8y")
+
+
 
 
 @onready var inventory: Control = $Inventory
@@ -237,6 +240,9 @@ func _on_handle_skill_button_pressed() -> void:
 			damage=damage_calc()
 			damage*=.25
 			damage=roundi(damage)
+			damage_label.text=str(damage)
+			anim.play("quick_draw")
+			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_handle=="kris":
 			Globals.player_stats["current_MP"]-=10
@@ -258,6 +264,10 @@ func _on_handle_skill_button_pressed() -> void:
 		else:
 			if not sw_handle=="katana":
 				enemy_fight()
+			else:
+				fight_battle_menu.visible=true
+				health_bar.visible=true
+				mp_bar.visible=true
 		if pencil_bar.value<100:
 			pencil_bar.value+=20
 
@@ -366,7 +376,10 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		
 	if handle=="basic":
 		handle_mult=1.0
-		
+		handle_sprite.texture=BASIC_HANDLE
+	elif handle=="katana":
+		blade_mult=1.0
+		handle_sprite.texture=KATANA_HANDLE
 	if blade=="basic" or blade=="spear":
 		blade_skill_req=20
 	elif blade=="katana":
@@ -430,6 +443,10 @@ func adjust_sprites():
 	if sw_blade=="basic":
 		if sw_handle=="basic":
 			handle_sprite.position=Vector2(-48,40)
+		elif sw_handle=="katana":
+			handle_sprite.position=Vector2(-60,51)
 	elif sw_blade=="katana":
 		if sw_handle=="basic":
+			handle_sprite.position=Vector2(-66,63)
+		elif sw_handle=="katana":
 			handle_sprite.position=Vector2(-66,63)

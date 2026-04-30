@@ -16,8 +16,8 @@ var healing_items={"HP Potion":0, "MP Potion":0}
 var sword = {"blade":"basic","handle":"basic","imbue":"none"}
 
 # Arrays of unlocked sword parts
-var known_blades = ["basic","katana"]
-var known_handles = ["basic","katana"]
+var known_blades = ["basic","katana","kris"]
+var known_handles = ["basic","katana","kris"]
 var known_imbues = ["none",]
 
 var goblin_stats={"health":100,"defense":7,"attack":10,

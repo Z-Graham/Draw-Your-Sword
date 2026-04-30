@@ -7,6 +7,7 @@ const SPEAR_BLADE = preload("uid://dmtcj5dvmtq61")
 
 const BASIC_HANDLE = preload("uid://d3aj3q0l243gk")
 const KATANA_HANDLE = preload("uid://bmduybjkkxx8y")
+const KRIS_HANDLE = preload("uid://ex76qdnxorgc")
 
 
 
@@ -61,6 +62,7 @@ func _ready() -> void:
 	sword.visible=false
 	blade_sprite.texture=BASIC_BLADE
 	handle_sprite.texture=BASIC_HANDLE
+	damage_label.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	adjust_sprites()
 
 func _process(delta:float)-> void:
@@ -172,6 +174,9 @@ func _on_blade_skill_button_pressed() -> void:
 					if i=="poison":
 						damage*=1.5
 			damage=roundi(damage)
+			damage_label.text=str(damage)
+			anim.play("Serpent strike")
+			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 			var poi_chance=randi_range(1,4)
 			if poi_chance==3:
@@ -346,11 +351,14 @@ func enemy_fight():
 		damage=roundi(damage)
 		Globals.player_stats["current_health"]-=damage
 		battle_history_update("You took "+str(damage)+" damage.")
-		
+	
+	await get_tree().create_timer(.5).timeout
 	if poison_count>0:
 		enemy_in_battle.enemy_stats["health"]-=(enemy_in_battle.enemy_stats["health"]/16)
 		battle_history_update("The enemy took "+str(enemy_in_battle.enemy_stats["health"]/16)+" poison damage.")
 		poison_count-=1
+		damage_label.text=str(enemy_in_battle.enemy_stats["health"]/16)
+		anim.play("poison damage")
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
 	else:
@@ -373,13 +381,20 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	elif blade=="katana":
 		blade_mult=1.0
 		blade_sprite.texture=KATANA_BLADE
+	elif blade=="kris":
+		blade_mult=1.0
+		blade_sprite.texture=KRIS_BLADE
 		
 	if handle=="basic":
 		handle_mult=1.0
 		handle_sprite.texture=BASIC_HANDLE
 	elif handle=="katana":
-		blade_mult=1.0
+		handle_mult=1.0
 		handle_sprite.texture=KATANA_HANDLE
+	elif handle=="kris":
+		handle_mult=1.0
+		handle_sprite.texture=KRIS_HANDLE
+	
 	if blade=="basic" or blade=="spear":
 		blade_skill_req=20
 	elif blade=="katana":
@@ -431,7 +446,7 @@ func battle_history_update(label:String):
 	var lab=Label.new()
 	lab.text=label
 	battle_history.add_child(lab)
-	if battle_history.get_children().size()>7:
+	if battle_history.get_children().size()>6:
 		battle_history.get_child(0).queue_free()
 
 func level_up():
@@ -445,8 +460,21 @@ func adjust_sprites():
 			handle_sprite.position=Vector2(-48,40)
 		elif sw_handle=="katana":
 			handle_sprite.position=Vector2(-60,51)
+		elif sw_handle=="kris":
+			handle_sprite.position=Vector2(-36,34)
+			
 	elif sw_blade=="katana":
 		if sw_handle=="basic":
 			handle_sprite.position=Vector2(-66,63)
 		elif sw_handle=="katana":
 			handle_sprite.position=Vector2(-66,63)
+		elif sw_handle=="kris":
+			handle_sprite.position=Vector2(-54,56)
+			
+	elif sw_blade=="kris":
+		if sw_handle=="basic":
+			handle_sprite.position=Vector2(-42,40)
+		elif sw_handle=="katana":
+			handle_sprite.position=Vector2(-54,51)
+		elif sw_handle=="kris":
+			handle_sprite.position=Vector2(-30,34)

@@ -10,6 +10,7 @@ var max_magic : int = Globals.player_stats["max_MP"]
 var blade_label
 var handle_label
 var imbue_label
+var key_label
 
 #var screen_size
 
@@ -54,7 +55,6 @@ func _process(_delta: float) -> void:
 		blade_label.text = "BLADE: " + str(Globals.sword["blade"])
 		handle_label.text = "HANDLE: " + str(Globals.sword["handle"])
 		imbue_label.text = "IMBUE: " + str(Globals.sword["imbue"])
-		
 		if !ui.visible:
 			ui.visible = true
 		else:

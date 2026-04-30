@@ -22,4 +22,6 @@ var known_imbues = ["none",]
 
 var goblin_stats={"health":100,"defense":7,"attack":10,
 "resist":[],"weakness":["fire"],"exp":10}
+
+var key := false
 #signal change_stats

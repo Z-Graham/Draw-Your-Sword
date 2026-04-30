@@ -5,6 +5,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_msqxa"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_e6gg6"]
+font_size = 32
+
 [sub_resource type="LabelSettings" id="LabelSettings_2fwl4"]
 font_size = 35
 
@@ -27,6 +30,11 @@ label_settings = SubResource("LabelSettings_msqxa")
 layout_mode = 2
 text = "MP: 456456/MAX"
 label_settings = SubResource("LabelSettings_msqxa")
+
+[node name="KeyLabel" type="Label" parent="VBoxContainer" unique_id=1401996739 groups=["KeyLabel"]]
+layout_mode = 2
+text = "Key: No"
+label_settings = SubResource("LabelSettings_e6gg6")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1682936986]
 anchors_preset = 5

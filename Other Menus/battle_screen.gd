@@ -8,6 +8,7 @@ const SPEAR_BLADE = preload("uid://dmtcj5dvmtq61")
 const BASIC_HANDLE = preload("uid://d3aj3q0l243gk")
 const KATANA_HANDLE = preload("uid://bmduybjkkxx8y")
 const KRIS_HANDLE = preload("uid://ex76qdnxorgc")
+const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
 
 
 
@@ -97,7 +98,10 @@ func player_fight(blade:String,handle:String,imbue:String):
 	var damage=damage_calc()
 	damage=roundi(damage)
 	damage_label.text=str(damage)
-	anim.play("swing")
+	if not sw_handle=="spear":
+		anim.play("swing")
+	else:
+		anim.play("poke")
 	await anim.animation_finished
 	battle_history_update("The enemy took "+str(damage)+" damage.")
 	enemy_in_battle.enemy_stats["health"]-=damage
@@ -384,6 +388,9 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	elif blade=="kris":
 		blade_mult=1.0
 		blade_sprite.texture=KRIS_BLADE
+	elif blade=="spear":
+		blade_mult=1.0
+		blade_sprite.texture=SPEAR_BLADE
 		
 	if handle=="basic":
 		handle_mult=1.0
@@ -394,6 +401,9 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	elif handle=="kris":
 		handle_mult=1.0
 		handle_sprite.texture=KRIS_HANDLE
+	elif handle=="spear":
+		handle_mult=1.0
+		handle_sprite.texture=SPEAR_HANDLE
 	
 	if blade=="basic" or blade=="spear":
 		blade_skill_req=20
@@ -478,3 +488,7 @@ func adjust_sprites():
 			handle_sprite.position=Vector2(-54,51)
 		elif sw_handle=="kris":
 			handle_sprite.position=Vector2(-30,34)
+			
+	elif sw_blade=="spear":
+		if sw_handle=="spear":
+			handle_sprite.position=Vector2(-72,70)

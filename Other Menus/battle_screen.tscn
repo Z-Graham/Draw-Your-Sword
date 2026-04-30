@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cc6hg7eathhu4" path="res://assets/sprites/red poly.png" id="3_638wx"]
 [ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
 [ext_resource type="PackedScene" uid="uid://dcrggycifxn06" path="res://Enemy/enemy_in_battle.tscn" id="4_pi828"]
-[ext_resource type="Texture2D" uid="uid://4bjggsin5t6m" path="res://assets/sprites/kris_blade.png" id="5_4ijij"]
+[ext_resource type="Texture2D" uid="uid://dmtcj5dvmtq61" path="res://assets/sprites/spear_blade.png" id="5_4ijij"]
 [ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
-[ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="6_4ijij"]
 [ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
+[ext_resource type="Texture2D" uid="uid://dwval6y234p2y" path="res://assets/sprites/spear_handle.png" id="6_te6vl"]
 [ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
@@ -391,6 +391,45 @@ tracks/2/keys = {
 "values": [Color(0.05919994, 0.64, 0.006399994, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_i67w2"]
+resource_name = "poke"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(800, 366), Vector2(890, 366)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7853981633974483]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.42141),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_mp0hd"]
 resource_name = "precise_slash"
 length = 1.1666666
@@ -626,6 +665,7 @@ _data = {
 &"bash": SubResource("Animation_te6vl"),
 &"double_slash": SubResource("Animation_4ijij"),
 &"poison damage": SubResource("Animation_2gfl2"),
+&"poke": SubResource("Animation_i67w2"),
 &"precise_slash": SubResource("Animation_mp0hd"),
 &"quick_draw": SubResource("Animation_j537p"),
 &"swing": SubResource("Animation_6gotq")
@@ -712,9 +752,9 @@ region_rect = Rect2(0, 0, 64, 64)
 
 [node name="handle" type="Sprite2D" parent="sword" unique_id=903616220]
 texture_filter = 1
-position = Vector2(-36, 34)
+position = Vector2(-72, 70)
 scale = Vector2(3, 3)
-texture = ExtResource("6_4ijij")
+texture = ExtResource("6_te6vl")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
@@ -728,7 +768,7 @@ modulate = Color(0.05919994, 0.64, 0.006399994, 1)
 offset_left = 905.0
 offset_top = 279.0
 offset_right = 945.0
-offset_bottom = 366.9973
+offset_bottom = 366.99725
 text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1

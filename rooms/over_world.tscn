@@ -28,20 +28,14 @@ next_room = NodePath("../Room3")
 previous_room = NodePath("../Room1")
 down_room = NodePath("../Room4")
 locked = false
-num_magic_items = null
 
 [node name="Room3" parent="." unique_id=1535874592 node_paths=PackedStringArray("previous_room") instance=ExtResource("7_4sdyu")]
 position = Vector2(3446, 0)
 previous_room = NodePath("../Room2")
-locked = null
 
 [node name="Room4" parent="." unique_id=1641247524 node_paths=PackedStringArray("up_room") instance=ExtResource("6_ffupc")]
 position = Vector2(1713, 1140)
 up_room = NodePath("../Room2")
-locked = null
-num_enemies = null
-num_healing_items = null
-num_magic_items = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=116450048]
 anchor_mode = 0
@@ -174,7 +168,7 @@ scale = Vector2(1.8218054, 64.14396)
 shape = SubResource("RectangleShape2D_4sdyu")
 
 [node name="Border14" type="StaticBody2D" parent="Borders" unique_id=66577588]
-position = Vector2(2849, 1327)
+position = Vector2(2853, 1327)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border14" unique_id=21879151]
@@ -183,7 +177,7 @@ scale = Vector2(1.8218054, 64.14396)
 shape = SubResource("RectangleShape2D_4sdyu")
 
 [node name="Border15" type="StaticBody2D" parent="Borders" unique_id=1941329972]
-position = Vector2(2421, 1078)
+position = Vector2(2421, 1086)
 rotation = 1.5707964
 collision_layer = 4
 

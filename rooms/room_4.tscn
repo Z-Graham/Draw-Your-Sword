@@ -77,13 +77,7 @@ position = Vector2(871, 308)
 type = "imbue"
 item_name = "fire"
 
-[node name="SwordItem3" parent="." unique_id=678800329 instance=ExtResource("4_ocw8c")]
-position = Vector2(574, 513)
-type = "blade"
-item_name = "spear"
-
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="body_entered" from="ColorRect4/LeaveRoomDetectorUp" to="." method="_on_leave_room_detector_up_body_entered"]
 [connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]
 [connection signal="collected" from="SwordItem2" to="." method="_on_sword_item_collected"]
-[connection signal="collected" from="SwordItem3" to="." method="_on_sword_item_collected"]

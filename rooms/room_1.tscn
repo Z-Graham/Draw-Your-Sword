@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="3_b330e"]
 [ext_resource type="PackedScene" uid="uid://b2rdwsm5rhsli" path="res://rooms/leave_room_detector.tscn" id="4_6sn55"]
 [ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://Items/item.tscn" id="7_4sdyu"]
+[ext_resource type="PackedScene" uid="uid://bjayyf6rqq7ef" path="res://Items/sword_item.tscn" id="7_p6f22"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sdyu"]
 font_size = 24
@@ -77,6 +78,12 @@ position = Vector2(1038, 276)
 [node name="EnterSpawnPoint" type="Marker2D" parent="." unique_id=1786957704]
 position = Vector2(87, 95)
 
+[node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("7_p6f22")]
+position = Vector2(685, 331)
+type = "handle"
+item_name = "katana"
+
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="picked_up" from="Item" to="." method="_on_item_picked_up"]
 [connection signal="picked_up" from="Item2" to="." method="_on_item_picked_up"]
+[connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]

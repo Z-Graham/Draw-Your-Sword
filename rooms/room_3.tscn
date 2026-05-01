@@ -126,8 +126,8 @@ item_name = "katana"
 
 [node name="SwordItem2" parent="." unique_id=387052680 instance=ExtResource("10_0v5my")]
 position = Vector2(943, 427)
-type = "handle"
-item_name = "spear"
+type = "blade"
+item_name = "kris"
 
 [connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]

@@ -84,6 +84,7 @@ func battle_end():
 	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 	if Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)]:
 		level_up()
+		pass
 
 
 func player_fight(blade:String,handle:String,imbue:String):

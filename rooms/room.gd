@@ -47,13 +47,13 @@ func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
 			print("move to next room")
 			left.emit(self, leave_room_detector.next,leave_room_detector.down)
 		else:
-			if Globals.key:
+			if Globals.keys > 0:
 				print("unlock")
 				next_room.locked = false
 				await get_tree().create_timer(0.25).timeout
 				print("move to next room")
 				left.emit(self, leave_room_detector.next,leave_room_detector.down)
-				Globals.key = false
+				Globals.keys -= 1
 
 
 func _on_leave_room_detector_backwards_body_entered(_body: Node2D) -> void:
@@ -108,13 +108,13 @@ func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
 			print("move to down room")
 			left.emit(self, leave_room_detector_down.next,leave_room_detector_down.down)
 		else:
-			if Globals.key:
+			if Globals.keys > 0:
 				print("unlock")
 				down_room.locked = false
 				await get_tree().create_timer(0.25).timeout
 				print("move to next room")
 				left.emit(self, leave_room_detector_down.next,leave_room_detector_down.down)
-				Globals.key = false
+				Globals.keys -= 1
 
 
 

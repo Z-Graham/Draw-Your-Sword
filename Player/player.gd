@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 		blade_label.text = "BLADE: " + str(Globals.sword["blade"])
 		handle_label.text = "HANDLE: " + str(Globals.sword["handle"])
 		imbue_label.text = "IMBUE: " + str(Globals.sword["imbue"])
-		key_label.text = "KEY: " + str(Globals.key)
+		key_label.text = "KEY: " + str(Globals.keys)
 		if !ui.visible:
 			ui.visible = true
 		else:

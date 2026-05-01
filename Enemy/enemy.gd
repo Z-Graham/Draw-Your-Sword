@@ -18,5 +18,5 @@ func _on_body_entered(_body: Node2D) -> void:
 	var battle_screen=get_tree().get_first_node_in_group("BattleScreenLayer").get_child(0)
 	battle_screen.reset()
 	if has_key:
-		Globals.key = true
+		Globals.keys += 1
 	queue_free()

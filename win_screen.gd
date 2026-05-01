@@ -8,23 +8,22 @@ extends Control
 
 func _ready() -> void:
 	exp_bar.max_value=Globals.exp_requirements["1"]
-	exp_gain(16)
+	#exp_gain(14)
 
 func exp_gain(exp:int):
 	exp_amount.text="+ "+str(exp)
-	print("exp",exp)
 	for i in range(exp):
 		exp_bar.value+=1
-		print(i)
 		await get_tree().create_timer(.05).timeout
 		if exp_bar.value==exp_bar.max_value:
-			print("level_up")
 			exp_bar.value=0
 			Globals.level+=1
 			level.text="Level: "+str(Globals.level)
 			exp_bar.max_value=Globals.exp_requirements[str(Globals.level)]
 	if Globals.player_stats["exp"]+exp<Globals.exp_requirements[str(Globals.level)]:
-		print(Globals.player_stats["exp"])
+		print(Globals.player_stats["exp"]+exp)
+		print(Globals.exp_requirements[str(Globals.level)])
+		print(Globals.exp_requirements[str(Globals.level)]-Globals.player_stats["exp"])
 		exp_to_next.text="EXP to next: "+(str(
 		Globals.exp_requirements[str(Globals.level)]-Globals.player_stats["exp"]))
 	else:

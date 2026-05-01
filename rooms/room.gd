@@ -41,17 +41,19 @@ func _ready() -> void:
 		i.queue_free()
 
 func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
-	if !next_room.locked:
-		await get_tree().create_timer(0.25).timeout
-		print("move to next room")
-		left.emit(self, leave_room_detector.next,leave_room_detector.down)
-	else:
-		if Globals.key:
-			print("unlock")
+	if next_room != null:
+		if !next_room.locked:
 			await get_tree().create_timer(0.25).timeout
 			print("move to next room")
 			left.emit(self, leave_room_detector.next,leave_room_detector.down)
-			Globals.key = false
+		else:
+			if Globals.key:
+				print("unlock")
+				next_room.locked = false
+				await get_tree().create_timer(0.25).timeout
+				print("move to next room")
+				left.emit(self, leave_room_detector.next,leave_room_detector.down)
+				Globals.key = false
 
 
 func _on_leave_room_detector_backwards_body_entered(_body: Node2D) -> void:
@@ -100,11 +102,19 @@ func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
 
 
 func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
-	if !down_room.locked:
-		await get_tree().create_timer(0.25).timeout
-		print("move to down room")
-		left.emit(self, leave_room_detector_down.next,leave_room_detector_down.down)
-
+	if down_room != null:
+		if !down_room.locked:
+			await get_tree().create_timer(0.25).timeout
+			print("move to down room")
+			left.emit(self, leave_room_detector_down.next,leave_room_detector_down.down)
+		else:
+			if Globals.key:
+				print("unlock")
+				down_room.locked = false
+				await get_tree().create_timer(0.25).timeout
+				print("move to next room")
+				left.emit(self, leave_room_detector_down.next,leave_room_detector_down.down)
+				Globals.key = false
 
 
 

@@ -71,6 +71,7 @@ has_key = true
 
 [node name="Enemy2" parent="." unique_id=1380412826 instance=ExtResource("4_13qvk")]
 position = Vector2(563, 254)
+has_key = true
 
 [node name="HealingLabel" type="Label" parent="." unique_id=1875319667]
 visible = false

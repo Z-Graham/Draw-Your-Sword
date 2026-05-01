@@ -40,6 +40,7 @@ func _ready() -> void:
 	blade_label = get_tree().get_first_node_in_group("BladeLabel")
 	handle_label = get_tree().get_first_node_in_group("handleLabel")
 	imbue_label = get_tree().get_first_node_in_group("ImbueLabel")
+	key_label = get_tree().get_first_node_in_group("KeyLabel")
 	
 	#screen_size = get_viewport_rect().size
 
@@ -55,6 +56,7 @@ func _process(_delta: float) -> void:
 		blade_label.text = "BLADE: " + str(Globals.sword["blade"])
 		handle_label.text = "HANDLE: " + str(Globals.sword["handle"])
 		imbue_label.text = "IMBUE: " + str(Globals.sword["imbue"])
+		key_label.text = "KEY: " + str(Globals.key)
 		if !ui.visible:
 			ui.visible = true
 		else:

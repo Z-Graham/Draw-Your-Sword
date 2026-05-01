@@ -16,7 +16,6 @@ font_size = 24
 
 [node name="Room3" type="Node2D" unique_id=1535874592 node_paths=PackedStringArray("enter_spawn_point", "return_spawn_point", "trench")]
 script = ExtResource("1_2r27u")
-locked = false
 num_enemies = 2
 num_healing_items = 1
 num_magic_items = 2

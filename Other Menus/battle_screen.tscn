@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dmtcj5dvmtq61" path="res://assets/sprites/spear_blade.png" id="5_4ijij"]
 [ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
-[ext_resource type="Texture2D" uid="uid://dwval6y234p2y" path="res://assets/sprites/spear_handle.png" id="6_te6vl"]
+[ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="6_te6vl"]
 [ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
@@ -754,7 +754,7 @@ region_rect = Rect2(0, 0, 64, 64)
 
 [node name="handle" type="Sprite2D" parent="sword" unique_id=903616220]
 texture_filter = 1
-position = Vector2(-72, 70)
+position = Vector2(-24, 22)
 scale = Vector2(3, 3)
 texture = ExtResource("6_te6vl")
 region_enabled = true
@@ -767,10 +767,10 @@ libraries/ = SubResource("AnimationLibrary_mp0hd")
 [node name="Damage_label" type="Label" parent="." unique_id=647691557]
 visible = false
 modulate = Color(0.05919994, 0.64, 0.006399994, 1)
-offset_left = 908.0
-offset_top = 168.0
-offset_right = 948.0
-offset_bottom = 255.99626
+offset_left = 905.0
+offset_top = 279.0
+offset_right = 945.0
+offset_bottom = 366.99628
 text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1
@@ -1041,3 +1041,4 @@ offset_bottom = 288.0
 [connection signal="pressed" from="fight_battle_menu/Back button" to="." method="_on_back_button_pressed"]
 [connection signal="item_used" from="Inventory" to="." method="_on_inventory_item_used"]
 [connection signal="draw_screen_closed" from="DrawScreen" to="." method="_on_draw_screen_draw_screen_closed"]
+[connection signal="closed" from="StatsScreen" to="." method="_on_stats_screen_closed"]

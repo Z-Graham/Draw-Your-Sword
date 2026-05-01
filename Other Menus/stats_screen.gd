@@ -19,6 +19,7 @@ var added_attack=0
 var added_defense=0
 var stat_points_left=5
 
+signal closed
 
 func _on_health_increase_button_pressed() -> void:
 	if stat_points_left>0:
@@ -102,3 +103,4 @@ func any_button_pressed() -> void:
 
 func _on_confirm_button_pressed() -> void:
 	visible=false
+	closed.emit()

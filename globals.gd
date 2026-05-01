@@ -20,7 +20,7 @@ var known_blades = ["basic","katana","kris","spear"]
 var known_handles = ["basic","katana","kris","spear"]
 var known_imbues = ["none",]
 
-var goblin_stats={"health":100,"defense":7,"attack":10,
+var goblin_stats={"health":50,"defense":7,"attack":10,
 "resist":[],"weakness":["fire"],"exp":10}
 
 var key := false

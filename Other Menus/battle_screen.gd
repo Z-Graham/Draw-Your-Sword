@@ -38,6 +38,7 @@ const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
 @onready var handle_sprite: Sprite2D = $sword/handle
 @onready var stats_screen: ColorRect = $StatsScreen
 
+signal battle_finished(exp_amount:int)
 
 var enemy_health=100
 var enemy_status="none"
@@ -76,14 +77,11 @@ func _process(delta:float)-> void:
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
 
 func battle_end():
-	win_screen.c_room="res://rooms/over_world.tscn"
 	$ColorRect2.visible=true
 	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	win_screen.visible=true
+	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 	Globals.player_stats["exp"]+=enemy_in_battle.enemy_stats["exp"]
-	print("before level up",Globals.player_stats["exp"])
-	print(Globals.level)
-	print(Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)])
 	if Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)]:
 		level_up()
 
@@ -476,6 +474,8 @@ func adjust_sprites():
 			handle_sprite.position=Vector2(-60,51)
 		elif sw_handle=="kris":
 			handle_sprite.position=Vector2(-36,34)
+		elif sw_handle=="spear":
+			handle_sprite.position=Vector2(-84,76)
 			
 	elif sw_blade=="katana":
 		if sw_handle=="basic":
@@ -484,6 +484,8 @@ func adjust_sprites():
 			handle_sprite.position=Vector2(-66,63)
 		elif sw_handle=="kris":
 			handle_sprite.position=Vector2(-54,56)
+		elif sw_handle=="spear":
+			handle_sprite.position=Vector2(-102,98)
 			
 	elif sw_blade=="kris":
 		if sw_handle=="basic":
@@ -492,7 +494,19 @@ func adjust_sprites():
 			handle_sprite.position=Vector2(-54,51)
 		elif sw_handle=="kris":
 			handle_sprite.position=Vector2(-30,34)
+		elif sw_handle=="spear":
+			handle_sprite.position=Vector2(-78,76)
 			
 	elif sw_blade=="spear":
-		if sw_handle=="spear":
+		if sw_handle=="basic":
+			handle_sprite.position=Vector2(-36,34)
+		elif sw_handle=="katana":
+			handle_sprite.position=Vector2(-36,35)
+		elif sw_handle=="kris":
+			handle_sprite.position=Vector2(-24,22)
+		elif sw_handle=="spear":
 			handle_sprite.position=Vector2(-72,70)
+
+
+func _on_stats_screen_closed() -> void:
+	win_screen.visible=true

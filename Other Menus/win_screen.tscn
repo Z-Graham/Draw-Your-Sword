@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://7i05lclt6qar"]
 
 [ext_resource type="Script" uid="uid://bnpiv6eb2s580" path="res://win_screen.gd" id="1_mihep"]
+[ext_resource type="Texture2D" uid="uid://bckrhws8ymph7" path="res://assets/sprites/exp bar empty.png" id="2_7e2hu"]
+[ext_resource type="Texture2D" uid="uid://bpagm8ogphk4k" path="res://assets/sprites/exp bar full.png" id="3_ixawb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xkftk"]
 font_size = 200
@@ -8,8 +10,11 @@ font_size = 200
 [sub_resource type="LabelSettings" id="LabelSettings_7e2hu"]
 font_size = 30
 
-[sub_resource type="LabelSettings" id="LabelSettings_ixawb"]
-font_size = 30
+[sub_resource type="LabelSettings" id="LabelSettings_4ceti"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_177gq"]
+font_size = 50
 
 [node name="Win Screen" type="ColorRect" unique_id=949921955]
 anchors_preset = 15
@@ -36,27 +41,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -106.5
-offset_top = 292.0
-offset_right = 106.5
-offset_bottom = 334.0
+offset_left = 212.0
+offset_top = 299.0
+offset_right = 313.0
+offset_bottom = 341.0
 grow_horizontal = 2
-text = "Exp Gained: 10"
+text = "+ 10"
 label_settings = SubResource("LabelSettings_7e2hu")
-horizontal_alignment = 1
-
-[node name="items gained" type="Label" parent="." unique_id=1734503629]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -157.0
-offset_top = 370.0
-offset_right = 157.0
-offset_bottom = 412.0
-grow_horizontal = 2
-text = "Items obtained: None"
-label_settings = SubResource("LabelSettings_ixawb")
 horizontal_alignment = 1
 
 [node name="continue" type="Button" parent="." unique_id=255700575]
@@ -65,11 +56,55 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -92.0
-offset_top = 451.0
+offset_top = 522.0
 offset_right = 92.0
-offset_bottom = 514.0
+offset_bottom = 585.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "Continue"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=262076299]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.5
+offset_top = 290.0
+offset_right = 210.5
+offset_bottom = 348.0
+grow_horizontal = 2
+max_value = 15.0
+texture_under = ExtResource("2_7e2hu")
+texture_progress = ExtResource("3_ixawb")
+
+[node name="level" type="Label" parent="." unique_id=664701495]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 359.0
+offset_right = 135.5
+offset_bottom = 432.0
+grow_horizontal = 2
+text = "Level: 1"
+label_settings = SubResource("LabelSettings_4ceti")
+horizontal_alignment = 1
+
+[node name="exp to next" type="Label" parent="." unique_id=297529889]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.0
+offset_top = 438.0
+offset_right = 179.0
+offset_bottom = 507.0
+grow_horizontal = 2
+text = "EXP to next: 15"
+label_settings = SubResource("LabelSettings_177gq")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1390932941]
 
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

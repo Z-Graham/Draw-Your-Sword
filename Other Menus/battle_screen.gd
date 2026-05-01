@@ -80,8 +80,8 @@ func battle_end():
 	$ColorRect2.visible=true
 	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	win_screen.visible=true
-	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 	Globals.player_stats["exp"]+=enemy_in_battle.enemy_stats["exp"]
+	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 	if Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)]:
 		level_up()
 
@@ -464,7 +464,6 @@ func level_up():
 	stats_screen.visible=true
 	Globals.player_stats["exp"]=(Globals.player_stats["exp"]
 		-Globals.exp_requirements[str(Globals.level)])
-	Globals.level+=1
 	
 func adjust_sprites():
 	if sw_blade=="basic":

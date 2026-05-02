@@ -3,12 +3,16 @@ extends Area2D
 @export_enum("goblin", "other") var type := "goblin"
 @export var has_key := false
 
-@onready var key: Sprite2D = $Key
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+@onready var key: AnimatedSprite2D = $Key
 
 
 func _ready() -> void:
 	if has_key:
 		key.visible = true
+		key.play("default")
+	if type=="goblin":
+		sprite_2d.play("goblin")
 
 func _on_body_entered(_body: Node2D) -> void:
 	print("start battle")

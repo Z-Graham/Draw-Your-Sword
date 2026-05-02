@@ -347,11 +347,14 @@ func enemy_fight():
 		enemy_status="none"
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	else:
+		enemy_in_battle.play("attack")
+		await enemy_in_battle.animation_finished
 		var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 		damage-=roundf(Globals.player_stats["defense"]/10.0)
 		damage=roundi(damage)
 		Globals.player_stats["current_health"]-=damage
 		battle_history_update("You took "+str(damage)+" damage.")
+		enemy_in_battle.play("idle")
 	
 	await get_tree().create_timer(.5).timeout
 	if poison_count>0:

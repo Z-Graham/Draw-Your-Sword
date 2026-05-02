@@ -1,28 +1,83 @@
 [gd_scene format=3 uid="uid://cjkvvp543n5ri"]
 
-[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="1_2pb1h"]
 [ext_resource type="Script" uid="uid://hi0fkbejrntv" path="res://Enemy/enemy.gd" id="1_px1sc"]
+[ext_resource type="Texture2D" uid="uid://xuojiprxs0ir" path="res://assets/sprites/goblin.png" id="2_am0pq"]
+[ext_resource type="Texture2D" uid="uid://br3oy0ssge2pr" path="res://assets/sprites/key.png" id="3_am0pq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rspp"]
+atlas = ExtResource("2_am0pq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efk13"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rspp")
+}],
+"loop": true,
+"name": &"goblin",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px1sc"]
-size = Vector2(95, 93)
+size = Vector2(94, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqilm"]
+atlas = ExtResource("3_am0pq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncf7h"]
+atlas = ExtResource("3_am0pq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6jha"]
+atlas = ExtResource("3_am0pq")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glvfu"]
+atlas = ExtResource("3_am0pq")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rspp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqilm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncf7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6jha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glvfu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Area2D" unique_id=1936347032]
 collision_layer = 2
 script = ExtResource("1_px1sc")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=382444752]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.735, 0.735)
-texture = ExtResource("1_2pb1h")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1834180299]
+texture_filter = 1
+scale = Vector2(2.4374998, 1.9999999)
+sprite_frames = SubResource("SpriteFrames_efk13")
+animation = &"goblin"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1556282026]
+position = Vector2(-3, -4)
 shape = SubResource("RectangleShape2D_px1sc")
 
-[node name="Key" type="Sprite2D" parent="." unique_id=1151574133]
+[node name="Key" type="AnimatedSprite2D" parent="." unique_id=823068581]
 visible = false
-modulate = Color(1, 1, 0, 1)
-position = Vector2(-0.5, -92)
-scale = Vector2(0.5390625, 0.28906253)
-texture = ExtResource("1_2pb1h")
+texture_filter = 1
+position = Vector2(10, -47)
+scale = Vector2(1.375, 0.93750006)
+sprite_frames = SubResource("SpriteFrames_0rspp")
+frame_progress = 0.8360557
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -80,11 +80,7 @@ func battle_end():
 	$ColorRect2.visible=true
 	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	win_screen.visible=true
-	Globals.player_stats["exp"]+=enemy_in_battle.enemy_stats["exp"]
 	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
-	if Globals.player_stats["exp"]>Globals.exp_requirements[str(Globals.level)]:
-		level_up()
-		pass
 
 
 func player_fight(blade:String,handle:String,imbue:String):
@@ -433,7 +429,7 @@ func damage_calc() -> int:
 	if enemy_in_battle.enemy_stats["weakness"].size()>0:
 		for i in enemy_in_battle.enemy_stats["weakness"]:
 			if sw_imbue==i:
-				damage*=2
+				damage*=1.5
 				print("fire")
 				battle_history_update("It's super effective.")
 	if enemy_in_battle.enemy_stats["resist"].size()>0:
@@ -460,11 +456,7 @@ func battle_history_update(label:String):
 	if battle_history.get_children().size()>6:
 		battle_history.get_child(0).queue_free()
 
-func level_up():
-	win_screen.visible=false
-	stats_screen.visible=true
-	Globals.player_stats["exp"]=(Globals.player_stats["exp"]
-		-Globals.exp_requirements[str(Globals.level)])
+
 	
 func adjust_sprites():
 	if sw_blade=="basic":
@@ -506,7 +498,19 @@ func adjust_sprites():
 			handle_sprite.position=Vector2(-24,22)
 		elif sw_handle=="spear":
 			handle_sprite.position=Vector2(-72,70)
+			
+	if sw_imbue=="none":
+		blade_sprite.modulate=Color(1.0, 1.0, 1.0, 1.0)
+	elif sw_imbue=="fire":
+		blade_sprite.modulate=Color(1.0, 0.0, 0.0, 1.0)
 
 
 func _on_stats_screen_closed() -> void:
 	win_screen.visible=true
+	Globals.restore()
+
+
+func _on_win_screen_level_up() -> void:
+	win_screen.visible=false
+	stats_screen.visible=true
+	

@@ -51,6 +51,7 @@ label_settings = SubResource("LabelSettings_7e2hu")
 horizontal_alignment = 1
 
 [node name="continue" type="Button" parent="." unique_id=255700575]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

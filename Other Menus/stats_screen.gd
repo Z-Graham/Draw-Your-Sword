@@ -17,7 +17,7 @@ var added_health=0
 var added_MP=0
 var added_attack=0
 var added_defense=0
-var stat_points_left=5
+var stat_points_left:int
 
 signal closed
 
@@ -27,6 +27,7 @@ func _on_health_increase_button_pressed() -> void:
 		stat_points_left-=1
 		health_decrease_button.visible=true
 		max_health_value_label.text=str(Globals.player_stats["max_health"])+" + "+str(added_health)
+		any_button_pressed()
 func _on_mp_increase_button_pressed() -> void:
 	if stat_points_left>0:
 		added_MP+=5
@@ -102,5 +103,27 @@ func any_button_pressed() -> void:
 
 
 func _on_confirm_button_pressed() -> void:
+	Globals.stat_points=0
+	Globals.player_stats["max_health"]+=added_health
+	Globals.player_stats["max_MP"]+=added_MP
+	Globals.player_stats["attack"]+=added_attack
+	Globals.player_stats["defense"]+=added_defense
+	attack_value_label.text=str(Globals.player_stats["attack"])
+	defense_value_label.text=str(Globals.player_stats["defense"])
+	max_health_value_label.text=str(Globals.player_stats["max_health"])
+	max_mp_value_label.text=str(Globals.player_stats["max_MP"])
+	health_decrease_button.visible=false
+	mp_decrease_button.visible=false
+	attack_decrease_button.visible=false
+	defense_decrease_button.visible=false
+	confirm_button.visible=false
+	added_health=0
+	added_defense=0
+	added_MP=0
+	added_attack=0
 	visible=false
 	closed.emit()
+
+
+func _on_visibility_changed() -> void:
+	stat_points_left=Globals.stat_points

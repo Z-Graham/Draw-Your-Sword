@@ -40,6 +40,9 @@ const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
 
 signal battle_finished(exp_amount:int)
 
+var first_battle=true
+var first_fight_menu=true
+
 var enemy_health=100
 var enemy_status="none"
 var sw_blade="basic"
@@ -517,3 +520,8 @@ func _on_win_screen_level_up() -> void:
 	win_screen.visible=false
 	stats_screen.visible=true
 	
+
+
+func _on_visibility_changed() -> void:
+	if visible==false:
+		TutorialScreen.show_up("battle")

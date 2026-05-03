@@ -8,7 +8,14 @@ var page=1
 @onready var back: Button = $back
 
 
-func page_changed():
+func show_up(type:String):
+	visible=true
+	tutorial=type
+	page=1
+	page_change()
+
+
+func page_change():
 	if tutorial=="battle":
 		if page==1:
 			info.label_settings.font_size=64
@@ -33,13 +40,13 @@ func _on_next_pressed() -> void:
 		visible=false
 	else:
 		page+=1
-		page_changed()
+		page_change()
 		if page==max_pages:
 			next.text="Close"
 
 
 func _on_back_pressed() -> void:
 	page-=1
-	page_changed()
+	page_change()
 	if page==1:
 		back.visible=false

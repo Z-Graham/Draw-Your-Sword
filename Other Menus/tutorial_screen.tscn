@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bjfj0gtd8h2us"]
+
+[ext_resource type="Script" uid="uid://cf0c5cxlh0vin" path="res://Other Menus/tutorial_screen.gd" id="1_vyt0k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5lxn8"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_li6k0"]
+font_size = 55
+
+[node name="Tutorial screen" type="Control" unique_id=1925556960]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vyt0k")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=59533901]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 0.5058824)
+
+[node name="tutorial label" type="Label" parent="." unique_id=1886583420]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 23.0
+text = "Tutorial"
+label_settings = SubResource("LabelSettings_5lxn8")
+
+[node name="info" type="Label" parent="." unique_id=329099404]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -314.0
+offset_top = 110.0
+offset_right = 314.0
+offset_bottom = 186.0
+grow_horizontal = 2
+text = "This is the battle screen"
+label_settings = SubResource("LabelSettings_li6k0")
+
+[node name="next" type="Button" parent="." unique_id=367692245]
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 593.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 34
+text = "Next"
+
+[node name="back" type="Button" parent="." unique_id=1967599182]
+visible = false
+layout_mode = 0
+offset_top = 593.0
+offset_right = 86.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 34
+text = "Back
+"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

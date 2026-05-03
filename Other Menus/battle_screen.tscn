@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bkcej3lp8jho1" path="res://Other Menus/draw_screen.tscn" id="18_2b1bo"]
 [ext_resource type="PackedScene" uid="uid://7i05lclt6qar" path="res://Other Menus/win_screen.tscn" id="19_udy6t"]
 [ext_resource type="PackedScene" uid="uid://d0tu3pdpqi7to" path="res://Other Menus/stats_screen.tscn" id="23_te6vl"]
+[ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="24_m3a36"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
 animations = [{
@@ -740,9 +741,11 @@ position = Vector2(116, 360)
 sprite_frames = SubResource("SpriteFrames_hn33v")
 
 [node name="enemy_in_battle" parent="." unique_id=1840550579 instance=ExtResource("4_pi828")]
-texture_filter = 1
 position = Vector2(924, 370)
 scale = Vector2(4.5625, 3.875)
+animation = &"idle"
+frame = 0
+frame_progress = 0.0
 
 [node name="sword" type="Node2D" parent="." unique_id=718663914]
 position = Vector2(876, 277)
@@ -777,6 +780,43 @@ text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="health bar" type="TextureProgressBar" parent="." unique_id=1280788923]
+offset_left = 2.0
+offset_top = 538.0
+offset_right = 268.0
+offset_bottom = 572.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("13_fibhm")
+texture_progress = ExtResource("14_riuqw")
+
+[node name="Health Label" type="Label" parent="health bar" unique_id=1551296537]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -25.0
+offset_right = 124.0
+offset_bottom = -2.0
+text = "Health: 100/100"
+
+[node name="MP bar" type="TextureProgressBar" parent="." unique_id=652398956]
+self_modulate = Color(0, 2.429381, 18.892157, 1)
+offset_left = 2.0
+offset_top = 594.0
+offset_right = 265.0
+offset_bottom = 628.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("13_fibhm")
+texture_progress = ExtResource("14_riuqw")
+
+[node name="MP Label" type="Label" parent="MP bar" unique_id=1485687531]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -20.0
+offset_right = 126.0
+offset_bottom = 3.0
+text = "MP: 50/50"
 
 [node name="Main_battle_menu" type="Control" parent="." unique_id=1311188708]
 layout_mode = 3
@@ -899,7 +939,6 @@ offset_bottom = 639.0
 text = "Imbue: None"
 
 [node name="fight_battle_menu" type="Control" parent="." unique_id=1463964744]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -958,43 +997,6 @@ visible = false
 z_index = 3
 mouse_filter = 1
 
-[node name="health bar" type="TextureProgressBar" parent="." unique_id=1280788923]
-offset_left = 2.0
-offset_top = 538.0
-offset_right = 268.0
-offset_bottom = 572.0
-fill_mode = 1
-nine_patch_stretch = true
-texture_under = ExtResource("13_fibhm")
-texture_progress = ExtResource("14_riuqw")
-
-[node name="Health Label" type="Label" parent="health bar" unique_id=1551296537]
-layout_mode = 0
-offset_left = 2.0
-offset_top = -25.0
-offset_right = 124.0
-offset_bottom = -2.0
-text = "Health: 100/100"
-
-[node name="MP bar" type="TextureProgressBar" parent="." unique_id=652398956]
-self_modulate = Color(0, 2.429381, 18.892157, 1)
-offset_left = 2.0
-offset_top = 594.0
-offset_right = 265.0
-offset_bottom = 628.0
-fill_mode = 1
-nine_patch_stretch = true
-texture_under = ExtResource("13_fibhm")
-texture_progress = ExtResource("14_riuqw")
-
-[node name="MP Label" type="Label" parent="MP bar" unique_id=1485687531]
-layout_mode = 0
-offset_left = 4.0
-offset_top = -20.0
-offset_right = 126.0
-offset_bottom = 3.0
-text = "MP: 50/50"
-
 [node name="DrawScreen" parent="." unique_id=2035027788 instance=ExtResource("18_2b1bo")]
 visible = false
 top_level = true
@@ -1027,6 +1029,13 @@ offset_left = 563.0
 offset_top = 288.0
 offset_right = 563.0
 offset_bottom = 288.0
+
+[node name="Tutorial screen" parent="." unique_id=1026747388 instance=ExtResource("24_m3a36")]
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 1157.0
+offset_bottom = 656.0
+max_pages = 2
 
 [connection signal="pressed" from="Main_battle_menu/Draw_button" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]

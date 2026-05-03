@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7i05lclt6qar"]
 
-[ext_resource type="Script" uid="uid://bnpiv6eb2s580" path="res://win_screen.gd" id="1_mihep"]
+[ext_resource type="Script" uid="uid://bnpiv6eb2s580" path="res://Other Menus/win_screen.gd" id="1_mihep"]
 [ext_resource type="Texture2D" uid="uid://bckrhws8ymph7" path="res://assets/sprites/exp bar empty.png" id="2_7e2hu"]
 [ext_resource type="Texture2D" uid="uid://bpagm8ogphk4k" path="res://assets/sprites/exp bar full.png" id="3_ixawb"]
 

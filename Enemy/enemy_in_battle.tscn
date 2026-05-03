@@ -66,6 +66,7 @@ animations = [{
 }]
 
 [node name="enemy_in_battle" type="AnimatedSprite2D" unique_id=1840550579]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1uxla")
 animation = &"attack"
 frame = 5

@@ -499,6 +499,7 @@ sprite_frames = SubResource("SpriteFrames_ab1fa")
 animation = &"kris_set"
 
 [node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("11_b3we0")]
+visible = false
 z_index = 1
 layout_mode = 1
 offset_left = 278.0

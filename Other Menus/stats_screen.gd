@@ -54,6 +54,7 @@ func _on_defense_increase_button_pressed() -> void:
 func _on_health_decrease_button_pressed() -> void:
 	added_health-=5
 	stat_points_left+=1
+	any_button_pressed()
 	if added_health==0:
 		max_health_value_label.text=str(Globals.player_stats["max_health"])
 		health_decrease_button.visible=false
@@ -64,6 +65,7 @@ func _on_health_decrease_button_pressed() -> void:
 func _on_mp_decrease_button_pressed() -> void:
 	added_MP-=5
 	stat_points_left+=1
+	any_button_pressed()
 	if added_MP==0:
 		max_mp_value_label.text=str(Globals.player_stats["max_MP"])
 		mp_decrease_button.visible=false
@@ -75,6 +77,7 @@ func _on_mp_decrease_button_pressed() -> void:
 func _on_attack_decrease_button_pressed() -> void:
 	added_attack-=1
 	stat_points_left+=1
+	any_button_pressed()
 	if added_attack==0:
 		attack_value_label.text=str(Globals.player_stats["attack"])
 		attack_decrease_button.visible=false
@@ -86,6 +89,7 @@ func _on_attack_decrease_button_pressed() -> void:
 func _on_defense_decrease_button_pressed() -> void:
 	added_defense-=1
 	stat_points_left+=1
+	any_button_pressed()
 	if added_defense==0:
 		defense_value_label.text=str(Globals.player_stats["defense"])
 		defense_decrease_button.visible=false

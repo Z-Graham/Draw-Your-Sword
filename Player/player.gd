@@ -51,8 +51,8 @@ func get_input():
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
-		magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)
+		health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(Globals.player_stats["max_health"])
+		magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(Globals.player_stats["max_MP"])
 		blade_label.text = "BLADE: " + str(Globals.sword["blade"])
 		handle_label.text = "HANDLE: " + str(Globals.sword["handle"])
 		imbue_label.text = "IMBUE: " + str(Globals.sword["imbue"])
@@ -77,8 +77,8 @@ func _physics_process(_delta: float) -> void:
 
 func take_damage(): # mostly for testing
 	Globals.player_stats["current_health"] -= 1
-	health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(max_health)
+	health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(Globals.player_stats["max_health"])
 
 func do_magic(): # for test
 	Globals.player_stats["current_MP"] -= 1
-	magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(max_magic)
+	magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(Globals.player_stats["max_MP"])

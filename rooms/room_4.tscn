@@ -33,7 +33,7 @@ offset_right = 455.00006
 offset_bottom = 41.0
 rotation = 1.5707964
 scale = Vector2(1.0840148, 1.6583992)
-color = Color(0, 0.49, 0.05716673, 1)
+color = Color(0, 0.49019608, 0.05882353, 1)
 
 [node name="LeaveRoomDetectorUp" parent="ColorRect4" unique_id=551847105 instance=ExtResource("3_ocw8c")]
 

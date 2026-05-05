@@ -26,6 +26,11 @@ class_name Room
 @onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
 @onready var leave_room_detector_up: LeaveRoomDetector = $ColorRect4/LeaveRoomDetectorUp
 
+@onready var next_room_door: ColorRect = $ColorRect
+@onready var down_room_door: ColorRect = $ColorRect3
+@onready var back_room_door: ColorRect = $ColorRect2
+@onready var up_room_door: ColorRect = $ColorRect4
+
 
 #@onready var enter_spawn_point: Marker2D = $EnterSpawnPoint
 #@onready var return_spawn_point: Marker2D = $ReturnSpawnPoint
@@ -39,6 +44,10 @@ func _ready() -> void:
 	var items = get_tree().get_nodes_in_group("collectedItems")
 	for i in items:
 		i.queue_free()
+	if next_room != null and next_room.locked:
+		next_room_door.color = "red"
+	if down_room != null and down_room.locked:
+		down_room_door.color = "red"
 
 func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
 	if next_room != null:
@@ -49,6 +58,7 @@ func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
 		else:
 			if Globals.keys > 0:
 				print("unlock")
+				next_room_door.color = Color("007d0f")
 				next_room.locked = false
 				await get_tree().create_timer(0.25).timeout
 				print("move to next room")
@@ -110,6 +120,7 @@ func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
 		else:
 			if Globals.keys > 0:
 				print("unlock")
+				down_room_door.color = Color("007d0f")
 				down_room.locked = false
 				await get_tree().create_timer(0.25).timeout
 				print("move to next room")

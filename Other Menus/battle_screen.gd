@@ -193,6 +193,9 @@ func _on_blade_skill_button_pressed() -> void:
 			damage=damage_calc_without_imbue()
 			damage*=1.8
 			damage=roundi(damage)
+			damage_label.text=str(damage)
+			anim.play("impaling thrust")
+			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
@@ -261,11 +264,14 @@ func _on_handle_skill_button_pressed() -> void:
 				Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
 			battle_history_update("You used Ruby Heal.")
 		elif sw_handle=="spear":
-			battle_history_update("You used Reckless Charge!")
+			battle_history_update("You used Stabbing Flurry!")
 			Globals.player_stats["current_health"]-=20
 			damage=damage_calc()
 			damage*=1.5
 			damage=roundi(damage)
+			damage_label.text=str(damage)
+			anim.play("stabbing flury")
+			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		enemy_in_battle.enemy_stats["health"]-=damage
 		if enemy_in_battle.enemy_stats["health"]<=0:
@@ -291,7 +297,8 @@ func _on_handle_skill_button_mouse_entered() -> void:
 		description.text="Ruby Heal: Using the rubies embedded in the hilt, perform a simple healing spell.
 		costs 10MP"
 	elif sw_handle=="spear":
-		description.text="Reckless Charge: A full charge towards the enemy that consumes HP instead of MP.
+		description.text="Stabbing Flurry: A flurry of stabs at the enemy followed by a downward stab
+		that consumes HP instead of MP.
 		costs 20HP"
 
 func _on_handle_skill_button_mouse_exited() -> void:

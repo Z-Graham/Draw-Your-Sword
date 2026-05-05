@@ -21,8 +21,8 @@ var sword = {"blade":"basic","handle":"basic","imbue":"none"}
 var tutorial_checks={"battle_screen":false,"fight":false,"draw_1":false}
 
 # Arrays of unlocked sword parts
-var known_blades = ["basic"]
-var known_handles = ["basic"]
+var known_blades = ["basic","spear"]
+var known_handles = ["basic","spear"]
 var known_imbues = ["none","fire"]
 
 var goblin_stats={"health":50,"defense":7,"attack":10,

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dmtcj5dvmtq61" path="res://assets/sprites/spear_blade.png" id="5_4ijij"]
 [ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
-[ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="6_te6vl"]
+[ext_resource type="Texture2D" uid="uid://dwval6y234p2y" path="res://assets/sprites/spear_handle.png" id="6_m3a36"]
 [ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
@@ -277,6 +277,45 @@ tracks/4/keys = {
 "values": [Vector2(905, 279), Vector2(908, 168)]
 }
 
+[sub_resource type="Animation" id="Animation_jergb"]
+resource_name = "double stab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.4835298641951802, -3.2288591161895095]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667, 0.3, 0.4666667, 0.6333333, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(840, 266), Vector2(1091, 460), Vector2(1026, 258), Vector2(1077, 243), Vector2(836, 451)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.03333333, 0.3, 0.4666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
 [sub_resource type="Animation" id="Animation_4ijij"]
 resource_name = "double_slash"
 length = 1.0333333
@@ -351,6 +390,70 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [SubResource("LabelSettings_4ijij"), SubResource("LabelSettings_4ijij"), SubResource("LabelSettings_4ijij"), SubResource("LabelSettings_4ijij")]
+}
+
+[sub_resource type="Animation" id="Animation_vx6yh"]
+resource_name = "impaling thrust"
+length = 1.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(775.99994, 368.00003), Vector2(1014, 370.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.71),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Damage_label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.13333334, 0.575),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Damage_label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.175, 0.27499998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(905, 279), Vector2(908, 168)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7853982]
 }
 
 [sub_resource type="Animation" id="Animation_2gfl2"]
@@ -585,6 +688,73 @@ tracks/4/keys = {
 "values": [Vector2(905, 279), Vector2(908, 168)]
 }
 
+[sub_resource type="Animation" id="Animation_xi8sy"]
+resource_name = "ruby heal"
+
+[sub_resource type="Animation" id="Animation_m6qat"]
+resource_name = "stabbing flury"
+length = 2.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.43333334, 0.56666666, 0.7, 0.8333333, 0.96666664, 1.42, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(833, 336.99997), Vector2(920, 331.00003), Vector2(850, 344.99997), Vector2(934, 351.99994), Vector2(833, 336.99997), Vector2(920, 331.00003), Vector2(850, 344.99997), Vector2(934, 351.99994), Vector2(870, 238.00002), Vector2(983.0001, 407.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.43333334, 0.56666666, 0.73333335, 0.8666667, 1.42, 1.91),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8666667, 1.42),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7853982, 0.7853981633974483, 1.701696]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Damage_label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4333333, 1.875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Damage_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(905, 279), Vector2(908, 168)]
+}
+
 [sub_resource type="Animation" id="Animation_6gotq"]
 resource_name = "swing"
 length = 1.3333334
@@ -666,11 +836,15 @@ _data = {
 &"RESET": SubResource("Animation_m3a36"),
 &"Serpent strike": SubResource("Animation_qxk6m"),
 &"bash": SubResource("Animation_te6vl"),
+&"double stab": SubResource("Animation_jergb"),
 &"double_slash": SubResource("Animation_4ijij"),
+&"impaling thrust": SubResource("Animation_vx6yh"),
 &"poison damage": SubResource("Animation_2gfl2"),
 &"poke": SubResource("Animation_i67w2"),
 &"precise_slash": SubResource("Animation_mp0hd"),
 &"quick_draw": SubResource("Animation_j537p"),
+&"ruby heal": SubResource("Animation_xi8sy"),
+&"stabbing flury": SubResource("Animation_m6qat"),
 &"swing": SubResource("Animation_6gotq")
 }
 
@@ -759,9 +933,9 @@ region_rect = Rect2(0, 0, 64, 64)
 
 [node name="handle" type="Sprite2D" parent="sword" unique_id=903616220]
 texture_filter = 1
-position = Vector2(-24, 22)
+position = Vector2(-72, 70)
 scale = Vector2(3, 3)
-texture = ExtResource("6_te6vl")
+texture = ExtResource("6_m3a36")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
@@ -775,7 +949,7 @@ modulate = Color(0.05919994, 0.64, 0.006399994, 1)
 offset_left = 905.0
 offset_top = 279.0
 offset_right = 945.0
-offset_bottom = 366.99628
+offset_bottom = 366.99634
 text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1

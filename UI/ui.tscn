@@ -88,4 +88,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.5176471)
 
+[node name="Button" type="CheckButton" parent="." unique_id=753612143]
+offset_left = 3.0
+offset_top = 617.0
+offset_right = 178.0
+offset_bottom = 648.0
+text = "Disable tutorials"
+
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

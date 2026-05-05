@@ -15,8 +15,6 @@ func _ready() -> void:
 		sprite_2d.play("goblin")
 
 func _on_body_entered(_body: Node2D) -> void:
-	print("start battle")
-
 	var battle_screen_layer := get_tree().get_first_node_in_group("BattleScreenLayer")
 	battle_screen_layer.visible = true
 	var battle_screen=get_tree().get_first_node_in_group("BattleScreenLayer").get_child(0)

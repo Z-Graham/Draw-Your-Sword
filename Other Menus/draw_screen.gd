@@ -12,6 +12,7 @@ extends TextureRect
 @onready var handle_sprite: AnimatedSprite2D = $handle
 @onready var imbue_list: ItemList = $imbue_list
 @onready var change_tab_button: Button = $ChangeTabButton
+@onready var tutorial_screen: Control = $"Tutorial screen"
 
 signal draw_screen_closed(blade,handle,imbue)
 var sel_blade=""
@@ -134,6 +135,9 @@ func reset():
 	for i in Globals.known_imbues:
 		imbue_list.add_item(i)
 	
+	if Globals.tutorial_checks["draw_1"]==false:
+		tutorial_screen.show_up("draw_1",5)
+		Globals.tutorial_checks["draw_1"]=true
 	sel_blade=""
 	sel_handle=""
 	sel_imbue=""

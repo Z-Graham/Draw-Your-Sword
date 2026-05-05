@@ -114,7 +114,7 @@ label_settings = SubResource("LabelSettings_qlit4")
 
 [node name="AttackValueLabel" type="Label" parent="GridContainer/VBoxContainer3" unique_id=639684328]
 layout_mode = 2
-text = "15"
+text = "10"
 label_settings = SubResource("LabelSettings_askj0")
 horizontal_alignment = 1
 

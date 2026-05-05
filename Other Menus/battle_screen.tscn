@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bkcej3lp8jho1" path="res://Other Menus/draw_screen.tscn" id="18_2b1bo"]
 [ext_resource type="PackedScene" uid="uid://7i05lclt6qar" path="res://Other Menus/win_screen.tscn" id="19_udy6t"]
 [ext_resource type="PackedScene" uid="uid://d0tu3pdpqi7to" path="res://Other Menus/stats_screen.tscn" id="23_te6vl"]
+[ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="24_m3a36"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
 animations = [{
@@ -938,6 +939,7 @@ offset_bottom = 639.0
 text = "Imbue: None"
 
 [node name="fight_battle_menu" type="Control" parent="." unique_id=1463964744]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -1029,7 +1031,9 @@ offset_top = 288.0
 offset_right = 563.0
 offset_bottom = 288.0
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("24_m3a36")]
+visible = false
+
 [connection signal="pressed" from="Main_battle_menu/Draw_button" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Item_button" to="." method="_on_item_button_pressed"]

@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bmduybjkkxx8y" path="res://assets/sprites/katana_handle.png" id="6_rr64v"]
 [ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="9_bjovv"]
 [ext_resource type="Texture2D" uid="uid://dwval6y234p2y" path="res://assets/sprites/spear_handle.png" id="10_1xl7w"]
+[ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="11_b3we0"]
 
 [sub_resource type="Gradient" id="Gradient_nqbbo"]
 colors = PackedColorArray(0, 0.0333333, 1, 1, 1, 1, 1, 1)
@@ -496,6 +497,14 @@ position = Vector2(712.00006, 388)
 scale = Vector2(9.953125, 7.640625)
 sprite_frames = SubResource("SpriteFrames_ab1fa")
 animation = &"kris_set"
+
+[node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("11_b3we0")]
+z_index = 1
+layout_mode = 1
+offset_left = 278.0
+offset_top = 46.0
+offset_right = 278.0
+offset_bottom = 46.0
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ChangeTabButton" to="." method="_on_change_tab_button_pressed"]

@@ -32,20 +32,17 @@ label_settings = SubResource("LabelSettings_5lxn8")
 
 [node name="info" type="Label" parent="." unique_id=329099404]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -314.0
-offset_top = 110.0
-offset_right = 314.0
-offset_bottom = 186.0
-grow_horizontal = 2
+offset_left = 1.0
+offset_top = 177.0
+offset_right = 1152.0
+offset_bottom = 253.0
 text = "This is the battle screen"
 label_settings = SubResource("LabelSettings_li6k0")
+horizontal_alignment = 1
 
 [node name="next" type="Button" parent="." unique_id=367692245]
 layout_mode = 0
-offset_left = 1066.0
+offset_left = 1059.0
 offset_top = 593.0
 offset_right = 1152.0
 offset_bottom = 648.0

@@ -37,11 +37,9 @@ const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
 @onready var blade_sprite: Sprite2D = $sword/blade
 @onready var handle_sprite: Sprite2D = $sword/handle
 @onready var stats_screen: ColorRect = $StatsScreen
+@onready var tutorial_screen: Control = $"Tutorial screen"
 
 signal battle_finished(exp_amount:int)
-
-var first_battle=true
-var first_fight_menu=true
 
 var enemy_health=100
 var enemy_status="none"
@@ -85,7 +83,6 @@ func battle_end():
 	win_screen.visible=true
 	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 
-
 func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
@@ -117,6 +114,9 @@ func player_fight(blade:String,handle:String,imbue:String):
 func _on_fight_button_pressed() -> void:
 	main_battle_menu.visible=false
 	fight_battle_menu.visible=true
+	if Globals.tutorial_checks["fight"]==false:
+		tutorial_screen.show_up("fight",3)
+		Globals.tutorial_checks["fight"]=true
 
 func _on_item_button_pressed() -> void:
 	inventory.visible=true
@@ -336,6 +336,9 @@ func reset():
 	in_inventory=false
 	inventory.update()
 	poison_count=0
+	if Globals.tutorial_checks["battle_screen"]==false:
+		tutorial_screen.show_up("battle",2)
+		Globals.tutorial_checks["battle_screen"]=true
 	for child in battle_history.get_children():
 		child.queue_free()
 	enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
@@ -462,8 +465,6 @@ func battle_history_update(label:String):
 	if battle_history.get_children().size()>6:
 		battle_history.get_child(0).queue_free()
 
-
-	
 func adjust_sprites():
 	if sw_blade=="basic":
 		if sw_handle=="basic":
@@ -510,18 +511,10 @@ func adjust_sprites():
 	elif sw_imbue=="fire":
 		blade_sprite.modulate=Color(1.0, 0.0, 0.0, 1.0)
 
-
 func _on_stats_screen_closed() -> void:
 	win_screen.visible=true
 	Globals.restore()
 
-
 func _on_win_screen_level_up() -> void:
 	win_screen.visible=false
 	stats_screen.visible=true
-	
-
-
-func _on_visibility_changed() -> void:
-	if visible==false:
-		TutorialScreen.show_up("battle")

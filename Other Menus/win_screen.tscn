@@ -16,6 +16,9 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_177gq"]
 font_size = 50
 
+[sub_resource type="LabelSettings" id="LabelSettings_ixawb"]
+font_size = 50
+
 [node name="Win Screen" type="ColorRect" unique_id=949921955]
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +28,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.5058824)
 script = ExtResource("1_mihep")
 
-[node name="Label" type="Label" parent="." unique_id=1060990883]
+[node name="YouWinLabel" type="Label" parent="." unique_id=1060990883]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.116753474
@@ -51,7 +54,6 @@ label_settings = SubResource("LabelSettings_7e2hu")
 horizontal_alignment = 1
 
 [node name="continue" type="Button" parent="." unique_id=255700575]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -107,5 +109,27 @@ label_settings = SubResource("LabelSettings_177gq")
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1390932941]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=646783433]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -149.0
+offset_right = 194.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemsLabel" type="Label" parent="VBoxContainer" unique_id=514414070]
+layout_mode = 2
+text = "Items Obtained:"
+label_settings = SubResource("LabelSettings_ixawb")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

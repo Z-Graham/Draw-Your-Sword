@@ -5,6 +5,8 @@ extends Control
 @onready var exp_bar: TextureProgressBar = $TextureProgressBar
 @onready var level: Label = $level
 @onready var exp_to_next: Label = $"exp to next"
+@onready var you_win_label: Label = $YouWinLabel
+@onready var v_box_container: VBoxContainer = $VBoxContainer
 
 signal level_up()
 
@@ -37,6 +39,14 @@ func exp_gain(exp:int):
 	continue_button.visible=true
 
 func _on_continue_pressed() -> void:
-	var bs=get_tree().get_first_node_in_group("BattleScreenLayer")
-	bs.visible=false
-	visible=false
+	if !you_win_label.visible:
+		var bs=get_tree().get_first_node_in_group("BattleScreenLayer")
+		bs.visible=false
+		visible=false
+	else:
+		you_win_label.visible = false
+		exp_amount.visible = false
+		exp_bar.visible = false
+		level.visible = false
+		exp_to_next.visible = false
+		v_box_container.visible = true

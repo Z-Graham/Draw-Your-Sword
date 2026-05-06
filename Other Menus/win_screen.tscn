@@ -19,9 +19,6 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_177gq"]
 font_size = 50
 
-[sub_resource type="LabelSettings" id="LabelSettings_ixawb"]
-font_size = 50
-
 [node name="Win Screen" type="ColorRect" unique_id=949921955]
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,11 +138,5 @@ offset_top = 286.0
 offset_right = 119.5
 offset_bottom = 355.0
 grow_horizontal = 2
-
-[node name="ItemsLabel" type="Label" parent="VBoxContainer" unique_id=514414070]
-layout_mode = 2
-text = "HP potion"
-label_settings = SubResource("LabelSettings_ixawb")
-horizontal_alignment = 1
 
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

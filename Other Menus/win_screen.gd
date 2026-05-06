@@ -53,6 +53,27 @@ func _on_continue_pressed() -> void:
 		exp_to_next.visible = false
 		v_box_container.visible = true
 
+func set_items_obtained(items:Array):
+	if items.size()>0:
+		for item in items:
+			var lab=Label.new()
+			var settings = LabelSettings.new()
+			settings.font_size=50
+			lab.text=item
+			lab.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+			lab.label_settings=settings
+			v_box_container.add_child(lab)
+			add_to_inventory(item)
+
+
+func add_to_inventory(text:String) -> void:
+	if text=="HP Potion":
+		Globals.healing_items["HP Potion"]+=1
+	if text=="MP Potion":
+		Globals.healing_items["MP Potion"]+=1
+	if text=="Inspect Lens":
+		Globals.battle_items["Inspect Lens"]+=1
+
 func reset():
 	you_win_label.visible = true
 	item_label.visible=false
@@ -61,3 +82,5 @@ func reset():
 	level.visible = true
 	exp_to_next.visible = true
 	v_box_container.visible = false
+	for lab in v_box_container.get_children():
+		lab.queue_free()

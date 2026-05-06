@@ -22,6 +22,11 @@ func _ready() -> void:
 			healing_item_list.add_item(item+"   x"+str(Globals.healing_items[item]))
 		elif Globals.healing_items[item]==1:
 			healing_item_list.add_item(item)
+	for item in (Globals.battle_items):
+		if Globals.battle_items[item]>1:
+			battle_item_list.add_item(item+"   x"+str(Globals.battle_items[item]))
+		elif Globals.battle_items[item]==1:
+			battle_item_list.add_item(item)
 	
 		
 func update():
@@ -33,6 +38,11 @@ func update():
 			healing_item_list.add_item(item+"   x"+str(Globals.healing_items[item]))
 		elif Globals.healing_items[item]==1:
 			healing_item_list.add_item(item)
+	for item in (Globals.battle_items):
+		if Globals.battle_items[item]>1:
+			battle_item_list.add_item(item+"   x"+str(Globals.battle_items[item]))
+		elif Globals.battle_items[item]==1:
+			battle_item_list.add_item(item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

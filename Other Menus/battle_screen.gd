@@ -82,6 +82,8 @@ func battle_end():
 	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	win_screen.reset()
 	win_screen.visible=true
+	var items=enemy_in_battle.loot()
+	win_screen.set_items_obtained(items)
 	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 
 func player_fight(blade:String,handle:String,imbue:String):

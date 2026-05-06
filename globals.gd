@@ -15,6 +15,7 @@ var level=1
 var stat_points=0
 
 var healing_items={"HP Potion":0, "MP Potion":0}
+var battle_items={"Inspect Lens":0}
 
 var sword = {"blade":"basic","handle":"basic","imbue":"none"}
 
@@ -25,7 +26,7 @@ var known_blades = ["basic","katana","kris","spear"]
 var known_handles = ["basic","katana","kris","spear"]
 var known_imbues = ["none","fire"]
 
-var goblin_stats={"health":50,"defense":7,"attack":10,
+var goblin_stats={"health":1,"defense":7,"attack":10,
 "resist":[],"weakness":["fire"],"exp":10}
 
 var keys := 0

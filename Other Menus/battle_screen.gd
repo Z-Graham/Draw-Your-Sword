@@ -80,6 +80,7 @@ func _process(delta:float)-> void:
 func battle_end():
 	$ColorRect2.visible=true
 	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
+	win_screen.reset()
 	win_screen.visible=true
 	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 
@@ -147,7 +148,10 @@ func _on_blade_skill_button_pressed() -> void:
 			damage=damage_calc()*.9
 			damage=roundi(damage)
 			damage_label.text=str(damage)
-			anim.play("double_slash")
+			if not sw_handle=="spear":
+				anim.play("double_slash")
+			else:
+				anim.play("double stab")
 			await get_tree().create_timer(.5).timeout
 			var damage2=damage_calc()*.9
 			damage2=roundi(damage2)
@@ -263,11 +267,12 @@ func _on_handle_skill_button_pressed() -> void:
 			else:
 				Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
 			battle_history_update("You used Ruby Heal.")
+			battle_history_update("You healed 20 HP")
 		elif sw_handle=="spear":
 			battle_history_update("You used Stabbing Flurry!")
 			Globals.player_stats["current_health"]-=20
 			damage=damage_calc()
-			damage*=1.5
+			damage*=2
 			damage=roundi(damage)
 			damage_label.text=str(damage)
 			anim.play("stabbing flury")

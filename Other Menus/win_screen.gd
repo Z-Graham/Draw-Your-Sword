@@ -7,6 +7,7 @@ extends Control
 @onready var exp_to_next: Label = $"exp to next"
 @onready var you_win_label: Label = $YouWinLabel
 @onready var v_box_container: VBoxContainer = $VBoxContainer
+@onready var item_label: Label = $itemLabel
 
 signal level_up()
 
@@ -45,8 +46,18 @@ func _on_continue_pressed() -> void:
 		visible=false
 	else:
 		you_win_label.visible = false
+		item_label.visible=true
 		exp_amount.visible = false
 		exp_bar.visible = false
 		level.visible = false
 		exp_to_next.visible = false
 		v_box_container.visible = true
+
+func reset():
+	you_win_label.visible = true
+	item_label.visible=false
+	exp_amount.visible = true
+	exp_bar.visible = true
+	level.visible = true
+	exp_to_next.visible = true
+	v_box_container.visible = false

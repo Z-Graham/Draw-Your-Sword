@@ -7,6 +7,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_xkftk"]
 font_size = 200
 
+[sub_resource type="LabelSettings" id="LabelSettings_8posd"]
+font_size = 111
+
 [sub_resource type="LabelSettings" id="LabelSettings_7e2hu"]
 font_size = 30
 
@@ -38,6 +41,22 @@ anchor_bottom = 0.45987654
 grow_horizontal = 2
 text = "YOU WIN"
 label_settings = SubResource("LabelSettings_xkftk")
+
+[node name="itemLabel" type="Label" parent="." unique_id=1437949837]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.116753474
+anchor_top = 0.038580246
+anchor_right = 0.88324654
+anchor_bottom = 0.45987654
+offset_left = 27.5
+offset_top = 79.0
+offset_right = -25.5
+offset_bottom = -42.0
+grow_horizontal = 2
+text = "Items Obtained"
+label_settings = SubResource("LabelSettings_8posd")
 
 [node name="exp amount" type="Label" parent="." unique_id=1738952204]
 layout_mode = 1
@@ -114,21 +133,18 @@ horizontal_alignment = 1
 visible = false
 z_index = 1
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -194.0
-offset_top = -149.0
-offset_right = 194.0
-offset_bottom = 95.0
+offset_left = -119.5
+offset_top = 286.0
+offset_right = 119.5
+offset_bottom = 355.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ItemsLabel" type="Label" parent="VBoxContainer" unique_id=514414070]
 layout_mode = 2
-text = "Items Obtained:"
+text = "HP potion"
 label_settings = SubResource("LabelSettings_ixawb")
 horizontal_alignment = 1
 

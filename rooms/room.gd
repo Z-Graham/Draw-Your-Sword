@@ -106,8 +106,8 @@ func _on_drawing_spot_opened() -> void:
 
 func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
 	if _solution == "Bridge":
-		trench.visible = false
-		trench.collision_layer = 1
+		trench.visible = false # change to an asset
+		trench.collision_layer = 1 # makes collision detection stop
 		draw_spot_solution_found.emit()
 
 

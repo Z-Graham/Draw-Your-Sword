@@ -2,9 +2,83 @@
 
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="1_dtr1y"]
 [ext_resource type="Script" uid="uid://cvb10k67t2why" path="res://Other Menus/draw_item_screen.gd" id="2_qutab"]
+[ext_resource type="Texture2D" uid="uid://balsdhrr8vh3f" path="res://assets/sprites/box.png" id="3_kd1ro"]
+[ext_resource type="Texture2D" uid="uid://4bjggsin5t6m" path="res://assets/sprites/kris_blade.png" id="4_eq4q2"]
+[ext_resource type="Texture2D" uid="uid://0c23fo8xnloy" path="res://assets/sprites/bridge.png" id="5_4mktu"]
+[ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="6_601l6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qutab"]
 font_size = 23
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vavt"]
+atlas = ExtResource("3_kd1ro")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v18a"]
+atlas = ExtResource("4_eq4q2")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grw2k"]
+atlas = ExtResource("3_kd1ro")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtfse"]
+atlas = ExtResource("5_4mktu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dtnj"]
+atlas = ExtResource("6_601l6")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdom4"]
+atlas = ExtResource("5_4mktu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dil7m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vavt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v18a")
+}],
+"loop": true,
+"name": &"box flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grw2k")
+}],
+"loop": true,
+"name": &"box set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtfse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dtnj")
+}],
+"loop": true,
+"name": &"bridge flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdom4")
+}],
+"loop": true,
+"name": &"bridge set",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}]
 
 [node name="DrawItemScreen" type="TextureRect" unique_id=1341454615]
 texture_filter = 1
@@ -88,6 +162,12 @@ offset_bottom = 101.0
 text = "That doesn't seem 
 right"
 label_settings = SubResource("LabelSettings_qutab")
+
+[node name="preview" type="AnimatedSprite2D" parent="." unique_id=615170917]
+position = Vector2(610, 341)
+scale = Vector2(8.765625, 8.0078125)
+sprite_frames = SubResource("SpriteFrames_dil7m")
+animation = &"none"
 
 [connection signal="item_selected" from="ObjectList" to="." method="_on_object_list_item_selected"]
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

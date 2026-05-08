@@ -41,6 +41,7 @@ const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
 
 signal battle_finished(exp_amount:int)
 
+var enemy:String
 var enemy_health=100
 var enemy_status="none"
 var sw_blade="basic"
@@ -350,6 +351,8 @@ func reset():
 	in_inventory=false
 	inventory.update()
 	poison_count=0
+	enemy_in_battle.name_of_en=enemy
+	enemy_in_battle.set_sprite()
 	if Globals.tutorial_checks["battle_screen"]==false:
 		tutorial_screen.show_up("battle",2)
 		Globals.tutorial_checks["battle_screen"]=true
@@ -359,6 +362,18 @@ func reset():
 	if enemy_in_battle.name_of_en=="goblin":
 		for i in Globals.goblin_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.goblin_stats[i]
+			
+	if enemy_in_battle.name_of_en=="knight":
+		for i in Globals.goblin_stats:
+			enemy_in_battle.enemy_stats[i]=Globals.knight_stats[i]
+			
+	if enemy_in_battle.name_of_en=="bird":
+		for i in Globals.goblin_stats:
+			enemy_in_battle.enemy_stats[i]=Globals.bird_stats[i]
+			
+	if enemy_in_battle.name_of_en=="cloud":
+		for i in Globals.goblin_stats:
+			enemy_in_battle.enemy_stats[i]=Globals.cloud_stats[i]
 
 func enemy_fight():
 	await get_tree().create_timer(1).timeout
@@ -367,14 +382,21 @@ func enemy_fight():
 		enemy_status="none"
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	else:
-		enemy_in_battle.play("attack")
-		await enemy_in_battle.animation_finished
-		var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-		damage-=roundf(Globals.player_stats["defense"]/10.0)
-		damage=roundi(damage)
-		Globals.player_stats["current_health"]-=damage
-		battle_history_update("You took "+str(damage)+" damage.")
-		enemy_in_battle.play("idle")
+		if enemy=="goblin":
+			enemy_in_battle.play("goblin attack")
+			await enemy_in_battle.animation_finished
+			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
+			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage=roundi(damage)
+			Globals.player_stats["current_health"]-=damage
+			battle_history_update("You took "+str(damage)+" damage.")
+			enemy_in_battle.play("goblin idle")
+		else:
+			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
+			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage=roundi(damage)
+			Globals.player_stats["current_health"]-=damage
+			battle_history_update("You took "+str(damage)+" damage.")
 	
 	await get_tree().create_timer(.5).timeout
 	if poison_count>0:

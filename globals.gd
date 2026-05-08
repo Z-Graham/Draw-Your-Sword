@@ -26,8 +26,17 @@ var known_blades = ["basic","katana","kris","spear"]
 var known_handles = ["basic","katana","kris","spear"]
 var known_imbues = ["none","fire"]
 
-var goblin_stats={"health":1,"defense":7,"attack":10,
-"resist":[],"weakness":["fire"],"exp":10}
+var goblin_stats={"health":50,"defense":7,"attack":10,
+"resist":[],"weakness":["fire"],"exp":5}
+
+var knight_stats={"health":100,"defense":15,"attack":10,
+"resist":["none","rock"],"weakness":["fire","lightning"],"exp":15}
+
+var bird_stats={"health":75,"defense":5,"attack":15,
+"resist":[],"weakness":["lightning","rock"],"exp":10}
+
+var cloud_stats={"health":60,"defense":8,"attack":12,
+"resist":["lightning"],"weakness":["air"],"exp":5}
 
 var keys := 0
 #signal change_stats

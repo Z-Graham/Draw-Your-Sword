@@ -40,6 +40,7 @@ next = true
 
 [node name="Enemy" parent="." unique_id=1936347032 instance=ExtResource("3_b330e")]
 position = Vector2(624, 483)
+type = "knight"
 
 [node name="Item" parent="." unique_id=2030387864 instance=ExtResource("7_4sdyu")]
 position = Vector2(610, 175)

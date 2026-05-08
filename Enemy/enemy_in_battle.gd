@@ -15,6 +15,16 @@ var enemy_stats={"health":health,"defense":defense,"attack":attack,
 func _ready() -> void:
 	pass # Replace with function body.
 
+func set_sprite():
+	if name_of_en=="goblin":
+		play("goblin idle")
+	elif name_of_en=="bird":
+		play("bird idle")
+	elif name_of_en=="knight":
+		play("knight idle")
+	elif name_of_en=="cloud":
+		play("cloud idle")
+
 func loot() -> Array:
 	var stuff=[]
 	var loot_val=randi_range(1,10)

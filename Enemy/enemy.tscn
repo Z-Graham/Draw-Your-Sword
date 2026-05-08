@@ -2,20 +2,66 @@
 
 [ext_resource type="Script" uid="uid://hi0fkbejrntv" path="res://Enemy/enemy.gd" id="1_px1sc"]
 [ext_resource type="Texture2D" uid="uid://xuojiprxs0ir" path="res://assets/sprites/goblin.png" id="2_am0pq"]
+[ext_resource type="Texture2D" uid="uid://d2rdwb1e0hgvv" path="res://assets/sprites/bird.png" id="2_m6jha"]
 [ext_resource type="Texture2D" uid="uid://br3oy0ssge2pr" path="res://assets/sprites/key.png" id="3_am0pq"]
+[ext_resource type="Texture2D" uid="uid://crqi2obblwnqm" path="res://assets/sprites/lightning cloud.png" id="3_glvfu"]
+[ext_resource type="Texture2D" uid="uid://bdao5x8gw3k6j" path="res://assets/sprites/knight.png" id="5_0rspp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efk13"]
+atlas = ExtResource("2_m6jha")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmr1a"]
+atlas = ExtResource("2_m6jha")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47ove"]
+atlas = ExtResource("3_glvfu")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rspp"]
 atlas = ExtResource("2_am0pq")
 region = Rect2(64, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jovdv"]
+atlas = ExtResource("5_0rspp")
+region = Rect2(128, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_efk13"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efk13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmr1a")
+}],
+"loop": true,
+"name": &"bird",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47ove")
+}],
+"loop": true,
+"name": &"cloud",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0rspp")
 }],
 "loop": true,
 "name": &"goblin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jovdv")
+}],
+"loop": true,
+"name": &"knight",
 "speed": 5.0
 }]
 
@@ -66,7 +112,7 @@ script = ExtResource("1_px1sc")
 texture_filter = 1
 scale = Vector2(2.4374998, 1.9999999)
 sprite_frames = SubResource("SpriteFrames_efk13")
-animation = &"goblin"
+animation = &"cloud"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1556282026]
 position = Vector2(-3, -4)

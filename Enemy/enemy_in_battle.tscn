@@ -1,7 +1,30 @@
 [gd_scene format=3 uid="uid://dcrggycifxn06"]
 
+[ext_resource type="Texture2D" uid="uid://d2rdwb1e0hgvv" path="res://assets/sprites/bird.png" id="1_4g55g"]
 [ext_resource type="Texture2D" uid="uid://xuojiprxs0ir" path="res://assets/sprites/goblin.png" id="1_nlk3i"]
+[ext_resource type="Texture2D" uid="uid://crqi2obblwnqm" path="res://assets/sprites/lightning cloud.png" id="2_41vdw"]
 [ext_resource type="Script" uid="uid://dcl5h87f462o4" path="res://Enemy/enemy_in_battle.gd" id="2_nlk3i"]
+[ext_resource type="Texture2D" uid="uid://bdao5x8gw3k6j" path="res://assets/sprites/knight.png" id="4_1j8s8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47yw1"]
+atlas = ExtResource("1_4g55g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kawxr"]
+atlas = ExtResource("1_4g55g")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5278"]
+atlas = ExtResource("2_41vdw")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7clc"]
+atlas = ExtResource("2_41vdw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mt1a"]
+atlas = ExtResource("2_41vdw")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uxla"]
 atlas = ExtResource("1_nlk3i")
@@ -31,8 +54,50 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("1_nlk3i")
 region = Rect2(64, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ebgr"]
+atlas = ExtResource("4_1j8s8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_387a3"]
+atlas = ExtResource("4_1j8s8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr75q"]
+atlas = ExtResource("4_1j8s8")
+region = Rect2(128, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1uxla"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47yw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kawxr")
+}],
+"loop": true,
+"name": &"bird idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5278")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7clc")
+}],
+"loop": true,
+"name": &"cloud attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mt1a")
+}],
+"loop": true,
+"name": &"cloud idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1uxla")
@@ -53,7 +118,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6ikbx")
 }],
 "loop": false,
-"name": &"attack",
+"name": &"goblin attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -61,14 +126,26 @@ animations = [{
 "texture": SubResource("AtlasTexture_gb7oi")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"goblin idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ebgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_387a3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr75q")
+}],
+"loop": true,
+"name": &"knight idle",
 "speed": 5.0
 }]
 
 [node name="enemy_in_battle" type="AnimatedSprite2D" unique_id=1840550579]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1uxla")
-animation = &"attack"
-frame = 5
-frame_progress = 1.0
+animation = &"bird idle"
 script = ExtResource("2_nlk3i")

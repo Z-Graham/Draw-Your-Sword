@@ -36,7 +36,7 @@ var bird_stats={"health":75,"defense":5,"attack":15,
 "resist":["fire"],"weakness":["lightning","rock"],"exp":10}
 
 var cloud_stats={"health":60,"defense":8,"attack":12,
-"resist":["lightning"],"weakness":["wind"],"exp":5}
+"resist":["lightning"],"weakness":["wind"],"exp":10}
 
 var keys := 0
 #signal change_stats

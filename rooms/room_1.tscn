@@ -51,7 +51,7 @@ type = "sword bird"
 
 [node name="Enemy4" parent="." unique_id=766532536 instance=ExtResource("3_b330e")]
 position = Vector2(452, 604)
-type = "bird"
+type = "cloud"
 
 [node name="Item" parent="." unique_id=2030387864 instance=ExtResource("7_4sdyu")]
 position = Vector2(610, 175)

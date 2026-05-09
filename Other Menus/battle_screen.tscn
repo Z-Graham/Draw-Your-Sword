@@ -941,9 +941,7 @@ sprite_frames = SubResource("SpriteFrames_hn33v")
 [node name="enemy_in_battle" parent="." unique_id=1840550579 instance=ExtResource("4_pi828")]
 position = Vector2(924, 370)
 scale = Vector2(4.5625, 3.875)
-animation = &"idle"
-frame = 0
-frame_progress = 0.0
+animation = &"knight idle"
 
 [node name="sword" type="Node2D" parent="." unique_id=718663914]
 position = Vector2(876, 277)

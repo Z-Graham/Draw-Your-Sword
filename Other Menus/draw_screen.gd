@@ -110,10 +110,20 @@ func _on_handle_list_item_selected(index: int) -> void:
 
 func _on_imbue_list_item_selected(index: int) -> void:
 	sel_imbue=imbue_list.get_item_text(index)
-	if sel_imbue=="none":
+	if sel_imbue=="physical":
 		blade_sprite.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	elif sel_imbue=="fire":
 		blade_sprite.modulate=Color(1.0, 0.0, 0.0, 1.0)
+	elif sel_imbue=="lightning":
+		blade_sprite.modulate=Color(1.0, 0.867, 0.0, 1.0)
+	elif sel_imbue=="water":
+		blade_sprite.modulate=Color(0.0, 0.0, 1.0, 1.0)
+	elif sel_imbue=="wind":
+		blade_sprite.modulate=Color(0.233, 1.0, 0.0, 1.0)
+	elif sel_imbue=="rock":
+		blade_sprite.modulate=Color(0.26, 0.169, 0.0, 1.0)
+	elif sel_imbue=="ice":
+		blade_sprite.modulate=Color(0.0, 1.0, 0.917, 1.0)
 	if sel_blade=="basic":
 		blade_sprite.play("basic_flash")
 	elif sel_blade=="katana":

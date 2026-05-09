@@ -17,6 +17,7 @@ class_name Room
 @export var return_spawn_point: Marker2D
 @export var up_return_spawn_point: Marker2D
 @export var trench : Node
+@export var bridge_sprite:Sprite2D
 
 @onready var healing_label: Label = $HealingLabel
 @onready var magic_label: Label = $MagicLabel
@@ -106,9 +107,9 @@ func _on_drawing_spot_opened() -> void:
 
 func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
 	if _solution == "Bridge":
-		trench.visible = false # change to an asset
 		trench.collision_layer = 1 # makes collision detection stop
 		draw_spot_solution_found.emit()
+		bridge_sprite.visible=true
 
 
 func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:

@@ -18,7 +18,7 @@ func _ready() -> void:
 func set_sprite():
 	if name_of_en=="goblin":
 		play("goblin idle")
-	elif name_of_en=="bird":
+	elif name_of_en=="sword bird":
 		play("bird idle")
 	elif name_of_en=="knight":
 		play("knight idle")

@@ -46,7 +46,7 @@ var enemy_health=100
 var enemy_status="none"
 var sw_blade="basic"
 var sw_handle="basic"
-var sw_imbue="none"
+var sw_imbue="physical"
 var draw_charge:int
 var blade_skill_req=20
 var handle_skill_req=30
@@ -329,6 +329,16 @@ func _on_inventory_item_used(item: Variant) -> void:
 		else:
 			Globals.player_stats["current_MP"]=Globals.player_stats["max_MP"]
 		battle_history_update("You used a MP Potion.")
+	elif item=="Inspect Lens":
+		print(enemy_in_battle["weakness"])
+		battle_history_update("You used an Inspect Lens.")
+		await get_tree().create_timer(.75).timeout
+		battle_history_update("The enemy has "+str(enemy_in_battle.enemy_stats["health"])+" health left.")
+		await get_tree().create_timer(.75).timeout
+		battle_history_update(check_weak())
+		await get_tree().create_timer(.75).timeout
+		battle_history_update(check_resist())
+		await get_tree().create_timer(.75).timeout
 
 func _on_draw_button_pressed() -> void:
 	if pencil_bar.value==100:
@@ -367,7 +377,7 @@ func reset():
 		for i in Globals.goblin_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.knight_stats[i]
 			
-	if enemy_in_battle.name_of_en=="bird":
+	if enemy_in_battle.name_of_en=="sword bird":
 		for i in Globals.goblin_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.bird_stats[i]
 			
@@ -542,10 +552,20 @@ func adjust_sprites():
 		elif sw_handle=="spear":
 			handle_sprite.position=Vector2(-72,70)
 			
-	if sw_imbue=="none":
+	if sw_imbue=="physical":
 		blade_sprite.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	elif sw_imbue=="fire":
 		blade_sprite.modulate=Color(1.0, 0.0, 0.0, 1.0)
+	elif sw_imbue=="lightning":
+		blade_sprite.modulate=Color(1.0, 0.867, 0.0, 1.0)
+	elif sw_imbue=="water":
+		blade_sprite.modulate=Color(0.0, 0.0, 1.0, 1.0)
+	elif sw_imbue=="wind":
+		blade_sprite.modulate=Color(0.233, 1.0, 0.0, 1.0)
+	elif sw_imbue=="rock":
+		blade_sprite.modulate=Color(0.26, 0.169, 0.0, 1.0)
+	elif sw_imbue=="ice":
+		blade_sprite.modulate=Color(0.0, 1.0, 0.917, 1.0)
 
 func _on_stats_screen_closed() -> void:
 	win_screen.visible=true
@@ -554,3 +574,49 @@ func _on_stats_screen_closed() -> void:
 func _on_win_screen_level_up() -> void:
 	win_screen.visible=false
 	stats_screen.visible=true
+
+func check_weak()-> String:
+	var weak=enemy_in_battle.name_of_en.capitalize()+ "s are weak to "
+	var size=enemy_in_battle.enemy_stats["weakness"].size()
+	if size>0:
+		for i in range(size):
+			if size==2:
+				if i<size-1:
+					weak=weak+enemy_in_battle.enemy_stats["weakness"][i]+" and "
+				else:
+					weak=weak+enemy_in_battle.enemy_stats["weakness"][i]+" damage."
+			elif size==1:
+				weak=weak+enemy_in_battle.enemy_stats["weakness"][i]+" damage."
+			elif size>2:
+				if i<size-2:
+					weak=weak+enemy_in_battle.enemy_stats["weakness"][i]+", "
+				elif i<size-1:
+					weak=weak+enemy_in_battle.enemy_stats["weakness"][i]+", and "
+				else:
+					weak=weak+enemy_in_battle.enemy_stats["weakness"][i]+" damage."
+	else:
+		weak=weak+"nothing."
+	return weak
+
+func check_resist()->String:
+	var weak=enemy_in_battle.name_of_en.capitalize()+ "s are resistant to "
+	var size=enemy_in_battle.enemy_stats["resist"].size()
+	if size>0:
+		for i in range(size):
+			if size==2:
+				if i<size-1:
+					weak=weak+enemy_in_battle.enemy_stats["resist"][i]+" and "
+				else:
+					weak=weak+enemy_in_battle.enemy_stats["resist"][i]+" damage."
+			elif size==1:
+				weak=weak+enemy_in_battle.enemy_stats["resist"][i]+" damage."
+			elif size>2:
+				if i<size-2:
+					weak=weak+enemy_in_battle.enemy_stats["resist"][i]+", "
+				elif i<size-1:
+					weak=weak+enemy_in_battle.enemy_stats["resist"][i]+", and "
+				else:
+					weak=weak+enemy_in_battle.enemy_stats["resist"][i]+" damage."
+	else:
+		weak=weak+"nothing."
+	return weak

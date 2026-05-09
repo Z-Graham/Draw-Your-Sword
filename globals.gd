@@ -15,28 +15,28 @@ var level=1
 var stat_points=0
 
 var healing_items={"HP Potion":0, "MP Potion":0}
-var battle_items={"Inspect Lens":0}
+var battle_items={"Inspect Lens":4}
 
-var sword = {"blade":"basic","handle":"basic","imbue":"none"}
+var sword = {"blade":"basic","handle":"basic","imbue":"physical"}
 
 var tutorial_checks={"battle_screen":false,"fight":false,"draw_1":false}
 
 # Arrays of unlocked sword parts
 var known_blades = ["basic","katana","kris","spear"]
 var known_handles = ["basic","katana","kris","spear"]
-var known_imbues = ["none","fire"]
+var known_imbues = ["physical","fire","lightning","water","wind","rock","ice"]
 
 var goblin_stats={"health":50,"defense":7,"attack":10,
 "resist":[],"weakness":["fire"],"exp":5}
 
-var knight_stats={"health":100,"defense":15,"attack":10,
-"resist":["none","rock"],"weakness":["fire","lightning"],"exp":15}
+var knight_stats={"health":100,"defense":15,"attack":15,
+"resist":["physical","rock"],"weakness":["fire","lightning"],"exp":15}
 
 var bird_stats={"health":75,"defense":5,"attack":15,
-"resist":[],"weakness":["lightning","rock"],"exp":10}
+"resist":["fire"],"weakness":["lightning","rock"],"exp":10}
 
 var cloud_stats={"health":60,"defense":8,"attack":12,
-"resist":["lightning"],"weakness":["air"],"exp":5}
+"resist":["lightning"],"weakness":["wind"],"exp":5}
 
 var keys := 0
 #signal change_stats

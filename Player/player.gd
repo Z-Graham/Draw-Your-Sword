@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed := 300
 @onready var ui: CanvasLayer = $UI
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 var health_label
 var max_health : int  = Globals.player_stats["max_health"]
 var magic_label
@@ -47,6 +48,30 @@ func _ready() -> void:
 func get_input():
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_dir * speed
+	if input_dir==Vector2(1.0,0.0):
+		sprite_2d.play("walk side")
+		sprite_2d.flip_h=false
+	elif input_dir==Vector2(-1.0,0.0):
+		sprite_2d.play("walk side")
+		sprite_2d.flip_h=true
+	elif input_dir==Vector2(0.0,1.0):
+		sprite_2d.play("walk down")
+	elif input_dir==Vector2(0.0,-1.0):
+		sprite_2d.play("walk up")
+	elif input_dir.x<0 and input_dir.x>-1:
+		sprite_2d.flip_h=true
+		if input_dir.y>0:
+			sprite_2d.play("walk down side")
+		else:
+			sprite_2d.play("walk up side")
+	elif input_dir.x>0 and input_dir.x<1:
+		sprite_2d.flip_h=false
+		if input_dir.y>0:
+			sprite_2d.play("walk down side")
+		else:
+			sprite_2d.play("walk up side")
+	else:
+		sprite_2d.play("idle")
 
 
 func _process(_delta: float) -> void:

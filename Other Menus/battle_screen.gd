@@ -91,6 +91,7 @@ func player_fight(blade:String,handle:String,imbue:String):
 	fight_battle_menu.visible=false
 	health_bar.visible=false
 	mp_bar.visible=false
+	player_battle.play("attack")
 	
 	if Globals.player_stats["current_MP"]<Globals.player_stats["max_MP"]-5:
 		Globals.player_stats["current_MP"]+=5
@@ -112,7 +113,7 @@ func player_fight(blade:String,handle:String,imbue:String):
 		enemy_fight()
 	if pencil_bar.value<100:
 		pencil_bar.value+=20
-	
+	player_battle.play("idle")
 	await get_tree().create_timer(2).timeout
 
 func _on_fight_button_pressed() -> void:
@@ -141,6 +142,7 @@ func _on_basic_button_mouse_exited() -> void:
 
 func _on_blade_skill_button_pressed() -> void:
 	if Globals.player_stats["current_MP"]>=blade_skill_req:
+		player_battle.play("attack")
 		var damage=0
 		fight_battle_menu.visible=false
 		health_bar.visible=false
@@ -205,6 +207,7 @@ func _on_blade_skill_button_pressed() -> void:
 			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		enemy_in_battle.enemy_stats["health"]-=damage
+		player_battle.play("idle")
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
 		else:
@@ -234,6 +237,7 @@ func _on_blade_skill_button_mouse_exited() -> void:
 
 func _on_handle_skill_button_pressed() -> void:
 	if Globals.player_stats["current_MP"]>=handle_skill_req or sw_handle=="spear":
+		player_battle.play("attack")
 		var damage=0
 		fight_battle_menu.visible=false
 		health_bar.visible=false
@@ -282,6 +286,7 @@ func _on_handle_skill_button_pressed() -> void:
 			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		enemy_in_battle.enemy_stats["health"]-=damage
+		player_battle.play("idle")
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
 		else:
@@ -347,6 +352,7 @@ func _on_draw_button_pressed() -> void:
 		pencil_bar.value=0
 
 func reset():
+	player_battle.play("idle")
 	draw_charge=5
 	main_battle_menu.visible=true
 	fight_battle_menu.visible=false
@@ -401,6 +407,15 @@ func enemy_fight():
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
 			enemy_in_battle.play("goblin idle")
+		elif enemy=="sword bird":
+			anim.play("bird attack")
+			await anim.animation_finished
+			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
+			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage=roundi(damage)
+			Globals.player_stats["current_health"]-=damage
+			battle_history_update("You took "+str(damage)+" damage.")
+			anim.play("bird idle")
 		else:
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/10.0)

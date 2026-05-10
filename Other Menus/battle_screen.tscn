@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://tfj68kuq4r32" path="res://Other Menus/battle_screen.gd" id="1_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://cvwirdjhjf5ud" path="res://assets/sprites/SinglePage.png" id="2_duuuk"]
 [ext_resource type="Texture2D" uid="uid://cc6hg7eathhu4" path="res://assets/sprites/red poly.png" id="3_638wx"]
+[ext_resource type="Texture2D" uid="uid://bbo77hyjrl30n" path="res://assets/sprites/16x32 All Animations-Sheet.png" id="3_m3a36"]
 [ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
 [ext_resource type="PackedScene" uid="uid://dcrggycifxn06" path="res://Enemy/enemy_in_battle.tscn" id="4_pi828"]
 [ext_resource type="Texture2D" uid="uid://dmtcj5dvmtq61" path="res://assets/sprites/spear_blade.png" id="5_4ijij"]
@@ -14,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
 [ext_resource type="BitMap" uid="uid://b4m371gvlhm0e" path="res://assets/sprites/blue poly mask.png" id="11_v7h6t"]
-[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="12_25fss"]
 [ext_resource type="Texture2D" uid="uid://ch1pc7xap1meq" path="res://assets/sprites/pencil.png" id="13_adytv"]
 [ext_resource type="Texture2D" uid="uid://ca62114eku3hb" path="res://assets/sprites/health bar.png" id="13_fibhm"]
 [ext_resource type="Texture2D" uid="uid://pjfhgfhy8kk6" path="res://assets/backgrounds/textbox.png" id="14_cq17g"]
@@ -25,15 +25,94 @@
 [ext_resource type="PackedScene" uid="uid://d0tu3pdpqi7to" path="res://Other Menus/stats_screen.tscn" id="23_te6vl"]
 [ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="24_m3a36"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gotq"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(224, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp0hd"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(256, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j537p"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(288, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxk6m"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(320, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gfl2"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(352, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i67w2"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(384, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx6yh"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(416, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6qat"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi8sy"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jergb"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxacu"]
+atlas = ExtResource("3_m3a36")
+region = Rect2(224, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_hn33v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_25fss")
+"texture": SubResource("AtlasTexture_6gotq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp0hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j537p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxk6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gfl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i67w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx6yh")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6qat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi8sy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jergb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxacu")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"idle",
+"speed": 10.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ijij"]
@@ -148,6 +227,30 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.05919994, 0.64, 0.006399994, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../enemy_in_battle:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(924, 370)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../../enemy_in_battle:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_qxk6m"]
@@ -275,6 +378,34 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(905, 279), Vector2(908, 168)]
+}
+
+[sub_resource type="Animation" id="Animation_nxacu"]
+resource_name = "bird attack"
+length = 0.8333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../enemy_in_battle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(924, 370), Vector2(-149, 370), Vector2(1124, 370), Vector2(924, 370)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../enemy_in_battle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.52),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_jergb"]
@@ -860,6 +991,7 @@ _data = {
 &"RESET": SubResource("Animation_m3a36"),
 &"Serpent strike": SubResource("Animation_qxk6m"),
 &"bash": SubResource("Animation_te6vl"),
+&"bird attack": SubResource("Animation_nxacu"),
 &"double stab": SubResource("Animation_jergb"),
 &"double_slash": SubResource("Animation_4ijij"),
 &"impaling thrust": SubResource("Animation_vx6yh"),
@@ -935,13 +1067,18 @@ offset_bottom = 668.0
 color = Color(0, 0, 0, 1)
 
 [node name="player_battle" type="AnimatedSprite2D" parent="." unique_id=71261061]
-position = Vector2(116, 360)
+texture_filter = 1
+position = Vector2(181, 359)
+scale = Vector2(6.25, 5.75)
 sprite_frames = SubResource("SpriteFrames_hn33v")
+animation = &"attack"
+frame = 6
+frame_progress = 1.0
 
 [node name="enemy_in_battle" parent="." unique_id=1840550579 instance=ExtResource("4_pi828")]
+visible = false
 position = Vector2(924, 370)
 scale = Vector2(4.5625, 3.875)
-animation = &"knight idle"
 
 [node name="sword" type="Node2D" parent="." unique_id=718663914]
 position = Vector2(876, 277)

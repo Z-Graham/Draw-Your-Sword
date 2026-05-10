@@ -353,6 +353,7 @@ func _on_draw_button_pressed() -> void:
 
 func reset():
 	player_battle.play("idle")
+	enemy_in_battle.global_rotation_degrees=0
 	draw_charge=5
 	main_battle_menu.visible=true
 	fight_battle_menu.visible=false
@@ -425,6 +426,15 @@ func enemy_fight():
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
 			enemy_in_battle.play("cloud idle")
+		elif enemy=="knight":
+			anim.play("knight attack")
+			await anim.animation_finished
+			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
+			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage=roundi(damage)
+			Globals.player_stats["current_health"]-=damage
+			battle_history_update("You took "+str(damage)+" damage.")
+			enemy_in_battle.play("knight_idle")
 		else:
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/10.0)

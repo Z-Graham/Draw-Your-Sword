@@ -252,6 +252,18 @@ tracks/10/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../../enemy_in_battle:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6151203]
+}
 
 [sub_resource type="Animation" id="Animation_qxk6m"]
 resource_name = "Serpent strike"
@@ -611,6 +623,34 @@ tracks/4/keys = {
 "values": [0.7853982]
 }
 
+[sub_resource type="Animation" id="Animation_uor2u"]
+resource_name = "knight attack"
+length = 1.5666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../enemy_in_battle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.45, 0.6, 0.76, 1.17, 1.5666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(924, 370), Vector2(320, 370), Vector2(290.99997, 242), Vector2(291, 242), Vector2(-10, 386), Vector2(516, 96), Vector2(924, 370)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../enemy_in_battle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45, 0.77, 0.83, 1.51),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 4.769984845700502, 4.7699847, 0.0, 6.283185307179586]
+}
+
 [sub_resource type="Animation" id="Animation_2gfl2"]
 resource_name = "poison damage"
 length = 0.73333335
@@ -689,6 +729,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../Damage_label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Damage_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(905, 279), Vector2(908, 168)]
 }
 
 [sub_resource type="Animation" id="Animation_mp0hd"]
@@ -995,6 +1059,7 @@ _data = {
 &"double stab": SubResource("Animation_jergb"),
 &"double_slash": SubResource("Animation_4ijij"),
 &"impaling thrust": SubResource("Animation_vx6yh"),
+&"knight attack": SubResource("Animation_uor2u"),
 &"poison damage": SubResource("Animation_2gfl2"),
 &"poke": SubResource("Animation_i67w2"),
 &"precise_slash": SubResource("Animation_mp0hd"),
@@ -1076,9 +1141,9 @@ animation = &"idle"
 [node name="enemy_in_battle" parent="." unique_id=1840550579 instance=ExtResource("4_pi828")]
 visible = false
 position = Vector2(924, 370)
+rotation = 0.6151203
 scale = Vector2(4.5625, 3.875)
-animation = &"cloud attack"
-frame_progress = 0.73093736
+frame_progress = 0.35300663
 
 [node name="sword" type="Node2D" parent="." unique_id=718663914]
 position = Vector2(876, 277)
@@ -1108,7 +1173,7 @@ modulate = Color(0.05919994, 0.64, 0.006399994, 1)
 offset_left = 905.0
 offset_top = 279.0
 offset_right = 945.0
-offset_bottom = 366.99615
+offset_bottom = 366.99603
 text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1

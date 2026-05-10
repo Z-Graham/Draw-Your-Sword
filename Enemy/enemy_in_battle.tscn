@@ -86,7 +86,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t7clc")
 }],
-"loop": true,
+"loop": false,
 "name": &"cloud attack",
 "speed": 5.0
 }, {
@@ -147,5 +147,5 @@ animations = [{
 [node name="enemy_in_battle" type="AnimatedSprite2D" unique_id=1840550579]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1uxla")
-animation = &"bird idle"
+animation = &"knight idle"
 script = ExtResource("2_nlk3i")

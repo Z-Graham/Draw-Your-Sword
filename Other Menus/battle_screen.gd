@@ -416,6 +416,15 @@ func enemy_fight():
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
 			anim.play("bird idle")
+		elif enemy=="cloud":
+			enemy_in_battle.play("cloud attack")
+			await enemy_in_battle.animation_finished
+			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
+			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage=roundi(damage)
+			Globals.player_stats["current_health"]-=damage
+			battle_history_update("You took "+str(damage)+" damage.")
+			enemy_in_battle.play("cloud idle")
 		else:
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/10.0)

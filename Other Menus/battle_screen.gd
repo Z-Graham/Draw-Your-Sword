@@ -403,7 +403,7 @@ func enemy_fight():
 			enemy_in_battle.play("goblin attack")
 			await enemy_in_battle.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage-=roundf(Globals.player_stats["defense"]/5.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -412,7 +412,7 @@ func enemy_fight():
 			anim.play("bird attack")
 			await anim.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage-=roundf(Globals.player_stats["defense"]/5.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -421,7 +421,7 @@ func enemy_fight():
 			enemy_in_battle.play("cloud attack")
 			await enemy_in_battle.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage-=roundf(Globals.player_stats["defense"]/2.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -430,7 +430,7 @@ func enemy_fight():
 			anim.play("knight attack")
 			await anim.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/10.0)
+			damage-=roundf(Globals.player_stats["defense"]/2.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -514,7 +514,7 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	#update player sprite eventually
 
 func damage_calc() -> int:
-	var damage=Globals.player_stats["attack"]*blade_mult*handle_mult
+	var damage=(Globals.player_stats["attack"]*.5)*blade_mult*handle_mult+5
 	if enemy_in_battle.enemy_stats["weakness"].size()>0:
 		for i in enemy_in_battle.enemy_stats["weakness"]:
 			if sw_imbue==i:
@@ -526,14 +526,16 @@ func damage_calc() -> int:
 			if sw_imbue==i:
 				damage*=0.5
 				battle_history_update("It's not very effective.")
-	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/10.0)
+	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/2)
 	damage*=randf_range(0.8,1.2)
 	damage=roundi(damage)
+	if damage<=0:
+		damage=1
 	return damage
 	
 func damage_calc_without_imbue() -> int:
-	var damage=Globals.player_stats["attack"]*blade_mult*handle_mult
-	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/10.0)
+	var damage=Globals.player_stats["attack"]*.5*blade_mult*handle_mult+5
+	damage-=roundf(enemy_in_battle.enemy_stats["defense"]/2.0)
 	damage*=randf_range(0.8,1.2)
 	damage=roundi(damage)
 	return damage

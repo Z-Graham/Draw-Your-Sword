@@ -1143,7 +1143,7 @@ visible = false
 position = Vector2(924, 370)
 rotation = 0.6151203
 scale = Vector2(4.5625, 3.875)
-frame_progress = 0.35300663
+frame_progress = 0.8021514
 
 [node name="sword" type="Node2D" parent="." unique_id=718663914]
 position = Vector2(876, 277)

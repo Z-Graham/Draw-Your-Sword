@@ -26,16 +26,16 @@ var known_blades = ["basic","katana","kris","spear"]
 var known_handles = ["basic","katana","kris","spear"]
 var known_imbues = ["physical","fire","lightning","wind","rock"]
 
-var goblin_stats={"health":5,"defense":7,"attack":10,
+var goblin_stats={"health":50,"defense":7,"attack":10,
 "resist":[],"weakness":["fire","ice"],"exp":5}
 
-var knight_stats={"health":100,"defense":15,"attack":15,
+var knight_stats={"health":100,"defense":15,"attack":20,
 "resist":["physical","rock","ice","wind"],"weakness":["fire","lightning"],"exp":15}
 
-var bird_stats={"health":75,"defense":5,"attack":15,
+var bird_stats={"health":50,"defense":2,"attack":25,
 "resist":["fire"],"weakness":["lightning","rock","water","ice"],"exp":10}
 
-var cloud_stats={"health":60,"defense":8,"attack":12,
+var cloud_stats={"health":60,"defense":8,"attack":15,
 "resist":["lightning","ice","water"],"weakness":["wind"],"exp":10}
 
 var keys := 0

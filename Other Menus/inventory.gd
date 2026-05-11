@@ -33,6 +33,7 @@ func _ready() -> void:
 func update():
 	if Globals.tutorial_checks["inventory"]==false:
 		tutorial_screen.show_up("inventory",4)
+		Globals.tutorial_checks["inventory"]=true
 	healing_item_list.clear()
 	battle_item_list.clear()
 	sel_item="em"

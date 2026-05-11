@@ -30,9 +30,12 @@ func _on_room_left(_room : Room, next : bool, down : bool) -> void:
 
 
 func _on_room_item_drawing_started() -> void:
-	tutorial_screen.show_up("overworld draw", 4)
 	player.speed = 0
 
 
 func _on_room_draw_spot_solution_found() -> void:
 	player.speed = 300
+
+
+func _on_room_3_draw_spot_closed() -> void:
+	player.speed=300

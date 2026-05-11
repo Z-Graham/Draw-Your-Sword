@@ -10,8 +10,6 @@ func _ready() -> void:
 	sprite_2d.play("default")
 
 func _on_body_entered(_body: Node2D) -> void:
-	print("open the notebook")
 	opened.emit()
 	draw_item_screen.visible = true
-	queue_free()
 	#open_notebook()

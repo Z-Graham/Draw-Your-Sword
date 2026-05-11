@@ -211,6 +211,7 @@ visible = false
 
 [connection signal="left" from="Room1" to="." method="_on_room_left"]
 [connection signal="left" from="Room2" to="." method="_on_room_left"]
+[connection signal="draw_spot_closed" from="Room3" to="." method="_on_room_3_draw_spot_closed"]
 [connection signal="draw_spot_solution_found" from="Room3" to="." method="_on_room_draw_spot_solution_found"]
 [connection signal="item_drawing_started" from="Room3" to="." method="_on_room_item_drawing_started"]
 [connection signal="left" from="Room3" to="." method="_on_room_left"]

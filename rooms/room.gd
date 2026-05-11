@@ -43,6 +43,7 @@ class_name Room
 signal left
 signal item_drawing_started
 signal draw_spot_solution_found
+signal draw_spot_closed
 
 func _ready() -> void:
 	var items = get_tree().get_nodes_in_group("collectedItems")
@@ -106,7 +107,9 @@ func _on_item_picked_up(_item : Area2D) -> void:
 
 func _on_drawing_spot_opened() -> void:
 	item_drawing_started.emit()
-	tutorial_screen.show_up("overworld draw", 4)
+	if Globals.tutorial_checks["overworld draw"]==false:
+		tutorial_screen.show_up("overworld draw", 4)
+		Globals.tutorial_checks["overworld draw"]=true
 
 
 func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
@@ -156,3 +159,7 @@ func _on_leave_room_detector_up_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(0.25).timeout
 	print("move to up room")
 	left.emit(self, leave_room_detector_up.next,leave_room_detector_up.down)
+
+
+func _on_draw_item_screen_closed() -> void:
+	draw_spot_closed.emit()

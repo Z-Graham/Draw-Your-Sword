@@ -152,6 +152,7 @@ z_index = 5
 [connection signal="picked_up" from="Item" to="." method="_on_item_picked_up"]
 [connection signal="picked_up" from="Item2" to="." method="_on_item_picked_up"]
 [connection signal="picked_up" from="Item3" to="." method="_on_item_picked_up"]
+[connection signal="closed" from="DrawItemScreen" to="." method="_on_draw_item_screen_closed"]
 [connection signal="solution_gotten" from="DrawItemScreen" to="." method="_on_draw_item_screen_solution_gotten"]
 [connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]
 [connection signal="collected" from="SwordItem2" to="." method="_on_sword_item_collected"]

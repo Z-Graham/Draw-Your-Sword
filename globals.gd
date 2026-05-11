@@ -15,7 +15,7 @@ var level=1
 var stat_points=0
 
 var healing_items={"HP Potion":0, "MP Potion":0}
-var battle_items={"Inspect Lens":4}
+var battle_items={"Inspect Lens":0}
 
 var sword = {"blade":"basic","handle":"basic","imbue":"physical"}
 

@@ -21,6 +21,10 @@ var stat_points_left:int
 
 signal closed
 
+func _process(delta: float) -> void:
+	stat_points.text="Stat points available: "+str(stat_points_left)
+
+
 func _on_health_increase_button_pressed() -> void:
 	if stat_points_left>0:
 		added_health+=5

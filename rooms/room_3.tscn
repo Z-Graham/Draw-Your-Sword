@@ -95,11 +95,12 @@ draw_item_screen = NodePath("../DrawItemScreen")
 
 [node name="Enemy" parent="." unique_id=1936347032 instance=ExtResource("7_2r27u")]
 position = Vector2(289, 536)
-type = "knight"
+type = "sword bird"
+has_key = true
 
 [node name="Enemy2" parent="." unique_id=96213353 instance=ExtResource("7_2r27u")]
 position = Vector2(400, 95)
-type = "knight"
+type = "cloud"
 
 [node name="Item" parent="." unique_id=2030387864 instance=ExtResource("8_7j5ef")]
 position = Vector2(798, 128)

@@ -67,7 +67,7 @@ scale = Vector2(0.83860004, 0.5216999)
 
 [node name="Enemy" parent="." unique_id=1936347032 instance=ExtResource("4_13qvk")]
 position = Vector2(743, 591)
-has_key = true
+type = "cloud"
 
 [node name="Enemy2" parent="." unique_id=1380412826 instance=ExtResource("4_13qvk")]
 position = Vector2(563, 254)

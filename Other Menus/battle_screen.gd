@@ -77,7 +77,11 @@ func _process(delta:float)-> void:
 	mp_bar.max_value=Globals.player_stats["max_MP"]
 	mp_bar.value=Globals.player_stats["max_MP"]-Globals.player_stats["current_MP"]
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
-
+	if battle_history.get_children().size()>6:
+		battle_history.get_child(0).queue_free()
+	if Input.is_action_just_pressed("level up"):
+		win_screen.exp_gain(10)
+	
 func battle_end():
 	$ColorRect2.visible=true
 	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
@@ -191,8 +195,8 @@ func _on_blade_skill_button_pressed() -> void:
 			anim.play("Serpent strike")
 			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
-			var poi_chance=randi_range(1,4)
-			if poi_chance==3:
+			var poi_chance=randi_range(1,10)
+			if poi_chance>3:
 				poison_count+=5
 				enemy_in_battle.modulate=Color(0.317, 0.68, 0.0, 1.0)
 				battle_history_update("The enemy is poisoned!")
@@ -200,7 +204,7 @@ func _on_blade_skill_button_pressed() -> void:
 			battle_history_update("You used Impaling Thrust!")
 			Globals.player_stats["current_MP"]-=20
 			damage=damage_calc_without_imbue()
-			damage*=1.8
+			damage*=2.5
 			damage=roundi(damage)
 			damage_label.text=str(damage)
 			anim.play("impaling thrust")
@@ -225,7 +229,7 @@ func _on_blade_skill_button_mouse_entered() -> void:
 		Costs 25MP"
 	elif sw_blade=="kris":
 		description.text="Serpent Strike: A venom imbued attack similar to a snake's strike.
-		25% chance to inflict poison on the target.
+		60% chance to inflict poison on the target.
 		Costs 15MP"
 	elif sw_blade=="spear":
 		description.text="Impaling Thrust: A savage stab with the spearhead that ignores both 
@@ -273,6 +277,8 @@ func _on_handle_skill_button_pressed() -> void:
 				Globals.player_stats["current_health"]+=20
 			else:
 				Globals.player_stats["current_health"]=Globals.player_stats["max_health"]
+			anim.play("ruby heal")
+			await anim.animation_finished
 			battle_history_update("You used Ruby Heal.")
 			battle_history_update("You healed 20 HP")
 		elif sw_handle=="spear":
@@ -403,7 +409,7 @@ func enemy_fight():
 			enemy_in_battle.play("goblin attack")
 			await enemy_in_battle.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/5.0)
+			damage-=roundf(Globals.player_stats["defense"]/3.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -412,7 +418,7 @@ func enemy_fight():
 			anim.play("bird attack")
 			await anim.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/5.0)
+			damage-=roundf(Globals.player_stats["defense"]/3.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -421,7 +427,7 @@ func enemy_fight():
 			enemy_in_battle.play("cloud attack")
 			await enemy_in_battle.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/2.0)
+			damage-=roundf(Globals.player_stats["defense"]/3.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -430,7 +436,7 @@ func enemy_fight():
 			anim.play("knight attack")
 			await anim.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
-			damage-=roundf(Globals.player_stats["defense"]/2.0)
+			damage-=roundf(Globals.player_stats["defense"]/3.0)
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -609,6 +615,7 @@ func _on_stats_screen_closed() -> void:
 
 func _on_win_screen_level_up() -> void:
 	win_screen.visible=false
+	stats_screen._on_visibility_changed()
 	stats_screen.visible=true
 
 func check_weak()-> String:

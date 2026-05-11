@@ -28,13 +28,12 @@ func set_sprite():
 func loot() -> Array:
 	var stuff=[]
 	var loot_val=randi_range(1,10)
-	if name_of_en=="goblin":
-		if loot_val>4 and loot_val<7 or loot_val==10:
-			stuff.append("HP Potion")
-		if loot_val>7 and loot_val<=10:
-			stuff.append("MP Potion")
-		if loot_val==1:
-			stuff.append("Inspect Lens")
+	if loot_val>4 and loot_val<7 or loot_val==10:
+		stuff.append("HP Potion")
+	if loot_val>7 and loot_val<=10:
+		stuff.append("MP Potion")
+	if loot_val==1:
+		stuff.append("Inspect Lens")
 	return stuff
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 

@@ -1,7 +1,9 @@
 extends CanvasLayer
 
+@onready var attack_label: Label = $VBoxContainer/attackLabel
+@onready var defense_label: Label = $VBoxContainer/defenseLabel
 
-
+signal opened
 
 func _on_close_button_pressed() -> void:
 	visible = false
@@ -14,3 +16,8 @@ func _on_button_toggled(toggled_on: bool) -> void:
 	else:
 		for key in Globals.tutorial_checks.keys():
 			Globals.tutorial_checks[key]=false
+
+
+
+func _on_visibility_changed() -> void:
+	opened.emit()

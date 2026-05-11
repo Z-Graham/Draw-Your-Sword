@@ -60,6 +60,7 @@ func _on_change_tab_button_pressed() -> void:
 	elif current_tab==imbue:
 		if not sel_imbue=="":
 			$CloseButton.visible=true
+			$RedrawButton.visible=true
 			if tab_container.current_tab < tab_container.get_tab_count() - 1:
 				tab_container.current_tab += 1
 			imbue_list.visible=false
@@ -219,3 +220,6 @@ func update_position():
 			blade_sprite.global_position=Vector2(521,262)
 			handle_sprite.global_position=Vector2(462,338)
 	
+
+func _on_redraw_button_pressed() -> void:
+	reset()

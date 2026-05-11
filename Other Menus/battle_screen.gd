@@ -49,7 +49,7 @@ var sw_handle="basic"
 var sw_imbue="physical"
 var draw_charge:int
 var blade_skill_req=20
-var handle_skill_req=30
+var handle_skill_req=10
 var poison_count=0
 
 var blade_mult=1.0
@@ -244,9 +244,9 @@ func _on_handle_skill_button_pressed() -> void:
 		mp_bar.visible=false
 		if sw_handle=="basic":
 			battle_history_update("You used Bash!")
-			Globals.player_stats["current_MP"]-=30
+			Globals.player_stats["current_MP"]-=10
 			damage=damage_calc()
-			damage*=1.1
+			damage*=1.3
 			damage=roundi(damage)
 			damage_label.text=str(damage)
 			var confuse_chance=randi_range(1,3)
@@ -302,7 +302,7 @@ func _on_handle_skill_button_pressed() -> void:
 func _on_handle_skill_button_mouse_entered() -> void:
 	if sw_handle=="basic":
 		description.text="Bash: A strike with the pommel of your blade with a chance to confuse the enemy.
-		Costs 30MP"
+		Costs 10MP"
 	elif sw_handle=="katana":
 		description.text="Quick Draw: A swift strike that sacrifices power for speed. Enemy will not counterattack.
 		Costs 5MP"
@@ -444,10 +444,10 @@ func enemy_fight():
 	
 	await get_tree().create_timer(.5).timeout
 	if poison_count>0:
-		enemy_in_battle.enemy_stats["health"]-=(enemy_in_battle.enemy_stats["health"]/16)
-		battle_history_update("The enemy took "+str(enemy_in_battle.enemy_stats["health"]/16)+" poison damage.")
+		enemy_in_battle.enemy_stats["health"]-=(enemy_in_battle.enemy_stats["health"]/16+1)
+		battle_history_update("The enemy took "+str(enemy_in_battle.enemy_stats["health"]/16+1)+" poison damage.")
 		poison_count-=1
-		damage_label.text=str(enemy_in_battle.enemy_stats["health"]/16)
+		damage_label.text=str(enemy_in_battle.enemy_stats["health"]/16+1)
 		anim.play("poison damage")
 		if enemy_in_battle.enemy_stats["health"]<=0:
 			battle_end()
@@ -498,7 +498,7 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	elif blade=="kris":
 		blade_skill_req=15
 	if handle=="basic":
-		handle_skill_req=30
+		handle_skill_req=10
 	elif handle=="katana":
 		handle_skill_req=5
 	elif handle=="kris":

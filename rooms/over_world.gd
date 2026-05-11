@@ -3,6 +3,7 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var player: CharacterBody2D = $Player
 @onready var battle_screen: Node2D = $BattleScreenLayer/Battle_screen
+@onready var tutorial_screen: Control = $"Tutorial screen"
 
 
 func _on_room_left(_room : Room, next : bool, down : bool) -> void:
@@ -29,6 +30,7 @@ func _on_room_left(_room : Room, next : bool, down : bool) -> void:
 
 
 func _on_room_item_drawing_started() -> void:
+	tutorial_screen.show_up("overworld draw", 4)
 	player.speed = 0
 
 

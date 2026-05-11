@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4bjggsin5t6m" path="res://assets/sprites/kris_blade.png" id="4_eq4q2"]
 [ext_resource type="Texture2D" uid="uid://0c23fo8xnloy" path="res://assets/sprites/bridge.png" id="5_4mktu"]
 [ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="6_601l6"]
+[ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="7_eq4q2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qutab"]
 font_size = 23
@@ -168,6 +169,10 @@ position = Vector2(610, 341)
 scale = Vector2(8.765625, 8.0078125)
 sprite_frames = SubResource("SpriteFrames_dil7m")
 animation = &"none"
+
+[node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("7_eq4q2")]
+visible = false
+layout_mode = 1
 
 [connection signal="item_selected" from="ObjectList" to="." method="_on_object_list_item_selected"]
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

@@ -31,6 +31,16 @@ layout_mode = 2
 text = "MP: 456456/MAX"
 label_settings = SubResource("LabelSettings_msqxa")
 
+[node name="attackLabel" type="Label" parent="VBoxContainer" unique_id=886049102]
+layout_mode = 2
+text = "Atk: 0"
+label_settings = SubResource("LabelSettings_msqxa")
+
+[node name="defenseLabel" type="Label" parent="VBoxContainer" unique_id=1096636658]
+layout_mode = 2
+text = "Def: 0"
+label_settings = SubResource("LabelSettings_msqxa")
+
 [node name="KeyLabel" type="Label" parent="VBoxContainer" unique_id=1401996739 groups=["KeyLabel"]]
 layout_mode = 2
 text = "Key: No"
@@ -95,5 +105,6 @@ offset_right = 178.0
 offset_bottom = 648.0
 text = "Disable tutorials"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

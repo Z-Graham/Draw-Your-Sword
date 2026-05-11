@@ -3,6 +3,7 @@ extends Control
 @onready var healing_item_list: ItemList = $HealingItemList
 @onready var key_item_list: ItemList = $KeyItemList
 @onready var description: Label = $"description box/description"
+@onready var tutorial_screen: Control = $"Tutorial screen"
 
 signal item_used(String)
 
@@ -30,6 +31,8 @@ func _ready() -> void:
 	
 		
 func update():
+	if Globals.tutorial_checks["inventory"]==false:
+		tutorial_screen.show_up("inventory",4)
 	healing_item_list.clear()
 	battle_item_list.clear()
 	sel_item="em"

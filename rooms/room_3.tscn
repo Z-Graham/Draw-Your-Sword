@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cjugq0o8gwov7" path="res://Other Menus/draw_item_screen.tscn" id="9_sti2h"]
 [ext_resource type="PackedScene" uid="uid://bjayyf6rqq7ef" path="res://Items/sword_item.tscn" id="10_0v5my"]
 [ext_resource type="Texture2D" uid="uid://0c23fo8xnloy" path="res://assets/sprites/bridge.png" id="11_suwb7"]
+[ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="12_52qvr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sdyu"]
 font_size = 24
@@ -140,6 +141,10 @@ position = Vector2(572, 325)
 rotation = 1.5712
 scale = Vector2(7.9940205, 3.9603863)
 texture = ExtResource("11_suwb7")
+
+[node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("12_52qvr")]
+visible = false
+z_index = 5
 
 [connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]

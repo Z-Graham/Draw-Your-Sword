@@ -25,7 +25,10 @@ class_name Room
 @onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
 @onready var leave_room_detector_backwards: LeaveRoomDetector = $ColorRect2/LeaveRoomDetectorBackwards
 @onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
+
 @onready var leave_room_detector_up: LeaveRoomDetector = $ColorRect4/LeaveRoomDetectorUp
+
+@onready var tutorial_screen: Control = $"Tutorial screen"
 
 @onready var next_room_door: ColorRect = $ColorRect
 @onready var down_room_door: ColorRect = $ColorRect3
@@ -103,6 +106,7 @@ func _on_item_picked_up(_item : Area2D) -> void:
 
 func _on_drawing_spot_opened() -> void:
 	item_drawing_started.emit()
+	tutorial_screen.show_up("overworld draw", 4)
 
 
 func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
@@ -131,8 +135,6 @@ func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
 
 
 func _on_sword_item_collected(_item:Area2D) -> void:
-	print(_item.item_name)
-	print(_item.type)
 	if healing_label.visible:
 		healing_label.visible = false
 	if magic_label.visible:

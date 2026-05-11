@@ -52,6 +52,35 @@ func page_change():
 			special enemies or chests located in the overworld."
 		elif page==5:
 			info.text="Begin by selecting your blade, then hitting the NEXT button on the right."
+	if tutorial=="inventory":
+		if page==1:
+			info.label_settings.font_size=64
+			print(info.label_settings.font_size)
+			info.text="This is your inventory."
+		elif page==2:
+			info.label_settings.font_size=32
+			info.text="Clicking an item will give you a brief description of its effect
+			in the box in the bottom right."
+		elif page==3:
+			info.text="Click the 'Use' button next to the description panel after selecting an item
+			to use that item."
+		elif page==4:
+			info.text="Click the buttons on the top of the inventory to switch tabs."
+	if tutorial=="overworld draw":
+		if page==1:
+			info.label_settings.font_size=64
+			info.text="You just stepped on a draw spot."
+		elif page==2:
+			info.label_settings.font_size=32
+			info.text="These are scattered around the school at points where 
+			you will need to draw an item in order to proceed."
+		elif page==3:
+			info.text="You can find instructions on how to draw certain items
+			in chests and from killing enemies."
+		elif page==4:
+			info.text="Every draw spot has a solution, so if you don't have 
+			the correct solution yet,try exploring places you haven't been 
+			in order to find the key to the puzzle."
 
 func _on_next_pressed() -> void:
 	if page==max_pages:

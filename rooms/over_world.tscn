@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://Other Menus/inventory.tscn" id="6_6sn55"]
 [ext_resource type="PackedScene" uid="uid://bec7kqmr4twll" path="res://rooms/room_4.tscn" id="6_ffupc"]
 [ext_resource type="PackedScene" uid="uid://bg2mqcnho8e48" path="res://rooms/room_3.tscn" id="7_4sdyu"]
+[ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="9_qqr6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sdyu"]
 
@@ -204,6 +205,9 @@ collision_layer = 4
 position = Vector2(46.999996, 166.99998)
 scale = Vector2(1.8218054, 64.14396)
 shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("9_qqr6h")]
+visible = false
 
 [connection signal="left" from="Room1" to="." method="_on_room_left"]
 [connection signal="left" from="Room2" to="." method="_on_room_left"]

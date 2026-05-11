@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
+signal ui_open
 
 @export var speed := 300
 @onready var ui: CanvasLayer = $UI
+@onready var attack_label: Label = $VBoxContainer/attackLabel
+@onready var defense_label: Label = $VBoxContainer/defenseLabel
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 var health_label
 var max_health : int  = Globals.player_stats["max_health"]
@@ -76,6 +79,7 @@ func get_input():
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
+		ui_open.emit()
 		health_label.text = "HP: " + str(Globals.player_stats["current_health"]) +"/"+ str(Globals.player_stats["max_health"])
 		magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(Globals.player_stats["max_MP"])
 		blade_label.text = "BLADE: " + str(Globals.sword["blade"])
@@ -107,3 +111,8 @@ func take_damage(): # mostly for testing
 func do_magic(): # for test
 	Globals.player_stats["current_MP"] -= 1
 	magic_label.text = "MP: " + str(Globals.player_stats["current_MP"]) +"/"+ str(Globals.player_stats["max_MP"])
+
+
+func _on_ui_opened() -> void:
+	ui.attack_label.text="Atk: "+str(Globals.player_stats["attack"])
+	ui.defense_label.text="Def: "+str(Globals.player_stats["defense"])

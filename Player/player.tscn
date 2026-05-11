@@ -218,7 +218,7 @@ position = Vector2(0, -15)
 scale = Vector2(3.25, 3)
 sprite_frames = SubResource("SpriteFrames_od3ui")
 animation = &"idle"
-frame_progress = 0.7553598
+frame_progress = 0.73548186
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1655171842]
 position = Vector2(-0.5000005, -0.5000005)
@@ -227,3 +227,5 @@ shape = SubResource("RectangleShape2D_4ntmi")
 
 [node name="UI" parent="." unique_id=530947380 instance=ExtResource("3_btcbx")]
 visible = false
+
+[connection signal="opened" from="UI" to="." method="_on_ui_opened"]

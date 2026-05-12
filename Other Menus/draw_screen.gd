@@ -14,6 +14,27 @@ extends TextureRect
 @onready var change_tab_button: Button = $ChangeTabButton
 @onready var tutorial_screen: Control = $"Tutorial screen"
 
+
+
+
+@onready var bladetextlist: Array[String] = ["Double Slice: Two rapid attacks with your weapon.
+		Costs 20MP", "Precise Slash: A clean cut with the katana blade. 
+		Attacks against enemy weaknesses are more effective.
+		Costs 25MP","Serpent Strike: A venom imbued attack similar to a snake's strike.
+		60% chance to inflict poison on the target.
+		Costs 15MP","Impaling Thrust: A savage stab with the spearhead that ignores both 
+		enemy weaknesses and resistances.
+		Costs 20 MP"]
+@onready var handletextlist: Array[String] = ["Bash: A strike with the pommel of your blade with a chance to confuse the enemy.
+		Costs 10MP","Quick Draw: A swift strike that sacrifices power for speed. Enemy will not counterattack.
+		Costs 5MP","Ruby Heal: Using the rubies embedded in the hilt, perform a simple healing spell.
+		costs 10MP","Stabbing Flurry: A flurry of stabs at the enemy followed by a downward stab
+		that consumes HP instead of MP.
+		costs 20HP"]
+
+
+
+
 signal draw_screen_closed(blade,handle,imbue)
 var sel_blade=""
 var sel_handle=""
@@ -223,3 +244,15 @@ func update_position():
 
 func _on_redraw_button_pressed() -> void:
 	reset()
+
+@onready var descbox: Label = $descbox
+
+
+
+func _on_blade_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	if mouse_button_index == 2:
+		var text = bladetextlist[index]
+		descbox.text= text
+		descbox.global_position = at_position
+		
+		

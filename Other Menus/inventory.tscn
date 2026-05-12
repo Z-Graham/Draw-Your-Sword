@@ -51,7 +51,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 offset_right = 1173.0
 offset_bottom = 675.0
-color = Color(0.41, 0.41, 0.41, 0.7176471)
+color = Color(0.41, 0.41, 0.41, 0.7647059)
 
 [node name="menu backdrop" type="ColorRect" parent="." unique_id=799221514]
 layout_mode = 1

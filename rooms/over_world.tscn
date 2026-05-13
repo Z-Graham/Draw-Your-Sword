@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ch3vi0ygmfivb" path="res://Other Menus/inventory.tscn" id="6_6sn55"]
 [ext_resource type="PackedScene" uid="uid://bec7kqmr4twll" path="res://rooms/room_4.tscn" id="6_ffupc"]
 [ext_resource type="PackedScene" uid="uid://bg2mqcnho8e48" path="res://rooms/room_3.tscn" id="7_4sdyu"]
+[ext_resource type="PackedScene" uid="uid://c0ic7kuee3io0" path="res://rooms/room_5.tscn" id="7_sfjvt"]
 [ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="9_qqr6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sdyu"]
@@ -30,13 +31,18 @@ previous_room = NodePath("../Room1")
 down_room = NodePath("../Room4")
 locked = false
 
-[node name="Room3" parent="." unique_id=1535874592 node_paths=PackedStringArray("previous_room") instance=ExtResource("7_4sdyu")]
+[node name="Room3" parent="." unique_id=1535874592 node_paths=PackedStringArray("next_room", "previous_room") instance=ExtResource("7_4sdyu")]
 position = Vector2(3446, 0)
+next_room = NodePath("../Room5")
 previous_room = NodePath("../Room2")
 
 [node name="Room4" parent="." unique_id=1641247524 node_paths=PackedStringArray("up_room") instance=ExtResource("6_ffupc")]
 position = Vector2(1713, 1140)
 up_room = NodePath("../Room2")
+
+[node name="Room5" parent="." unique_id=724931990 node_paths=PackedStringArray("previous_room") instance=ExtResource("7_sfjvt")]
+position = Vector2(5240, 29)
+previous_room = NodePath("../Room3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=116450048]
 anchor_mode = 0
@@ -56,6 +62,44 @@ position = Vector2(1126, 184)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border4" unique_id=1855579880]
+position = Vector2(46.999996, 166.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Border17" type="StaticBody2D" parent="Borders" unique_id=827977363]
+position = Vector2(5172, 217)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border17" unique_id=55252185]
+position = Vector2(46.999996, 166.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Border18" type="StaticBody2D" parent="Borders" unique_id=1698656507]
+position = Vector2(6380, 201)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border18" unique_id=99326878]
+position = Vector2(46.999996, 166.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Border19" type="StaticBody2D" parent="Borders" unique_id=264780265]
+position = Vector2(6026, -38)
+rotation = 1.5707964
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border19" unique_id=1338513593]
+position = Vector2(46.999996, 166.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Border20" type="StaticBody2D" parent="Borders" unique_id=345033981]
+position = Vector2(6015, 672)
+rotation = 1.5707964
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border20" unique_id=1536718398]
 position = Vector2(46.999996, 166.99998)
 scale = Vector2(1.8218054, 64.14396)
 shape = SubResource("RectangleShape2D_4sdyu")
@@ -216,3 +260,4 @@ visible = false
 [connection signal="item_drawing_started" from="Room3" to="." method="_on_room_item_drawing_started"]
 [connection signal="left" from="Room3" to="." method="_on_room_left"]
 [connection signal="left" from="Room4" to="." method="_on_room_left"]
+[connection signal="left" from="Room5" to="." method="_on_room_left"]

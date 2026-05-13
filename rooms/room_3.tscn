@@ -113,7 +113,7 @@ position = Vector2(798, 495)
 position = Vector2(798, 322)
 type = "magic"
 
-[node name="DrawItemScreen" parent="." unique_id=1341454615 instance=ExtResource("9_sti2h")]
+[node name="DrawItemScreen" parent="." unique_id=1341454615 node_paths=PackedStringArray("spot") instance=ExtResource("9_sti2h")]
 visible = false
 z_index = 2
 anchors_preset = 0
@@ -123,6 +123,7 @@ offset_right = 1151.0
 offset_bottom = 647.0
 grow_horizontal = 1
 grow_vertical = 1
+spot = NodePath("../DrawingSpot")
 solution = "Bridge"
 
 [node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("10_0v5my")]

@@ -4,7 +4,7 @@ extends TextureRect
 @onready var object_list: ItemList = $ObjectList
 @onready var preview: AnimatedSprite2D = $preview
 
-@export var spot=DrawingSpot
+@export var spot : DrawingSpot 
 @export var solution : String
 
 var sel_object
@@ -25,7 +25,7 @@ func _on_object_list_item_selected(_index: int) -> void:
 
 func _on_confirm_button_pressed() -> void:
 	if sel_object == solution:
-		solution_gotten.emit(solution)
+		solution_gotten.emit(solution, spot)
 		visible = false
 		preview.play("none")
 	else:

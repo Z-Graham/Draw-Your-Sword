@@ -17,7 +17,7 @@ script = ExtResource("1_b330e")
 
 [node name="Player" parent="." unique_id=44114981 instance=ExtResource("4_lc3sa")]
 z_index = 1
-position = Vector2(65, 53)
+position = Vector2(1018, 254)
 
 [node name="Room1" parent="." unique_id=2070870883 node_paths=PackedStringArray("next_room") instance=ExtResource("2_4sdyu")]
 next_room = NodePath("../Room2")

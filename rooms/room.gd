@@ -35,6 +35,7 @@ class_name Room
 @onready var back_room_door: ColorRect = $ColorRect2
 @onready var up_room_door: ColorRect = $ColorRect4
 
+@onready var drawing_spot: DrawingSpot = $DrawingSpot
 
 #@onready var enter_spawn_point: Marker2D = $EnterSpawnPoint
 #@onready var return_spawn_point: Marker2D = $ReturnSpawnPoint
@@ -112,12 +113,12 @@ func _on_drawing_spot_opened() -> void:
 		Globals.tutorial_checks["overworld draw"]=true
 
 
-func _on_draw_item_screen_solution_gotten(_solution: String) -> void:
+func _on_draw_item_screen_solution_gotten(_solution: String, _spot) -> void:
 	if _solution == "Bridge":
 		trench.collision_layer = 1 # makes collision detection stop
 		draw_spot_solution_found.emit()
 		bridge_sprite.visible=true
-
+	_spot.queue_free()
 
 func _on_leave_room_detector_down_body_entered(_body: Node2D) -> void:
 	if down_room != null:
@@ -163,3 +164,5 @@ func _on_leave_room_detector_up_body_entered(_body: Node2D) -> void:
 
 func _on_draw_item_screen_closed() -> void:
 	draw_spot_closed.emit()
+	
+	

@@ -38,7 +38,7 @@ var bird_stats={"health":50,"defense":2,"attack":25,
 var cloud_stats={"health":60,"defense":8,"attack":15,
 "resist":["lightning","ice","water"],"weakness":["wind"],"exp":10}
 
-var keys := 0
+var keys := 5 # take out when done
 #signal change_stats
 
 func restore():

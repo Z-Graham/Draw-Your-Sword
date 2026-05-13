@@ -53,7 +53,7 @@ func _on_continue_pressed() -> void:
 		exp_to_next.visible = false
 		v_box_container.visible = true
 
-func set_items_obtained(items:Array):
+func set_items_obtained(items:Array,key_have:bool):
 	if items.size()>0:
 		for item in items:
 			var lab=Label.new()
@@ -64,7 +64,14 @@ func set_items_obtained(items:Array):
 			lab.label_settings=settings
 			v_box_container.add_child(lab)
 			add_to_inventory(item)
-
+	if key_have:
+		var lab=Label.new()
+		var settings = LabelSettings.new()
+		settings.font_size=50
+		lab.text="key"
+		lab.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+		lab.label_settings=settings
+		v_box_container.add_child(lab)
 
 func add_to_inventory(text:String) -> void:
 	if text=="HP Potion":

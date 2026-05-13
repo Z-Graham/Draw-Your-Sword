@@ -26,7 +26,7 @@ var known_blades = ["basic","katana","kris","spear"]
 var known_handles = ["basic","katana","kris","spear"]
 var known_imbues = ["physical","fire","lightning","wind","rock"]
 
-var goblin_stats={"health":50,"defense":7,"attack":10,
+var goblin_stats={"health":5,"defense":7,"attack":10,
 "resist":[],"weakness":["fire","ice"],"exp":5}
 
 var knight_stats={"health":100,"defense":15,"attack":20,

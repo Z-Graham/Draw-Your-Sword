@@ -42,6 +42,7 @@ const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
 signal battle_finished(exp_amount:int)
 
 var enemy:String
+var key_have:bool
 var enemy_health=100
 var enemy_status="none"
 var sw_blade="basic"
@@ -88,7 +89,7 @@ func battle_end():
 	win_screen.reset()
 	win_screen.visible=true
 	var items=enemy_in_battle.loot()
-	win_screen.set_items_obtained(items)
+	win_screen.set_items_obtained(items,key_have)
 	win_screen.exp_gain(enemy_in_battle.enemy_stats["exp"])
 
 func player_fight(blade:String,handle:String,imbue:String):
@@ -603,7 +604,7 @@ func adjust_sprites():
 	elif sw_imbue=="water":
 		blade_sprite.modulate=Color(0.0, 0.0, 1.0, 1.0)
 	elif sw_imbue=="wind":
-		blade_sprite.modulate=Color(0.233, 1.0, 0.0, 1.0)
+		blade_sprite.modulate=Color(0.233, 1.0, 0.0, 0.624)
 	elif sw_imbue=="rock":
 		blade_sprite.modulate=Color(0.26, 0.169, 0.0, 1.0)
 	elif sw_imbue=="ice":

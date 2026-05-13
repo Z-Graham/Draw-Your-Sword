@@ -25,6 +25,10 @@ func _on_body_entered(_body: Node2D) -> void:
 	battle_screen_layer.visible = true
 	var battle_screen=get_tree().get_first_node_in_group("BattleScreenLayer").get_child(0)
 	battle_screen.enemy=type
+	if has_key:
+		battle_screen.key_have=true
+	else:
+		battle_screen.key_have=false
 	battle_screen.reset()
 	if has_key:
 		Globals.keys += 1

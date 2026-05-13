@@ -312,6 +312,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_b3we0"]
+font_size = 17
+
 [node name="DrawScreen" type="TextureRect" unique_id=2035027788]
 texture_filter = 1
 anchors_preset = 15
@@ -523,6 +526,30 @@ offset_left = 278.0
 offset_top = 46.0
 offset_right = 278.0
 offset_bottom = 46.0
+
+[node name="blade skill" type="Label" parent="." unique_id=339343628]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 112.0
+offset_right = 1358.0
+offset_bottom = 304.0
+text = "Blade skill: "
+label_settings = SubResource("LabelSettings_b3we0")
+autowrap_mode = 3
+
+[node name="handle skill" type="Label" parent="." unique_id=721646785]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 309.0
+offset_right = 1356.0
+offset_bottom = 511.0
+text = "Handle skill:"
+label_settings = SubResource("LabelSettings_b3we0")
+autowrap_mode = 3
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="RedrawButton" to="." method="_on_redraw_button_pressed"]

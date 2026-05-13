@@ -13,6 +13,8 @@ extends TextureRect
 @onready var imbue_list: ItemList = $imbue_list
 @onready var change_tab_button: Button = $ChangeTabButton
 @onready var tutorial_screen: Control = $"Tutorial screen"
+@onready var blade_skill: Label = $"blade skill"
+@onready var handle_skill: Label = $"handle skill"
 
 signal draw_screen_closed(blade,handle,imbue)
 var sel_blade=""
@@ -65,14 +67,9 @@ func _on_change_tab_button_pressed() -> void:
 				tab_container.current_tab += 1
 			imbue_list.visible=false
 			change_tab_button.visible=false
-		if sel_blade=="basic":
-			blade_sprite.play("basic_set")
-		elif sel_blade=="katana":
-			blade_sprite.play("katana_set")
-		elif sel_blade=="kris":
-			blade_sprite.play("kris_set")
-		elif sel_blade=="spear":
-			blade_sprite.play("spear_set")
+			blade_skill.visible=true
+			handle_skill.visible=true
+		set_anims_and_labels()
 
 func _on_close_button_pressed() -> void:
 	visible = false
@@ -120,7 +117,7 @@ func _on_imbue_list_item_selected(index: int) -> void:
 	elif sel_imbue=="water":
 		blade_sprite.modulate=Color(0.0, 0.0, 1.0, 1.0)
 	elif sel_imbue=="wind":
-		blade_sprite.modulate=Color(0.233, 1.0, 0.0, 1.0)
+		blade_sprite.modulate=Color(0.233, 1.0, 0.0, .624)
 	elif sel_imbue=="rock":
 		blade_sprite.modulate=Color(0.26, 0.169, 0.0, 1.0)
 	elif sel_imbue=="ice":
@@ -145,6 +142,9 @@ func reset():
 		handle_list.add_item(h)
 	for i in Globals.known_imbues:
 		imbue_list.add_item(i)
+	
+	blade_skill.visible=false
+	handle_skill.visible=false
 	
 	if Globals.tutorial_checks["draw_1"]==false:
 		tutorial_screen.show_up("draw_1",5)
@@ -223,3 +223,26 @@ func update_position():
 
 func _on_redraw_button_pressed() -> void:
 	reset()
+
+
+func set_anims_and_labels():
+	if sel_blade=="basic":
+		blade_sprite.play("basic_set")
+		blade_skill.text="Blade skill: Double slice"
+	elif sel_blade=="katana":
+		blade_sprite.play("katana_set")
+		blade_skill.text="Blade skill: Prescise slash"
+	elif sel_blade=="kris":
+		blade_sprite.play("kris_set")
+		blade_skill.text="Blade skill: Serpent strike"
+	elif sel_blade=="spear":
+		blade_sprite.play("spear_set")
+		blade_skill.text="Blade skill: Impaling thrust"
+	if sel_handle=="basic":
+		handle_skill.text="Handle skill: Bash"
+	elif sel_handle=="katana":
+		handle_skill.text="Handle skill: Quick draw"
+	elif sel_handle=="kris":
+		handle_skill.text="Handle skill: Ruby heal"
+	elif sel_handle=="spear":
+		handle_skill.text="Handle skill: Stabbing flurry"

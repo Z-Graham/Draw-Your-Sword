@@ -7,14 +7,15 @@ extends TextureRect
 @onready var handle: TabBar = $TabContainer/Handle
 @onready var imbue: TabBar = $TabContainer/Imbue
 @onready var blade_list: ItemList = $blade_list
-@onready var blade_sprite: AnimatedSprite2D = $blade
+@onready var blade_sprite: AnimatedSprite2D = $sword/blade
 @onready var handle_list: ItemList = $handle_list
-@onready var handle_sprite: AnimatedSprite2D = $handle
+@onready var handle_sprite: AnimatedSprite2D = $sword/handle
 @onready var imbue_list: ItemList = $imbue_list
 @onready var change_tab_button: Button = $ChangeTabButton
 @onready var tutorial_screen: Control = $"Tutorial screen"
 @onready var blade_skill: Label = $"blade skill"
 @onready var handle_skill: Label = $"handle skill"
+@onready var sword: Node2D = $sword
 
 signal draw_screen_closed(blade,handle,imbue)
 var sel_blade=""
@@ -44,6 +45,8 @@ func _on_change_tab_button_pressed() -> void:
 			blade_sprite.play("kris_set")
 		elif sel_blade=="spear":
 			blade_sprite.play("spear_set")
+		elif sel_blade=="claymore":
+			blade_sprite.play("claymore_set")
 	elif current_tab==handle:
 		if not sel_handle=="":
 			if tab_container.current_tab < tab_container.get_tab_count() - 1:
@@ -59,6 +62,8 @@ func _on_change_tab_button_pressed() -> void:
 			handle_sprite.play("kris_set")
 		elif sel_handle=="spear":
 			handle_sprite.play("spear_set")
+		elif sel_handle=="claymore":
+			handle_sprite.play("claymore_set")
 	elif current_tab==imbue:
 		if not sel_imbue=="":
 			$CloseButton.visible=true
@@ -89,6 +94,11 @@ func _on_blade_list_item_selected(index: int) -> void:
 		blade_sprite.play("kris_flash")
 	elif sel_blade=="spear":
 		blade_sprite.play("spear_flash")
+	elif sel_blade=="claymore":
+		blade_sprite.play("claymore_flash")
+		sword.scale=Vector2(5.5,4.5)
+	if not sel_blade=="claymore":
+		sword.scale=Vector2(10,7.5)
 
 
 func _on_handle_list_item_selected(index: int) -> void:
@@ -103,6 +113,8 @@ func _on_handle_list_item_selected(index: int) -> void:
 		handle_sprite.play("kris_flash")
 	elif sel_handle=="spear":
 		handle_sprite.play("spear_flash")
+	elif sel_handle=="claymore":
+		handle_sprite.play("claymore_flash")
 	
 
 
@@ -130,6 +142,8 @@ func _on_imbue_list_item_selected(index: int) -> void:
 		blade_sprite.play("kris_flash")
 	elif sel_blade=="spear":
 		blade_sprite.play("spear_flash")
+	elif sel_blade=="claymore":
+		blade_sprite.play("claymore_flash")
 
 func reset():
 	# make lists only show known blades
@@ -169,57 +183,109 @@ func reset():
 func update_position():
 	if sel_blade=="basic":
 		if sel_handle=="basic":
-			blade_sprite.global_position=Vector2(504,267)
-			handle_sprite.global_position=Vector2(345,374)
+			handle_sprite.position=Vector2(-16,14)
+			blade_sprite.position=Vector2(0,0)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="katana":
-			blade_sprite.global_position=Vector2(554,285)
-			handle_sprite.global_position=Vector2(356,418)
+			handle_sprite.position=Vector2(-20,18)
+			blade_sprite.position=Vector2(0,0)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="kris":
-			blade_sprite.global_position=Vector2(554,330)
-			handle_sprite.global_position=Vector2(437,421)
+			handle_sprite.position=Vector2(-12,12)
+			blade_sprite.position=Vector2(0,0)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="spear":
-			blade_sprite.global_position=Vector2(556,268)
-			handle_sprite.global_position=Vector2(337,421)
+			blade_sprite.position=Vector2(15.5,-18)
+			handle_sprite.position=Vector2(-12.5,8)
+			sword.scale=Vector2(10,7.5)
+		elif sel_handle=="claymore":
+			blade_sprite.position=Vector2(6,-11)
+			handle_sprite.position=Vector2(-10,3)
+			sword.scale=Vector2(10,7.5)
 	if sel_blade=="katana":
 		if sel_handle=="basic":
-			blade_sprite.global_position=Vector2(520,274)
-			handle_sprite.global_position=Vector2(304,442)
+			blade_sprite.position=Vector2(8,-10)
+			handle_sprite.position=Vector2(-14,12)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="katana":
-			blade_sprite.global_position=Vector2(562,244)
-			handle_sprite.global_position=Vector2(304,442)
+			blade_sprite.position=Vector2(8,-10)
+			handle_sprite.position=Vector2(-14,12)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="kris":
-			blade_sprite.global_position=Vector2(613,268)
-			handle_sprite.global_position=Vector2(437,421)
+			blade_sprite.position=Vector2(8,-10)
+			handle_sprite.position=Vector2(-10,10)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="spear":
-			blade_sprite.global_position=Vector2(574,238)
-			handle_sprite.global_position=Vector2(337,421)
+			blade_sprite.position=Vector2(14,-17)
+			handle_sprite.position=Vector2(-12,9)
+			sword.scale=Vector2(10,7.5)
+		elif sel_handle=="claymore":
+			blade_sprite.position=Vector2(12,-19)
+			handle_sprite.position=Vector2(-10,3)
+			sword.scale=Vector2(10,7.5)
 	if sel_blade=="kris":
 		if sel_handle=="basic":
-			blade_sprite.global_position=Vector2(526,299)
-			handle_sprite.global_position=Vector2(387,421)
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-14,14)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="katana":
-			blade_sprite.global_position=Vector2(497,335)
-			handle_sprite.global_position=Vector2(339,457)
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-16,18)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="kris":
-			blade_sprite.global_position=Vector2(512,361)
-			handle_sprite.global_position=Vector2(413,452)
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-10,12)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="spear":
-			blade_sprite.global_position=Vector2(598,259)
-			handle_sprite.global_position=Vector2(340,460)
+			blade_sprite.position=Vector2(11,-15)
+			handle_sprite.position=Vector2(-13,9)
+			sword.scale=Vector2(10,7.5)
+		elif sel_handle=="claymore":
+			blade_sprite.position=Vector2(4,-9)
+			handle_sprite.position=Vector2(-10,3)
+			sword.scale=Vector2(10,7.5)
 	if sel_blade=="spear":
 		if sel_handle=="basic":
-			blade_sprite.global_position=Vector2(521,312)
-			handle_sprite.global_position=Vector2(402,403)
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-12,12)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="katana":
-			blade_sprite.global_position=Vector2(520,312)
-			handle_sprite.global_position=Vector2(400.5,403.5)
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-12,12)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle=="spear":
-			blade_sprite.global_position=Vector2(576,238)
-			handle_sprite.global_position=Vector2(337,421)
+			blade_sprite.position=Vector2(11,-15)
+			handle_sprite.position=Vector2(-13,9)
+			sword.scale=Vector2(10,7.5)
 		elif sel_handle == "kris":
-			blade_sprite.global_position=Vector2(521,262)
-			handle_sprite.global_position=Vector2(462,338)
-	
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-8,8)
+			sword.scale=Vector2(10,7.5)
+		elif sel_handle=="claymore":
+			blade_sprite.position=Vector2(4,-11)
+			handle_sprite.position=Vector2(-10,3)
+			sword.scale=Vector2(10,7.5)
+	if sel_blade=="claymore":
+		if sel_handle=="claymore":
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-34,34)
+			sword.scale=Vector2(5.5,4.5)
+		elif sel_handle=="basic":
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-34,34)
+			sword.scale=Vector2(5.5,4.5)
+		elif sel_handle=="katana":
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-36,36)
+			sword.scale=Vector2(5.5,4.5)
+		elif sel_handle=="kris":
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-28,30)
+			sword.scale=Vector2(5.5,4.5)
+		elif sel_handle=="spear":
+			blade_sprite.position=Vector2(0,0)
+			handle_sprite.position=Vector2(-32,32)
+			sword.scale=Vector2(5.5,4.5)
 
 func _on_redraw_button_pressed() -> void:
 	reset()
@@ -238,6 +304,9 @@ func set_anims_and_labels():
 	elif sel_blade=="spear":
 		blade_sprite.play("spear_set")
 		blade_skill.text="Blade skill: Impaling thrust"
+	elif sel_blade=="claymore":
+		blade_sprite.play("claymore_set")
+		blade_skill.text="Blade skill: Aether"
 	if sel_handle=="basic":
 		handle_skill.text="Handle skill: Bash"
 	elif sel_handle=="katana":
@@ -246,3 +315,5 @@ func set_anims_and_labels():
 		handle_skill.text="Handle skill: Ruby heal"
 	elif sel_handle=="spear":
 		handle_skill.text="Handle skill: Stabbing flurry"
+	elif sel_handle=="claymore":
+		handle_skill.text="Handle skill: Fortify"

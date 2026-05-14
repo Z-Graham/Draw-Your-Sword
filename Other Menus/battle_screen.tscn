@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bbo77hyjrl30n" path="res://assets/sprites/16x32 All Animations-Sheet.png" id="3_m3a36"]
 [ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
 [ext_resource type="PackedScene" uid="uid://dcrggycifxn06" path="res://Enemy/enemy_in_battle.tscn" id="4_pi828"]
-[ext_resource type="Texture2D" uid="uid://dmtcj5dvmtq61" path="res://assets/sprites/spear_blade.png" id="5_4ijij"]
+[ext_resource type="Texture2D" uid="uid://wrdnamvrjbnb" path="res://assets/sprites/claymore blade.png" id="5_m3a36"]
 [ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
+[ext_resource type="Texture2D" uid="uid://138f5urcs0r6" path="res://assets/sprites/claymore handle.png" id="6_6gotq"]
 [ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
-[ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="6_m3a36"]
 [ext_resource type="Texture2D" uid="uid://tiwcu426yl72" path="res://assets/sprites/blue_poly.png" id="6_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://b8hrken4fe6uj" path="res://assets/sprites/clciked_blue_poly.png" id="7_v0hhe"]
 [ext_resource type="Texture2D" uid="uid://dn87uw3veipfo" path="res://assets/sprites/blue_flash.png" id="10_v7h6t"]
@@ -1208,21 +1208,20 @@ frame_progress = 0.8021514
 
 [node name="sword" type="Node2D" parent="." unique_id=718663914]
 position = Vector2(876, 277)
+scale = Vector2(3, 3)
 
 [node name="blade" type="Sprite2D" parent="sword" unique_id=901790123]
 texture_filter = 1
-scale = Vector2(3, 2.813)
-texture = ExtResource("5_4ijij")
+texture = ExtResource("5_m3a36")
 region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
+region_rect = Rect2(0, 0, 128, 128)
 
 [node name="handle" type="Sprite2D" parent="sword" unique_id=903616220]
 texture_filter = 1
-position = Vector2(-72, 70)
-scale = Vector2(3, 3)
-texture = ExtResource("6_m3a36")
+position = Vector2(-32, 32)
+texture = ExtResource("6_6gotq")
 region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
+region_rect = Rect2(0, 0, 128, 128)
 
 [node name="anim" type="AnimationPlayer" parent="sword" unique_id=1368254352]
 root_node = NodePath("../blade")

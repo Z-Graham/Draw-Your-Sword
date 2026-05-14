@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://4bjggsin5t6m" path="res://assets/sprites/kris_blade.png" id="5_g4o7a"]
 [ext_resource type="Texture2D" uid="uid://dmtcj5dvmtq61" path="res://assets/sprites/spear_blade.png" id="6_b3we0"]
 [ext_resource type="Texture2D" uid="uid://bmduybjkkxx8y" path="res://assets/sprites/katana_handle.png" id="6_rr64v"]
+[ext_resource type="Texture2D" uid="uid://138f5urcs0r6" path="res://assets/sprites/claymore handle.png" id="9_1xl7w"]
 [ext_resource type="Texture2D" uid="uid://ex76qdnxorgc" path="res://assets/sprites/kris_handle.png" id="9_bjovv"]
 [ext_resource type="Texture2D" uid="uid://dwval6y234p2y" path="res://assets/sprites/spear_handle.png" id="10_1xl7w"]
 [ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="11_b3we0"]
@@ -218,7 +219,15 @@ atlas = ExtResource("4_4eyso")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gorrl"]
-atlas = ExtResource("4_bjovv")
+atlas = ExtResource("9_1xl7w")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu6kx"]
+atlas = ExtResource("4_4eyso")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr44r"]
+atlas = ExtResource("9_1xl7w")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e46yf"]
@@ -282,14 +291,20 @@ animations = [{
 "name": &"basic_set",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gorrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu6kx")
+}],
 "loop": true,
 "name": &"claymore_flash",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gorrl")
+"texture": SubResource("AtlasTexture_tr44r")
 }],
 "loop": true,
 "name": &"claymore_set",
@@ -518,13 +533,14 @@ offset_left = 1123.0
 offset_top = 106.0
 offset_right = 1360.0
 offset_bottom = 641.0
-item_count = 4
+item_count = 5
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_14rhe")
 item_1/text = "katana"
 item_1/icon = SubResource("GradientTexture2D_rr64v")
 item_2/text = "kris"
 item_3/text = "spear"
+item_4/text = "claymore"
 
 [node name="handle_list" type="ItemList" parent="." unique_id=535163553]
 visible = false
@@ -534,13 +550,14 @@ offset_left = 1122.0
 offset_top = 106.0
 offset_right = 1359.0
 offset_bottom = 641.0
-item_count = 4
+item_count = 5
 item_0/text = "basic"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
 item_1/text = "katana"
 item_1/icon = SubResource("GradientTexture2D_ab1fa")
 item_2/text = "kris"
 item_3/text = "spear"
+item_4/text = "claymore"
 
 [node name="imbue_list" type="ItemList" parent="." unique_id=1111623115]
 visible = false
@@ -551,21 +568,21 @@ offset_top = 106.0
 offset_right = 1354.0
 offset_bottom = 640.0
 item_count = 2
-item_0/text = "none"
+item_0/text = "physical"
 item_0/icon = SubResource("GradientTexture2D_nqbbo")
 item_1/text = "fire"
 
-[node name="blade" type="AnimatedSprite2D" parent="." unique_id=1765120727]
-position = Vector2(771.50006, 312.5)
-scale = Vector2(9.953125, 7.640625)
-sprite_frames = SubResource("SpriteFrames_nqbbo")
-animation = &"claymore_set"
+[node name="sword" type="Node2D" parent="." unique_id=2095134897]
+position = Vector2(745.99994, 359)
+scale = Vector2(10, 7.5)
 
-[node name="handle" type="AnimatedSprite2D" parent="." unique_id=894404993]
-position = Vector2(453, 557)
-scale = Vector2(9.953125, 7.640625)
+[node name="blade" type="AnimatedSprite2D" parent="sword" unique_id=1765120727]
+sprite_frames = SubResource("SpriteFrames_nqbbo")
+animation = &"spear_set"
+
+[node name="handle" type="AnimatedSprite2D" parent="sword" unique_id=894404993]
 sprite_frames = SubResource("SpriteFrames_ab1fa")
-animation = &"claymore_flash"
+animation = &"claymore_set"
 
 [node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("11_b3we0")]
 visible = false

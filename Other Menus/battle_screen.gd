@@ -4,11 +4,13 @@ const BASIC_BLADE = preload("uid://crkjolbw65b61")
 const KATANA_BLADE = preload("uid://cvpbwashxw5ey")
 const KRIS_BLADE = preload("uid://4bjggsin5t6m")
 const SPEAR_BLADE = preload("uid://dmtcj5dvmtq61")
+const CLAYMORE_BLADE = preload("uid://wrdnamvrjbnb")
 
 const BASIC_HANDLE = preload("uid://d3aj3q0l243gk")
 const KATANA_HANDLE = preload("uid://bmduybjkkxx8y")
 const KRIS_HANDLE = preload("uid://ex76qdnxorgc")
 const SPEAR_HANDLE = preload("uid://dwval6y234p2y")
+const CLAYMORE_HANDLE = preload("uid://138f5urcs0r6")
 
 
 
@@ -69,6 +71,7 @@ func _ready() -> void:
 	blade_sprite.texture=BASIC_BLADE
 	handle_sprite.texture=BASIC_HANDLE
 	damage_label.modulate=Color(1.0, 1.0, 1.0, 1.0)
+	blade_sprite.region_rect=Rect2(0,0,64,64)
 	adjust_sprites()
 
 func _process(delta:float)-> void:
@@ -484,6 +487,9 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	elif blade=="spear":
 		blade_mult=1.0
 		blade_sprite.texture=SPEAR_BLADE
+	elif blade=="claymore":
+		blade_mult=1.0
+		blade_sprite.texture=CLAYMORE_BLADE
 		
 	if handle=="basic":
 		handle_mult=1.0
@@ -497,6 +503,9 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 	elif handle=="spear":
 		handle_mult=1.0
 		handle_sprite.texture=SPEAR_HANDLE
+	elif handle=="claymore":
+		handle_mult=1.0
+		handle_sprite.texture=CLAYMORE_HANDLE
 	
 	if blade=="basic" or blade=="spear":
 		blade_skill_req=20
@@ -609,6 +618,15 @@ func adjust_sprites():
 		blade_sprite.modulate=Color(0.26, 0.169, 0.0, 1.0)
 	elif sw_imbue=="ice":
 		blade_sprite.modulate=Color(0.0, 1.0, 0.917, 1.0)
+	
+	if sw_blade=="claymore":
+		blade_sprite.region_rect=Rect2(0,0,128,128)
+	else:
+		blade_sprite.region_rect=Rect2(0,0,64,64)
+	if sw_handle=="claymore":
+		handle_sprite.region_rect=Rect2(0,0,128,128)
+	else:
+		handle_sprite.region_rect=Rect2(0,0,64,64)
 
 func _on_stats_screen_closed() -> void:
 	win_screen.visible=true

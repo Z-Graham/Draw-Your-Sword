@@ -341,6 +341,82 @@ tracks/4/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_5f3kh"]
+resource_name = "aether"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.9, 1.4333333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(897.9999, 458), Vector2(898, 458), Vector2(943, -40), Vector2(943, -40), Vector2(943, 863)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [7.8189635, 4.7843266, 2.3578353]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../enemy_in_battle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(924, 370), Vector2(924, 370)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Damage_label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.13333336, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Damage_label:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.3666667, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(905, 279), Vector2(908, 168)]
+}
+
 [sub_resource type="Animation" id="Animation_te6vl"]
 resource_name = "bash"
 tracks/0/type = "value"
@@ -386,7 +462,7 @@ tracks/3/path = NodePath("../../Damage_label:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.73333335),
+"times": PackedFloat32Array(0, 0.40833333, 0.7416667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -398,7 +474,7 @@ tracks/4/path = NodePath("../../Damage_label:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.4, 0.6333333),
+"times": PackedFloat32Array(0.40833333, 0.6333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(905, 279), Vector2(908, 168)]
@@ -1115,6 +1191,7 @@ tracks/5/keys = {
 _data = {
 &"RESET": SubResource("Animation_m3a36"),
 &"Serpent strike": SubResource("Animation_qxk6m"),
+&"aether": SubResource("Animation_5f3kh"),
 &"bash": SubResource("Animation_te6vl"),
 &"bird attack": SubResource("Animation_nxacu"),
 &"double stab": SubResource("Animation_jergb"),
@@ -1218,7 +1295,7 @@ region_rect = Rect2(0, 0, 128, 128)
 
 [node name="handle" type="Sprite2D" parent="sword" unique_id=903616220]
 texture_filter = 1
-position = Vector2(-32, 32)
+position = Vector2(-14, 14)
 texture = ExtResource("6_6gotq")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 128)
@@ -1233,7 +1310,7 @@ modulate = Color(0.05919994, 0.64, 0.006399994, 1)
 offset_left = 905.0
 offset_top = 279.0
 offset_right = 945.0
-offset_bottom = 366.99603
+offset_bottom = 366.996
 text = "1"
 label_settings = SubResource("LabelSettings_4ijij")
 horizontal_alignment = 1

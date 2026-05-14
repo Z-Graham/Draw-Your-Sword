@@ -54,6 +54,7 @@ var draw_charge:int
 var blade_skill_req=20
 var handle_skill_req=10
 var poison_count=0
+var defense_count=0
 
 var blade_mult=1.0
 var handle_mult=1.0
@@ -72,6 +73,7 @@ func _ready() -> void:
 	handle_sprite.texture=BASIC_HANDLE
 	damage_label.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	blade_sprite.region_rect=Rect2(0,0,64,64)
+	handle_sprite.position=Vector2(-48,40)
 	adjust_sprites()
 
 func _process(delta:float)-> void:
@@ -169,7 +171,6 @@ func _on_blade_skill_button_pressed() -> void:
 			var damage2=damage_calc()*.9
 			damage2=roundi(damage2)
 			damage_label.text=str(damage2)
-			print(damage,damage2)
 			damage=damage+damage2
 			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
@@ -214,6 +215,16 @@ func _on_blade_skill_button_pressed() -> void:
 			anim.play("impaling thrust")
 			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
+		elif sw_blade=="claymore":
+			battle_history_update("You used Aether!")
+			Globals.player_stats["current_MP"]-=50
+			damage=damage_calc()
+			damage*=4
+			damage=roundi(damage)
+			damage_label.text=str(damage)
+			anim.play("aether")
+			await anim.animation_finished
+			battle_history_update("The enemy took "+str(damage)+" damage.")
 		enemy_in_battle.enemy_stats["health"]-=damage
 		player_battle.play("idle")
 		if enemy_in_battle.enemy_stats["health"]<=0:
@@ -239,6 +250,9 @@ func _on_blade_skill_button_mouse_entered() -> void:
 		description.text="Impaling Thrust: A savage stab with the spearhead that ignores both 
 		enemy weaknesses and resistances.
 		Costs 20 MP"
+	elif sw_blade=="claymore":
+		description.text="Aether: A flying slam with the sword for mass destruction.
+		Costs 50MP"
 
 func _on_blade_skill_button_mouse_exited() -> void:
 	description.text=""
@@ -295,6 +309,13 @@ func _on_handle_skill_button_pressed() -> void:
 			anim.play("stabbing flury")
 			await anim.animation_finished
 			battle_history_update("The enemy took "+str(damage)+" damage.")
+		elif sw_handle=="claymore":
+			battle_history_update("You used Fortify!")
+			Globals.player_stats["current_MP"]-=20
+			battle_history_update("Your defense has increased.")
+			defense_count+=4
+			if defense_count>4:
+				defense_count=4
 		enemy_in_battle.enemy_stats["health"]-=damage
 		player_battle.play("idle")
 		if enemy_in_battle.enemy_stats["health"]<=0:
@@ -323,6 +344,11 @@ func _on_handle_skill_button_mouse_entered() -> void:
 		description.text="Stabbing Flurry: A flurry of stabs at the enemy followed by a downward stab
 		that consumes HP instead of MP.
 		costs 20HP"
+	elif sw_handle=="claymore":
+		description.text="Fortify: Place a magical barrier on yourself to reduce damage dealt
+		by 25% for 3 turns.
+		costs 20MP"
+		
 
 func _on_handle_skill_button_mouse_exited() -> void:
 	description.text=""
@@ -414,6 +440,9 @@ func enemy_fight():
 			await enemy_in_battle.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/3.0)
+			if defense_count>0:
+				damage-=(damage/4)
+				defense_count-=1
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -423,6 +452,9 @@ func enemy_fight():
 			await anim.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/3.0)
+			if defense_count>0:
+				damage-=(damage/4)
+				defense_count-=1
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -432,6 +464,9 @@ func enemy_fight():
 			await enemy_in_battle.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/3.0)
+			if defense_count>0:
+				damage-=(damage/4)
+				defense_count-=1
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -441,6 +476,9 @@ func enemy_fight():
 			await anim.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/3.0)
+			if defense_count>0:
+				damage-=(damage/4)
+				defense_count-=1
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
@@ -513,6 +551,8 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		blade_skill_req=25
 	elif blade=="kris":
 		blade_skill_req=15
+	elif blade=="claymore":
+		blade_skill_req=50
 	if handle=="basic":
 		handle_skill_req=10
 	elif handle=="katana":
@@ -521,6 +561,8 @@ func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: 
 		handle_skill_req=10
 	elif handle=="spear":
 		handle_skill_req=0
+	elif handle=="claymore":
+		handle_skill_req=20
 	Globals.sword["blade"] = blade
 	Globals.sword["handle"] = handle
 	Globals.sword["imbue"] = imbue
@@ -566,43 +608,62 @@ func battle_history_update(label:String):
 func adjust_sprites():
 	if sw_blade=="basic":
 		if sw_handle=="basic":
-			handle_sprite.position=Vector2(-48,40)
+			handle_sprite.position=Vector2(-16,14)
 		elif sw_handle=="katana":
-			handle_sprite.position=Vector2(-60,51)
+			handle_sprite.position=Vector2(-16,14)
 		elif sw_handle=="kris":
-			handle_sprite.position=Vector2(-36,34)
+			handle_sprite.position=Vector2(-12,12)
 		elif sw_handle=="spear":
-			handle_sprite.position=Vector2(-84,76)
+			handle_sprite.position=Vector2(-22,20)
+		elif sw_handle=="claymore":
+			handle_sprite.position=Vector2(-16,14)
 			
 	elif sw_blade=="katana":
 		if sw_handle=="basic":
-			handle_sprite.position=Vector2(-66,63)
+			handle_sprite.position=Vector2(-22,22)
 		elif sw_handle=="katana":
-			handle_sprite.position=Vector2(-66,63)
+			handle_sprite.position=Vector2(-22,22)
 		elif sw_handle=="kris":
-			handle_sprite.position=Vector2(-54,56)
+			handle_sprite.position=Vector2(-18,20)
 		elif sw_handle=="spear":
-			handle_sprite.position=Vector2(-102,98)
+			handle_sprite.position=Vector2(-24,24)
+		elif sw_handle=="claymore":
+			handle_sprite.position=Vector2(-22,22)
 			
 	elif sw_blade=="kris":
 		if sw_handle=="basic":
-			handle_sprite.position=Vector2(-42,40)
+			handle_sprite.position=Vector2(-14,14)
 		elif sw_handle=="katana":
-			handle_sprite.position=Vector2(-54,51)
+			handle_sprite.position=Vector2(-18,18)
 		elif sw_handle=="kris":
-			handle_sprite.position=Vector2(-30,34)
+			handle_sprite.position=Vector2(-10,12)
 		elif sw_handle=="spear":
-			handle_sprite.position=Vector2(-78,76)
+			handle_sprite.position=Vector2(-24,24)
+		elif sw_handle=="claymore":
+			handle_sprite.position=Vector2(-14,14)
 			
 	elif sw_blade=="spear":
 		if sw_handle=="basic":
+			handle_sprite.position=Vector2(-12,12)
+		elif sw_handle=="katana":
+			handle_sprite.position=Vector2(-12,12)
+		elif sw_handle=="kris":
+			handle_sprite.position=Vector2(-6,8)
+		elif sw_handle=="spear":
+			handle_sprite.position=Vector2(-24,24)
+		elif sw_handle=="claymore":
+			handle_sprite.position=Vector2(-4,4)
+	elif sw_blade=="claymore":
+		if sw_handle=="claymore":
+			handle_sprite.position=Vector2(-32,32)
+		elif sw_handle=="spear":
+			handle_sprite.position=Vector2(-44,44)
+		elif sw_handle=="basic":
 			handle_sprite.position=Vector2(-36,34)
 		elif sw_handle=="katana":
-			handle_sprite.position=Vector2(-36,35)
+			handle_sprite.position=Vector2(-36,36)
 		elif sw_handle=="kris":
-			handle_sprite.position=Vector2(-24,22)
-		elif sw_handle=="spear":
-			handle_sprite.position=Vector2(-72,70)
+			handle_sprite.position=Vector2(-32,32)
 			
 	if sw_imbue=="physical":
 		blade_sprite.modulate=Color(1.0, 1.0, 1.0, 1.0)
@@ -625,6 +686,7 @@ func adjust_sprites():
 		blade_sprite.region_rect=Rect2(0,0,64,64)
 	if sw_handle=="claymore":
 		handle_sprite.region_rect=Rect2(0,0,128,128)
+		sword.scale=Vector2(2,2)
 	else:
 		handle_sprite.region_rect=Rect2(0,0,64,64)
 

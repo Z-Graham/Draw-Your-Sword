@@ -7,6 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="5_8jngd"]
 [ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://Items/item.tscn" id="6_yrnrx"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_yrnrx"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6i0n"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_sqvfq"]
+font_size = 24
+
 [node name="Room5" type="Node2D" unique_id=724931990 node_paths=PackedStringArray("enter_spawn_point", "return_spawn_point")]
 script = ExtResource("1_b3nq4")
 num_healing_items = 1
@@ -64,6 +73,30 @@ type = "magic"
 [node name="Item2" parent="." unique_id=484389549 instance=ExtResource("6_yrnrx")]
 position = Vector2(758, 374)
 type = "magic"
+
+[node name="SwordLabel" type="Label" parent="." unique_id=1840578238]
+visible = false
+offset_left = 1774.0
+offset_right = 2040.0
+offset_bottom = 34.0
+text = "Picked up Sword Part"
+label_settings = SubResource("LabelSettings_yrnrx")
+
+[node name="HealingLabel" type="Label" parent="." unique_id=416764786]
+visible = false
+offset_left = 887.0
+offset_right = 1153.0
+offset_bottom = 34.0
+text = "Picked up Healing Item"
+label_settings = SubResource("LabelSettings_d6i0n")
+
+[node name="MagicLabel" type="Label" parent="." unique_id=141339947]
+visible = false
+offset_left = 904.0
+offset_right = 1170.0
+offset_bottom = 34.0
+text = "Picked up Magic Item"
+label_settings = SubResource("LabelSettings_sqvfq")
 
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]

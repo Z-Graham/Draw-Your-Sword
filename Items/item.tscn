@@ -87,6 +87,7 @@ size = Vector2(12.4672, 12.610957)
 [node name="Item" type="Area2D" unique_id=2030387864 groups=["Items"]]
 collision_layer = 8
 script = ExtResource("1_tnite")
+type = "bridge"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=786327507]
 texture_filter = 1

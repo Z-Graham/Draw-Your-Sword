@@ -4,6 +4,16 @@
 [ext_resource type="Script" uid="uid://bpwqjubrb4kdh" path="res://rooms/room.gd" id="1_yyebm"]
 [ext_resource type="PackedScene" uid="uid://c0f6chdgkvc22" path="res://rooms/tile_map_layer.tscn" id="2_2hpjx"]
 [ext_resource type="PackedScene" uid="uid://b2rdwsm5rhsli" path="res://rooms/leave_room_detector.tscn" id="3_ujxjq"]
+[ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://Items/item.tscn" id="5_f20cw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f20cw"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ae40p"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_pjtha"]
+font_size = 24
 
 [node name="Room6" type="Node2D" unique_id=730621360 node_paths=PackedStringArray("enter_spawn_point")]
 script = ExtResource("1_yyebm")
@@ -15,10 +25,10 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAYAAIAAAAAAAEAAAAYAAIAAAAAAAIAAAAYAAI
 [node name="ObjectsTileMapLayer" parent="." unique_id=1335056636 instance=ExtResource("2_2hpjx")]
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=297855774]
-offset_left = 144.0
-offset_top = 308.0
-offset_right = 184.0
-offset_bottom = 348.0
+offset_left = 104.0
+offset_top = 309.0
+offset_right = 144.0
+offset_bottom = 349.0
 scale = Vector2(0.8249434, 2.0922914)
 color = Color(0, 0.49, 0.05716673, 1)
 
@@ -26,4 +36,33 @@ color = Color(0, 0.49, 0.05716673, 1)
 scale = Vector2(1.0041764, 0.73639613)
 
 [node name="EnterSpawnPoint" type="Marker2D" parent="." unique_id=1543135917]
-position = Vector2(226, 348)
+position = Vector2(171, 349)
+
+[node name="Item" parent="." unique_id=2030387864 instance=ExtResource("5_f20cw")]
+position = Vector2(589, 272)
+
+[node name="MagicLabel" type="Label" parent="." unique_id=357059080]
+offset_left = 689.0
+offset_top = 129.0
+offset_right = 955.0
+offset_bottom = 163.0
+text = "Picked up Magic Item"
+label_settings = SubResource("LabelSettings_f20cw")
+
+[node name="SwordLabel" type="Label" parent="." unique_id=117033196]
+offset_left = 670.0
+offset_top = 128.0
+offset_right = 936.0
+offset_bottom = 162.0
+text = "Picked up Sword Part"
+label_settings = SubResource("LabelSettings_ae40p")
+
+[node name="HealingLabel" type="Label" parent="." unique_id=1803808921]
+offset_left = 672.0
+offset_top = 129.0
+offset_right = 938.0
+offset_bottom = 163.0
+text = "Picked up Healing Item"
+label_settings = SubResource("LabelSettings_pjtha")
+
+[connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]

@@ -31,6 +31,7 @@ scale = Vector2(1.0840148, 1.6583992)
 color = Color(0, 0.49, 0.05716673, 1)
 
 [node name="LeaveRoomDetector" parent="ColorRect" unique_id=1142250141 instance=ExtResource("3_ocw8c")]
+next = true
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=1415479167]
 offset_left = 415.00006

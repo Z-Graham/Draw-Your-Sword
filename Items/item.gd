@@ -1,7 +1,7 @@
 extends Area2D
 #class_name Item
 
-@export_enum("healing","magic") var type : String = "healing"
+@export_enum("healing","magic", "bridge","box") var type : String = "healing"
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 var collected = false

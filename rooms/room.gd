@@ -25,7 +25,6 @@ class_name Room
 @onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
 @onready var leave_room_detector_backwards: LeaveRoomDetector = $ColorRect2/LeaveRoomDetectorBackwards
 @onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
-
 @onready var leave_room_detector_up: LeaveRoomDetector = $ColorRect4/LeaveRoomDetectorUp
 
 @onready var tutorial_screen: Control = $"Tutorial screen"
@@ -103,6 +102,10 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		await get_tree().create_timer(1.5).timeout
 		magic_label.visible = false
 		#healing_label.text = "Picked up Healing Item"
+		
+	elif type == "bridge":
+		print("picked up bridge") # make a label
+		Globals.known_draw_items.append("bridge")
 	
 
 

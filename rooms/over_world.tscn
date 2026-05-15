@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bec7kqmr4twll" path="res://rooms/room_4.tscn" id="6_ffupc"]
 [ext_resource type="PackedScene" uid="uid://bg2mqcnho8e48" path="res://rooms/room_3.tscn" id="7_4sdyu"]
 [ext_resource type="PackedScene" uid="uid://c0ic7kuee3io0" path="res://rooms/room_5.tscn" id="7_sfjvt"]
+[ext_resource type="PackedScene" uid="uid://cnn3yeqhhkkqm" path="res://rooms/room_6.tscn" id="8_bs6q7"]
 [ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="9_qqr6h"]
+[ext_resource type="Texture2D" uid="uid://dqsbjiqx4q8kj" path="res://icon.svg" id="11_plcb5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sdyu"]
 
@@ -43,6 +45,9 @@ up_room = NodePath("../Room2")
 [node name="Room5" parent="." unique_id=724931990 node_paths=PackedStringArray("previous_room") instance=ExtResource("7_sfjvt")]
 position = Vector2(5240, 29)
 previous_room = NodePath("../Room3")
+
+[node name="Room6" parent="." unique_id=730621360 instance=ExtResource("8_bs6q7")]
+position = Vector2(3466, 1198)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=116450048]
 anchor_mode = 0
@@ -240,6 +245,70 @@ collision_layer = 4
 position = Vector2(46.999996, 161.99998)
 scale = Vector2(1.8218054, 64.14396)
 shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Border21" type="StaticBody2D" parent="Borders" unique_id=474806724]
+position = Vector2(4242, 1665)
+rotation = 1.5707964
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border21" unique_id=980238235]
+position = Vector2(46.999996, 161.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Border21" unique_id=1647011672]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(115.00001, 172)
+scale = Vector2(1.2984315, 10.720692)
+texture = ExtResource("11_plcb5")
+
+[node name="Border22" type="StaticBody2D" parent="Borders" unique_id=1006938312]
+position = Vector2(4669, 1663)
+rotation = 3.1415927
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border22" unique_id=1246625616]
+position = Vector2(46.999996, 161.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Border22" unique_id=1245833659]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(115.00001, 172)
+scale = Vector2(1.2984315, 10.720692)
+texture = ExtResource("11_plcb5")
+
+[node name="Border23" type="StaticBody2D" parent="Borders" unique_id=1741245830]
+position = Vector2(3619, 1634)
+rotation = 3.1415927
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border23" unique_id=1713602093]
+position = Vector2(46.999996, 161.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Border23" unique_id=893970039]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(115.00001, 172)
+scale = Vector2(1.2984315, 10.720692)
+texture = ExtResource("11_plcb5")
+
+[node name="Border24" type="StaticBody2D" parent="Borders" unique_id=955162626]
+position = Vector2(3862, 1344)
+rotation = 4.712389
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border24" unique_id=993076173]
+position = Vector2(46.999996, 161.99998)
+scale = Vector2(1.8218054, 64.14396)
+shape = SubResource("RectangleShape2D_4sdyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Border24" unique_id=1099021305]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(115.00001, 172)
+scale = Vector2(1.2984315, 10.720692)
+texture = ExtResource("11_plcb5")
 
 [node name="Border" type="StaticBody2D" parent="Borders" unique_id=996772030]
 position = Vector2(-97, 124)

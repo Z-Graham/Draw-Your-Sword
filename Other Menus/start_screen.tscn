@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://bpvi0cx2it0pd"]
+
+[ext_resource type="Texture2D" uid="uid://crkjolbw65b61" path="res://assets/sprites/basic_blade.png" id="1_ejqe7"]
+[ext_resource type="Script" uid="uid://biw6ew8ait7ln" path="res://Other Menus/start_screen.gd" id="1_x4sei"]
+[ext_resource type="Texture2D" uid="uid://d3aj3q0l243gk" path="res://assets/sprites/basic_handle.png" id="2_x4sei"]
+
+[sub_resource type="Animation" id="Animation_qxe8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sword cross/sword1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword cross/sword2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("start:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("quit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_omwfj"]
+resource_name = "appear"
+length = 2.0666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sword cross/sword1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-75, 75), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sword cross/sword2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.55, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(75, 75), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.93333334, 2.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("start:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("quit:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ymk3i"]
+_data = {
+&"RESET": SubResource("Animation_qxe8x"),
+&"appear": SubResource("Animation_omwfj")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ndk6"]
+font_size = 138
+font_color = Color(0, 0, 0, 1)
+
+[node name="start_screen" type="ColorRect" unique_id=1500537264]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.5500002, 1, 1)
+script = ExtResource("1_x4sei")
+
+[node name="sword cross" type="Node2D" parent="." unique_id=2079855121]
+texture_filter = 1
+position = Vector2(564.00006, 251)
+scale = Vector2(15, 15)
+
+[node name="sword1" type="Node2D" parent="sword cross" unique_id=527346014]
+
+[node name="BasicBlade" type="Sprite2D" parent="sword cross/sword1" unique_id=1001192307]
+texture = ExtResource("1_ejqe7")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="BasicHandle" type="Sprite2D" parent="sword cross/sword1" unique_id=1066392357]
+position = Vector2(-16.000004, 14.000001)
+texture = ExtResource("2_x4sei")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="sword2" type="Node2D" parent="sword cross" unique_id=1965950147]
+
+[node name="KatanaBlade" type="Sprite2D" parent="sword cross/sword2" unique_id=818081567]
+texture = ExtResource("1_ejqe7")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="BasicHandle2" type="Sprite2D" parent="sword cross/sword2" unique_id=1101549585]
+position = Vector2(15.999997, 14.000001)
+texture = ExtResource("2_x4sei")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2129564577]
+libraries/ = SubResource("AnimationLibrary_ymk3i")
+
+[node name="Label" type="Label" parent="." unique_id=1980387995]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 189.0
+text = "Draw Your Sword"
+label_settings = SubResource("LabelSettings_1ndk6")
+
+[node name="start" type="Button" parent="." unique_id=1425249565]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 537.0
+offset_right = 502.0
+offset_bottom = 633.0
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="quit" type="Button" parent="." unique_id=870300374]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 537.0
+offset_right = 826.0
+offset_bottom = 633.0
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

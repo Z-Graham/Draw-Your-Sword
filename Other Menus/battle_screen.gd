@@ -283,7 +283,7 @@ func _on_handle_skill_button_pressed() -> void:
 			battle_history_update("You used Quick Draw!")
 			Globals.player_stats["current_MP"]-=5
 			damage=damage_calc()
-			damage*=.25
+			damage*=.5
 			damage=roundi(damage)
 			damage_label.text=str(damage)
 			anim.play("quick_draw")
@@ -311,7 +311,9 @@ func _on_handle_skill_button_pressed() -> void:
 			battle_history_update("The enemy took "+str(damage)+" damage.")
 		elif sw_handle=="claymore":
 			battle_history_update("You used Fortify!")
+			anim.play("fortify")
 			Globals.player_stats["current_MP"]-=20
+			await anim.animation_finished
 			battle_history_update("Your defense has increased.")
 			defense_count+=4
 			if defense_count>4:
@@ -348,7 +350,6 @@ func _on_handle_skill_button_mouse_entered() -> void:
 		description.text="Fortify: Place a magical barrier on yourself to reduce damage dealt
 		by 25% for 3 turns.
 		costs 20MP"
-		
 
 func _on_handle_skill_button_mouse_exited() -> void:
 	description.text=""

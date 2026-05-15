@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bpvi0cx2it0pd"]
+[gd_scene format=3 uid="uid://b1umfkds1tr1t"]
 
 [ext_resource type="Texture2D" uid="uid://crkjolbw65b61" path="res://assets/sprites/basic_blade.png" id="1_ejqe7"]
-[ext_resource type="Script" uid="uid://biw6ew8ait7ln" path="res://Other Menus/start_screen.gd" id="1_x4sei"]
+[ext_resource type="Script" path="res://Other Menus/start_screen.gd" id="1_x4sei"]
 [ext_resource type="Texture2D" uid="uid://d3aj3q0l243gk" path="res://assets/sprites/basic_handle.png" id="2_x4sei"]
 
 [sub_resource type="Animation" id="Animation_qxe8x"]

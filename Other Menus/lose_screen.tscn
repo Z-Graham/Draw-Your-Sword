@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bp00n26ymt417"]
+
+[ext_resource type="Script" uid="uid://ct8amt8w5qyps" path="res://lose_screen.gd" id="1_lwpvl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkftk"]
+font_size = 200
+
+[node name="Lose Screen" type="ColorRect" unique_id=949921955]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5058824)
+script = ExtResource("1_lwpvl")
+
+[node name="YouWinLabel" type="Label" parent="." unique_id=1060990883]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.116753474
+anchor_top = 0.038580246
+anchor_right = 0.88324654
+anchor_bottom = 0.45987654
+grow_horizontal = 2
+text = "YOU LOSE"
+label_settings = SubResource("LabelSettings_xkftk")
+
+[node name="Control" type="Button" parent="." unique_id=339231762]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 525.0
+offset_right = 368.0
+offset_bottom = 584.0
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="Control3" type="Button" parent="." unique_id=1288858565]
+layout_mode = 0
+offset_left = 764.0
+offset_top = 525.0
+offset_right = 943.0
+offset_bottom = 588.0
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="pressed" from="Control" to="." method="_on_control_pressed"]
+[connection signal="pressed" from="Control3" to="." method="_on_control_3_pressed"]

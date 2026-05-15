@@ -40,6 +40,7 @@ const CLAYMORE_HANDLE = preload("uid://138f5urcs0r6")
 @onready var handle_sprite: Sprite2D = $sword/handle
 @onready var stats_screen: ColorRect = $StatsScreen
 @onready var tutorial_screen: Control = $"Tutorial screen"
+@onready var lose_screen: ColorRect = $"Lose Screen"
 
 signal battle_finished(exp_amount:int)
 
@@ -87,6 +88,7 @@ func _process(delta:float)-> void:
 		battle_history.get_child(0).queue_free()
 	if Input.is_action_just_pressed("level up"):
 		win_screen.exp_gain(10)
+
 	
 func battle_end():
 	$ColorRect2.visible=true
@@ -490,7 +492,6 @@ func enemy_fight():
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
-	
 	await get_tree().create_timer(.5).timeout
 	if poison_count>0:
 		enemy_in_battle.enemy_stats["health"]-=(enemy_in_battle.enemy_stats["health"]/16+1)
@@ -502,9 +503,13 @@ func enemy_fight():
 			battle_end()
 	else:
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
-	fight_battle_menu.visible=true
-	health_bar.visible=true
-	mp_bar.visible=true
+	if Globals.player_stats["current_health"]<=0:
+		lose_screen.visible=true
+		$ColorRect2.visible=true
+	else:
+		fight_battle_menu.visible=true
+		health_bar.visible=true
+		mp_bar.visible=true
 
 func _on_draw_screen_draw_screen_closed(blade: Variant, handle: Variant, imbue: Variant) -> void:
 	sw_blade=blade

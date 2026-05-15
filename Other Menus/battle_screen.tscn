@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://7i05lclt6qar" path="res://Other Menus/win_screen.tscn" id="19_udy6t"]
 [ext_resource type="PackedScene" uid="uid://d0tu3pdpqi7to" path="res://Other Menus/stats_screen.tscn" id="23_te6vl"]
 [ext_resource type="PackedScene" uid="uid://bjfj0gtd8h2us" path="res://Other Menus/tutorial_screen.tscn" id="24_m3a36"]
+[ext_resource type="PackedScene" uid="uid://bp00n26ymt417" path="res://Other Menus/lose_screen.tscn" id="25_6gotq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gotq"]
 atlas = ExtResource("3_m3a36")
@@ -1621,6 +1622,13 @@ offset_bottom = 288.0
 
 [node name="Tutorial screen" parent="." unique_id=1925556960 instance=ExtResource("24_m3a36")]
 visible = false
+
+[node name="Lose Screen" parent="." unique_id=949921955 instance=ExtResource("25_6gotq")]
+visible = false
+offset_left = 577.0
+offset_top = -25.0
+offset_right = 577.0
+offset_bottom = -25.0
 
 [connection signal="pressed" from="Main_battle_menu/Draw_button" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]

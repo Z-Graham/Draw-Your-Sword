@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Draw Your Sword"
-run/main_scene="uid://bcchcj045bfvs"
+run/main_scene="uid://bpvi0cx2it0pd"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

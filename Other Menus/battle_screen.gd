@@ -89,7 +89,6 @@ func _process(delta:float)-> void:
 	if Input.is_action_just_pressed("level up"):
 		win_screen.exp_gain(10)
 
-	
 func battle_end():
 	$ColorRect2.visible=true
 	$ColorRect2.modulate=Color(1.0, 1.0, 1.0, 1.0)
@@ -686,15 +685,16 @@ func adjust_sprites():
 	elif sw_imbue=="ice":
 		blade_sprite.modulate=Color(0.0, 1.0, 0.917, 1.0)
 	
-	if sw_blade=="claymore":
-		blade_sprite.region_rect=Rect2(0,0,128,128)
-	else:
-		blade_sprite.region_rect=Rect2(0,0,64,64)
-	if sw_handle=="claymore":
-		handle_sprite.region_rect=Rect2(0,0,128,128)
+	if sw_blade=="claymore" or sw_handle=="claymore":
+		if sw_blade=="claymore":
+			blade_sprite.region_rect=Rect2(0,0,128,128)
+		if sw_handle=="claymore":
+			handle_sprite.region_rect=Rect2(0,0,128,128)
 		sword.scale=Vector2(2,2)
 	else:
+		blade_sprite.region_rect=Rect2(0,0,64,64)
 		handle_sprite.region_rect=Rect2(0,0,64,64)
+		sword.scale=Vector2(3,3)
 
 func _on_stats_screen_closed() -> void:
 	win_screen.visible=true

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbo77hyjrl30n" path="res://assets/sprites/16x32 All Animations-Sheet.png" id="3_m3a36"]
 [ext_resource type="Texture2D" uid="uid://dcbc0b5rj8tm5" path="res://assets/sprites/clicked_red_poly.png" id="4_0c6le"]
 [ext_resource type="PackedScene" uid="uid://dcrggycifxn06" path="res://Enemy/enemy_in_battle.tscn" id="4_pi828"]
-[ext_resource type="Texture2D" uid="uid://wrdnamvrjbnb" path="res://assets/sprites/claymore blade.png" id="5_m3a36"]
+[ext_resource type="Texture2D" uid="uid://crkjolbw65b61" path="res://assets/sprites/basic_blade.png" id="5_6gotq"]
 [ext_resource type="BitMap" uid="uid://ckjyqxb5a20cg" path="res://assets/sprites/red poly mask.png" id="5_wk8rl"]
 [ext_resource type="Texture2D" uid="uid://138f5urcs0r6" path="res://assets/sprites/claymore handle.png" id="6_6gotq"]
 [ext_resource type="Texture2D" uid="uid://gpihwnbtkm40" path="res://assets/sprites/red_flash.png" id="6_f7sqe"]
@@ -1343,7 +1343,7 @@ scale = Vector2(3, 3)
 
 [node name="blade" type="Sprite2D" parent="sword" unique_id=901790123]
 texture_filter = 1
-texture = ExtResource("5_m3a36")
+texture = ExtResource("5_6gotq")
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 128)
 
@@ -1630,6 +1630,10 @@ offset_top = -25.0
 offset_right = 577.0
 offset_bottom = -25.0
 
+[node name="Control3" parent="Lose Screen" index="2" unique_id=1288858565]
+offset_left = -381.0
+offset_right = -202.0
+
 [connection signal="pressed" from="Main_battle_menu/Draw_button" to="." method="_on_draw_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Fight_button" to="." method="_on_fight_button_pressed"]
 [connection signal="pressed" from="Main_battle_menu/Item_button" to="." method="_on_item_button_pressed"]
@@ -1647,3 +1651,5 @@ offset_bottom = -25.0
 [connection signal="draw_screen_closed" from="DrawScreen" to="." method="_on_draw_screen_draw_screen_closed"]
 [connection signal="level_up" from="Win Screen" to="." method="_on_win_screen_level_up"]
 [connection signal="closed" from="StatsScreen" to="." method="_on_stats_screen_closed"]
+
+[editable path="Lose Screen"]

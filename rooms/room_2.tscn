@@ -82,6 +82,7 @@ text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_1kamh")
 
 [node name="DrawingLabel" type="Label" parent="." unique_id=1629478743]
+visible = false
 offset_left = 871.0
 offset_right = 1146.0
 offset_bottom = 34.0

@@ -83,6 +83,7 @@ text = "Picked up Sword Part"
 label_settings = SubResource("LabelSettings_yrnrx")
 
 [node name="DrawingLabel" type="Label" parent="." unique_id=1856399743]
+visible = false
 offset_left = 872.0
 offset_right = 1142.0
 offset_bottom = 34.0

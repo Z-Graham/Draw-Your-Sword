@@ -419,15 +419,16 @@ func reset():
 			enemy_in_battle.enemy_stats[i]=Globals.goblin_stats[i]
 			
 	if enemy_in_battle.name_of_en=="knight":
-		for i in Globals.goblin_stats:
+		for i in Globals.knight_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.knight_stats[i]
 			
 	if enemy_in_battle.name_of_en=="sword bird":
-		for i in Globals.goblin_stats:
+		for i in Globals.bird_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.bird_stats[i]
 			
 	if enemy_in_battle.name_of_en=="cloud":
-		for i in Globals.goblin_stats:
+		anim.play("cloud_reset")
+		for i in Globals.cloud_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.cloud_stats[i]
 
 func enemy_fight():
@@ -462,8 +463,8 @@ func enemy_fight():
 			battle_history_update("You took "+str(damage)+" damage.")
 			anim.play("bird idle")
 		elif enemy=="cloud":
-			enemy_in_battle.play("cloud attack")
-			await enemy_in_battle.animation_finished
+			anim.play("cloud_attack")
+			await anim.animation_finished
 			var damage=roundf((enemy_in_battle.enemy_stats["attack"])+randf_range(-2,2))
 			damage-=roundf(Globals.player_stats["defense"]/3.0)
 			if defense_count>0:

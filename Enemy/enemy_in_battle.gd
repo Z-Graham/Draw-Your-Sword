@@ -23,7 +23,7 @@ func set_sprite():
 	elif name_of_en=="knight":
 		play("knight idle")
 	elif name_of_en=="cloud":
-		play("cloud idle")
+		play("cloud attack")
 
 func loot() -> Array:
 	var stuff=[]

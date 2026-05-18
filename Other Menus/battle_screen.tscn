@@ -277,6 +277,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../../enemy_in_battle:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_qxk6m"]
 resource_name = "Serpent strike"
@@ -507,6 +519,49 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_07288"]
+resource_name = "cloud_attack"
+length = 1.7333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../enemy_in_battle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8666667, 1.6666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(924, 370), Vector2(250, 258), Vector2(250, 258), Vector2(924, 370)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../enemy_in_battle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6333333, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_b8jno"]
+resource_name = "cloud_reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../enemy_in_battle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_jergb"]
@@ -1247,6 +1302,8 @@ _data = {
 &"aether": SubResource("Animation_5f3kh"),
 &"bash": SubResource("Animation_te6vl"),
 &"bird attack": SubResource("Animation_nxacu"),
+&"cloud_attack": SubResource("Animation_07288"),
+&"cloud_reset": SubResource("Animation_b8jno"),
 &"double stab": SubResource("Animation_jergb"),
 &"double_slash": SubResource("Animation_4ijij"),
 &"fortify": SubResource("Animation_28bvn"),
@@ -1335,7 +1392,7 @@ visible = false
 position = Vector2(924, 370)
 rotation = 0.6151203
 scale = Vector2(4.5625, 3.875)
-frame_progress = 0.8021514
+animation = &"cloud attack"
 
 [node name="sword" type="Node2D" parent="." unique_id=718663914]
 position = Vector2(876, 277)

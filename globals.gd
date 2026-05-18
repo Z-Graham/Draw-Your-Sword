@@ -24,10 +24,10 @@ var tutorial_checks={"battle_screen":false,"fight":false,"draw_1":false,"invento
 # Arrays of unlocked sword parts
 var known_blades = ["basic","katana","kris","spear","claymore"]
 var known_handles = ["basic","katana","kris","spear","claymore"]
-var known_imbues = ["physical","fire","lightning","wind","rock"]
+var known_imbues = ["physical","fire","lightning","wind","rock","water","ice"]
 var known_draw_items = []
 
-var goblin_stats={"health":5,"defense":7,"attack":10,
+var goblin_stats={"health":50,"defense":7,"attack":10,
 "resist":[],"weakness":["fire","ice"],"exp":5}
 
 var knight_stats={"health":100,"defense":15,"attack":20,

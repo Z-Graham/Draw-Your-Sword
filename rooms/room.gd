@@ -22,6 +22,7 @@ class_name Room
 @onready var healing_label: Label = $HealingLabel
 @onready var magic_label: Label = $MagicLabel
 @onready var sword_label: Label = $SwordLabel
+@onready var drawing_label: Label = $DrawingLabel
 @onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
 @onready var leave_room_detector_backwards: LeaveRoomDetector = $ColorRect2/LeaveRoomDetectorBackwards
 @onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
@@ -82,8 +83,9 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		sword_label.visible = false
 	
 	if type == "healing":
-		if magic_label.visible:
+		if magic_label.visible or drawing_label.visible:
 			magic_label.visible = false
+			drawing_label.visible = false
 		Globals.healing_items["HP Potion"] += 1
 		healing_label.visible = true
 		num_healing_items -= 1
@@ -93,8 +95,9 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		
 		
 	elif type == "magic":
-		if healing_label.visible:
+		if healing_label.visible or drawing_label.visible:
 			healing_label.visible = false
+			drawing_label.visible = false
 		Globals.healing_items["MP Potion"] += 1
 		#healing_label.text = "Picked up Magic Item"
 		magic_label.visible = true
@@ -104,9 +107,14 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		#healing_label.text = "Picked up Healing Item"
 		
 	elif type == "bridge":
+		if healing_label.visible or magic_label.visible:
+			healing_label.visible = false
+			magic_label.visible = false
 		print("picked up bridge") # make a label
-		Globals.known_draw_items.append("bridge")
-	
+		Globals.known_draw_items.append("Bridge")
+		drawing_label.visible = true
+		await get_tree().create_timer(1.5).timeout
+		drawing_label.visible = false
 
 
 func _on_drawing_spot_opened() -> void:

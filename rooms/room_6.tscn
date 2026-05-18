@@ -42,6 +42,7 @@ position = Vector2(171, 349)
 position = Vector2(589, 272)
 
 [node name="MagicLabel" type="Label" parent="." unique_id=357059080]
+visible = false
 offset_left = 689.0
 offset_top = 129.0
 offset_right = 955.0
@@ -49,7 +50,17 @@ offset_bottom = 163.0
 text = "Picked up Magic Item"
 label_settings = SubResource("LabelSettings_f20cw")
 
+[node name="DrawingLabel" type="Label" parent="." unique_id=219015381]
+visible = false
+offset_left = 689.0
+offset_top = 129.0
+offset_right = 955.0
+offset_bottom = 163.0
+text = "Picked up Drawing Item"
+label_settings = SubResource("LabelSettings_f20cw")
+
 [node name="SwordLabel" type="Label" parent="." unique_id=117033196]
+visible = false
 offset_left = 670.0
 offset_top = 128.0
 offset_right = 936.0
@@ -58,6 +69,7 @@ text = "Picked up Sword Part"
 label_settings = SubResource("LabelSettings_ae40p")
 
 [node name="HealingLabel" type="Label" parent="." unique_id=1803808921]
+visible = false
 offset_left = 672.0
 offset_top = 129.0
 offset_right = 938.0
@@ -66,3 +78,4 @@ text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_pjtha")
 
 [connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]
+[connection signal="picked_up" from="Item" to="." method="_on_item_picked_up"]

@@ -11,5 +11,6 @@ func _ready() -> void:
 
 func _on_body_entered(_body: Node2D) -> void:
 	opened.emit()
+	draw_item_screen.reset()
 	draw_item_screen.visible = true
 	#open_notebook()

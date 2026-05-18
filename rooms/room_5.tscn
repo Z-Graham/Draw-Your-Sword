@@ -62,7 +62,7 @@ position = Vector2(1096, 321)
 position = Vector2(882, 587)
 
 [node name="Enemy2" parent="." unique_id=1388157140 instance=ExtResource("5_8jngd")]
-position = Vector2(168, 347)
+position = Vector2(276, 347)
 type = "knight"
 has_key = true
 
@@ -80,6 +80,13 @@ offset_left = 1774.0
 offset_right = 2040.0
 offset_bottom = 34.0
 text = "Picked up Sword Part"
+label_settings = SubResource("LabelSettings_yrnrx")
+
+[node name="DrawingLabel" type="Label" parent="." unique_id=1856399743]
+offset_left = 872.0
+offset_right = 1142.0
+offset_bottom = 34.0
+text = "Picked up Drawing Item"
 label_settings = SubResource("LabelSettings_yrnrx")
 
 [node name="HealingLabel" type="Label" parent="." unique_id=416764786]

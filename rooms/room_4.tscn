@@ -58,6 +58,14 @@ offset_bottom = 34.0
 text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_roktq")
 
+[node name="DrawingLabel" type="Label" parent="." unique_id=1134047124]
+visible = false
+offset_left = 873.0
+offset_right = 1148.0
+offset_bottom = 34.0
+text = "Picked up Drawing Item"
+label_settings = SubResource("LabelSettings_roktq")
+
 [node name="SwordLabel" type="Label" parent="." unique_id=2140699211]
 visible = false
 offset_left = 887.0

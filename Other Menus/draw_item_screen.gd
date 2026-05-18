@@ -38,3 +38,7 @@ func _on_button_pressed() -> void:
 	visible=false
 	closed.emit()
 	
+func reset() -> void:
+	object_list.clear()
+	for object in Globals.known_draw_items:
+		object_list.add_item(object)

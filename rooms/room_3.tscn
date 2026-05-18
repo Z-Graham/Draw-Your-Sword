@@ -73,6 +73,13 @@ offset_bottom = 34.0
 text = "Picked up Healing Item"
 label_settings = SubResource("LabelSettings_4sdyu")
 
+[node name="DrawingLabel" type="Label" parent="." unique_id=325257348]
+offset_left = 872.0
+offset_right = 1147.0
+offset_bottom = 34.0
+text = "Picked up Drawing Item"
+label_settings = SubResource("LabelSettings_4sdyu")
+
 [node name="SwordLabel" type="Label" parent="." unique_id=1918859362]
 visible = false
 offset_left = 887.0

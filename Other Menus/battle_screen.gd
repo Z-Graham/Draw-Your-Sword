@@ -427,7 +427,6 @@ func reset():
 			enemy_in_battle.enemy_stats[i]=Globals.bird_stats[i]
 			
 	if enemy_in_battle.name_of_en=="cloud":
-		anim.play("cloud_reset")
 		for i in Globals.cloud_stats:
 			enemy_in_battle.enemy_stats[i]=Globals.cloud_stats[i]
 
@@ -473,7 +472,6 @@ func enemy_fight():
 			damage=roundi(damage)
 			Globals.player_stats["current_health"]-=damage
 			battle_history_update("You took "+str(damage)+" damage.")
-			enemy_in_battle.play("cloud idle")
 		elif enemy=="knight":
 			anim.play("knight attack")
 			await anim.animation_finished

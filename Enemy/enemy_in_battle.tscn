@@ -22,6 +22,10 @@ region = Rect2(0, 64, 64, 64)
 atlas = ExtResource("2_41vdw")
 region = Rect2(0, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo7p6"]
+atlas = ExtResource("2_41vdw")
+region = Rect2(0, 64, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mt1a"]
 atlas = ExtResource("2_41vdw")
 region = Rect2(0, 64, 64, 64)
@@ -85,6 +89,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t7clc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo7p6")
 }],
 "loop": false,
 "name": &"cloud attack",
@@ -147,5 +154,5 @@ animations = [{
 [node name="enemy_in_battle" type="AnimatedSprite2D" unique_id=1840550579]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1uxla")
-animation = &"knight idle"
+animation = &"cloud attack"
 script = ExtResource("2_nlk3i")

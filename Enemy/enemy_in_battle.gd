@@ -24,6 +24,7 @@ func set_sprite():
 		play("knight idle")
 	elif name_of_en=="cloud":
 		animation="cloud attack"
+		frame=0
 
 func loot() -> Array:
 	var stuff=[]

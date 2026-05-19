@@ -18,6 +18,7 @@ font_size = 24
 
 [node name="Room5" type="Node2D" unique_id=724931990 node_paths=PackedStringArray("enter_spawn_point", "return_spawn_point")]
 script = ExtResource("1_b3nq4")
+num_enemies = 2
 num_healing_items = 1
 num_magic_items = 1
 enter_spawn_point = NodePath("EnterSpawnPoint")
@@ -76,7 +77,7 @@ type = "magic"
 
 [node name="Item2" parent="." unique_id=484389549 instance=ExtResource("6_yrnrx")]
 position = Vector2(758, 374)
-type = "magic"
+type = "healing"
 
 [node name="SwordLabel" type="Label" parent="." unique_id=1840578238]
 visible = false

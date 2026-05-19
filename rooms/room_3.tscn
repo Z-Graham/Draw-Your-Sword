@@ -120,6 +120,7 @@ type = "magic"
 
 [node name="Item2" parent="." unique_id=1470797380 instance=ExtResource("8_7j5ef")]
 position = Vector2(798, 495)
+type = "healing"
 
 [node name="Item3" parent="." unique_id=404048788 instance=ExtResource("8_7j5ef")]
 position = Vector2(798, 322)

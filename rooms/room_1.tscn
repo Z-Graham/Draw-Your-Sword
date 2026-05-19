@@ -57,6 +57,7 @@ position = Vector2(452, 604)
 
 [node name="Item" parent="." unique_id=2030387864 instance=ExtResource("7_4sdyu")]
 position = Vector2(610, 175)
+type = "healing"
 
 [node name="Item2" parent="." unique_id=87942900 instance=ExtResource("7_4sdyu")]
 position = Vector2(521, 318)

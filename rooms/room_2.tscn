@@ -17,7 +17,8 @@ outline_size = 4
 [node name="Room2" type="Node2D" unique_id=873215277 node_paths=PackedStringArray("enter_spawn_point", "return_spawn_point", "up_return_spawn_point")]
 script = ExtResource("1_1kamh")
 num_enemies = 2
-num_healing_items = 2
+num_healing_items = 1
+num_magic_items = 1
 enter_spawn_point = NodePath("EnterSpawnPoint")
 return_spawn_point = NodePath("ReturnSpawnPoint")
 up_return_spawn_point = NodePath("UpReturnSpawnPoint")
@@ -116,6 +117,7 @@ label_settings = SubResource("LabelSettings_1kamh")
 
 [node name="Item" parent="." unique_id=2030387864 instance=ExtResource("7_xxshv")]
 position = Vector2(351, 186)
+type = "healing"
 
 [node name="Item2" parent="." unique_id=1931148628 instance=ExtResource("7_xxshv")]
 position = Vector2(674, 464)

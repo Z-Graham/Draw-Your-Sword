@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*uid://b0ml043ilmqki"
 TutorialScreen="*uid://bjfj0gtd8h2us"
+AudioPlayer="*uid://bcsgcujfe5v32"
 
 [display]
 

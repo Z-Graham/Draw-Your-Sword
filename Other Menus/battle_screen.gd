@@ -502,8 +502,11 @@ func enemy_fight():
 	else:
 		enemy_in_battle.modulate=Color(1.0, 1.0, 1.0, 1.0)
 	if Globals.player_stats["current_health"]<=0:
-		lose_screen.visible=true
+		lose_screen.visible=true 
 		$ColorRect2.visible=true
+		# change volume
+		AudioPlayer.pitch_down()
+		
 	else:
 		fight_battle_menu.visible=true
 		health_bar.visible=true

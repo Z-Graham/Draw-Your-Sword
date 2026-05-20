@@ -91,10 +91,10 @@ func _process(_delta: float) -> void:
 		else:
 			ui.visible = false
 	
-	if Input.is_action_just_pressed("hurt"): # just for testing
-		take_damage()
-	if Input.is_action_just_pressed("do_magic"):
-		do_magic()
+	#if Input.is_action_just_pressed("hurt"): # just for testing
+		#take_damage()
+	#if Input.is_action_just_pressed("do_magic"):
+		#do_magic()
 
 func _physics_process(_delta: float) -> void:
 	get_input()

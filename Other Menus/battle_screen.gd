@@ -86,8 +86,8 @@ func _process(delta:float)-> void:
 	mp_label.text="MP: "+str(Globals.player_stats["current_MP"])+"/"+str(Globals.player_stats["max_MP"])
 	if battle_history.get_children().size()>6:
 		battle_history.get_child(0).queue_free()
-	if Input.is_action_just_pressed("level up"):
-		win_screen.exp_gain(10)
+	#if Input.is_action_just_pressed("level up"):
+		#win_screen.exp_gain(10)
 
 func battle_end():
 	$ColorRect2.visible=true

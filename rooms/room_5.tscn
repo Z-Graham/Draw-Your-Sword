@@ -78,7 +78,7 @@ has_key = true
 
 [node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("6_d6i0n")]
 position = Vector2(63, 170)
-item_name = "Lightning"
+item_name = "water"
 
 [node name="Item" parent="." unique_id=2030387864 instance=ExtResource("6_yrnrx")]
 position = Vector2(884, 89)

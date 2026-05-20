@@ -65,6 +65,7 @@ visible = false
 [node name="Borders" type="Node" parent="." unique_id=1260431819]
 
 [node name="Border4" type="StaticBody2D" parent="Borders" unique_id=754333615]
+z_as_relative = false
 position = Vector2(1126, 184)
 collision_layer = 4
 

@@ -23,6 +23,7 @@ class_name Room
 @onready var magic_label: Label = $MagicLabel
 @onready var sword_label: Label = $SwordLabel
 @onready var drawing_label: Label = $DrawingLabel
+@onready var ending_label: Label = $EndingLabel
 @onready var leave_room_detector: Area2D = $ColorRect/LeaveRoomDetector
 @onready var leave_room_detector_backwards: LeaveRoomDetector = $ColorRect2/LeaveRoomDetectorBackwards
 @onready var leave_room_detector_down: LeaveRoomDetector = $ColorRect3/LeaveRoomDetectorDown
@@ -56,6 +57,8 @@ func _ready() -> void:
 		down_room_door.color = "red"
 
 func _on_leave_room_detector_body_entered(_body: Node2D) -> void:
+	if leave_room_detector.last:
+		ending_label.visible = true
 	if next_room != null:
 		if !next_room.locked:
 			await get_tree().create_timer(0.25).timeout
@@ -115,7 +118,16 @@ func _on_item_picked_up(_item : Area2D) -> void:
 		drawing_label.visible = true
 		await get_tree().create_timer(1.5).timeout
 		drawing_label.visible = false
-
+	
+	elif type == "box":
+		if healing_label.visible or magic_label.visible:
+			healing_label.visible = false
+			magic_label.visible = false
+		print("picked up box") # make a label
+		Globals.known_draw_items.append("Box")
+		drawing_label.visible = true
+		await get_tree().create_timer(1.5).timeout
+		drawing_label.visible = false
 
 func _on_drawing_spot_opened() -> void:
 	item_drawing_started.emit()

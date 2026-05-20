@@ -149,6 +149,11 @@ position = Vector2(943, 427)
 type = "blade"
 item_name = "kris"
 
+[node name="SwordItem3" parent="." unique_id=1514779823 instance=ExtResource("10_0v5my")]
+position = Vector2(943, 321)
+type = "imbue"
+item_name = "rock"
+
 [node name="bridge" type="Sprite2D" parent="." unique_id=957749679]
 visible = false
 texture_filter = 1
@@ -171,3 +176,4 @@ z_index = 5
 [connection signal="solution_gotten" from="DrawItemScreen" to="." method="_on_draw_item_screen_solution_gotten"]
 [connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]
 [connection signal="collected" from="SwordItem2" to="." method="_on_sword_item_collected"]
+[connection signal="collected" from="SwordItem3" to="." method="_on_sword_item_collected"]

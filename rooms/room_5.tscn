@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0f6chdgkvc22" path="res://rooms/tile_map_layer.tscn" id="2_bcliv"]
 [ext_resource type="PackedScene" uid="uid://b2rdwsm5rhsli" path="res://rooms/leave_room_detector.tscn" id="4_8jngd"]
 [ext_resource type="PackedScene" uid="uid://cjkvvp543n5ri" path="res://Enemy/enemy.tscn" id="5_8jngd"]
+[ext_resource type="PackedScene" uid="uid://bjayyf6rqq7ef" path="res://Items/sword_item.tscn" id="6_d6i0n"]
 [ext_resource type="PackedScene" uid="uid://w5l6l0wcxqdn" path="res://Items/item.tscn" id="6_yrnrx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yrnrx"]
@@ -75,6 +76,10 @@ position = Vector2(276, 347)
 type = "knight"
 has_key = true
 
+[node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("6_d6i0n")]
+position = Vector2(63, 170)
+item_name = "Lightning"
+
 [node name="Item" parent="." unique_id=2030387864 instance=ExtResource("6_yrnrx")]
 position = Vector2(884, 89)
 type = "magic"
@@ -124,7 +129,12 @@ offset_bottom = 337.0
 text = "You've reached the end of the demo"
 label_settings = SubResource("LabelSettings_yh327")
 
+[node name="Enemy3" parent="." unique_id=866904941 instance=ExtResource("5_8jngd")]
+position = Vector2(662, 51)
+type = "sword bird"
+
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="body_entered" from="ColorRect2/LeaveRoomDetectorBackwards" to="." method="_on_leave_room_detector_backwards_body_entered"]
+[connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]
 [connection signal="picked_up" from="Item" to="." method="_on_item_picked_up"]
 [connection signal="picked_up" from="Item2" to="." method="_on_item_picked_up"]

@@ -144,7 +144,7 @@ label_settings = SubResource("LabelSettings_xxshv")
 horizontal_alignment = 1
 
 [node name="SwordItem" parent="." unique_id=1568579394 instance=ExtResource("7_6k83b")]
-position = Vector2(1126, 18)
+position = Vector2(665, 17)
 type = "handle"
 item_name = "claymore"
 

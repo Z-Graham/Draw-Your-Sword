@@ -105,7 +105,19 @@ position = Vector2(73, 284)
 type = "knight"
 has_key = true
 
+[node name="SwordItem3" parent="." unique_id=1876393353 instance=ExtResource("4_ocw8c")]
+position = Vector2(27, 94)
+type = "blade"
+item_name = "spear"
+
+[node name="SwordItem4" parent="." unique_id=2132964740 instance=ExtResource("4_ocw8c")]
+position = Vector2(1111, 272)
+type = "handle"
+item_name = "spear"
+
 [connection signal="body_entered" from="ColorRect/LeaveRoomDetector" to="." method="_on_leave_room_detector_body_entered"]
 [connection signal="body_entered" from="ColorRect4/LeaveRoomDetectorUp" to="." method="_on_leave_room_detector_up_body_entered"]
 [connection signal="collected" from="SwordItem" to="." method="_on_sword_item_collected"]
 [connection signal="collected" from="SwordItem2" to="." method="_on_sword_item_collected"]
+[connection signal="collected" from="SwordItem3" to="." method="_on_sword_item_collected"]
+[connection signal="collected" from="SwordItem4" to="." method="_on_sword_item_collected"]
